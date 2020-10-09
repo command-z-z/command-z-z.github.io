@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Terminal 操作指令集合 | 个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="进入管理员权限1sudo su  如何通过终端修改host1sudo nano &#x2F;etc&#x2F;hosts 回车，输入系统登录密码，然后用键盘移动光标到相应位置增加ip，然后按ctrl＋x退出，按y然后回车保存修改结果即可  通过vim进行文本编辑vim有3个模式：插入模式、命令模式、低行模式:插入模式：在此模式下可以输入字符，按ESC将回到命令模式。命令模式：可以移动光标、删除字符等。低行模式：可以保">
+  <meta name="description" content="进入管理员权限1sudo su sudo解释：sudo 是一种权限管理机制，管理员可以授权于一些普通用户去执行一些 root 执行的操作，而不需要知道 root 的密码。  如何通过终端修改host1sudo nano &#x2F;etc&#x2F;hosts 回车，输入系统登录密码，然后用键盘移动光标到相应位置增加ip，然后按ctrl＋x退出，按y然后回车保存修改结果即可。nano解释：nano是一个字符终端的文本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Terminal 操作指令集合">
 <meta property="og:url" content="http://example.com/2020/10/08/Terminal-%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88/index.html">
 <meta property="og:site_name" content="个人博客主页">
-<meta property="og:description" content="进入管理员权限1sudo su  如何通过终端修改host1sudo nano &#x2F;etc&#x2F;hosts 回车，输入系统登录密码，然后用键盘移动光标到相应位置增加ip，然后按ctrl＋x退出，按y然后回车保存修改结果即可  通过vim进行文本编辑vim有3个模式：插入模式、命令模式、低行模式:插入模式：在此模式下可以输入字符，按ESC将回到命令模式。命令模式：可以移动光标、删除字符等。低行模式：可以保">
+<meta property="og:description" content="进入管理员权限1sudo su sudo解释：sudo 是一种权限管理机制，管理员可以授权于一些普通用户去执行一些 root 执行的操作，而不需要知道 root 的密码。  如何通过终端修改host1sudo nano &#x2F;etc&#x2F;hosts 回车，输入系统登录密码，然后用键盘移动光标到相应位置增加ip，然后按ctrl＋x退出，按y然后回车保存修改结果即可。nano解释：nano是一个字符终端的文本">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-10-08T14:37:45.000Z">
-<meta property="article:modified_time" content="2020-10-08T15:03:04.044Z">
+<meta property="article:modified_time" content="2020-10-09T05:31:38.165Z">
 <meta property="article:author" content="command_zz">
 <meta name="twitter:card" content="summary">
   
@@ -165,15 +165,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="进入管理员权限"><a href="#进入管理员权限" class="headerlink" title="进入管理员权限"></a>进入管理员权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+<p><code>sudo</code>解释：<br>sudo 是一种权限管理机制，管理员可以授权于一些普通用户去执行一些 root 执行的操作，而不需要知道 root 的密码。</p>
 <hr>
 <h2 id="如何通过终端修改host"><a href="#如何通过终端修改host" class="headerlink" title="如何通过终端修改host"></a>如何通过终端修改host</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/hosts</span><br></pre></td></tr></table></figure>
-<p>回车，输入系统登录密码，然后用键盘移动光标到相应位置增加ip，然后按ctrl＋x退出，按y然后回车保存修改结果即可</p>
+<p>回车，输入系统登录密码，然后用键盘移动光标到相应位置增加ip，然后按ctrl＋x退出，按y然后回车保存修改结果即可。<br><code>nano</code>解释：<br>nano是一个字符终端的文本编辑器，有点像DOS下的editor程序。它比vi/vim要简单得多，比较适合Linux初学者使用。某些Linux发行版的默认编辑器就是nano。</p>
 <hr>
 <h2 id="通过vim进行文本编辑"><a href="#通过vim进行文本编辑" class="headerlink" title="通过vim进行文本编辑"></a>通过vim进行文本编辑</h2><p>vim有3个模式：插入模式、命令模式、低行模式:<br>插入模式：在此模式下可以输入字符，按ESC将回到命令模式。<br>命令模式：可以移动光标、删除字符等。<br>低行模式：可以保存文件、退出vim、设置vim、查找等功能(低行模式也可以看作是命令模式里的)。 </p>
 <h3 id="一、打开文件、保存、关闭文件-vim命令模式下使用"><a href="#一、打开文件、保存、关闭文件-vim命令模式下使用" class="headerlink" title="一、打开文件、保存、关闭文件(vim命令模式下使用)"></a>一、打开文件、保存、关闭文件(vim命令模式下使用)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim filename       &#x2F;&#x2F;打开filename文件 </span><br><span class="line">:w       &#x2F;&#x2F;保存文件 </span><br><span class="line">:w vpser.net &#x2F;&#x2F;保存至vpser.net文件 </span><br><span class="line">:q          &#x2F;&#x2F;退出编辑器，如果文件已修改请使用下面的命令 </span><br><span class="line">:q!        &#x2F;&#x2F;退出编辑器，且不保存 </span><br><span class="line">:wq         &#x2F;&#x2F;退出编辑器，且保存文件</span><br></pre></td></tr></table></figure>
-<h3 id="二、插入文本或行-vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式"><a href="#二、插入文本或行-vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式" class="headerlink" title="二、插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)"></a>二、插入文本或行(vi命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a      &#x2F;&#x2F;在当前光标位置的右边添加文本 </span><br><span class="line">i       &#x2F;&#x2F;在当前光标位置的左边添加文本 </span><br><span class="line">A     &#x2F;&#x2F;在当前行的末尾位置添加文本 </span><br><span class="line">I      &#x2F;&#x2F;在当前行的开始处添加文本(非空字符的行首) </span><br><span class="line">O     &#x2F;&#x2F;在当前行的上面新建一行 </span><br><span class="line">o     &#x2F;&#x2F;在当前行的下面新建一行 </span><br><span class="line">R    &#x2F;&#x2F;替换(覆盖)当前光标位置及后面的若干文本 </span><br><span class="line">J    &#x2F;&#x2F;合并光标所在行及下一行为一行(依然在命令模式) </span><br></pre></td></tr></table></figure>
+<h3 id="二、插入文本或行-vim命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式"><a href="#二、插入文本或行-vim命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式" class="headerlink" title="二、插入文本或行(vim命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)"></a>二、插入文本或行(vim命令模式下使用，执行下面命令后将进入插入模式，按ESC键可退出插入模式)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a      &#x2F;&#x2F;在当前光标位置的右边添加文本 </span><br><span class="line">i       &#x2F;&#x2F;在当前光标位置的左边添加文本 </span><br><span class="line">A     &#x2F;&#x2F;在当前行的末尾位置添加文本 </span><br><span class="line">I      &#x2F;&#x2F;在当前行的开始处添加文本(非空字符的行首) </span><br><span class="line">O     &#x2F;&#x2F;在当前行的上面新建一行 </span><br><span class="line">o     &#x2F;&#x2F;在当前行的下面新建一行 </span><br><span class="line">R    &#x2F;&#x2F;替换(覆盖)当前光标位置及后面的若干文本 </span><br><span class="line">J    &#x2F;&#x2F;合并光标所在行及下一行为一行(依然在命令模式) </span><br></pre></td></tr></table></figure>
 
-
+<hr>
 
       
 
@@ -271,6 +272,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          链表相关操作集
+        
+      </div>
+    </a>
   
   
     <a href="/2020/10/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
