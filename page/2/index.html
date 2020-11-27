@@ -59,6 +59,8 @@
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
+				<li><a href="/tags/C++">C++</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -133,11 +137,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+					<li style="width: 25%"><a href="/archives">归档</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 25%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/C++">C++</a></li>
 		        
 				</ul>
 			</nav>
@@ -204,7 +210,15 @@
 <blockquote>
 <p>you can also change theme ,have a try by yourself</p>
 </blockquote>
-<p>END</p>
+<hr>
+<h2 id="Problems-encountered"><a href="#Problems-encountered" class="headerlink" title="Problems encountered"></a>Problems encountered</h2><h3 id="1-port-4000-has-been-used"><a href="#1-port-4000-has-been-used" class="headerlink" title="1.port 4000 has been used"></a>1.port 4000 has been used</h3><ul>
+<li><p>The first method: kill the process，which use port 4000.</p>
+</li>
+<li><p>The second method:add the following code in <code>_config.yml</code>that is in blog catalogue:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 4001</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
+<p>change to 4001 port.<br>solve the problem…</p>
+</li>
+</ul>
 <hr>
 
       
@@ -368,6 +382,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
