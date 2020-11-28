@@ -16,7 +16,7 @@
 <meta property="og:description" content="迭代器的含义要访问顺序容器和关联容器中的元素，需要通过“迭代器（iterator）”进行。迭代器是一个变量，相当于容器和操纵容器的算法之间的中介。迭代器可以指向容器中的某个元素，通过迭代器就可以读写它指向的元素。从这一点上看，迭代器和指针类似。 迭代器的分类 正向迭代器，定义方法如下：容器类名::iterator  迭代器名; 常量正向迭代器，定义方法如下：容器类名::const_iterator">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-11-27T08:53:16.000Z">
-<meta property="article:modified_time" content="2020-11-28T06:58:49.061Z">
+<meta property="article:modified_time" content="2020-11-28T08:40:42.666Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -220,14 +220,9 @@
 </blockquote>
 <h3 id="迭代器的功能分类"><a href="#迭代器的功能分类" class="headerlink" title="迭代器的功能分类"></a>迭代器的功能分类</h3><p>不同容器的迭代器，其功能强弱有所不同。容器的迭代器的功能强弱，决定了该容器是否支持 STL 中的某种算法。例如，排序算法需要通过随机访问迭代器来访问容器中的元素，因此有的容器就不支持排序算法.</p>
 <p>常用的迭代器按功能强弱分为输入、输出、正向、双向、随机访问五种，这里只介绍常用的三种。</p>
-<ol>
-<li><p>正向迭代器。假设 p 是一个正向迭代器，则 p 支持以下操作：<code>++p</code>，<code>p++</code>，<code>*p</code>。此外，两个正向迭代器可以互相赋值，还可以用<code>==</code>和<code>!=</code>运算符进行比较。</p>
-</li>
-<li><p>双向迭代器。双向迭代器具有正向迭代器的全部功能。除此之外，若 p 是一个双向迭代器，则<code>--p</code>和<code>p--</code>都是有定义的。<code>--p</code>使得 p 朝和<code>++p</code>相反的方向移动。</p>
-</li>
-<li><p>随机访问迭代器。随机访问迭代器具有双向迭代器的全部功能。若 p 是一个随机访问迭代器，i 是一个整型变量或常量，则 p 还支持以下操作：</p>
-</li>
-</ol>
+<p>1.正向迭代器。假设 p 是一个正向迭代器，则 p 支持以下操作：<code>++p</code>，<code>p++</code>，<code>*p</code>。此外，两个正向迭代器可以互相赋值，还可以用<code>==</code>和<code>!=</code>运算符进行比较。</p>
+<p>2.双向迭代器。双向迭代器具有正向迭代器的全部功能。除此之外，若 p 是一个双向迭代器，则<code>--p</code>和<code>p--</code>都是有定义的。<code>--p</code>使得 p 朝和<code>++p</code>相反的方向移动。</p>
+<p>3.随机访问迭代器。随机访问迭代器具有双向迭代器的全部功能。若 p 是一个随机访问迭代器，i 是一个整型变量或常量，则 p 还支持以下操作：</p>
 <ul>
 <li>p+=i：使得 p 往后移动 i 个元素。</li>
 <li>p-=i：使得 p 往前移动 i 个元素。</li>
