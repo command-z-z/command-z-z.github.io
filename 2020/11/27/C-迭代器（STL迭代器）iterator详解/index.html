@@ -16,7 +16,7 @@
 <meta property="og:description" content="迭代器的含义要访问顺序容器和关联容器中的元素，需要通过“迭代器（iterator）”进行。迭代器是一个变量，相当于容器和操纵容器的算法之间的中介。迭代器可以指向容器中的某个元素，通过迭代器就可以读写它指向的元素。从这一点上看，迭代器和指针类似。 迭代器的分类 正向迭代器，定义方法如下：容器类名::iterator  迭代器名; 常量正向迭代器，定义方法如下：容器类名::const_iterator">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-11-27T08:53:16.000Z">
-<meta property="article:modified_time" content="2020-11-28T06:42:30.460Z">
+<meta property="article:modified_time" content="2020-11-28T06:58:49.061Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -237,7 +237,47 @@
 </ul>
 <p>此外，两个随机访问迭代器 p1、p2 还可以用 &lt;、&gt;、&lt;=、&gt;= 运算符进行比较。p1 &lt; p2的含义是：p1 经过若干次（至少一次）<code>++</code>操作后，就会等于 p2。其他比较方式的含义与此类似。</p>
 <p>对于两个随机访问迭代器 p1、p2，表达式<code>p2-p1</code>也是有定义的，其返回值是 p2 所指向元素和 p1 所指向元素的序号之差（也可以说是 p2 和 p1 之间的元素个数减一）。</p>
-<p>以下为不同容器的迭代器的功能：<br>| 容器 | 迭代功能 |<br>|:—–|:—–|<br>| vector | 随机访问 |<br>| deque | 随机访问 |<br>| list | 双向 |<br>| set/multiset | 双向 |<br>| map/multimap | 双向 |<br>| stack | 不支持迭代器 |<br>| queue | 不支持迭代器 |<br>| priority_queue | 不支持迭代器 | </p>
+<p>以下为不同容器的迭代器的功能：</p>
+<table>
+<thead>
+<tr>
+<th align="left">容器</th>
+<th align="left">迭代功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">vector</td>
+<td align="left">随机访问</td>
+</tr>
+<tr>
+<td align="left">deque</td>
+<td align="left">随机访问</td>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">双向</td>
+</tr>
+<tr>
+<td align="left">set/multiset</td>
+<td align="left">双向</td>
+</tr>
+<tr>
+<td align="left">map/multimap</td>
+<td align="left">双向</td>
+</tr>
+<tr>
+<td align="left">stack</td>
+<td align="left">不支持迭代器</td>
+</tr>
+<tr>
+<td align="left">queue</td>
+<td align="left">不支持迭代器</td>
+</tr>
+<tr>
+<td align="left">priority_queue</td>
+<td align="left">不支持迭代器</td>
+</tr>
+</tbody></table>
 <p>例如，vector 的迭代器是随机迭代器，因此遍历 vector 容器有以下几种做法。下面的程序中，每个循环演示了一种做法。</p>
 <p>【实例】遍历 vector 容器。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(<span class="number">100</span>)</span></span>; <span class="comment">//v被初始化成有100个元素 初始化的元素全为0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; v.size() ; ++i) <span class="comment">//size返回元素个数</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; v[i]; <span class="comment">//像普通数组一样使用vector容器</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator i;</span><br><span class="line">    <span class="keyword">for</span>(i = v.begin(); i != v.end (); ++i) <span class="comment">//用 != 比较两个迭代器</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; * i;</span><br><span class="line">    <span class="keyword">for</span>(i = v.begin(); i &lt; v.end ();++i) <span class="comment">//用 &lt; 比较两个迭代器</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; * i;</span><br><span class="line">    i = v.begin();</span><br><span class="line">    <span class="keyword">while</span>(i &lt; v.end()) &#123; <span class="comment">//间隔一个输出</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; * i;</span><br><span class="line">        i += <span class="number">2</span>; <span class="comment">// 随机访问迭代器支持 &quot;+= 整数&quot;  的操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -556,7 +596,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
               </li>
              
               <li class="article-tag-list-item">
