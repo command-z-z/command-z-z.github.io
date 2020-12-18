@@ -8,13 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Java 学习笔记（1）-类和对象 | 个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="1.面向对象的基本概念 类是同种对象的集合与抽象，类是一种抽象的数据类型，它是具有一定共性的对象的抽象，二属于累的某一对象则被称为是类的一个实例，是类的一次实例化结果。   注意，无论类写得多么庞大，系统都不会给类分配内存空间，因为类的抽象的概述，系统不可能给抽象的东西分配空间，而对象是具体的，实际存在的。   属性是对象的特征，属性可以是数据，也可以是另一种对象。  2.面向对象的基本特征 抽象">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java 学习笔记（1）-类和对象">
 <meta property="og:url" content="http://example.com/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="个人博客主页">
+<meta property="og:description" content="1.面向对象的基本概念 类是同种对象的集合与抽象，类是一种抽象的数据类型，它是具有一定共性的对象的抽象，二属于累的某一对象则被称为是类的一个实例，是类的一次实例化结果。   注意，无论类写得多么庞大，系统都不会给类分配内存空间，因为类的抽象的概述，系统不可能给抽象的东西分配空间，而对象是具体的，实际存在的。   属性是对象的特征，属性可以是数据，也可以是另一种对象。  2.面向对象的基本特征 抽象">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-12-18T01:08:06.000Z">
-<meta property="article:modified_time" content="2020-12-18T07:38:15.902Z">
+<meta property="article:modified_time" content="2020-12-18T15:21:38.420Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -188,7 +190,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="1-面向对象的基本概念"><a href="#1-面向对象的基本概念" class="headerlink" title="1.面向对象的基本概念"></a>1.面向对象的基本概念</h4><ul>
+<li><strong>类是同种对象的集合与抽象</strong>，类是一种抽象的数据类型，它是具有一定共性的对象的抽象，二属于累的某一对象则被称为是类的一个实例，是类的一次实例化结果。</li>
+</ul>
+<blockquote>
+<p>注意，无论类写得多么庞大，系统都不会给类分配内存空间，因为类的抽象的概述，系统不可能给抽象的东西分配空间，而对象是具体的，实际存在的。</p>
+</blockquote>
+<ul>
+<li>属性是对象的特征，属性可以是数据，也可以是另一种对象。</li>
+</ul>
+<h4 id="2-面向对象的基本特征"><a href="#2-面向对象的基本特征" class="headerlink" title="2.面向对象的基本特征"></a>2.面向对象的基本特征</h4><ul>
+<li>抽象性</li>
+<li>封装性</li>
+<li>继承性</li>
+<li>多态性<h4 id="3-类的使用"><a href="#3-类的使用" class="headerlink" title="3.类的使用"></a>3.类的使用</h4><blockquote>
+<p>包含main方法的类叫主类</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>Java语言的命名规则是什么？</strong></p>
+<blockquote>
+<p>修饰符public代表该类能被所有类访问，修饰符public表明所定义的类为公共类，注意一个Java文件可以包含多个类，但最多包含一个公共类。</p>
+</blockquote>
+<a id="more"></a>
+
+<h4 id="4-成员变量与成员方法"><a href="#4-成员变量与成员方法" class="headerlink" title="4.成员变量与成员方法"></a>4.成员变量与成员方法</h4><ul>
+<li>构造方法<br>下面列举一个简单例子，学习如何通过构造方法初始化新建对象的成员变量<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">文件名：JStudent.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JJStudent</span>&#123;</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">char</span> sex;</span><br><span class="line">    <span class="keyword">int</span> stuID;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造方法1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JStudent</span><span class="params">(String stuName,<span class="keyword">char</span> sex,<span class="keyword">int</span> stuID)</span></span>&#123;</span><br><span class="line">        name=stuName;</span><br><span class="line">        <span class="keyword">this</span>.sex=sex;</span><br><span class="line">        <span class="keyword">this</span>.stuID=stuID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造方法2</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JStudent</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义main方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        <span class="comment">//通过构造方法1初始化变量</span></span><br><span class="line">        JStudent s1=<span class="keyword">new</span> JStudent(<span class="string">&quot;张三&quot;</span>,<span class="string">&#x27;男&#x27;</span>,<span class="number">20130301</span>);</span><br><span class="line">        <span class="comment">//通过构造方法1初始化变量</span></span><br><span class="line">        JStudent s1=<span class="keyword">new</span> JStudent();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+public修饰符：表明所有能访问该方法所在类的对象，都能使用该方法。<br>static修饰符：如果一个方法被声明为static，他能够在类的任何对象被创建之前访问，而不必引用任何对象。</li>
+</ul>
+<h4 id="5-对象的生成与使用"><a href="#5-对象的生成与使用" class="headerlink" title="5.对象的生成与使用"></a>5.对象的生成与使用</h4><ul>
+<li>new运算符为对象动态分配内存空间，并返回对它的一个引用值，引用值就是系统分配给对象的内存地址，由于类是一种引用数据类型，因此变量中该存储的值不是对象本身，而是引用值。</li>
+<li>一个Java文件只能有一个public类（公共类），但不同文件可以有另外public公共类，且相互之间可以调用生成具体类的对象。<blockquote>
+<p>String也是引用数据类型，因此变量name存储的值也仅仅是String对象存放的地址。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="6-方法参数的传递"><a href="#6-方法参数的传递" class="headerlink" title="6.方法参数的传递"></a>6.方法参数的传递</h4><p>根据参数的数据类型，值传递也可以分为两种情况：</p>
+<ol>
+<li>参数是基本数据类型，参数传递为实际值，如int型参数a的值为10，传递的值即为该参数的实际值10.</li>
+<li>参数是引用数据类型，由于参数值存储的只是引用对象的地址值，因此参数的传递为引用对象的地址值传递。</li>
+</ol>
+
       
 
       
@@ -326,7 +368,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1.面向对象的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="toc-number">2.</span> <span class="toc-text">2.面向对象的基本特征</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">3.类的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%B8%8E%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">4.成员变量与成员方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%94%9F%E6%88%90%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">5.对象的生成与使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92"><span class="toc-number">6.</span> <span class="toc-text">6.方法参数的传递</span></a></li></ol>
                     </div>
                 </span>
             </div>
