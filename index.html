@@ -258,7 +258,7 @@
 <p>采用new关键字新建一个字符串对象时，JVM首先在字符串池中查找有没有”aaa”这个字符串对象，如果有，则不在池中再去创建”aaa”这个对象了，直接在堆中创建一个”aaa”字符串对象，然后将堆中的这个”aaa”对象的地址返回赋给引用str3，这样，str3就指向了堆中创建的这个”aaa”字符串对象；如果没有，则首先在字符串池中创建一个”aaa”字符串对象，然后再在堆中创建一个”aaa”字符串对象，然后将堆中这个”aaa”字符串对象的地址返回赋给str3引用，这样，str3指向了堆中创建的这个”aaa”字符串对象。</p>
 <p>在这个例子中，执行：str3 == str4，得到以下结果：<code>false</code>.</p>
 <p> 因为，采用new关键字创建对象时，每次new出来的都是一个新的对象，也即是说引用str3和str4指向的是两个不同的对象，因此语句System.out.println(str3 == str4)输出：false。</p>
-<p> 转载自[博客园]（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fangfuhai/p/5500065.html%EF%BC%89">https://www.cnblogs.com/fangfuhai/p/5500065.html）</a></p>
+<p>转载自  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/fangfuhai/p/5500065.html">博客园</a></p>
 
       
 
