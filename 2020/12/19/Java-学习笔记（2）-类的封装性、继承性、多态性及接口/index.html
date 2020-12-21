@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.封装性 Java通过访问控制来实现封装性，访问控制通过4个访问修饰符实现，分别是public（公共）,protected（保护）,default（默认）,private(私有)。 Java对类和类成员有不同的访问控制方式，对于类来讲，类能使用的访问修饰符为public和default，public可以使所有软件包使用，即可被任何类进行调用，而default（默认不写），仅能使在同一个包下的类使">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-12-19T07:12:27.000Z">
-<meta property="article:modified_time" content="2020-12-21T15:41:45.302Z">
+<meta property="article:modified_time" content="2020-12-21T15:57:38.684Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
 <td align="left">允许访问</td>
 <td align="left">允许访问</td>
 <td align="left">允许访问</td>
-<td align="left">允许访问)</td>
+<td align="left">允许访问</td>
 </tr>
 <tr>
 <td align="left">同一个包下</td>
@@ -297,7 +297,14 @@
 </ul>
 <h6 id="方法覆盖的“向上转型”机制"><a href="#方法覆盖的“向上转型”机制" class="headerlink" title="方法覆盖的“向上转型”机制"></a>方法覆盖的“向上转型”机制</h6><p>当一个被覆盖的方法被父类引用调用时，Java根据当前被引用对象的类型来决定哪个版本的方法。</p>
 <hr>
-<h4 id="4-抽象类"><a href="#4-抽象类" class="headerlink" title="4.抽象类"></a>4.抽象类</h4><p>抽象类是专门</p>
+<h4 id="4-抽象类"><a href="#4-抽象类" class="headerlink" title="4.抽象类"></a>4.抽象类</h4><p>抽象类是专门设计用来给子类继承的，抽象类中包含成员变量，构造方法，一般方法，抽象方法。抽象类中抽象方法以分号结尾，且不含方法体，必须被子类重载。</p>
+<ul>
+<li>抽象类中必须包含抽象方法，也可以包含成员变量，一般方法等，子类必须重载抽象类中的所有抽象方法。</li>
+<li>如果一个类不是抽象类，就不能在这个类中定义抽象方法。</li>
+<li>抽象类可以有构造方法，但抽象类不会有实例，也不能构造方法来直接生成实例，一般可以通过子类实例化。</li>
+<li>如：<code>JShape s=new JRectangle(10,20)</code>，该实例化过程也属于“向上转型”。</li>
+<li>对于类不能同时使用abstract和final关键字，对于方法不能同时使用static和abstract关键字。</li>
+</ul>
 
       
 
