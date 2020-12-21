@@ -182,6 +182,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <h4 id="1-封装性"><a href="#1-封装性" class="headerlink" title="1.封装性"></a>1.封装性</h4><ul>
+<li>Java通过访问控制来实现封装性，访问控制通过4个访问修饰符实现，分别是public（公共）,protected（保护）,default（默认）,private(私有)。</li>
+<li>Java对类和类成员有不同的访问控制方式，对于类来讲，类能使用的访问修饰符为public和default，public可以使所有软件包使用，即可被任何类进行调用，而default（默认不写），仅能使在同一个包下的类使用，别的包无法访问。</li>
+<li>需要注意，一个Java文件中可以有多个类，但只能有一个public类（主类），这个类的名字与文件名相同，且main函数也应该在这个类下。</li>
+</ul>
+<h5 id="类成员的访问控制方式-如下表"><a href="#类成员的访问控制方式-如下表" class="headerlink" title="类成员的访问控制方式(如下表):"></a>类成员的访问控制方式(如下表):</h5><table>
+<thead>
+<tr>
+<th align="left">可见度</th>
+<th align="left">private</th>
+<th align="left">default</th>
+<th align="left">protected</th>
+<th align="left">public</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">同一个类下</td>
+<td align="left">允许访问</td>
+<td align="left">允许访问</td>
+<td align="left">允许访问</td>
+<td align="left">允许访问)</td>
+</tr>
+<tr>
+<td align="left">同一个包下</td>
+<td align="left"></td>
+<td align="left">允许访问</td>
+<td align="left">允许访问</td>
+<td align="left">允许访问</td>
+</tr>
+<tr>
+<td align="left">不同包的子类</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">允许访问</td>
+<td align="left">允许访问</td>
+</tr>
+<tr>
+<td align="left">不同包的非子类</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">允许访问</td>
+</tr>
+</tbody></table>
+        
+          <a class="article-more-a" href="/2020/12/19/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85%E6%80%A7%E3%80%81%E7%BB%A7%E6%89%BF%E6%80%A7%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E5%8F%8A%E6%8E%A5%E5%8F%A3/#more">more >></a>
         
       
 
@@ -190,6 +236,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
