@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | 个人博客主页</title>
+  <title>Java 学习笔记（3）-数组、字符串和枚举 | 个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="个人博客主页">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  <meta name="description" content="1.数组在Java中，数组本身就是一种引用数据类型，它是一组相同数据类型的数据的有序集合，该集合中的数据称为数组元素。  对于一维数组，可以在声明的时候同时进行初始化，如下： 1char []c&#x3D;&amp;#123;&amp;#x27;A&amp;#x27;,&amp;#x27;B&amp;#x27;,&amp;#x27;C&amp;#x27;,&amp;#x27;D&amp;#x27;&amp;#125;;     &#x2F;&#x2F;注意没有new 通过这种方法，也是在栈中存放一个地址，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 学习笔记（3）-数组、字符串和枚举">
+<meta property="og:url" content="http://example.com/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/index.html">
 <meta property="og:site_name" content="个人博客主页">
+<meta property="og:description" content="1.数组在Java中，数组本身就是一种引用数据类型，它是一组相同数据类型的数据的有序集合，该集合中的数据称为数组元素。  对于一维数组，可以在声明的时候同时进行初始化，如下： 1char []c&#x3D;&amp;#123;&amp;#x27;A&amp;#x27;,&amp;#x27;B&amp;#x27;,&amp;#x27;C&amp;#x27;,&amp;#x27;D&amp;#x27;&amp;#125;;     &#x2F;&#x2F;注意没有new 通过这种方法，也是在栈中存放一个地址，">
 <meta property="og:locale">
+<meta property="article:published_time" content="2020-12-22T12:23:10.000Z">
+<meta property="article:modified_time" content="2020-12-22T13:17:45.975Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="个人博客主页" type="application/atom+xml">
@@ -158,38 +163,101 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java-学习笔记（3）-数组、字符串和枚举" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/11/20/Java%E4%B8%8A%E6%9C%BA%E4%BD%9C%E4%B8%9A/" class="archive-article-date">
-	
-  	<time datetime="2020-11-20T12:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/20/Java%E4%B8%8A%E6%9C%BA%E4%BD%9C%E4%B8%9A/">Java上机作业</a>
+    <h1 class="article-title" itemprop="name">
+      Java 学习笔记（3）-数组、字符串和枚举
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+<a href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/" class="archive-article-date">
+	
+  	<time datetime="2020-12-22T12:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组"></a>1.数组</h4><p>在Java中，数组本身就是一种引用数据类型，它是一组相同数据类型的数据的有序集合，该集合中的数据称为数组元素。</p>
+<ul>
+<li><p>对于一维数组，可以在声明的时候同时进行初始化，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> []c=&#123;<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>&#125;;     <span class="comment">//注意没有new</span></span><br></pre></td></tr></table></figure>
+<p>通过这种方法，也是在栈中存放一个地址，然后在堆中开辟4个2B大小的连续空间，用于存放A、B、C、D四个元素。</p>
+</li>
+<li><p>二维数组可以动态实例化，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][];   <span class="comment">//分配两行，即两个一维数组</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">0</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];      <span class="comment">//第一行数组，有3个元素</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];      <span class="comment">//第二行数组，有5个元素</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，多维数组中维与维之间的内存空间的分配是不连续的。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2.字符串"></a>2.字符串</h4><p>Java提供了String和StringBuffer两个字符串类，String字符串在初始化后不能在被修改，StringBuffer字符串内容可以动态修改。</p>
+<h5 id="不可变字符串：String"><a href="#不可变字符串：String" class="headerlink" title="不可变字符串：String"></a>不可变字符串：String</h5><ul>
+<li><p>String字符串的内存分配机制（可参考String直接赋值与new赋值区别那篇文章）<br>这里值得注意的是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1=<span class="string">&quot;Hello&quot;</span>;     <span class="comment">//这个只会在栈中创建一个空间存储Hello</span></span><br><span class="line">s1=s1+<span class="string">&quot; world&quot;</span>;        <span class="comment">//使用这句话会使得s1指向一个栈中地址，地址指向堆中开辟的空间存放Hello</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串修改，String类提供了replace（），toLowerCase（），toUpperCase（），trim（）//将字符串前后的空格去掉。</p>
+<blockquote>
+<p>这里的修改，并不是在字符串原来的内存位置上进行，而是在新的内存空间上存放修改好的字符串，因此这里还是满足前面所说的String类是不可修改字符串的。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="可变字符串：StringBuffer"><a href="#可变字符串：StringBuffer" class="headerlink" title="可变字符串：StringBuffer"></a>可变字符串：StringBuffer</h5><ul>
+<li>与String可以直接赋值不同，StringBuffer必须通过new来赋值。</li>
+<li>StringBuffer对字符串的修改主要包括追加，插入，删除，替换，翻转等操作，可以通过append（）、insert（）、delete（）、replace（）、reverse（）等方法实现。</li>
+</ul>
+<h5 id="String与StringBuffer在内存分配上的差异"><a href="#String与StringBuffer在内存分配上的差异" class="headerlink" title="String与StringBuffer在内存分配上的差异"></a>String与StringBuffer在内存分配上的差异</h5><p>String会修改对象地址，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="keyword">new</span> String(<span class="string">&quot;I love football game&quot;</span>);</span><br><span class="line">s=<span class="string">&quot;I love NBA&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>变量s在栈中的地址随着在堆中的内容改变而发生改变。</p>
+<p>StringBuffer不会修改地址，如，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot; world&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>变量sb在栈中的地址不会随堆中的内容的改变而改变</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,262 +269,118 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/11/19/Markdown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-	
-  	<time datetime="2020-11-19T13:54:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/19/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85%E6%80%A7%E3%80%81%E7%BB%A7%E6%89%BF%E6%80%A7%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E5%8F%8A%E6%8E%A5%E5%8F%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java 学习笔记（2）-类的封装性、继承性、多态性及接口</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/19/Markdown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">1.数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.</span> <span class="toc-text">2.字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9AString"><span class="toc-number">2.1.</span> <span class="toc-text">不可变字符串：String</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9AStringBuffer"><span class="toc-number">2.2.</span> <span class="toc-text">可变字符串：StringBuffer</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#String%E4%B8%8EStringBuffer%E5%9C%A8%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="toc-number">2.3.</span> <span class="toc-text">String与StringBuffer在内存分配上的差异</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/" class="archive-article-date">
-	
-  	<time datetime="2020-11-19T13:08:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">数学建模方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/" class="archive-article-date">
-	
-  	<time datetime="2020-10-27T09:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/">数学建模国赛感悟</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/" class="archive-article-date">
-	
-  	<time datetime="2020-10-09T05:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/">链表相关操作集</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/08/Terminal-%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88/" class="archive-article-date">
-	
-  	<time datetime="2020-10-08T14:37:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/08/Terminal-%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88/">Terminal 操作指令集合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/08/hexo/" class="archive-article-date">
-	
-  	<time datetime="2020-10-08T14:23:03.188Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/08/hexo/">hexo博客搭建及操作集</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -492,8 +416,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
