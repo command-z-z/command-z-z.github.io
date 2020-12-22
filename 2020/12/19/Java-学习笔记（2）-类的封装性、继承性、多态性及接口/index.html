@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.封装性 Java通过访问控制来实现封装性，访问控制通过4个访问修饰符实现，分别是public（公共）,protected（保护）,default（默认）,private(私有)。 Java对类和类成员有不同的访问控制方式，对于类来讲，类能使用的访问修饰符为public和default，public可以使所有软件包使用，即可被任何类进行调用，而default（默认不写），仅能使在同一个包下的类使">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-12-19T07:12:27.000Z">
-<meta property="article:modified_time" content="2020-12-22T04:25:59.429Z">
+<meta property="article:modified_time" content="2020-12-22T11:34:13.861Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -191,9 +191,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="1-封装性"><a href="#1-封装性" class="headerlink" title="1.封装性"></a>1.封装性</h4><ul>
-<li>Java通过访问控制来实现封装性，访问控制通过4个访问修饰符实现，分别是public（公共）,protected（保护）,default（默认）,private(私有)。</li>
-<li>Java对类和类成员有不同的访问控制方式，对于类来讲，类能使用的访问修饰符为public和default，public可以使所有软件包使用，即可被任何类进行调用，而default（默认不写），仅能使在同一个包下的类使用，别的包无法访问。</li>
-<li>需要注意，一个Java文件中可以有多个类，但只能有一个public类（主类），这个类的名字与文件名相同，且main函数也应该在这个类下。</li>
+<li>Java通过访问控制来实现封装性，访问控制通过4个访问修饰符实现，分别是<code>public</code>（公共）,<code>protected</code>（保护）,<code>default</code>（默认）,<code>private</code>(私有)。</li>
+<li>Java对类和类成员有不同的访问控制方式，对于类来讲，类能使用的访问修饰符为<code>public</code>和<code>default</code>，<code>public</code>可以使所有软件包使用，即可被任何类进行调用，而<code>default</code>（默认不写），仅能使在同一个包下的类使用，别的包无法访问。</li>
+<li>需要注意，一个Java文件中可以有多个类，但只能有一个<code>public</code>类（主类），这个类的名字与文件名相同，且main函数也应该在这个类下。</li>
 </ul>
 <h5 id="类成员的访问控制方式-如下表"><a href="#类成员的访问控制方式-如下表" class="headerlink" title="类成员的访问控制方式(如下表):"></a>类成员的访问控制方式(如下表):</h5><table>
 <thead>
@@ -237,15 +237,15 @@
 <a id="more"></a>
 <hr>
 <h4 id="2-继承性"><a href="#2-继承性" class="headerlink" title="2.继承性"></a>2.继承性</h4><h5 id="（1）extend关键字"><a href="#（1）extend关键字" class="headerlink" title="（1）extend关键字"></a>（1）extend关键字</h5><ul>
-<li>子类继承父类运用extend关键字类继承。</li>
+<li>子类继承父类运用<code>extend</code>关键字类继承。</li>
 <li>子类是父类一个专门化，它继承了父类的所有变量和方法，并可以自己拓展变量和方法。</li>
 <li>继承具有传递性，如A拥有子类B，B拥有子类C，则A是C的父类。</li>
 </ul>
 <h5 id="使用继承需要遵循几个原则"><a href="#使用继承需要遵循几个原则" class="headerlink" title="使用继承需要遵循几个原则"></a>使用继承需要遵循几个原则</h5><ol>
 <li>Java只支持单重继承，不支持多继承。</li>
-<li>子类只能继承父类中非private的成员变量。</li>
+<li>子类只能继承父类中非<code>private</code>的成员变量。</li>
 <li>子类的成员变量与父类的成员变量重名时，子类的变量会覆盖父类的变量，而不是被继承。</li>
-<li>子类只能继承父类中非private的成员方法。</li>
+<li>子类只能继承父类中非<code>private</code>的成员方法。</li>
 <li>子类的成员方法名与父类的成员方法名相同时，子类的成员方法会覆盖父类的成员方法，而不是继承。</li>
 </ol>
 <h5 id="Java为什么子类到父类的“向上转型”能被允许？"><a href="#Java为什么子类到父类的“向上转型”能被允许？" class="headerlink" title="Java为什么子类到父类的“向上转型”能被允许？"></a>Java为什么子类到父类的“向上转型”能被允许？</h5><p>如:</p>
@@ -264,17 +264,17 @@
 </blockquote>
 <h6 id="构造函数的继承"><a href="#构造函数的继承" class="headerlink" title="构造函数的继承"></a>构造函数的继承</h6><p>子类可以使用super关键字来对父类的构造方法进行调用，示例如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>(参数列表)</span><br></pre></td></tr></table></figure>
-<p>这里调用的父类构造方法的参数列表必须与super中的参数列表完全对应，且子类的构造方法只能执行一行super（参数列表）（即无法同时调用多个父类构造方法），当父类的构造方法调用结束后会重新执行子类构造方法剩余的语句。</p>
+<p>这里调用的父类构造方法的参数列表必须与<code>super</code>中的参数列表完全对应，且子类的构造方法只能执行一行<code>super</code>（参数列表）（即无法同时调用多个父类构造方法），当父类的构造方法调用结束后会重新执行子类构造方法剩余的语句。</p>
 <p><strong>子类与父类的构造方法之间存在约束关系，构造方法的继承性主要体现以下几个原则:</strong></p>
 <ol>
 <li>按继承关系，构造方法是从顶向下进行调用的。</li>
 <li>如果子类没有构造函数，会默认调用父类的无参构造方法，如果父类没有无参构造方法，则程序会报错。</li>
 <li>如果子类有构造方法，那么会先调用父类的构造方法，然后再调用子类的构造方法。</li>
-<li>如果子类有构造方法，但在方法中没有super关键字，会默认调用父类的无参构造方法。<blockquote>
+<li>如果子类有构造方法，但在方法中没有<code>super</code>关键字，会默认调用父类的无参构造方法。<blockquote>
 <p>因此，当父类有有参构造方法，就会没有默认无参构造方法，当遇到第4条情况时，调用无参构造方法时，系统会报错，故在编写程序时为防止出错，都会再写一个无参构造方法。</p>
 </blockquote>
 </li>
-<li>若要调用父类的有参构造方法，在编写super（参数列表）语句时，需将它放在子类构造方法的第一行。</li>
+<li>若要调用父类的有参构造方法，在编写<code>super</code>（参数列表）语句时，需将它放在子类构造方法的第一行。</li>
 </ol>
 <hr>
 <h4 id="3-多态性"><a href="#3-多态性" class="headerlink" title="3.多态性"></a>3.多态性</h4><p>多态性是指同名的若干方法（含有不同的参数个数，参数类型，参数顺序，以及返回类型），主要分为两种：</p>
@@ -303,24 +303,55 @@
 <li>如果一个类不是抽象类，就不能在这个类中定义抽象方法。</li>
 <li>抽象类可以有构造方法，但抽象类不会有实例，也不能构造方法来直接生成实例，一般可以通过子类实例化。</li>
 <li>如：<code>JShape s=new JRectangle(10,20)</code>，该实例化过程也属于“向上转型”。</li>
-<li>对于类不能同时使用abstract和final关键字，对于方法不能同时使用static和abstract关键字。<blockquote>
+<li>对于类不能同时使用<code>abstract</code>和<code>final</code>关键字，对于方法不能同时使用<code>static</code>和<code>abstract</code>关键字。<blockquote>
 <p>动态调度机制只对方法名有效，对变量名没有效果，也就是说当父类当变量与子类的变量重名时，调用的还是父类的变量。</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="5-接口"><a href="#5-接口" class="headerlink" title="5.接口"></a>5.接口</h4><p>定义：接口是程序早期建立的一组协议，它没有被具体实现，这样便于设计更合理的类层次，使代码更灵活。<br>在Java语言中，一个类只能有一个父类，但可以多重继承多个接口。<br>接口是一个特殊的类，由常量与抽象方法组成。<br><strong>接口的定义有以下几个知识点要掌握：</strong></p>
+<h4 id="5-接口"><a href="#5-接口" class="headerlink" title="5.接口"></a>5.接口</h4><p>定义：接口是程序早期建立的一组协议，它没有被具体实现，这样便于设计更合理的类层次，使代码更灵活。<br>在Java语言中，一个类只能有一个父类，但可以多重继承多个接口。<br>接口是一个特殊的类，由<strong>常量与抽象方法</strong>组成。<br><strong>接口的定义有以下几个知识点要掌握：</strong></p>
 <ol>
 <li>接口具有多重继承，一个接口可以继承多个父接口，父接口之间用逗号分割。</li>
-<li>系统默认接口中的所有变量都加上了public，static，final修饰符。</li>
-<li>系统默认接口中所有方法都加上了public，abstract修饰符。</li>
+<li>系统默认接口中的所有变量都加上了<code>public</code>，<code>static</code>，<code>final</code>修饰符。</li>
+<li>系统默认接口中所有方法都加上了<code>public</code>，<code>abstract</code>修饰符。</li>
 <li>接口只包含常量定义和抽象方法。</li>
-<li>接口本身具有抽象类，因此不需要使用abstract关键字，接口的访问控制权限有public和default默认权限，不具有protected和private权限。</li>
+<li>接口本身具有抽象类，因此不需要使用<code>abstract</code>关键字，接口的访问控制权限有<code>public</code>和<code>default</code>默认权限，不具有protected和private权限。</li>
 <li>接口不含构造方法，由于接口没有构造方法，因此不能通过接口来生成接口的实例对象。</li>
 </ol>
 <ul>
-<li>接口的实现：<br>为实现一个接口，在类定义中加入implements关键字，然后创建接口定义的方法。由于接口是一个抽象类，因此当一个类实现一个接口时，必须重写接口中的所有方法，即方法覆盖。</li>
+<li>接口的实现：<br>为实现一个接口，在类定义中加入<code>implements</code>关键字，然后创建接口定义的方法。由于接口是一个抽象类，因此当一个类实现一个接口时，必须重写接口中的所有方法，即方法覆盖。</li>
 </ul>
 <p>当一个类实现了一个继承了另一个接口的接口，这个类必须实现接口继承列表中的所有方法，即接口A继承了接口B，接口B继承了接口C，类实现接口A，则这个类需要实现接口A，B，C中的所有方法。</p>
+<h5 id="接口与抽象类的区别"><a href="#接口与抽象类的区别" class="headerlink" title="接口与抽象类的区别"></a>接口与抽象类的区别</h5><ol>
+<li>一个接口可以继承多个接口，而抽象类不能。</li>
+<li>抽象类内部可以有变量和一般方法，但接口中只能含有常量和抽象方法。</li>
+<li>一个类和它所实现的接口不构成继承体系，即接口不是类体系的一部分，几个不相关的类可以实现同一个接口，而抽象类是类继承体系的一部分，一般位于类的最顶层。</li>
+<li>接口可以通过实现多个接口实现多重继承，能够抽象出不相关类之间的相似性，而抽象类不行。</li>
+<li>要一个类只能<code>extend</code>一个父类，但可以<code>implements</code>多个接口。</li>
+</ol>
+<p><strong>有没有一个类实现了一个接口，但没实现接口中的所有方法？</strong><br>（1）可以使这个类的父类实现了接口的方法，这个类继承了父类的方法，无需重新实现<br>（2）这个类是一个抽象类。</p>
+<hr>
+<h4 id="6-抽象类"><a href="#6-抽象类" class="headerlink" title="6.抽象类"></a>6.抽象类</h4><p>Java语言允许一个类的定义在另一个类中，这个类就叫做内部类，如果类B被定义在类A的内部，那么类B就无法被外部类所调用，但它可以调用类A的成员，包括private成员。</p>
+<p>按照内部类是否显现类名，把它分为<strong>实名内部类</strong>和<strong>匿名内部类</strong>。</p>
+<h5 id="实名内部类"><a href="#实名内部类" class="headerlink" title="实名内部类"></a>实名内部类</h5><p>实名内部类相比与一般类增加类<code>protected</code>(保护模式)<code>private</code>(私有模式)两种访问权限。</p>
+<ol>
+<li>实名内部类可以使用static关键字，通过static修饰符的实名内部类叫做静态实名内部类，由于static修饰可以不通过对象来调用，所以静态实名内部类实例对象的格式如下：</li>
+</ol>
+<p><strong>new 外部类名.实名内部类名（构造方法调用参数列表）</strong><br>2. 没有static修饰符的内部类叫做不具有静态属性的实名内部类，这种类的特点是若它的成员变量有static关键字，那么必须加final修饰，它的成员方法不能加static修饰，创建对象格式如下：<br><strong>外部实例对象.new 实名内部类名（构造方法调用参数列表）</strong></p>
+<blockquote>
+<p>内部类可以和外部类同名的成员变量（调用内部类成员使用<strong>this.**，调用外部类成员</strong>外部类名.this.**），外部类可以通过实例化内部类得到其对象，并能使用内部类的成员，内部类可以直接在外部类的方法中进行定义。</p>
+</blockquote>
+<h5 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h5><p>匿名内部类也是内部类的一种，其主要特征是不具有类名，且类布局有抽象和静态属性，也不能派生出子类，格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new 父类名（父类型的构造方法的调用参数列表）&#123;</span><br><span class="line">  类体</span><br><span class="line">&#125;；&#x2F;&#x2F;注意结尾要加分号</span><br></pre></td></tr></table></figure>
+
+<p>内部类总给人一种神秘的感觉，它的作用主要可以总结成以下几点：</p>
+<ol>
+<li>进一步实现多继承，一个类内部可以使用定义多个内部类。</li>
+<li>能更好的解决接口和父类中方法的同名冲突。</li>
+<li>隐藏程序实现的细节。</li>
+<li>内部类可以无条件的访问外部类的成员。</li>
+</ol>
+<h5 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h5><p>泛型类的本质是参数化类型，也就是所操作的数据类型被指定为一个参数，当这种参数类型用在类中时，该类就被称为泛型类。（与C++中的模版类似）</p>
+<h5 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h5><p>Java运行是系统一直对所有的对象进行运行是类型标识。这项信息记录了每个对象所属的类。Java虚拟机通常使用运行时类型信息选准正确方法去执行，用来保存这些信息类型的类就叫做Class类。</p>
 
       
 
@@ -459,7 +490,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B0%81%E8%A3%85%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">1.封装性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F-%E5%A6%82%E4%B8%8B%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">类成员的访问控制方式(如下表):</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BB%A7%E6%89%BF%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">2.继承性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%881%EF%BC%89extend%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.1.</span> <span class="toc-text">（1）extend关键字</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%A7%E6%89%BF%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E5%87%A0%E4%B8%AA%E5%8E%9F%E5%88%99"><span class="toc-number">2.2.</span> <span class="toc-text">使用继承需要遵循几个原则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%90%E7%B1%BB%E5%88%B0%E7%88%B6%E7%B1%BB%E7%9A%84%E2%80%9C%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%E2%80%9D%E8%83%BD%E8%A2%AB%E5%85%81%E8%AE%B8%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">Java为什么子类到父类的“向上转型”能被允许？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89super%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.4.</span> <span class="toc-text">（2）super关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-number">2.4.1.</span> <span class="toc-text">构造函数的继承</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A4%9A%E6%80%81%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">3.多态性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%A6%86%E7%9B%96%E7%9A%84%E2%80%9C%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%E2%80%9D%E6%9C%BA%E5%88%B6"><span class="toc-number">3.0.1.</span> <span class="toc-text">方法覆盖的“向上转型”机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">4.抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%8E%A5%E5%8F%A3"><span class="toc-number">5.</span> <span class="toc-text">5.接口</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B0%81%E8%A3%85%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">1.封装性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F-%E5%A6%82%E4%B8%8B%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">类成员的访问控制方式(如下表):</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BB%A7%E6%89%BF%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">2.继承性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%881%EF%BC%89extend%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.1.</span> <span class="toc-text">（1）extend关键字</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%A7%E6%89%BF%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E5%87%A0%E4%B8%AA%E5%8E%9F%E5%88%99"><span class="toc-number">2.2.</span> <span class="toc-text">使用继承需要遵循几个原则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AD%90%E7%B1%BB%E5%88%B0%E7%88%B6%E7%B1%BB%E7%9A%84%E2%80%9C%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%E2%80%9D%E8%83%BD%E8%A2%AB%E5%85%81%E8%AE%B8%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">Java为什么子类到父类的“向上转型”能被允许？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%EF%BC%882%EF%BC%89super%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.4.</span> <span class="toc-text">（2）super关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-number">2.4.1.</span> <span class="toc-text">构造函数的继承</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A4%9A%E6%80%81%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">3.多态性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%A6%86%E7%9B%96%E7%9A%84%E2%80%9C%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B%E2%80%9D%E6%9C%BA%E5%88%B6"><span class="toc-number">3.0.1.</span> <span class="toc-text">方法覆盖的“向上转型”机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">4.抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%8E%A5%E5%8F%A3"><span class="toc-number">5.</span> <span class="toc-text">5.接口</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">5.1.</span> <span class="toc-text">接口与抽象类的区别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">6.抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9E%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">6.1.</span> <span class="toc-text">实名内部类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">6.2.</span> <span class="toc-text">匿名内部类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-number">6.3.</span> <span class="toc-text">泛型类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Class%E7%B1%BB"><span class="toc-number">6.4.</span> <span class="toc-text">Class类</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -664,7 +695,7 @@ MathJax.Hub.Queue(function() {
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
   	  		<div class="aboutme-wrap" id="js-aboutme">
-					stay hungry,stay foolish&lt;br&gt;&lt;br&gt;&lt;br&gt;数码爱好者&lt;br&gt;技术探寻者&lt;br&gt;生活领悟者&lt;br&gt;永远保持对新事物的热情&lt;br&gt;&lt;br&gt;&lt;br&gt;浙江工业大学的本科生&lt;br&gt;邮箱联系:201906062230@zjut.edu.cn&lt;br&gt;QQ:272181284
+					stay hungry,stay foolish&lt;br&gt;keep walking,keep thinking&lt;br&gt;&lt;br&gt;&lt;br&gt;数码爱好者&lt;br&gt;技术探寻者&lt;br&gt;生活领悟者&lt;br&gt;永远保持对新事物的热情&lt;br&gt;&lt;br&gt;&lt;br&gt;浙江工业大学的本科生&lt;br&gt;邮箱联系:201906062230@zjut.edu.cn&lt;br&gt;QQ:272181284
 			</div>
 
     	</section>
