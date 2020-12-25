@@ -218,7 +218,23 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot; world&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>变量sb在栈中的地址不会随堆中的内容的改变而改变</p>
 <hr>
-<h4 id="字符串与其他数据类型转换"><a href="#字符串与其他数据类型转换" class="headerlink" title="字符串与其他数据类型转换"></a>字符串与其他数据类型转换</h4><h5 id=""><a href="#" class="headerlink" title=""></a></h5>
+<h4 id="3-字符串与其他数据类型转换"><a href="#3-字符串与其他数据类型转换" class="headerlink" title="3.字符串与其他数据类型转换"></a>3.字符串与其他数据类型转换</h4><h5 id="将其他数据转换为字符串"><a href="#将其他数据转换为字符串" class="headerlink" title="将其他数据转换为字符串"></a>将其他数据转换为字符串</h5><p>String类提供了静态的valueof（）方法，用于把不同类型的数据转换为字符串，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=String.valueof(a);     <span class="comment">//为其他数据类类型的变量，返回值为一个String对象</span></span><br></pre></td></tr></table></figure>
+<p>另一方面，从java.lang.Object派生的所有类均提供了toString（）方法，即将该类转换成字符串，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=Integer.toString(a);    <span class="comment">//a是一个int类型的对象。</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="将字符串转换成其他数据"><a href="#将字符串转换成其他数据" class="headerlink" title="将字符串转换成其他数据"></a>将字符串转换成其他数据</h5><p>也是运用对应包装类的方法，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> b=Boolean.parseBoolean(<span class="string">&quot;True&quot;</span>);   <span class="comment">//将String类型转换为boolean类型</span></span><br><span class="line"><span class="keyword">int</span> i=Integer.parseInt(<span class="string">&quot;12345&quot;</span>);          <span class="comment">//将String类型转换为int类型</span></span><br><span class="line"><span class="keyword">float</span> f=Float.parseFloat(<span class="string">&quot;34.4352345343&quot;</span>) <span class="comment">//将String类型转换为float类型</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-枚举"><a href="#4-枚举" class="headerlink" title="4.枚举"></a>4.枚举</h4><p>创建枚举的目的是为了定义一组性质类似的常量，它在Java中是一个小功能，但给系统开发带来了很大的方便。</p>
+<h5 id="枚举定义"><a href="#枚举定义" class="headerlink" title="枚举定义"></a>枚举定义</h5><p>枚举定义格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[protected|private|abstract]enum 枚举类型标识符（名称）&#123;</span><br><span class="line">    枚举常量1，</span><br><span class="line">    枚举常量2，</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    枚举常量n     &#x2F;&#x2F;注意末尾没有“逗号“</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="枚举变量和常量"><a href="#枚举变量和常量" class="headerlink" title="枚举变量和常量"></a>枚举变量和常量</h5><ol>
+<li>不能通过new运算符创建实例对象，可直接通过枚举类型标识符访问枚举变量。</li>
+<li>可通过枚举变量访问枚举常量。</li>
+<li>可通过枚举常量调用其成员方法。</li>
+<li>可通过values（）方法获得该枚举类型的所有枚举常量。</li>
+</ol>
+
       
 
       
@@ -1272,11 +1288,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
