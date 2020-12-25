@@ -195,6 +195,7 @@
 </blockquote>
 </li>
 </ul>
+<hr>
 <h4 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2.字符串"></a>2.字符串</h4><p>Java提供了String和StringBuffer两个字符串类，String字符串在初始化后不能在被修改，StringBuffer字符串内容可以动态修改。</p>
 <h5 id="不可变字符串：String"><a href="#不可变字符串：String" class="headerlink" title="不可变字符串：String"></a>不可变字符串：String</h5><ul>
 <li><p>String字符串的内存分配机制（可参考String直接赋值与new赋值区别那篇文章）<br>这里值得注意的是：</p>
@@ -216,7 +217,8 @@
 <p>StringBuffer不会修改地址，如，</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot; world&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>变量sb在栈中的地址不会随堆中的内容的改变而改变</p>
-
+<hr>
+<h4 id="字符串与其他数据类型转换"><a href="#字符串与其他数据类型转换" class="headerlink" title="字符串与其他数据类型转换"></a>字符串与其他数据类型转换</h4><h5 id=""><a href="#" class="headerlink" title=""></a></h5>
       
 
       
