@@ -843,7 +843,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="层次分析法"><a href="#层次分析法" class="headerlink" title="层次分析法"></a>层次分析法</h2><p>摘自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38207837">知乎网友</a>，可查看具体方法，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KE411q7Wh">教学视频</a>参考。</p>
+        <h2 id="层次分析法"><a href="#层次分析法" class="headerlink" title="层次分析法"></a>层次分析法</h2><p>摘自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38207837">知乎网友</a>，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KE411q7Wh">教学视频</a>参考。</p>
 <ul>
 <li>层次分析法，简称AHP，是指将与决策总是有关的元素分解成目标、准则、方案等层次，在此基础之上进行定性和定量分析的决策方法。</li>
 <li>对于求解不同的放案进行权值打分问题</li>
@@ -898,9 +898,49 @@
 <li><strong>总得分</strong>：这里直接选择得分，保存为变量即可得到主成分的得分，与视频中的方法殊途同归，二者得分上均相差一个倍数，求解总得分=主成分1的方差百分比*主成分1的得分+主成分2的方差百分比*主成分2的得分+···<blockquote>
 <p>这里注意一个技巧，在要进行数据归一化时，可以点击左上角的分析-&gt;描述统计-&gt;描述，将所需归一化的数据导入，勾选将标准化值另存为变量，即可在数据表中查看归一化后的数据。</p>
 </blockquote>
-<h2 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h2></li>
+<h2 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h2>此处使用spss软件进行一元线性回归，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ft411M7t8">教学视频</a>参考。</li>
 </ol>
-<h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><h2 id="k-means"><a href="#k-means" class="headerlink" title="k-means"></a>k-means</h2><h2 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h2>
+<p>定义:一元线性回归是分析只有一个自变量（自变量x和因变量y）线性相关关系的方法。一个经济指标的数值往往受许多因素影响，若其中只有一个因素是主要的，起决定性作用，则可用一元线性回归进行预测分析。</p>
+<p>概括:一个自变量去描述一个因变量。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-2"><a href="#具体操作步骤-这里均不介绍具体原理-：-2" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;回归-&gt;线性。</li>
+<li>将所需要的变量进行自变量（1个），因变量（1个）。</li>
+<li>看模型摘要中的调整后到R方，越接近1，拟合程度越高，且ANOVA中显著性低于0.05，说明回归显著。</li>
+<li>主要看系数表格，B那一列所代表的即为一次线性方程。</li>
+</ol>
+<h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><p>此处使用spss软件进行多元线性回归，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YK4y147Vm">教学视频</a>和b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1QQ4y1K7Sd">教学视频</a>参考。</p>
+<p>定义:在回归分析中，如果有两个或两个以上的自变量，就称为多元回归。事实上，一种现象常常是与多个因素相联系的，由多个自变量的最优组合共同来预测或估计因变量，比只用一个自变量进行预测或估计更有效，更符合实际。因此多元线性回归比一元线性回归的实用意义更大。</p>
+<p>概括:多个自变量去描述一个因变量。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-3"><a href="#具体操作步骤-这里均不介绍具体原理-：-3" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;回归-&gt;线性。</li>
+<li>点击统计，勾选共线性诊断和德宾·沃森。 </li>
+<li>点击图，将ZPRED导入到x，将ZRESID导入到y，勾选直方图，正态概率图，点击确定即可。</li>
+<li>看模型摘要中的调整后到R方，越接近1，拟合程度越高，其实0.1以上就可以接受。（R方表示自变量能解释因变量的百分之几）   </li>
+<li>看德宾·沃森约为2即可，VIF在30以下即可。</li>
+<li>看残差分布理想为处于正态分布。</li>
+<li>主要看系数表格，B那一列所代表的即为多元线性方程。</li>
+</ol>
+<h2 id="k-means聚类"><a href="#k-means聚类" class="headerlink" title="k-means聚类"></a>k-means聚类</h2><p>此处使用spss软件进行k-means聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Q54y1i7HH?from=search&seid=7060863454990800652">教学视频</a>和<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pC4y1x7sU/?spm_id_from=333.788.videocard.0">教学视频</a><br>定义:k均值聚类算法（k-means clustering algorithm）是一种迭代求解的聚类分析算法，其步骤是，预将数据分为K组，则随机选取K个对象作为初始的聚类中心，然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，误差平方和局部最小。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-4"><a href="#具体操作步骤-这里均不介绍具体原理-：-4" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;分类-&gt;k-means聚类。</li>
+<li>将所需考虑的指标导入到变量中， 要先将数据进行标准化，不然会影响到距离计算，如果数据没有标准化，也可以点击方法，将标准化选为Z分数。</li>
+<li>自己确定聚类数，方法选择迭代与分类。</li>
+<li>点击迭代次数，保持默认。</li>
+<li>点击保存，勾选聚类成员，勾选与聚类中心的距离，点击确定。</li>
+<li>直接看最终聚类中心表和每个聚类中的个案数量，即可看出聚类信息。<h2 id="系统聚类"><a href="#系统聚类" class="headerlink" title="系统聚类"></a>系统聚类</h2>此处使用spss软件进行系统聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Q54y1i7HH?from=search&seid=7060863454990800652">教学视频</a>和b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pC4y1x7sU/?spm_id_from=333.788.b_7265636f5f6c697374.2">教学视频</a>参考。</li>
+</ol>
+<p>定义:系统聚类法（hierarchical cluster method）一译“分层聚类法”。聚类分析的一种方法。其做法是开始时把每个样品作为一类，然后把最靠近的样品（即距离最小的群品）首先聚为小类，再将已聚合的小类按其类间距离再合并，不断继续下去，最后把一切子类都聚合到一个大类。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-5"><a href="#具体操作步骤-这里均不介绍具体原理-：-5" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;分类-&gt;系统聚类。</li>
+<li>将所需考虑的指标导入到变量中， 要先将数据进行标准化，不然会影响到距离计算，如果数据没有标准化，也可以点击方法，将标准化选为Z分数。</li>
+<li>点击绘图，勾选谱系图，点击确定。</li>
+<li>直接看谱系图，自己判断要分为几类。<h2 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h2></li>
+</ol>
+
       
 
       
