@@ -389,6 +389,16 @@
 <p>change to 4001 port.<br>solve the problem…</p>
 </li>
 </ul>
+<h3 id="2-添加音乐"><a href="#2-添加音乐" class="headerlink" title="2.添加音乐"></a>2.添加音乐</h3><ol>
+<li>打开网易云音乐网页版，打开所需要的音乐，复制选择的背景音乐分享外链</li>
+<li>引入播放器代码</li>
+<li>在<code>themes/yilia/layout/_partial/left-col.ejs</code>文件<code>nav</code>标签中添加代码。<blockquote>
+<p>放在<code>&lt;nav&gt;</code>和<code>&lt;/nav&gt;</code>之内</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 网易云音乐插件 --&gt;</span><br><span class="line">&lt;% if (theme.music &amp;&amp; theme.music.enable)&#123; %&gt;</span><br><span class="line">    &lt;div style&#x3D;&quot;position:absolute; bottom:120px left:auto; width:85%&quot;&gt;</span><br><span class="line">        &lt;iframe frameborder&#x3D;&quot;no&quot; border&#x3D;&quot;0&quot; marginwidth&#x3D;&quot;0&quot; marginheight&#x3D;&quot;0&quot; width&#x3D;&quot;240&quot; height&#x3D;&quot;52&quot; src&#x3D;&quot;&#x2F;&#x2F;music.163.com&#x2F;outchain&#x2F;player?type&#x3D;2&amp;id&#x3D;&lt;%&#x3D;theme.music.id||1334445174%&gt;&amp;auto&#x3D;&lt;%&#x3D;theme.music.autoplay?1:0%&gt;&amp;height&#x3D;32&quot;&gt;&lt;&#x2F;iframe&gt;   &#x2F;&#x2F;这段即音乐外链</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></li>
+<li>在yilia主题配置文件中添加属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 网易云音乐插件</span><br><span class="line">music:</span><br><span class="line">  enable: true</span><br><span class="line">  #id: 1332647902  # 网易云分享的ID</span><br><span class="line">  autoplay: true  # 是否开启自动播放</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <hr>
 
       
