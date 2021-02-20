@@ -237,6 +237,22 @@
 <li>1.进行指定标签的定位</li>
 <li>2.标签或者标签对应的属性中存储的数据值进行提取（解析）</li>
 </ul>
+<h4 id="5-正则表达式"><a href="#5-正则表达式" class="headerlink" title="5.正则表达式"></a>5.正则表达式</h4><ul>
+<li><code>[Pp]ython</code>:用来匹配[Pp]中出现一次的[Pp]ython</li>
+<li><code>[0-9a-z]</code>:用来匹配0到9,a到z之间的任意字符 </li>
+<li><code>[^0-9]</code>:匹配除数字外的任意字符</li>
+<li><code>\d</code>:匹配所有数字</li>
+<li><code>\w</code>:匹配所有字符（包括数字大写字母小写字母）</li>
+<li><code>\s</code>:匹配空白（包括空格Tab换行）</li>
+<li><code>\b</code>:匹配单词的边界<blockquote>
+<p>上述四种效果取反,只需要将各个字母取大写即可,\D,\W,\S,\B</p>
+</blockquote>
+</li>
+<li><code>^python</code>:匹配以p开头</li>
+<li><code>python$</code>:匹配以n结尾</li>
+<li><code>.</code>:匹配任意字符（只有换行不能匹配）</li>
+<li><code>?</code>:可选字符（如：honou?r，表示u可以出现0次或1次）</li>
+</ul>
 
       
 
@@ -1318,11 +1334,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
