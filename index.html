@@ -267,21 +267,23 @@
 <li><code>(?&lt;=)</code>:(正向后行断言) 如：（?&lt;=我）因为(?=你),匹配因为前面是我后面是你，提取因为分组</li>
 <li><code>(?&lt;!)</code>:(反向后行断言) 如：（?&lt;=我）因为(?&lt;!你),匹配因为前面是我后面不是你，提取因为分组</li>
 </ul>
-<h4 id="6-bs4数据解析原理"><a href="#6-bs4数据解析原理" class="headerlink" title="6.bs4数据解析原理"></a>6.bs4数据解析原理</h4><ul>
-<li><ol>
+<h4 id="6-bs4数据解析原理"><a href="#6-bs4数据解析原理" class="headerlink" title="6.bs4数据解析原理"></a>6.bs4数据解析原理</h4><ol>
 <li>实例化一个BeautifulSoup对象，并且将页面源码数据加载到该对象中。</li>
-</ol>
-</li>
-<li><ol start="2">
 <li>通过调用BeautifulSoup中相关属性和方法进行标签定位与数据提取。</li>
 </ol>
-</li>
-</ul>
 <h5 id="如何实例化Beautifulsoup对象？"><a href="#如何实例化Beautifulsoup对象？" class="headerlink" title="如何实例化Beautifulsoup对象？"></a>如何实例化Beautifulsoup对象？</h5><ol>
 <li>from bs4 import BeautifulSoup</li>
 <li>对象的实例化<ul>
-<li>将本地的html数据加载到该对象中<code>fp = open(./test.html,&quot;r&quot;,encording=&quot;utf-8&quot;)</code> <code>soup = BeautifulSoup(fp,&quot;lxml&quot;)</code></li>
-<li>将互联网上的页面源码加载到该对象中<code>page_text = response.text</code> <code>soup = BeautifulSoup(page_text,&quot;lxml&quot;)</code></li>
+<li>将本地的html数据加载到该对象中<ul>
+<li><code>fp = open(./test.html,&quot;r&quot;,encording=&quot;utf-8&quot;)</code> </li>
+<li><code>soup = BeautifulSoup(fp,&quot;lxml&quot;)</code></li>
+</ul>
+</li>
+<li>将互联网上的页面源码加载到该对象中<ul>
+<li><code>page_text = response.text</code> </li>
+<li><code>soup = BeautifulSoup(page_text,&quot;lxml&quot;)</code></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>提供用于数据解析的方法与属性:<ul>
