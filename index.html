@@ -313,7 +313,8 @@
 </ul>
 </li>
 </ol>
-
+<h4 id="Problem-requests库中文乱码"><a href="#Problem-requests库中文乱码" class="headerlink" title="Problem(requests库中文乱码)"></a>Problem(requests库中文乱码)</h4><p>对网页页面源码进行抓取时，出现了中文乱码问题，对网页进行抓包，可以看到：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yoOuZR"><img src="https://s3.ax1x.com/2021/02/21/yoOuZR.md.png" alt="yoOuZR.md.png"></a><br>reqponse header只指定了type，但是没有指定编码(一般现在页面编码都直接在html页面中)，我们查看一个正常的网页：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yoO3RO"><img src="https://s3.ax1x.com/2021/02/21/yoO3RO.md.png" alt="yoO3RO.md.png"></a><br>《HTTP权威指南》里第16章国际化里提到，如果HTTP响应中Content-Type字段没有指定charset，则默认页面是’ISO-8859-1’编码，于是在爬取网页源码时出现了乱码现象。<br><strong>解决方法：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url=url, headers=headers)</span><br><span class="line">response.encoding = response.apparent_encoding <span class="comment">#将编码格式转化为真实编码格式</span></span><br><span class="line">page_text = response.text</span><br></pre></td></tr></table></figure>
       
 
       
