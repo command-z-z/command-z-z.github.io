@@ -267,6 +267,50 @@
 <li><code>(?&lt;=)</code>:(正向后行断言) 如：（?&lt;=我）因为(?=你),匹配因为前面是我后面是你，提取因为分组</li>
 <li><code>(?&lt;!)</code>:(反向后行断言) 如：（?&lt;=我）因为(?&lt;!你),匹配因为前面是我后面不是你，提取因为分组</li>
 </ul>
+<h4 id="6-bs4数据解析原理"><a href="#6-bs4数据解析原理" class="headerlink" title="6.bs4数据解析原理"></a>6.bs4数据解析原理</h4><ul>
+<li><ol>
+<li>实例化一个BeautifulSoup对象，并且将页面源码数据加载到该对象中。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>通过调用BeautifulSoup中相关属性和方法进行标签定位与数据提取。</li>
+</ol>
+</li>
+</ul>
+<h5 id="如何实例化Beautifulsoup对象？"><a href="#如何实例化Beautifulsoup对象？" class="headerlink" title="如何实例化Beautifulsoup对象？"></a>如何实例化Beautifulsoup对象？</h5><ol>
+<li>from bs4 import BeautifulSoup</li>
+<li>对象的实例化<ul>
+<li>将本地的html数据加载到该对象中<code>fp = open(./test.html,&quot;r&quot;,encording=&quot;utf-8&quot;)</code> <code>soup = BeautifulSoup(fp,&quot;lxml&quot;)</code></li>
+<li>将互联网上的页面源码加载到该对象中<code>page_text = response.text</code> <code>soup = BeautifulSoup(page_text,&quot;lxml&quot;)</code></li>
+</ul>
+</li>
+<li>提供用于数据解析的方法与属性:<ul>
+<li>soup.tagName:返回的是文档中第一次出现的tagName对应的标签</li>
+<li>soup.find():<ul>
+<li>find(‘tagName’):等同于soup.tagName</li>
+<li>属性定位:soup.find(‘tagName’,class_/id/attr=’’)</li>
+</ul>
+</li>
+<li>soup.find_all(‘tagName’):返回符合要求的所有标签（列表）</li>
+<li>select(‘某种选择器（id/class/标签…选择器）’),返回的是一个列表。</li>
+<li>层级选择器:<ul>
+<li>soup.select(‘.tang &gt; ul &gt;li &gt;a’):&gt;表示的是一个层级，定位到a标签上</li>
+<li>soup.select(‘.tang &gt; ul &gt; a’):空格表示多个层级，也是定位到a标签上</li>
+</ul>
+</li>
+<li>获取标签之间的文本数据:<ul>
+<li>soup.a.text/string/get_text()</li>
+<li>text/get_text():可以获取一个标签中的所有文本内容</li>
+<li>string:只能获取该标签下面的直系的文本内容</li>
+</ul>
+</li>
+<li>获取标签属性值<ul>
+<li>soup.a[‘herf’]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
       
 
@@ -1348,11 +1392,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
