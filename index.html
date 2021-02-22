@@ -329,7 +329,7 @@
 </li>
 <li>如何实例化一个etree对象：from lxml import etree<ol>
 <li>将本地的html文档中的源码数据加载到该对象中etree对象中：etree.parse(filePath)</li>
-<li>可以将从互联网上获取到源码数据加载到该对象中etree.HTML(‘page_text’)</li>
+<li>可以将从互联网上获取到源码数据加载到该对象中etree.HTML(page_text)</li>
 <li>xpath(‘xpath表达式’)</li>
 </ol>
 </li>
@@ -347,6 +347,11 @@
 </ol>
 </li>
 </ul>
+<h4 id="9-分页爬取"><a href="#9-分页爬取" class="headerlink" title="9.分页爬取"></a>9.分页爬取</h4><p>对于url处理爬取分页时对每个页面的url进行一个通用的循环，借鉴代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">&quot;https://sc.chinaz.com/moban/%s.html&quot;</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    page_num = str(num)</span><br><span class="line">    index = <span class="string">&#x27;index_&#x27;</span> +page_num</span><br><span class="line">    new_url = format(url % index)  <span class="comment"># 将%s的地方转换为index达到更改页面url的效果</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：%s为字符串格式，%d为整形格式</p>
+</blockquote>
 
       
 
