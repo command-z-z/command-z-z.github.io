@@ -288,7 +288,13 @@
 <li>task.lua 写task的文件</li>
 <li>Play.lua 主要关注236到256行</li>
 </ul>
-
+<h3 id="c-到lua的衔接"><a href="#c-到lua的衔接" class="headerlink" title="c++到lua的衔接"></a>c++到lua的衔接</h3><p>Medusa</p>
+<ul>
+<li>Vision</li>
+</ul>
+<p>DecisionModule.cpp中30行CDecisionModule()函数（这里有个RunScript连接到StartZeus.lua函数这个函数用来初始化只执行一遍）</p>
+<p>与DoTeamMode()函数（这里有个RunScript连接到SelectPlay.lua函数，这个函数用来选Play，每一帧都执行）</p>
+<h3 id="lua到c"><a href="#lua到c" class="headerlink" title="lua到c++"></a>lua到c++</h3>
       
 
       
