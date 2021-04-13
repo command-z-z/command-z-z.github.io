@@ -199,9 +199,15 @@
 </ul>
 <h4 id="2-像素间的关系"><a href="#2-像素间的关系" class="headerlink" title="2.像素间的关系"></a>2.像素间的关系</h4><ul>
 <li>相邻像素<ol>
-<li>4领域</li>
-<li>D领域</li>
-<li>8领域</li>
+<li>4领域($N_4$(p)表示像素p的4领域) 即像素p上下左右四个面</li>
+<li>D领域($N_D$(p)表示像素p的对角领域）即像素p的对角上的像素</li>
+<li>8领域($N_8$(p)表示像素p的8领域) 即4领域加D领域</li>
+</ol>
+</li>
+<li>邻接性（V是具有特定相似性准则的灰度值集合）<ol>
+<li>4邻接（对于具有值V的像素p和q，如果q在集合$N_4$(p)中，则称这两个像素是4邻接的）</li>
+<li>8邻接</li>
+<li>m邻接 </li>
 </ol>
 </li>
 </ul>
@@ -1539,19 +1545,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
               </li>
              
               <li class="article-tag-list-item">
