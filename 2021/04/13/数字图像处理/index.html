@@ -16,8 +16,16 @@
 <meta property="og:description" content="基础知识1.图像如何产生图像数字化：将模拟图像经过离散化后，得到用数字表示的图像。图像的数字化包括两个过程：采样和量化。  采样：将在空间上连续的图像转换成离散的采样点的操作，即空间坐标的离散化。  量化：把取样后所得的个像素的灰度值从模拟量到离散量的转换操作，即灰度的离散化。  灰度级：表示像素明暗程度的整数量。例如：像素的取值范围为0-255，就称该图像为256个灰度级的图像。  层次：表示图">
 <meta property="og:locale">
 <meta property="og:image" content="https://z3.ax1x.com/2021/04/14/ccOMZT.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/15/c2jtaV.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/15/c2jsq1.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/15/c2xQns.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/15/cRiNIs.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/c7BW1x.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/c7B7AH.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/c7DtbD.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/20/c7ssHS.md.png">
 <meta property="article:published_time" content="2021-04-13T07:24:23.000Z">
-<meta property="article:modified_time" content="2021-04-14T15:32:33.766Z">
+<meta property="article:modified_time" content="2021-04-20T06:59:30.119Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="CV">
 <meta name="twitter:card" content="summary">
@@ -257,7 +265,96 @@
 <li>归一化:hist[f(x,y)]/=M*N</li>
 </ul>
 <p>直方图均衡化<br>均衡化的目的是使每个h[i]都相等（图像信息量最大），就是把原始图像的直方图变换为均匀分布的形式。</p>
-<h4 id="2-算数运算"><a href="#2-算数运算" class="headerlink" title="2.算数运算"></a>2.算数运算</h4><h4 id="3-逻辑运算"><a href="#3-逻辑运算" class="headerlink" title="3.逻辑运算"></a>3.逻辑运算</h4><h4 id="4-几何运算"><a href="#4-几何运算" class="headerlink" title="4.几何运算"></a>4.几何运算</h4>
+<p><strong>考虑两种情况</strong>（图像像素个数n，有效灰度级个数L）</p>
+<ul>
+<li>多个至一个：若有连续n个灰度级的频数之和等于n/L，则必导致它们合并成一个灰度级。</li>
+<li>一个到多个：若有某个灰度级的频数是n/L的R倍，则必须将其分为R个不同的灰度级，每个上都有n/L个像素。</li>
+</ul>
+<p>求解步骤：</p>
+<ol>
+<li><p>求原图像的灰度直方图，记为h<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c2jtaV"><img src="https://z3.ax1x.com/2021/04/15/c2jtaV.md.png" alt="c2jtaV.md.png"></a></p>
+</li>
+<li><p>计算图像各灰度级的累计分布H<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c2jsq1"><img src="https://z3.ax1x.com/2021/04/15/c2jsq1.md.png" alt="c2jsq1.md.png"></a></p>
+</li>
+<li><p>计算新图像的像素灰度值<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c2xQns"><img src="https://z3.ax1x.com/2021/04/15/c2xQns.md.png" alt="c2xQns.md.png"></a></p>
+</li>
+</ol>
+<p><strong>分析</strong></p>
+<ul>
+<li>均衡化后的结果不是均衡的，因为只合并并不分解。</li>
+<li>信息量没有增加，反而减少量。因为均衡化后图像的有效灰度级一般&lt;L</li>
+<li>优点：能自动增强整个图像的对比度</li>
+<li>缺点：具体增强效果不易控制</li>
+</ul>
+<p><strong>直方图规定化</strong>：把直方图变换为某个特定形状，有选择地增强某个灰度范围内的对比度。假设原图像为f，直方图规定化后得到的图像为g，待匹配（参考）图像为m，则直方图规定化的步骤为</p>
+<ul>
+<li>求f和m的归一化灰度直方图，记为$h_f$和$h_m$</li>
+<li>对f和m计算累积直方图</li>
+<li>对每个像素值f(x,y)，找到使式（2）最小对$t^*$,即为规定化后得到的灰度值g(x,y)，即式（1）<br>$$g(x,y)=t^*       \quad \quad \quad(1)$$</li>
+</ul>
+<p>$$t^*=arg min|T_f(f(x,y))-T_m(t)|<br>    =arg min|\sum_{i=0}^{f(x,y)}p_f(r_i)-\sum_{j=0}^{t}p_m(j)|      \quad \quad \quad(2)$$</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cRiNIs"><img src="https://z3.ax1x.com/2021/04/15/cRiNIs.md.png" alt="cRiNIs.md.png"></a></p>
+<blockquote>
+<p>解释：原图像的累积值减去参考图像的累积值的最小值（如，原灰度级为4，对应累积值为0.16，-参考图0.06为0.1，减去0.18为-0.02，减去0.33为-0.17，因此最小值为-0.02，对应新灰度级为10）</p>
+</blockquote>
+<p><strong>直方图均衡化vs直方图规定化</strong><br>直方图均衡化:</p>
+<ul>
+<li>自动增强</li>
+<li>效果不易控制</li>
+<li>总得到全图增强的结果<br>直方图规定化:</li>
+<li>有选择地增强</li>
+<li>须给定需要的直方图</li>
+<li>可特定增强的结果<br>直方图均衡化可以看作目标直方图为均匀分布的直方图规定化。</li>
+</ul>
+<h4 id="2-算数运算"><a href="#2-算数运算" class="headerlink" title="2.算数运算"></a>2.算数运算</h4><ul>
+<li>加法<br>给整幅图像增加灰度级会使图像亮度得到提高，整体变亮，给个别像素增加灰度值可以使目标景物突出。（通过M幅图像相加再取平均，可以去除叠加性噪声）</li>
+<li>减法</li>
+</ul>
+<ol>
+<li>图像分割：分割运动的车辆，减法去掉静止部分，剩余的是运动元素和噪声。</li>
+<li>去除不需要的叠加性元素。</li>
+<li>显示两幅图像的差异，检测同一场景两幅图像之间的变化。</li>
+</ol>
+<ul>
+<li>乘法<br>可以改变图像的灰度级范围（如原来是10-100的灰度级范围，乘以2则是20-200的灰度级范围），图像与图像相乘，定义为图像卷积运算（应用：图像的局部显示，用二值模板图像与愿图像做乘法）</li>
+</ul>
+<h4 id="3-逻辑运算"><a href="#3-逻辑运算" class="headerlink" title="3.逻辑运算"></a>3.逻辑运算</h4><ul>
+<li>非<br>$$g(x,y)=255-f(x,y)$$<br>应用：</li>
+</ul>
+<p>1.获得一个阴图像<br>2.获得一个子图像的补图像。</p>
+<ul>
+<li>与<br>$$k(x,y)=f(x,y) \wedge g(x,y)$$<br>应用：</li>
+</ul>
+<p>1.求两个子图像的相交子图<br>2.获得一个子图像的补图像。</p>
+<ul>
+<li>或<br>$$k(x,y)=f(x,y) \vee g(x,y)$$<br>应用：</li>
+</ul>
+<p>1.合并子图像<br>-异或<br>$$k(x,y)=f(x,y) \oplus g(x,y)$$<br>应用：<br>1.获得相交子图像</p>
+<h4 id="4-几何运算"><a href="#4-几何运算" class="headerlink" title="4.几何运算"></a>4.几何运算</h4><blockquote>
+<p>几何变换基于矩阵运算</p>
+</blockquote>
+<h5 id="图像的位置变换是指图像的平移、镜像与旋转。"><a href="#图像的位置变换是指图像的平移、镜像与旋转。" class="headerlink" title="图像的位置变换是指图像的平移、镜像与旋转。"></a>图像的位置变换是指图像的平移、镜像与旋转。</h5><p>应用：主要是用于目标识别中的目标配准。</p>
+<ul>
+<li><p>水平镜像<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7BW1x"><img src="https://z3.ax1x.com/2021/04/20/c7BW1x.md.png" alt="c7BW1x.md.png"></a></p>
+</li>
+<li><p>垂直镜像<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7B7AH"><img src="https://z3.ax1x.com/2021/04/20/c7B7AH.md.png" alt="c7B7AH.md.png"></a></p>
+</li>
+<li><p>旋转<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7DtbD"><img src="https://z3.ax1x.com/2021/04/20/c7DtbD.md.png" alt="c7DtbD.md.png"></a></p>
+</li>
+</ul>
+<h5 id="图像的形状变换是指图像的放大、缩小与错切。"><a href="#图像的形状变换是指图像的放大、缩小与错切。" class="headerlink" title="图像的形状变换是指图像的放大、缩小与错切。"></a>图像的形状变换是指图像的放大、缩小与错切。</h5><ul>
+<li><p>按比例放大：如果需要将愿图像放大k倍，则将一个像素值填在新图像的$k \times k$的子块中。</p>
+</li>
+<li><p>任意不成比例放大：这种操作由于x方向和y方向的放大倍数不同，一定带来图像的几何畸变。</p>
+</li>
+<li><p>图像放大倍数太大，会出现马赛克效应。（解决：图像矢量化，超分辨率）</p>
+</li>
+<li><p>错切：实际上是平面景物在投影平面上的非垂直投影效果。错切之后原图像的像素排列方向改变。与前面旋转不同的是，x方向与y方向独立变化。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7ssHS"><img src="https://z3.ax1x.com/2021/04/20/c7ssHS.md.png" alt="c7ssHS.md.png"></a></p>
+<h5 id="图像的仿射变换是指图像集合变换的描述。"><a href="#图像的仿射变换是指图像集合变换的描述。" class="headerlink" title="图像的仿射变换是指图像集合变换的描述。"></a>图像的仿射变换是指图像集合变换的描述。</h5></li>
+</ul>
+
       
 
       
@@ -395,7 +492,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9B%BE%E5%83%8F%E5%A6%82%E4%BD%95%E4%BA%A7%E7%94%9F"><span class="toc-number">1.1.</span> <span class="toc-text">1.图像如何产生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%83%8F%E7%B4%A0%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">2.像素间的关系</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">基本运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%82%B9%E8%BF%90%E7%AE%97"><span class="toc-number">2.1.</span> <span class="toc-text">1.点运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">2.1.1.</span> <span class="toc-text">直方图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">2.算数运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">3.逻辑运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%87%A0%E4%BD%95%E8%BF%90%E7%AE%97"><span class="toc-number">2.4.</span> <span class="toc-text">4.几何运算</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9B%BE%E5%83%8F%E5%A6%82%E4%BD%95%E4%BA%A7%E7%94%9F"><span class="toc-number">1.1.</span> <span class="toc-text">1.图像如何产生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%83%8F%E7%B4%A0%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">2.像素间的关系</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">基本运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%82%B9%E8%BF%90%E7%AE%97"><span class="toc-number">2.1.</span> <span class="toc-text">1.点运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="toc-number">2.1.1.</span> <span class="toc-text">直方图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">2.算数运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">3.逻辑运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%87%A0%E4%BD%95%E8%BF%90%E7%AE%97"><span class="toc-number">2.4.</span> <span class="toc-text">4.几何运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8F%98%E6%8D%A2%E6%98%AF%E6%8C%87%E5%9B%BE%E5%83%8F%E7%9A%84%E5%B9%B3%E7%A7%BB%E3%80%81%E9%95%9C%E5%83%8F%E4%B8%8E%E6%97%8B%E8%BD%AC%E3%80%82"><span class="toc-number">2.4.1.</span> <span class="toc-text">图像的位置变换是指图像的平移、镜像与旋转。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%9A%84%E5%BD%A2%E7%8A%B6%E5%8F%98%E6%8D%A2%E6%98%AF%E6%8C%87%E5%9B%BE%E5%83%8F%E7%9A%84%E6%94%BE%E5%A4%A7%E3%80%81%E7%BC%A9%E5%B0%8F%E4%B8%8E%E9%94%99%E5%88%87%E3%80%82"><span class="toc-number">2.4.2.</span> <span class="toc-text">图像的形状变换是指图像的放大、缩小与错切。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2%E6%98%AF%E6%8C%87%E5%9B%BE%E5%83%8F%E9%9B%86%E5%90%88%E5%8F%98%E6%8D%A2%E7%9A%84%E6%8F%8F%E8%BF%B0%E3%80%82"><span class="toc-number">2.4.3.</span> <span class="toc-text">图像的仿射变换是指图像集合变换的描述。</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -540,15 +637,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,6 +658,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
             
             <div class="clearfix"></div>
