@@ -182,7 +182,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="空间域图像增强"><a href="#空间域图像增强" class="headerlink" title="空间域图像增强"></a>空间域图像增强</h4><p>内容大致：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7qn4s"><img src="https://z3.ax1x.com/2021/04/20/c7qn4s.md.png" alt="c7qn4s.md.png"></a></p>
+<h5 id="4-1空间滤波"><a href="#4-1空间滤波" class="headerlink" title="4.1空间滤波"></a>4.1空间滤波</h5><p>空间滤波：使用空间模板进行的图像处理。<br>空间滤波器：模板本身。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7LAR1"><img src="https://z3.ax1x.com/2021/04/20/c7LAR1.md.png" alt="c7LAR1.md.png"></a></p>
+<p><strong>分类</strong></p>
+<ul>
+<li>平滑滤波器、低通滤波器，作用：边缘平滑、去噪。</li>
+<li>锐化滤波器、高通滤波器，作用：边缘提取与增强。<blockquote>
+<p>低通滤波去除了图像的高频部分，即细节信息，留下的低频信息代表了概貌。常用例子，比如美图秀秀的磨皮，去掉了脸部细节信息（痘坑，痘印，暗斑等）。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="平滑空间滤波器"><a href="#平滑空间滤波器" class="headerlink" title="平滑空间滤波器"></a>平滑空间滤波器</h5><p>平滑空间滤波器的分类</p>
+<ul>
+<li>线性滤波器：均值滤波器、高斯滤波。</li>
+<li>非线性滤波器：中值滤波器、最大值滤波器、最小值滤波器。<br>平滑空间滤波器的作用：</li>
+</ul>
+<ol>
+<li>模糊处理：去除图像中一些不重要的细节。</li>
+<li>减少噪声</li>
+</ol>
+<p><strong>图像噪声：定义和描述方式</strong><br>噪声是妨碍人们感觉器官对所接收信源信息理解的因素。噪声在理论上可定义为“不可预测，只能用概率统计方法来认识的随机误差”。噪声可用随机过程及其概率分布函数和概率密度函数，通常用其数字特征，即均值方差、相关函数等进行处理。</p>
+<p><strong>图像噪声的特点</strong></p>
+<ol>
+<li>噪声在图像中的分布和大小不规则，即随机性。</li>
+<li>噪声与图像之间具有相关性。</li>
+<li>噪声具有叠加性。</li>
+</ol>
+<p><strong>图像噪声分类</strong></p>
+<ul>
+<li>按其产生的原因：外部噪声和内部噪声。</li>
+<li>按统计特性：平稳噪声和非平稳噪声。</li>
+<li>按噪声和信号之间的关系：加性噪声和乘性噪声。</li>
+</ul>
+<h5 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h5><p>对于一个滑动窗口内的各像素灰度级求平均值、用该均值来代替窗口中心像素的灰度值。比如：<br>$$g(x,y)=\frac{f(x-1,y)+f(x,y)+f(x+1,y)}{3}$$</p>
+<blockquote>
+<p>均值滤波的关键是设计合理的滤波器，包括形状和大小。<br>作用：</p>
+</blockquote>
+<ol>
+<li>减小图像灰度的“尖锐”变化，减小噪声。</li>
+<li>由于图像边缘是由图像灰度尖锐变化引起的，所以也存在边缘模糊的问题（局限性）。</li>
+</ol>
+
       
 
       
@@ -190,6 +230,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1198,11 +1249,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
