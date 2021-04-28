@@ -182,8 +182,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="膨胀与腐蚀–腐蚀"><a href="#膨胀与腐蚀–腐蚀" class="headerlink" title="膨胀与腐蚀–腐蚀"></a>膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B={z|(B)_z \subseteq A}$$</p>
-
+        <h3 id="1-集合的平移"><a href="#1-集合的平移" class="headerlink" title="1.集合的平移"></a>1.集合的平移</h3><p>由集合A中所有元素pingyi后组成的元素集合称为集合A的平移，记为$(A)_z$</p>
+<p>$$(A)_z={w|w=a+z,a\in A}$$<br>其中，w表示集合A中的元素a平移z后形成的元素。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCnX0U"><img src="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png" alt="gCnX0U.md.png"></a></p>
+<hr>
+<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B={z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
+<p><strong>腐蚀运算的含义是</strong>：每当在目标图像A中找到一个结构元素B相同的子图像时，就把该子图像中与B的原点位置对应的那个像素位置标注为1，图像A上标注出的所有这样的像素组成的集合，即为腐蚀运算的结果。</p>
+<p>简而言之，腐蚀运算的实质就是在目标图像中标出那些与结构元素相同的子图像的原点位置的像素。</p>
+<p>注意，结构元素中的原点位置可以不为1。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gC8FGF"><img src="https://z3.ax1x.com/2021/04/27/gC8FGF.md.png" alt="gC8FGF.md.png"></a></p>
+<blockquote>
+<p>将目标图像进行缩小</p>
+</blockquote>
+<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>腐蚀运算的结果不仅与结构元素的形状（矩形、圆形、菱形等）选取有关，而且还与原点位置的选取有关。</p>
+<p><strong>腐蚀运算的应用</strong><br>利用腐蚀算法消除物体之间的粘连示例</p>
+<hr>
+<h3 id="3-膨胀与腐蚀–膨胀"><a href="#3-膨胀与腐蚀–膨胀" class="headerlink" title="3.膨胀与腐蚀–膨胀"></a>3.膨胀与腐蚀–膨胀</h3><p>膨胀：A被B膨胀的定义为：<br>$$A \oplus B = {z | (B)_z  \cap A \neq \varnothing }$$<br>该式表明膨胀过程是B首先做关于原点的映像，然后平移z。A被B膨胀是所有位移z的集合，这样B和A至少有一个元素是重叠的。</p>
+<p>腐蚀是一种收缩或细化操作，而膨胀则会“增长”或“粗化”<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCGtl4"><img src="https://z3.ax1x.com/2021/04/27/gCGtl4.md.png" alt="gCGtl4.md.png"></a></p>
+<blockquote>
+<p>将目标图像进行扩展1</p>
+</blockquote>
+<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>当目标图像不变，但所给的结构元素的形状改变是；或结构元素的形状不变，而其原点位置改变时，膨胀运算的结果会发生改变。</p>
+<p><strong>膨胀运算的应用</strong><br>利用膨胀运算将相邻的物体连接起来</p>
+<h4 id="腐蚀运算与膨胀运算的对偶性-示例"><a href="#腐蚀运算与膨胀运算的对偶性-示例" class="headerlink" title="腐蚀运算与膨胀运算的对偶性-示例"></a>腐蚀运算与膨胀运算的对偶性-示例</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJ8HI"><img src="https://z3.ax1x.com/2021/04/27/gCJ8HI.md.png" alt="gCJ8HI.md.png"></a></p>
+<blockquote>
+<p>原目标图像A进行膨胀(腐蚀)与目标图像的补的腐蚀(膨胀)相同。</p>
+</blockquote>
+<h3 id="4-开闭运算–开操作"><a href="#4-开闭运算–开操作" class="headerlink" title="4.开闭运算–开操作"></a>4.开闭运算–开操作</h3><p>定义：使用同一个结构元素对目标图像先进行<strong>腐蚀</strong>运算，然后再进行<strong>膨胀</strong>运算称为开操作。</p>
+<p>开操作一般使对象的轮廓变得光滑，断开狭窄的间断和消除细的突出物。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJC3F"><img src="https://z3.ax1x.com/2021/04/27/gCJC3F.md.png" alt="gCJC3F.md.png"></a></p>
+<h3 id="5-闭操作"><a href="#5-闭操作" class="headerlink" title="5.闭操作"></a>5.闭操作</h3><p>定义：使用同一个结构元素对目标图像先进行膨胀运算，然后再进行腐蚀运算称为闭操作。</p>
+<p>闭操作同样使轮廓线更光滑，但它通常消弭狭窄的间断和长细的鸿沟，消除小的孔洞，并填补轮廓线中的断裂。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCYkRS"><img src="https://z3.ax1x.com/2021/04/27/gCYkRS.md.png" alt="gCYkRS.md.png"></a></p>
+<blockquote>
+<p>上图腐蚀有点问题</p>
+</blockquote>
+<h3 id="6-击中或击不中变换"><a href="#6-击中或击不中变换" class="headerlink" title="6.击中或击不中变换"></a>6.击中或击不中变换</h3>
       
 
       

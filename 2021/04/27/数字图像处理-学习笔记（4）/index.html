@@ -8,18 +8,25 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>数字图像处理-学习笔记（4） | 个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="膨胀与腐蚀–腐蚀腐蚀：A被B腐蚀的定义为:$$A \ominus B&#x3D;{z|(B)_z \subseteq A}$$">
+  <meta name="description" content="1.集合的平移由集合A中所有元素pingyi后组成的元素集合称为集合A的平移，记为$(A)_z$ $$(A)_z&#x3D;{w|w&#x3D;a+z,a\in A}$$其中，w表示集合A中的元素a平移z后形成的元素。  2.膨胀与腐蚀–腐蚀腐蚀：A被B腐蚀的定义为:$$A \ominus B&#x3D;{z|(B)_z \subseteq A}$$该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字图像处理-学习笔记（4）">
 <meta property="og:url" content="http://example.com/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/index.html">
 <meta property="og:site_name" content="个人博客主页">
-<meta property="og:description" content="膨胀与腐蚀–腐蚀腐蚀：A被B腐蚀的定义为:$$A \ominus B&#x3D;{z|(B)_z \subseteq A}$$">
+<meta property="og:description" content="1.集合的平移由集合A中所有元素pingyi后组成的元素集合称为集合A的平移，记为$(A)_z$ $$(A)_z&#x3D;{w|w&#x3D;a+z,a\in A}$$其中，w表示集合A中的元素a平移z后形成的元素。  2.膨胀与腐蚀–腐蚀腐蚀：A被B腐蚀的定义为:$$A \ominus B&#x3D;{z|(B)_z \subseteq A}$$该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结">
 <meta property="og:locale">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/27/gC8FGF.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/27/gCGtl4.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/27/gCJ8HI.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/27/gCJC3F.md.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/27/gCYkRS.md.png">
 <meta property="article:published_time" content="2021-04-27T08:24:39.000Z">
-<meta property="article:modified_time" content="2021-04-27T08:42:51.739Z">
+<meta property="article:modified_time" content="2021-04-27T15:24:44.936Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="CV">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png">
   
     <link rel="alternative" href="/atom.xml" title="个人博客主页" type="application/atom+xml">
   
@@ -190,8 +197,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="膨胀与腐蚀–腐蚀"><a href="#膨胀与腐蚀–腐蚀" class="headerlink" title="膨胀与腐蚀–腐蚀"></a>膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B={z|(B)_z \subseteq A}$$</p>
-
+        <h3 id="1-集合的平移"><a href="#1-集合的平移" class="headerlink" title="1.集合的平移"></a>1.集合的平移</h3><p>由集合A中所有元素pingyi后组成的元素集合称为集合A的平移，记为$(A)_z$</p>
+<p>$$(A)_z={w|w=a+z,a\in A}$$<br>其中，w表示集合A中的元素a平移z后形成的元素。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCnX0U"><img src="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png" alt="gCnX0U.md.png"></a></p>
+<hr>
+<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B={z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
+<p><strong>腐蚀运算的含义是</strong>：每当在目标图像A中找到一个结构元素B相同的子图像时，就把该子图像中与B的原点位置对应的那个像素位置标注为1，图像A上标注出的所有这样的像素组成的集合，即为腐蚀运算的结果。</p>
+<p>简而言之，腐蚀运算的实质就是在目标图像中标出那些与结构元素相同的子图像的原点位置的像素。</p>
+<p>注意，结构元素中的原点位置可以不为1。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gC8FGF"><img src="https://z3.ax1x.com/2021/04/27/gC8FGF.md.png" alt="gC8FGF.md.png"></a></p>
+<blockquote>
+<p>将目标图像进行缩小</p>
+</blockquote>
+<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>腐蚀运算的结果不仅与结构元素的形状（矩形、圆形、菱形等）选取有关，而且还与原点位置的选取有关。</p>
+<p><strong>腐蚀运算的应用</strong><br>利用腐蚀算法消除物体之间的粘连示例</p>
+<hr>
+<h3 id="3-膨胀与腐蚀–膨胀"><a href="#3-膨胀与腐蚀–膨胀" class="headerlink" title="3.膨胀与腐蚀–膨胀"></a>3.膨胀与腐蚀–膨胀</h3><p>膨胀：A被B膨胀的定义为：<br>$$A \oplus B = {z | (B)_z  \cap A \neq \varnothing }$$<br>该式表明膨胀过程是B首先做关于原点的映像，然后平移z。A被B膨胀是所有位移z的集合，这样B和A至少有一个元素是重叠的。</p>
+<p>腐蚀是一种收缩或细化操作，而膨胀则会“增长”或“粗化”<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCGtl4"><img src="https://z3.ax1x.com/2021/04/27/gCGtl4.md.png" alt="gCGtl4.md.png"></a></p>
+<blockquote>
+<p>将目标图像进行扩展1</p>
+</blockquote>
+<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>当目标图像不变，但所给的结构元素的形状改变是；或结构元素的形状不变，而其原点位置改变时，膨胀运算的结果会发生改变。</p>
+<p><strong>膨胀运算的应用</strong><br>利用膨胀运算将相邻的物体连接起来</p>
+<h4 id="腐蚀运算与膨胀运算的对偶性-示例"><a href="#腐蚀运算与膨胀运算的对偶性-示例" class="headerlink" title="腐蚀运算与膨胀运算的对偶性-示例"></a>腐蚀运算与膨胀运算的对偶性-示例</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJ8HI"><img src="https://z3.ax1x.com/2021/04/27/gCJ8HI.md.png" alt="gCJ8HI.md.png"></a></p>
+<blockquote>
+<p>原目标图像A进行膨胀(腐蚀)与目标图像的补的腐蚀(膨胀)相同。</p>
+</blockquote>
+<h3 id="4-开闭运算–开操作"><a href="#4-开闭运算–开操作" class="headerlink" title="4.开闭运算–开操作"></a>4.开闭运算–开操作</h3><p>定义：使用同一个结构元素对目标图像先进行<strong>腐蚀</strong>运算，然后再进行<strong>膨胀</strong>运算称为开操作。</p>
+<p>开操作一般使对象的轮廓变得光滑，断开狭窄的间断和消除细的突出物。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJC3F"><img src="https://z3.ax1x.com/2021/04/27/gCJC3F.md.png" alt="gCJC3F.md.png"></a></p>
+<h3 id="5-闭操作"><a href="#5-闭操作" class="headerlink" title="5.闭操作"></a>5.闭操作</h3><p>定义：使用同一个结构元素对目标图像先进行膨胀运算，然后再进行腐蚀运算称为闭操作。</p>
+<p>闭操作同样使轮廓线更光滑，但它通常消弭狭窄的间断和长细的鸿沟，消除小的孔洞，并填补轮廓线中的断裂。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCYkRS"><img src="https://z3.ax1x.com/2021/04/27/gCYkRS.md.png" alt="gCYkRS.md.png"></a></p>
+<blockquote>
+<p>上图腐蚀有点问题</p>
+</blockquote>
+<h3 id="6-击中或击不中变换"><a href="#6-击中或击不中变换" class="headerlink" title="6.击中或击不中变换"></a>6.击中或击不中变换</h3>
       
 
       
@@ -329,7 +367,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%86%A8%E8%83%80%E4%B8%8E%E8%85%90%E8%9A%80%E2%80%93%E8%85%90%E8%9A%80"><span class="toc-number">1.</span> <span class="toc-text">膨胀与腐蚀–腐蚀</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B3%E7%A7%BB"><span class="toc-number">1.</span> <span class="toc-text">1.集合的平移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%86%A8%E8%83%80%E4%B8%8E%E8%85%90%E8%9A%80%E2%80%93%E8%85%90%E8%9A%80"><span class="toc-number">2.</span> <span class="toc-text">2.膨胀与腐蚀–腐蚀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%86%A8%E8%83%80%E4%B8%8E%E8%85%90%E8%9A%80%E2%80%93%E8%86%A8%E8%83%80"><span class="toc-number">3.</span> <span class="toc-text">3.膨胀与腐蚀–膨胀</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%85%90%E8%9A%80%E8%BF%90%E7%AE%97%E4%B8%8E%E8%86%A8%E8%83%80%E8%BF%90%E7%AE%97%E7%9A%84%E5%AF%B9%E5%81%B6%E6%80%A7-%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.1.</span> <span class="toc-text">腐蚀运算与膨胀运算的对偶性-示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%BC%80%E9%97%AD%E8%BF%90%E7%AE%97%E2%80%93%E5%BC%80%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">4.开闭运算–开操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%97%AD%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">5.闭操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%87%BB%E4%B8%AD%E6%88%96%E5%87%BB%E4%B8%8D%E4%B8%AD%E5%8F%98%E6%8D%A2"><span class="toc-number">6.</span> <span class="toc-text">6.击中或击不中变换</span></a></li></ol>
                     </div>
                 </span>
             </div>
