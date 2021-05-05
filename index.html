@@ -160,6 +160,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数字图像处理-学习笔记（5）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/">数字图像处理-学习笔记（5）</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/" class="archive-article-date">
+	
+  	<time datetime="2021-04-28T15:36:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="频率域图像增强"><a href="#频率域图像增强" class="headerlink" title="频率域图像增强"></a>频率域图像增强</h2><p><strong>为什么要在频率域研究图像增强？</strong></p>
+<ul>
+<li>可以利用频率成分和图像外表之间的对应关系。一些在空间域表述困难的增强任务，在频率域中变得非常普通。</li>
+<li>滤波在频率域更为直观，它可以解释空间域滤波的某些性质</li>
+<li>可以在频率域指定滤波器，做逆变换，然后在空间域使用结果滤波器作为空间域滤波器的指导，一旦通过频率试验选择了空间滤波，通常实施都在空间域进行。</li>
+</ul>
+<h3 id="傅立叶变换"><a href="#傅立叶变换" class="headerlink" title="傅立叶变换"></a>傅立叶变换</h3><p>性质：</p>
+<ul>
+<li>平移性质</li>
+<li>分配律</li>
+<li>尺度变换</li>
+<li>旋转性</li>
+<li>周期性和共轭对称性</li>
+<li>平均值</li>
+<li>可分性</li>
+<li>卷积</li>
+</ul>
+<h3 id="频率域图像增强-1"><a href="#频率域图像增强-1" class="headerlink" title="频率域图像增强"></a>频率域图像增强</h3><ul>
+<li>低通滤波器</li>
+<li>高通滤波器</li>
+</ul>
+<p><strong>傅立叶变换的频率分量和图像空间特征之间的联系</strong></p>
+<ul>
+<li>变化最慢的频率成分（u=v=0）对应一幅图像的平均灰度级<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gEarjI"><img src="https://z3.ax1x.com/2021/04/30/gEarjI.md.png" alt="gEarjI.md.png"></a></li>
+<li>当从变换的原点移开时，低频对应着图像的慢变化分量，如图像的平滑部分。</li>
+<li>进一步离开原点时，较高的频率对应图像中变化越来越快的灰度级，如边缘或噪声等尖锐部分。</li>
+</ul>
+<p><strong>频率域的滤波步骤</strong></p>
+<ol>
+<li>用$(-1)^{x+y}乘以输入图像进行中心变换f(x,y)(-1)^{x+y} \leftrightarrow F(u-M/2,v-N/2)$</li>
+<li>计算1中的DFT$ F(u,v)$</li>
+<li>用滤波器函数$H(u,v)$乘以$F(u,v)$</li>
+<li>计算3中结果的IDFT</li>
+<li>得到4中结果的实部</li>
+<li>用$(-1)^{x+y}乘以5中的结果$</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数字图像处理-学习笔记（4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -185,7 +296,7 @@
         <h3 id="1-集合的平移"><a href="#1-集合的平移" class="headerlink" title="1.集合的平移"></a>1.集合的平移</h3><p>由集合A中所有元素pingyi后组成的元素集合称为集合A的平移，记为$(A)_z$</p>
 <p>$$(A)_z={w|w=a+z,a\in A}$$<br>其中，w表示集合A中的元素a平移z后形成的元素。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCnX0U"><img src="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png" alt="gCnX0U.md.png"></a></p>
 <hr>
-<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B={z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
+<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B= {z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
 <p><strong>腐蚀运算的含义是</strong>：每当在目标图像A中找到一个结构元素B相同的子图像时，就把该子图像中与B的原点位置对应的那个像素位置标注为1，图像A上标注出的所有这样的像素组成的集合，即为腐蚀运算的结果。</p>
 <p>简而言之，腐蚀运算的实质就是在目标图像中标出那些与结构元素相同的子图像的原点位置的像素。</p>
 <p>注意，结构元素中的原点位置可以不为1。</p>
@@ -1134,82 +1245,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/02/18/Reptile-Learning/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/">Git指令</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/" class="archive-article-date">
-	
-  	<time datetime="2021-02-12T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-12</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>111</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/">展开全文 >></a>
         </p>
       
 
