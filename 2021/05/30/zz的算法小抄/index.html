@@ -16,7 +16,7 @@
 <meta property="og:description" content="动态规划DP&#x3D;“递归”+“记忆”+“猜测” 求解步骤  定义子问题:$x\in X$，子问题，原问题（输入数据的规模不同） 子问题：描述（语言），参数。 输入数据-序列，数据的前缀，后缀，中缀，连续的一段数据。   建立子问题间的关系（递归） 猜测（递归，分治中的不妨设类似）启动求解过程 子问题的解看成节点 子问题求解过程看成节点的遍历 节点遍历需满足拓扑排序（当前节点只与已经求得值的节点有关）">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-05-30T12:15:37.000Z">
-<meta property="article:modified_time" content="2021-05-31T08:52:33.105Z">
+<meta property="article:modified_time" content="2021-05-31T15:12:48.482Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -193,24 +193,27 @@
         <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>DP=“递归”+“记忆”+“猜测”</p>
 <p><strong>求解步骤</strong></p>
 <ol>
-<li>定义子问题:$x\in X$，子问题，原问题（输入数据的规模不同）<ul>
+<li>定义子问题:$x\in X$，子问题，原问题（输入数据的规模不同）<ol>
 <li>子问题：描述（语言），参数。</li>
 <li>输入数据-序列，数据的前缀，后缀，中缀，连续的一段数据。</li>
-</ul>
+</ol>
 </li>
-<li>建立子问题间的关系（递归）<ul>
+<li>建立子问题间的关系（递归）<ol>
 <li>猜测（递归，分治中的不妨设类似）启动求解过程</li>
 <li>子问题的解看成节点</li>
 <li>子问题求解过程看成节点的遍历</li>
 <li>节点遍历需满足拓扑排序（当前节点只与已经求得值的节点有关）</li>
-</ul>
+</ol>
 </li>
 <li>明确边界条件</li>
-<li>得到原问题的解<ul>
+<li>得到原问题的解<ol>
 <li>表上遍历</li>
-</ul>
+</ol>
 </li>
-<li>分析时间复杂度<br> $T(n)=子问题个数*每一子问题求解时间$</li>
+<li>分析时间复杂度<ol>
+<li>$T(n)=子问题个数*每一子问题求解时间$</li>
+</ol>
+</li>
 </ol>
 
       
