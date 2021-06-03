@@ -285,12 +285,9 @@
 <hr>
 <h2 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h2><p><strong>求解步骤</strong></p>
 <ol>
-<li><p>分解问题</p>
-</li>
-<li><p>递归求解</p>
-</li>
-<li><p>边界条件</p>
-</li>
+<li>分解问题</li>
+<li>递归求解</li>
+<li>边界条件</li>
 </ol>
 <p><strong>递归算法的两个要素</strong></p>
 <ul>
@@ -299,7 +296,12 @@
 <li><p>必须有与原始问题结构一致，但输入规模小于原始问题规模的递归结构。</p>
 </li>
 </ul>
-
+<h4 id="主成分方法"><a href="#主成分方法" class="headerlink" title="主成分方法"></a>主成分方法</h4><p>递推式为：$T(n)=aT(n/b)+f(n)$</p>
+<p>$T(n)=f(n)+af(n/b)+a^2f(n/b^2)+…+n^{log_b^a}$<br>(1)渐进上升<br>$f(n)=o(n^{log_b^a-\epsilon})$<br>$T(n)=o(n^{log_b^a})$</p>
+<p>(2)渐进相等<br>$f(n)=o(n^{log_b^a}(log_2^n)^k)$(存在常数k)<br>$T(n)=o(n^{log_b^a}(log_2^n)^{k+1})$</p>
+<p>(3)渐进下降<br>$f(n)=o(n^{log_b^a+\epsilon})$<br>$T(n)=o(f(n))$</p>
+<hr>
+<h2 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h2>
       
 
       
@@ -1413,15 +1415,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
