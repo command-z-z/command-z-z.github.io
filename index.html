@@ -312,7 +312,40 @@
 </blockquote>
 <p><strong>合并时需要技巧，有时关系到时间复杂度</strong></p>
 <hr>
-<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><ul>
+<li>求解优化问题的一类算法（最少，最多，最长，最短）</li>
+</ul>
+<p><strong>求解步骤</strong></p>
+<ol>
+<li>遍历备选元素</li>
+<li>贪心策略确定选择一个元素</li>
+</ol>
+<ul>
+<li>决策过程<ul>
+<li>s集合大小依次增大</li>
+<li>I集合大小依次减小<ul>
+<li>剩余元素状态不变</li>
+<li>剩余元素状态改变（复杂）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>掌握局部信息，选择当前最优的方案，不一定能得到最优解，需证明</p>
+</blockquote>
+<h2 id="回溯与分支界限算法"><a href="#回溯与分支界限算法" class="headerlink" title="回溯与分支界限算法"></a>回溯与分支界限算法</h2><blockquote>
+<p>回溯基本用深度优先，分支界限基本用宽度优先。</p>
+</blockquote>
+<h3 id="回溯BackTrack"><a href="#回溯BackTrack" class="headerlink" title="回溯BackTrack"></a>回溯BackTrack</h3><ul>
+<li>穷举</li>
+<li>状态空间（状态空间树）</li>
+<li>路径（根-&gt;叶子）对应解</li>
+<li>求解问题过程就是状态树上遍历的过程</li>
+<li>DFS/BFS</li>
+<li>为了提高效率，很多时候会用到剪枝</li>
+</ul>
+
       
 
       
@@ -1418,7 +1451,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,7 +1459,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1434,7 +1467,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,11 +1475,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
