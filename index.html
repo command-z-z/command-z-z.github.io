@@ -345,6 +345,48 @@
 <li>DFS/BFS</li>
 <li>为了提高效率，很多时候会用到剪枝</li>
 </ul>
+<h3 id="分支界限-Branch-and-Bound"><a href="#分支界限-Branch-and-Bound" class="headerlink" title="分支界限 Branch and Bound"></a>分支界限 Branch and Bound</h3><ul>
+<li>常用于求解优化问题</li>
+<li>穷举所有的“状态”，利用上界或下界提高搜索效率。</li>
+<li>术语：<ul>
+<li>活节点：该节点刚被生成，子节点还未产生。</li>
+<li>当前节点（E-node）：当前正在展开节点。</li>
+<li>死节点：不需要展开的节点。</li>
+</ul>
+</li>
+<li>搜索方法：E-node需要确定<ul>
+<li>注意力（优先级的设定）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>FILO（栈）宽度优先（右-&gt;左）</p>
+</li>
+<li><p>FIFO（队列）宽度优先（左-&gt;右）</p>
+</li>
+<li><p>LC</p>
+<ul>
+<li>在状态树上搜索</li>
+<li>在树t中设定各节点的值函数$c()$</li>
+<li>x是树上的节点（$c(x)$最小耗费量），$c(t)$问题的最优解）</li>
+<li>$c’(x)$近似的值函数</li>
+<li>两个函数维护活节点<ul>
+<li>least(活节点的优先级)</li>
+<li>add(x) (把新的节点加入到活节点中)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Bounding(剪枝)</p>
+<ul>
+<li>$c’(x)&lt;=c(x)$</li>
+<li>$c’(x)$解的下界</li>
+<li>if $c’(x)&gt;u$剪枝(u表示最小值)</li>
+<li>u的初始值，设为无穷大</li>
+<li>每次处理完E-node,更新u</li>
+</ul>
+</li>
+</ul>
 
       
 
@@ -1487,15 +1529,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
