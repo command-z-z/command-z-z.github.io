@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/16/WMHJCn.md.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/07/16/WMOTw8.md.png">
 <meta property="article:published_time" content="2021-07-16T07:24:36.000Z">
-<meta property="article:modified_time" content="2021-07-16T12:22:18.666Z">
+<meta property="article:modified_time" content="2021-07-16T14:11:38.720Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
@@ -224,10 +224,18 @@
 <h4 id="2-z（内置）"><a href="#2-z（内置）" class="headerlink" title="2. z（内置）"></a>2. z（内置）</h4><p>作用：目录间快速跳转,不用再一直<code>cd</code>了<br>输入<code>z</code>查看可以跳转路径。<br><code>z -x 无效路径</code>可以删除路径。</p>
 <h4 id="3-git-open"><a href="#3-git-open" class="headerlink" title="3.git-open"></a>3.git-open</h4><p>作用：在终端里打开当前项目的远程仓库地址</p>
 <p>不要小看这个插件欧，每次改完本地代码，当你想用浏览器访问远程仓库的时候，就知道这个插件多方便了</p>
-<p><strong>安装</strong><br>克隆项目<br><code>git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open</code></p>
+<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open</code></p>
 <p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 git-open)</code></p>
 <p>使配置生效:<br><code>source ~/.zshrc</code></p>
 <h4 id="4-sudo-内置"><a href="#4-sudo-内置" class="headerlink" title="4. sudo(内置)"></a>4. sudo(内置)</h4><p>作用:当有时输入语句权限不够时，可按两下<code>esc</code>自动补全sudo。</p>
+<h4 id="5-zsh-syntax-highlighting"><a href="#5-zsh-syntax-highlighting" class="headerlink" title="5. zsh-syntax-highlighting"></a>5. zsh-syntax-highlighting</h4><p>作用：平常用的ls、cd 等命令输入正确会绿色高亮显示，输入错误会显示其他的颜色。</p>
+<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</code></p>
+<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-syntax-highlighting)</code></p>
+<p>使配置生效:<br><code>source ~/.zshrc</code></p>
+<h4 id="6-zsh-autosuggestions"><a href="#6-zsh-autosuggestions" class="headerlink" title="6.zsh-autosuggestions"></a>6.zsh-autosuggestions</h4><p>作用：会给出建议的命令（灰色部分）按键盘 → 补全</p>
+<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code></p>
+<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-autosuggestions)</code></p>
+<p>使配置生效:<br><code>source ~/.zshrc</code></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9c3439cc3bdb">1.iTerm2 + Oh My Zsh 打造舒适终端体验</a><br><a target="_blank" rel="noopener" href="https://hufangyun.com/2017/zsh-plugin/">2.zsh oh-my-zsh 插件推荐</a></p>
 
       
@@ -367,7 +375,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85item2"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装item2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-homebrew%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">2. homebrew安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-git%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">3.git的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-oh-my-zsh%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text">4.oh my zsh安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">主题安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93"><span class="toc-number">2.1.</span> <span class="toc-text">5.安装字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%89%E8%A3%85%E8%83%8C%E6%99%AF%E9%85%8D%E8%89%B2"><span class="toc-number">2.2.</span> <span class="toc-text">6.安装背景配色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">7.安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%83%8C%E6%99%AF%E4%BF%AE%E6%94%B9"><span class="toc-number">2.4.</span> <span class="toc-text">8. 背景修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">快捷操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">插件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-git%EF%BC%88%E5%86%85%E7%BD%AE%EF%BC%89"><span class="toc-number">4.0.1.</span> <span class="toc-text">1. git（内置）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-z%EF%BC%88%E5%86%85%E7%BD%AE%EF%BC%89"><span class="toc-number">4.0.2.</span> <span class="toc-text">2. z（内置）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-git-open"><span class="toc-number">4.0.3.</span> <span class="toc-text">3.git-open</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-sudo-%E5%86%85%E7%BD%AE"><span class="toc-number">4.0.4.</span> <span class="toc-text">4. sudo(内置)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number"></span> <span class="toc-text">参考</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85item2"><span class="toc-number">1.1.</span> <span class="toc-text">1. 安装item2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-homebrew%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">2. homebrew安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-git%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">3.git的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-oh-my-zsh%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.</span> <span class="toc-text">4.oh my zsh安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">主题安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93"><span class="toc-number">2.1.</span> <span class="toc-text">5.安装字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%89%E8%A3%85%E8%83%8C%E6%99%AF%E9%85%8D%E8%89%B2"><span class="toc-number">2.2.</span> <span class="toc-text">6.安装背景配色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">7.安装主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%83%8C%E6%99%AF%E4%BF%AE%E6%94%B9"><span class="toc-number">2.4.</span> <span class="toc-text">8. 背景修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">快捷操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">插件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-git%EF%BC%88%E5%86%85%E7%BD%AE%EF%BC%89"><span class="toc-number">4.0.1.</span> <span class="toc-text">1. git（内置）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-z%EF%BC%88%E5%86%85%E7%BD%AE%EF%BC%89"><span class="toc-number">4.0.2.</span> <span class="toc-text">2. z（内置）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-git-open"><span class="toc-number">4.0.3.</span> <span class="toc-text">3.git-open</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-sudo-%E5%86%85%E7%BD%AE"><span class="toc-number">4.0.4.</span> <span class="toc-text">4. sudo(内置)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-zsh-syntax-highlighting"><span class="toc-number">4.0.5.</span> <span class="toc-text">5. zsh-syntax-highlighting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-zsh-autosuggestions"><span class="toc-number">4.0.6.</span> <span class="toc-text">6.zsh-autosuggestions</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number"></span> <span class="toc-text">参考</span></a>
                     </div>
                 </span>
             </div>
@@ -516,11 +524,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,11 +548,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
