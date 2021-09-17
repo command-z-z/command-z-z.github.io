@@ -228,8 +228,19 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 网易云音乐插件 --&gt;</span><br><span class="line">&lt;% if (theme.music &amp;&amp; theme.music.enable)&#123; %&gt;</span><br><span class="line">    &lt;div style&#x3D;&quot;position:absolute; bottom:120px left:auto; width:85%&quot;&gt;</span><br><span class="line">        &lt;iframe frameborder&#x3D;&quot;no&quot; border&#x3D;&quot;0&quot; marginwidth&#x3D;&quot;0&quot; marginheight&#x3D;&quot;0&quot; width&#x3D;&quot;240&quot; height&#x3D;&quot;52&quot; src&#x3D;&quot;&#x2F;&#x2F;music.163.com&#x2F;outchain&#x2F;player?type&#x3D;2&amp;id&#x3D;&lt;%&#x3D;theme.music.id||1334445174%&gt;&amp;auto&#x3D;&lt;%&#x3D;theme.music.autoplay?1:0%&gt;&amp;height&#x3D;32&quot;&gt;&lt;&#x2F;iframe&gt;   &#x2F;&#x2F;这段即音乐外链</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></li>
 <li>在yilia主题配置文件中添加属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 网易云音乐插件</span><br><span class="line">music:</span><br><span class="line">  enable: true</span><br><span class="line">  #id: 1332647902  # 网易云分享的ID</span><br><span class="line">  autoplay: true  # 是否开启自动播放</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
+<h3 id="github的问题"><a href="#github的问题" class="headerlink" title="github的问题"></a>github的问题</h3><ul>
+<li>2021.9.17 最近很久没有写过博客了，碰巧有点时间想写一写一些关于cmake的知识。可以昨晚在使用hexo时却出现了以下问题，特此记录，并给出解决措施。</li>
+</ul>
+<p><strong>问题描述如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.</span><br><span class="line"></span><br><span class="line">remote: Please see https:&#x2F;&#x2F;github.blog&#x2F;2020-12-15-token-authentication-requirements-for-git-operations&#x2F; for more information.</span><br></pre></td></tr></table></figure>
+<p>经查找发现，原来是github至2021.8.13日起，停止使用密码进行验证登入了，我之前一直都是使用密码登入的，所以github推荐使用personal access token代替验证登入，而我这里选择使用SSH登入，方法如下。</p>
+<p><strong>解决措施</strong><br>1.在本地获取你主机的SSH公钥,使用以下命令,一直确定即可：<br> <code>ssh-keygen -t rsa -C &quot;GitHub账号&quot; </code></p>
+<p>2.然后用：cat+公钥路径，把出现的key复制下来</p>
+<p>3.在github的SSH and GPG keys中将公钥添加进去即可。</p>
+<p>4.记得修改hexo中的<code>_config.yml</code>文件中的协议，修改为SSH的网址形式。</p>
 <hr>
 
       
@@ -434,19 +445,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">R语言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
