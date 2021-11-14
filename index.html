@@ -160,6 +160,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue项目创建出现downloading-template问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/14/vue%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%BA%E7%8E%B0downloading-template%E9%97%AE%E9%A2%98/">在Mac配置vue环境以及项目创建</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/11/14/vue%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%BA%E7%8E%B0downloading-template%E9%97%AE%E9%A2%98/" class="archive-article-date">
+	
+  	<time datetime="2021-11-14T13:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-14</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，网上安装步骤较为繁琐，因此笔者写下此配置手册，以及在创建时遇到的问题。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-安装vs-code"><a href="#1-安装vs-code" class="headerlink" title="1.安装vs code"></a>1.安装vs code</h4><p>在App Store中安装Xcode（具体不再赘述），目前版本为12.5，安装大小为11.7G，安装时间较长，具体取决于互联网速度与设备运行速度。</p>
+<h4 id="2-安装Homebrew"><a href="#2-安装Homebrew" class="headerlink" title="2.安装Homebrew"></a>2.安装Homebrew</h4><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装<a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>，可以复制以下代码，在终端中执行安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-安装OpenCV"><a href="#3-安装OpenCV" class="headerlink" title="3.安装OpenCV"></a>3.安装OpenCV</h4><p>完成了Homebrew的安装，只需要通过<code>brew</code>命令即可安装openCV,此过程要花费较多的时间，安装各种依赖库，仅需等待即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-安装pkg-config"><a href="#4-安装pkg-config" class="headerlink" title="4.安装pkg-config"></a>4.安装pkg-config</h4><h4 id="5-使用pkg-config"><a href="#5-使用pkg-config" class="headerlink" title="5.使用pkg-config"></a>5.使用pkg-config</h4><h2 id="配置Xcode"><a href="#配置Xcode" class="headerlink" title="配置Xcode"></a>配置Xcode</h2><h4 id="6-创建Xcode项目"><a href="#6-创建Xcode项目" class="headerlink" title="6.创建Xcode项目"></a>6.创建Xcode项目</h4><h4 id="7-设置Header-Search-Paths"><a href="#7-设置Header-Search-Paths" class="headerlink" title="7.设置Header Search Paths"></a>7.设置Header Search Paths</h4><h4 id="8-设置-Library-Search-Paths"><a href="#8-设置-Library-Search-Paths" class="headerlink" title="8.设置 Library Search Paths"></a>8.设置 Library Search Paths</h4><h4 id="9-测试运行"><a href="#9-测试运行" class="headerlink" title="9.测试运行"></a>9.测试运行</h4><p>若运行过程出现问题请检查上述步骤是否正确，后文中给出了部分问题的解决方案，可能对您有帮助。</p>
+<h2 id="其它设置"><a href="#其它设置" class="headerlink" title="其它设置"></a>其它设置</h2><h3 id="使用相对路径"><a href="#使用相对路径" class="headerlink" title="使用相对路径"></a>使用相对路径</h3><h2 id="可能出现的错误"><a href="#可能出现的错误" class="headerlink" title="可能出现的错误"></a>可能出现的错误</h2><h3 id="出现-“Not-a-Doxygen-trailing-comment”-错误"><a href="#出现-“Not-a-Doxygen-trailing-comment”-错误" class="headerlink" title="出现 “Not a Doxygen trailing comment” 错误"></a>出现 “Not a Doxygen trailing comment” 错误</h3><p>在<code>Build Settings</code> 中搜索 “<code>Documentation Comments</code>”，将 <code>Documentation Comments</code> 设置为”<code>No</code>”即可解决该问题。Doxygen 只是一种格式可以选择跳过检查。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://medium.com/@jaskaranvirdi/setting-up-opencv-and-c-development-environment-in-xcode-b6027728003">1.Setting up OpenCV and C++ development environment in Xcode for Computer Vision projects</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39929199/not-a-doxygen-trailing-comment">2.Not** a Doxygen trailing comment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/14/vue%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%BA%E7%8E%B0downloading-template%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cmake使用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1194,133 +1281,6 @@
 
 
   
-    <article id="post-数字图像处理-学习笔记（4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">数字图像处理-学习笔记（4）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-27T08:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-集合的平移"><a href="#1-集合的平移" class="headerlink" title="1.集合的平移"></a>1.集合的平移</h3><p>由集合A中所有元素平移后组成的元素集合称为集合A的平移，记为$(A)_z$</p>
-<p>$$(A)_z={w|w=a+z,a\in A}$$<br>其中，w表示集合A中的元素a平移z后形成的元素。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCnX0U"><img src="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png" alt="gCnX0U.md.png"></a></p>
-<hr>
-<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B= {z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
-<p><strong>腐蚀运算的含义是</strong>：每当在目标图像A中找到一个结构元素B相同的子图像时，就把该子图像中与B的原点位置对应的那个像素位置标注为1，图像A上标注出的所有这样的像素组成的集合，即为腐蚀运算的结果。</p>
-<p>简而言之，腐蚀运算的实质就是在目标图像中标出那些与结构元素相同的子图像的原点位置的像素。</p>
-<p>注意，结构元素中的原点位置可以不为1。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gC8FGF"><img src="https://z3.ax1x.com/2021/04/27/gC8FGF.md.png" alt="gC8FGF.md.png"></a></p>
-<blockquote>
-<p>将目标图像进行缩小</p>
-</blockquote>
-<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>腐蚀运算的结果不仅与结构元素的形状（矩形、圆形、菱形等）选取有关，而且还与原点位置的选取有关。</p>
-<p><strong>腐蚀运算的应用</strong><br>利用腐蚀算法消除物体之间的粘连示例</p>
-<hr>
-<h3 id="3-膨胀与腐蚀–膨胀"><a href="#3-膨胀与腐蚀–膨胀" class="headerlink" title="3.膨胀与腐蚀–膨胀"></a>3.膨胀与腐蚀–膨胀</h3><p>膨胀：A被B膨胀的定义为：<br>$$A \oplus B = {z | (B)_z  \cap A \neq \varnothing }$$<br>该式表明膨胀过程是B首先做关于原点的映像，然后平移z。A被B膨胀是所有位移z的集合，这样B和A至少有一个元素是重叠的。</p>
-<p>腐蚀是一种收缩或细化操作，而膨胀则会“增长”或“粗化”<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCGtl4"><img src="https://z3.ax1x.com/2021/04/27/gCGtl4.md.png" alt="gCGtl4.md.png"></a></p>
-<blockquote>
-<p>将目标图像进行扩展1</p>
-</blockquote>
-<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>当目标图像不变，但所给的结构元素的形状改变时；或结构元素的形状不变，而其原点位置改变时，膨胀运算的结果会发生改变。</p>
-<p><strong>膨胀运算的应用</strong><br>利用膨胀运算将相邻的物体连接起来</p>
-<h4 id="腐蚀运算与膨胀运算的对偶性-示例"><a href="#腐蚀运算与膨胀运算的对偶性-示例" class="headerlink" title="腐蚀运算与膨胀运算的对偶性-示例"></a>腐蚀运算与膨胀运算的对偶性-示例</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJ8HI"><img src="https://z3.ax1x.com/2021/04/27/gCJ8HI.md.png" alt="gCJ8HI.md.png"></a></p>
-<blockquote>
-<p>原目标图像A进行膨胀(腐蚀)与目标图像的补的腐蚀(膨胀)相同。</p>
-</blockquote>
-<h3 id="4-开闭运算–开操作"><a href="#4-开闭运算–开操作" class="headerlink" title="4.开闭运算–开操作"></a>4.开闭运算–开操作</h3><p>定义：使用同一个结构元素对目标图像先进行<strong>腐蚀</strong>运算，然后再进行<strong>膨胀</strong>运算称为开操作。</p>
-<p>开操作一般使对象的轮廓变得光滑，断开狭窄的间断和消除细的突出物。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJC3F"><img src="https://z3.ax1x.com/2021/04/27/gCJC3F.md.png" alt="gCJC3F.md.png"></a></p>
-<h3 id="5-闭操作"><a href="#5-闭操作" class="headerlink" title="5.闭操作"></a>5.闭操作</h3><p>定义：使用同一个结构元素对目标图像先进行膨胀运算，然后再进行腐蚀运算称为闭操作。</p>
-<p>闭操作同样使轮廓线更光滑，但它通常消弭狭窄的间断和长细的鸿沟，消除小的孔洞，并填补轮廓线中的断裂。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCYkRS"><img src="https://z3.ax1x.com/2021/04/27/gCYkRS.md.png" alt="gCYkRS.md.png"></a></p>
-<blockquote>
-<p>上图腐蚀有点问题</p>
-</blockquote>
-<h3 id="6-击中或击不中变换"><a href="#6-击中或击不中变换" class="headerlink" title="6.击中或击不中变换"></a>6.击中或击不中变换</h3><p>击中或击不中变换是形状检测的基本工具。</p>
-<blockquote>
-<p>在某些应用中，我们可能对检测某个集合内由1和0组成的某些模式感兴趣，在这种情况下不需要背景。因此，击中或击不中就简化为简单的腐蚀。</p>
-</blockquote>
-<p>可以参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/horseinch/article/details/50127955">文章</a></p>
-<h3 id="7-形态学应用"><a href="#7-形态学应用" class="headerlink" title="7.形态学应用"></a>7.形态学应用</h3><ol>
-<li>边界提取</li>
-<li>孔洞填充</li>
-<li>连通分量的提取</li>
-<li>凸壳</li>
-<li>细化</li>
-<li>粗化</li>
-<li>骨架</li>
-<li>裁剪</li>
-</ol>
-<h3 id="8-灰度级形态学"><a href="#8-灰度级形态学" class="headerlink" title="8.灰度级形态学"></a>8.灰度级形态学</h3><ol>
-<li>腐蚀膨胀</li>
-<li>开闭操作</li>
-<li>顶帽变换、底帽变换</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1443,11 +1403,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1471,11 +1431,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">

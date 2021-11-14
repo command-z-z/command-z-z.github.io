@@ -160,6 +160,133 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数字图像处理-学习笔记（4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">数字图像处理-学习笔记（4）</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/" class="archive-article-date">
+	
+  	<time datetime="2021-04-27T08:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-集合的平移"><a href="#1-集合的平移" class="headerlink" title="1.集合的平移"></a>1.集合的平移</h3><p>由集合A中所有元素平移后组成的元素集合称为集合A的平移，记为$(A)_z$</p>
+<p>$$(A)_z={w|w=a+z,a\in A}$$<br>其中，w表示集合A中的元素a平移z后形成的元素。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCnX0U"><img src="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png" alt="gCnX0U.md.png"></a></p>
+<hr>
+<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B= {z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
+<p><strong>腐蚀运算的含义是</strong>：每当在目标图像A中找到一个结构元素B相同的子图像时，就把该子图像中与B的原点位置对应的那个像素位置标注为1，图像A上标注出的所有这样的像素组成的集合，即为腐蚀运算的结果。</p>
+<p>简而言之，腐蚀运算的实质就是在目标图像中标出那些与结构元素相同的子图像的原点位置的像素。</p>
+<p>注意，结构元素中的原点位置可以不为1。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gC8FGF"><img src="https://z3.ax1x.com/2021/04/27/gC8FGF.md.png" alt="gC8FGF.md.png"></a></p>
+<blockquote>
+<p>将目标图像进行缩小</p>
+</blockquote>
+<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>腐蚀运算的结果不仅与结构元素的形状（矩形、圆形、菱形等）选取有关，而且还与原点位置的选取有关。</p>
+<p><strong>腐蚀运算的应用</strong><br>利用腐蚀算法消除物体之间的粘连示例</p>
+<hr>
+<h3 id="3-膨胀与腐蚀–膨胀"><a href="#3-膨胀与腐蚀–膨胀" class="headerlink" title="3.膨胀与腐蚀–膨胀"></a>3.膨胀与腐蚀–膨胀</h3><p>膨胀：A被B膨胀的定义为：<br>$$A \oplus B = {z | (B)_z  \cap A \neq \varnothing }$$<br>该式表明膨胀过程是B首先做关于原点的映像，然后平移z。A被B膨胀是所有位移z的集合，这样B和A至少有一个元素是重叠的。</p>
+<p>腐蚀是一种收缩或细化操作，而膨胀则会“增长”或“粗化”<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCGtl4"><img src="https://z3.ax1x.com/2021/04/27/gCGtl4.md.png" alt="gCGtl4.md.png"></a></p>
+<blockquote>
+<p>将目标图像进行扩展1</p>
+</blockquote>
+<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>当目标图像不变，但所给的结构元素的形状改变时；或结构元素的形状不变，而其原点位置改变时，膨胀运算的结果会发生改变。</p>
+<p><strong>膨胀运算的应用</strong><br>利用膨胀运算将相邻的物体连接起来</p>
+<h4 id="腐蚀运算与膨胀运算的对偶性-示例"><a href="#腐蚀运算与膨胀运算的对偶性-示例" class="headerlink" title="腐蚀运算与膨胀运算的对偶性-示例"></a>腐蚀运算与膨胀运算的对偶性-示例</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJ8HI"><img src="https://z3.ax1x.com/2021/04/27/gCJ8HI.md.png" alt="gCJ8HI.md.png"></a></p>
+<blockquote>
+<p>原目标图像A进行膨胀(腐蚀)与目标图像的补的腐蚀(膨胀)相同。</p>
+</blockquote>
+<h3 id="4-开闭运算–开操作"><a href="#4-开闭运算–开操作" class="headerlink" title="4.开闭运算–开操作"></a>4.开闭运算–开操作</h3><p>定义：使用同一个结构元素对目标图像先进行<strong>腐蚀</strong>运算，然后再进行<strong>膨胀</strong>运算称为开操作。</p>
+<p>开操作一般使对象的轮廓变得光滑，断开狭窄的间断和消除细的突出物。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJC3F"><img src="https://z3.ax1x.com/2021/04/27/gCJC3F.md.png" alt="gCJC3F.md.png"></a></p>
+<h3 id="5-闭操作"><a href="#5-闭操作" class="headerlink" title="5.闭操作"></a>5.闭操作</h3><p>定义：使用同一个结构元素对目标图像先进行膨胀运算，然后再进行腐蚀运算称为闭操作。</p>
+<p>闭操作同样使轮廓线更光滑，但它通常消弭狭窄的间断和长细的鸿沟，消除小的孔洞，并填补轮廓线中的断裂。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCYkRS"><img src="https://z3.ax1x.com/2021/04/27/gCYkRS.md.png" alt="gCYkRS.md.png"></a></p>
+<blockquote>
+<p>上图腐蚀有点问题</p>
+</blockquote>
+<h3 id="6-击中或击不中变换"><a href="#6-击中或击不中变换" class="headerlink" title="6.击中或击不中变换"></a>6.击中或击不中变换</h3><p>击中或击不中变换是形状检测的基本工具。</p>
+<blockquote>
+<p>在某些应用中，我们可能对检测某个集合内由1和0组成的某些模式感兴趣，在这种情况下不需要背景。因此，击中或击不中就简化为简单的腐蚀。</p>
+</blockquote>
+<p>可以参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/horseinch/article/details/50127955">文章</a></p>
+<h3 id="7-形态学应用"><a href="#7-形态学应用" class="headerlink" title="7.形态学应用"></a>7.形态学应用</h3><ol>
+<li>边界提取</li>
+<li>孔洞填充</li>
+<li>连通分量的提取</li>
+<li>凸壳</li>
+<li>细化</li>
+<li>粗化</li>
+<li>骨架</li>
+<li>裁剪</li>
+</ol>
+<h3 id="8-灰度级形态学"><a href="#8-灰度级形态学" class="headerlink" title="8.灰度级形态学"></a>8.灰度级形态学</h3><ol>
+<li>腐蚀膨胀</li>
+<li>开闭操作</li>
+<li>顶帽变换、底帽变换</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数字图像处理-学习笔记（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1112,104 +1239,6 @@
 
 
   
-    <article id="post-GMT地形图绘制-学习笔记（2）-绘制海岸线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">GMT地形图绘制 学习笔记（2） -绘制海岸线</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/" class="archive-article-date">
-	
-  	<time datetime="2021-01-28T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-28</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
-<h3 id="绘制海岸线"><a href="#绘制海岸线" class="headerlink" title="绘制海岸线"></a>绘制海岸线</h3><p>GMT 中使用coast模块绘制海岸线、湖岸线等。该模块不仅可以绘制这些岸线，还可以绘制比例尺和行政边界等。</p>
-<h4 id="绘制海岸线、湖岸线-W"><a href="#绘制海岸线、湖岸线-W" class="headerlink" title="绘制海岸线、湖岸线(-W)"></a>绘制海岸线、湖岸线(-W)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline png,pdf &#x2F;&#x2F;同时生成两个后缀文件</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/yCS8tU"><img src="https://z3.ax1x.com/2021/01/28/yCS8tU.md.png" alt="yCS8tU.md.png"></a></p>
-<p>默认情况下-W选项会绘制所有水体与陆地的界限，包括海岸线、湖岸线、湖中岛的边界等。根据水体或陆地的不同，coast模块将岸线分为从1到4的四个级别，依次指海岸线、湖岸线、湖中岛，以及湖中岛内的湖边界，因而，可以在使用-W选项时指定要绘制哪一个等级的岸线。如下面的代码,-W1/0.5p,black表示用0.5p宽的黑色线条绘制1级海岸线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline2 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCpW24"><img src="https://z3.ax1x.com/2021/01/28/yCpW24.md.png" alt="yCpW24.md.png"></a><br>也可以在一个命令中多次使用-W选项，分别用不同的线条绘制不同等级的岸线。如，绘制0.5p黑色的海岸线后，同时使用-W2/1p,lightred绘制1p宽的浅红色湖岸线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline3 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred   &#x2F;&#x2F;0.5p 1p 区别是线的粗细</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9VMj"><img src="https://z3.ax1x.com/2021/01/28/yC9VMj.md.png" alt="yC9VMj.md.png"></a></p>
-<h4 id="设置绘制对象的最小面积-A"><a href="#设置绘制对象的最小面积-A" class="headerlink" title="设置绘制对象的最小面积(-A)"></a>设置绘制对象的最小面积(-A)</h4><p>因为美国的岛屿和湖泊很多，上图看上去依然很乱。我们可以通过-A选项设置要绘制的对象的最小面积（单位为平方千米）。-A5000表示只绘制面积大于5000平方千米的湖泊或岛屿</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline4 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred -A5000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9wFK"><img src="https://z3.ax1x.com/2021/01/28/yC9wFK.md.png" alt="yC9wFK.md.png"></a></p>
-<h4 id="填充陆地与水体"><a href="#填充陆地与水体" class="headerlink" title="填充陆地与水体"></a>填充陆地与水体</h4><p>在绘制时，还可以为陆地和水体设置不同的填充色。使用-G选项设置陆地区域的填充色，-S设置水体的颜色，-C则设置湖泊的颜色（若不指定-C，则湖泊颜色由-S控制）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline5 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9geI"><img src="https://z3.ax1x.com/2021/01/28/yC9geI.md.png" alt="yC9geI.md.png"></a><br>也可以同时使用-W 选项和-G 选项，即绘制岸线并填充颜色。</p>
-<h4 id="绘制国界-州界"><a href="#绘制国界-州界" class="headerlink" title="绘制国界/州界"></a>绘制国界/州界</h4><p>使用-N选项可以绘制国界/州界等行政边界。-N1表示绘制国界线，-N2表示绘制州界/省界线（目前只有美洲各国以及澳大利亚的洲界的数据）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline6 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -N1&#x2F;1p -N2&#x2F;0.25p</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCdns"><img src="https://z3.ax1x.com/2021/01/28/yCCdns.md.png" alt="yCCdns.md.png"></a><br>除了-N选项之外，-E选项也可以用于绘制州界、国界和省界。</p>
-<h4 id="添加比例尺"><a href="#添加比例尺" class="headerlink" title="添加比例尺"></a>添加比例尺</h4><p>绘制比例尺需要如下参数：要绘制哪个纬度的比例尺、比例尺在图中的位置、比例尺的长度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline7 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -Lg-60&#x2F;25+c25+w1000k+f+u</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCH3D"><img src="https://z3.ax1x.com/2021/01/28/yCCH3D.md.png" alt="yCCH3D.md.png"></a></p>
-<p>以上代码使用了-Lg-60/25+c25+w1000k+f+u增加比例尺，其中+w1000k表示比例尺长度为1000千米，+c25表示绘制纬度为北纬25°处的比例尺，g-60/25则表示将比例尺画在北纬25°西经60° 处，+f表示比例尺的风格为图中所示黑白相间的铁轨形式，+u表示显示比例尺对应的单位。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1332,11 +1361,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,11 +1389,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
