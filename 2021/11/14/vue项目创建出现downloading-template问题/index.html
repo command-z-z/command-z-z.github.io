@@ -8,18 +8,21 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>在Mac配置vue环境以及项目创建 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，网上安装步骤较为繁琐，因此笔者写下此配置手册，以及在创建时遇到的问题。 准备工作1.安装vs code在App Store中安装Xcode（具体不再赘述），目前版本为12.5，安装大小为11.7G，安装时间较长，具体取决于互联网速度与设备运行速度。 2.安装HomebrewHomebrew是Mac上的包管理">
+  <meta name="description" content="由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，由于前端需求，就自己配置过程，写下此配置手册，以及在创建时遇到的问题。 准备工作1.安装vs codevs code仅为一个轻量级的编辑器，安装其他编辑器也可以，可以点击vs code选择相应的PC平台安装，笔者为Mac端版本，具体下载速度受网络影响。 2.安装HomebrewHomebrew是Mac上的包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Mac配置vue环境以及项目创建">
 <meta property="og:url" content="http://example.com/2021/11/14/vue%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%BA%E7%8E%B0downloading-template%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
-<meta property="og:description" content="由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，网上安装步骤较为繁琐，因此笔者写下此配置手册，以及在创建时遇到的问题。 准备工作1.安装vs code在App Store中安装Xcode（具体不再赘述），目前版本为12.5，安装大小为11.7G，安装时间较长，具体取决于互联网速度与设备运行速度。 2.安装HomebrewHomebrew是Mac上的包管理">
+<meta property="og:description" content="由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，由于前端需求，就自己配置过程，写下此配置手册，以及在创建时遇到的问题。 准备工作1.安装vs codevs code仅为一个轻量级的编辑器，安装其他编辑器也可以，可以点击vs code选择相应的PC平台安装，笔者为Mac端版本，具体下载速度受网络影响。 2.安装HomebrewHomebrew是Mac上的包">
 <meta property="og:locale">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/19/I7snyV.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/11/19/I7yC11.md.png">
 <meta property="article:published_time" content="2021-11-14T13:27:41.000Z">
-<meta property="article:modified_time" content="2021-11-14T13:35:04.606Z">
+<meta property="article:modified_time" content="2021-11-19T01:19:43.653Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/11/19/I7snyV.png">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
   
@@ -190,18 +193,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，网上安装步骤较为繁琐，因此笔者写下此配置手册，以及在创建时遇到的问题。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-安装vs-code"><a href="#1-安装vs-code" class="headerlink" title="1.安装vs code"></a>1.安装vs code</h4><p>在App Store中安装Xcode（具体不再赘述），目前版本为12.5，安装大小为11.7G，安装时间较长，具体取决于互联网速度与设备运行速度。</p>
+        <p>由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，由于前端需求，就自己配置过程，写下此配置手册，以及在创建时遇到的问题。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-安装vs-code"><a href="#1-安装vs-code" class="headerlink" title="1.安装vs code"></a>1.安装vs code</h4><p>vs code仅为一个轻量级的编辑器，安装其他编辑器也可以，可以点击<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">vs code</a>选择相应的PC平台安装，笔者为Mac端版本，具体下载速度受网络影响。</p>
 <h4 id="2-安装Homebrew"><a href="#2-安装Homebrew" class="headerlink" title="2.安装Homebrew"></a>2.安装Homebrew</h4><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装<a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>，可以复制以下代码，在终端中执行安装。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-安装OpenCV"><a href="#3-安装OpenCV" class="headerlink" title="3.安装OpenCV"></a>3.安装OpenCV</h4><p>完成了Homebrew的安装，只需要通过<code>brew</code>命令即可安装openCV,此过程要花费较多的时间，安装各种依赖库，仅需等待即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>brew -v</code>,如果出现版本信息即为安装成功。</p>
+<h4 id="3-安装node-js"><a href="#3-安装node-js" class="headerlink" title="3.安装node.js"></a>3.安装node.js</h4><p>完成了Homebrew的安装，只需要通过<code>brew</code>命令即可安装node.js输入以下命令。或者选择去<a target="_blank" rel="noopener" href="https://nodejs.org/en/">nodejs</a>官网下载安装最新LTS版本，按步骤安装即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nodejs</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>node -v</code>,如果出现版本信息即为安装成功。同时相应的也会安装npm,Node.js自带了软件包管理工具npm，可以使用npm安装各种插件，输入<code>npm -v</code>出现相应的版本信息即为安装完成。</p>
+<h4 id="4-安装cnpm（淘宝镜像）"><a href="#4-安装cnpm（淘宝镜像）" class="headerlink" title="4.安装cnpm（淘宝镜像）"></a>4.安装cnpm（淘宝镜像）</h4><p>由于npm服务器在国外，下载速度较慢，为了得到更好的体验，我们选择国内镜像源，在终端输入以下代码,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>cnpm -v</code>,如果出现版本信息即为安装成功。</p>
+<h4 id="5-安装webpack"><a href="#5-安装webpack" class="headerlink" title="5.安装webpack"></a>5.安装webpack</h4><p>webpack是当前前端最热门的前端资源模块化管理和打包工具，输入以下命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install webpack -g</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>webpack -v</code>,如果出现版本信息即为安装成功。</p>
+<h4 id="6-安装vue脚手架（自动搭建vue项目框架的工具）"><a href="#6-安装vue脚手架（自动搭建vue项目框架的工具）" class="headerlink" title="6.安装vue脚手架（自动搭建vue项目框架的工具）"></a>6.安装vue脚手架（自动搭建vue项目框架的工具）</h4><p>vue脚手架的作用是用来自动一键生成vue+webpack的项目模版，包括依赖库，免去你手动安装各种插件，寻找各种cdn并一个个引入的麻烦,输入以下命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cnpm install -g vue-cli</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>vue -V</code>(为大写的V),如果出现版本信息即为安装成功。</p>
+<h4 id="7-创建vue项目"><a href="#7-创建vue项目" class="headerlink" title="7.创建vue项目"></a>7.创建vue项目</h4><p>为了方便起见我在桌面建立了一个test文件夹<code>mkdir test</code>,然后<code>cd test</code>,输入以下命令创建项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack-simple myProject</span><br></pre></td></tr></table></figure>
+<p>然后按步骤输入项目信息，注意Project name不支持大写字母为项目名，项目创建好后，它也给出了提示信息，继续操作即可。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/I7snyV"><img src="https://z3.ax1x.com/2021/11/19/I7snyV.png" alt="I7snyV.png"></a></p>
+<h4 id="8-安装组件"><a href="#8-安装组件" class="headerlink" title="8.安装组件"></a>8.安装组件</h4><p>每一个项目都有一个package.json文件，里面有很多组件信息，使用<code>npm install</code>将按照package.json安装所需要的组件放在生成的node_modules文件夹中，项目下的每一个文件中都可以通过import引入node_modules的组件来加以使用,首先输入<code>cd myProject</code>进行项目目录中，然后输入以下命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-安装pkg-config"><a href="#4-安装pkg-config" class="headerlink" title="4.安装pkg-config"></a>4.安装pkg-config</h4><h4 id="5-使用pkg-config"><a href="#5-使用pkg-config" class="headerlink" title="5.使用pkg-config"></a>5.使用pkg-config</h4><h2 id="配置Xcode"><a href="#配置Xcode" class="headerlink" title="配置Xcode"></a>配置Xcode</h2><h4 id="6-创建Xcode项目"><a href="#6-创建Xcode项目" class="headerlink" title="6.创建Xcode项目"></a>6.创建Xcode项目</h4><h4 id="7-设置Header-Search-Paths"><a href="#7-设置Header-Search-Paths" class="headerlink" title="7.设置Header Search Paths"></a>7.设置Header Search Paths</h4><h4 id="8-设置-Library-Search-Paths"><a href="#8-设置-Library-Search-Paths" class="headerlink" title="8.设置 Library Search Paths"></a>8.设置 Library Search Paths</h4><h4 id="9-测试运行"><a href="#9-测试运行" class="headerlink" title="9.测试运行"></a>9.测试运行</h4><p>若运行过程出现问题请检查上述步骤是否正确，后文中给出了部分问题的解决方案，可能对您有帮助。</p>
-<h2 id="其它设置"><a href="#其它设置" class="headerlink" title="其它设置"></a>其它设置</h2><h3 id="使用相对路径"><a href="#使用相对路径" class="headerlink" title="使用相对路径"></a>使用相对路径</h3><h2 id="可能出现的错误"><a href="#可能出现的错误" class="headerlink" title="可能出现的错误"></a>可能出现的错误</h2><h3 id="出现-“Not-a-Doxygen-trailing-comment”-错误"><a href="#出现-“Not-a-Doxygen-trailing-comment”-错误" class="headerlink" title="出现 “Not a Doxygen trailing comment” 错误"></a>出现 “Not a Doxygen trailing comment” 错误</h3><p>在<code>Build Settings</code> 中搜索 “<code>Documentation Comments</code>”，将 <code>Documentation Comments</code> 设置为”<code>No</code>”即可解决该问题。Doxygen 只是一种格式可以选择跳过检查。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://medium.com/@jaskaranvirdi/setting-up-opencv-and-c-development-environment-in-xcode-b6027728003">1.Setting up OpenCV and C++ development environment in Xcode for Computer Vision projects</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39929199/not-a-doxygen-trailing-comment">2.Not** a Doxygen trailing comment</a></p>
+
+<h4 id="9-启动项目"><a href="#9-启动项目" class="headerlink" title="9.启动项目"></a>9.启动项目</h4><p>完成以上步骤后,输入以下命令启动项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>若在网站上出现以下内容，即为安装成功<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/I7yC11"><img src="https://z3.ax1x.com/2021/11/19/I7yC11.md.png" alt="I7yC11.md.png"></a><br>若运行过程出现问题请检查上述步骤是否正确，后文中给出了部分问题的解决方案，可能对您有帮助。</p>
+<h2 id="可能出现的错误："><a href="#可能出现的错误：" class="headerlink" title="可能出现的错误："></a>可能出现的错误：</h2><h4 id="vue-init项目构建时，一直处于-“downloading-template”-状态下。"><a href="#vue-init项目构建时，一直处于-“downloading-template”-状态下。" class="headerlink" title="vue init项目构建时，一直处于 “downloading template” 状态下。"></a>vue init项目构建时，一直处于 “downloading template” 状态下。</h4><p>发现是在下载模版时无法连接到github的问题，属于网络问题，解决方案有以下两种：</p>
+<p>#####1. 修改github的host</p>
+<p>#####2. 手动下载webpack-simple</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2273e26ff6e8">1.Mac下vue开发环境的搭建步骤以及新建项目总结</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gaozhiqiang/p/11528554.html">2.使用vue-cli创建工程的时候提示vue-cli Failed to download repo vuejs-templates/webpack-simple:self signed certificate in certificate chain的解决方法</a></p>
 
       
 
@@ -340,7 +364,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85vs-code"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.安装vs code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85Homebrew"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.安装Homebrew</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85OpenCV"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.安装OpenCV</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85pkg-config"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.安装pkg-config</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8pkg-config"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.使用pkg-config</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEXcode"><span class="toc-number">2.</span> <span class="toc-text">配置Xcode</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%88%9B%E5%BB%BAXcode%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.0.1.</span> <span class="toc-text">6.创建Xcode项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E8%AE%BE%E7%BD%AEHeader-Search-Paths"><span class="toc-number">2.0.2.</span> <span class="toc-text">7.设置Header Search Paths</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E8%AE%BE%E7%BD%AE-Library-Search-Paths"><span class="toc-number">2.0.3.</span> <span class="toc-text">8.设置 Library Search Paths</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E6%B5%8B%E8%AF%95%E8%BF%90%E8%A1%8C"><span class="toc-number">2.0.4.</span> <span class="toc-text">9.测试运行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">其它设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">3.1.</span> <span class="toc-text">使用相对路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-number">4.</span> <span class="toc-text">可能出现的错误</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0-%E2%80%9CNot-a-Doxygen-trailing-comment%E2%80%9D-%E9%94%99%E8%AF%AF"><span class="toc-number">4.1.</span> <span class="toc-text">出现 “Not a Doxygen trailing comment” 错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85vs-code"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.安装vs code</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85Homebrew"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.安装Homebrew</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85node-js"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.安装node.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85cnpm%EF%BC%88%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F%EF%BC%89"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.安装cnpm（淘宝镜像）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85webpack"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.安装webpack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%AE%89%E8%A3%85vue%E8%84%9A%E6%89%8B%E6%9E%B6%EF%BC%88%E8%87%AA%E5%8A%A8%E6%90%AD%E5%BB%BAvue%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6%E7%9A%84%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="toc-number">1.0.6.</span> <span class="toc-text">6.安装vue脚手架（自动搭建vue项目框架的工具）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%88%9B%E5%BB%BAvue%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.0.7.</span> <span class="toc-text">7.创建vue项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85%E7%BB%84%E4%BB%B6"><span class="toc-number">1.0.8.</span> <span class="toc-text">8.安装组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.0.9.</span> <span class="toc-text">9.启动项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%94%99%E8%AF%AF%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">可能出现的错误：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-init%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E6%97%B6%EF%BC%8C%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E-%E2%80%9Cdownloading-template%E2%80%9D-%E7%8A%B6%E6%80%81%E4%B8%8B%E3%80%82"><span class="toc-number">2.0.1.</span> <span class="toc-text">vue init项目构建时，一直处于 “downloading template” 状态下。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -489,11 +513,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,11 +525,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
               </li>
              
               <li class="article-tag-list-item">
