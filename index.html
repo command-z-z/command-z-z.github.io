@@ -183,22 +183,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#%E7%9B%AE%E5%BD%95">目录</a><ul>
-<li><a href="#homebrew%E4%BB%8B%E7%BB%8D">Homebrew介绍</a></li>
-<li><a href="#homebrew%E5%AE%89%E8%A3%85">Homebrew安装</a><ul>
+<li><a href="#Homebrew%E4%BB%8B%E7%BB%8D">Homebrew介绍</a></li>
+<li><a href="#Homebrew%E5%AE%89%E8%A3%85">Homebrew安装</a><ul>
 <li><a href="#%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E8%A6%81%E6%B1%82">电脑配置要求</a></li>
 <li><a href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD">安装与卸载</a></li>
-<li><a href="#homebrew%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">Homebrew基本使用</a></li>
+<li><a href="#Homebrew%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">Homebrew基本使用</a></li>
 </ul>
 </li>
-<li><a href="#homebrew-cask%E4%BB%8B%E7%BB%8D">Homebrew Cask介绍</a><ul>
-<li><a href="#homebrew-cask%E5%AE%89%E8%A3%85">Homebrew Cask安装</a></li>
-<li><a href="#homebrew-cask%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">Homebrew Cask基本使用</a></li>
+<li><a href="#Homebrew-cask%E4%BB%8B%E7%BB%8D">Homebrew Cask介绍</a><ul>
+<li><a href="#Homebrew-cask%E5%AE%89%E8%A3%85">Homebrew Cask安装</a></li>
+<li><a href="#Homebrew-cask%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">Homebrew Cask基本使用</a></li>
 </ul>
 </li>
 <li><a href="#brew%E6%8D%A2%E6%BA%90">brew换源</a></li>
-</ul>
-</li>
 <li><a href="#%E6%9C%AC%E6%96%87%E5%8F%82%E8%80%83%E4%B8%8E%E9%99%84%E5%BD%95">本文参考与附录</a></li>
 </ul>
 <hr>
@@ -237,7 +234,8 @@
 </ul>
 <h4 id="安装与卸载"><a href="#安装与卸载" class="headerlink" title="安装与卸载"></a>安装与卸载</h4><ul>
 <li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
-若输入以下语句有出现homebrew版本信息，即为安装成功。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v</span><br></pre></td></tr></table></figure></li>
+若输入以下语句有出现homebrew版本信息，即为安装成功（homebrew-cask暂无）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v</span><br></pre></td></tr></table></figure>
+<a target="_blank" rel="noopener" href="https://imgtu.com/i/oivTKA"><img src="https://z3.ax1x.com/2021/11/24/oivTKA.md.png" alt="oivTKA.md.png"></a></li>
 <li>卸载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cd &#96;brew --prefix&#96;</span><br><span class="line">$ rm -rf Cellar</span><br><span class="line">$ brew prune</span><br><span class="line">$ rm &#96;git ls-files&#96;</span><br><span class="line">$ rm -r Library&#x2F;Homebrew Library&#x2F;Aliases Library&#x2F;Formula Library&#x2F;Contributions</span><br><span class="line">$ rm -rf .git</span><br><span class="line">$ rm -rf ~&#x2F;Library&#x2F;Caches&#x2F;Homebrew</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -268,8 +266,9 @@
 </ul>
 <hr>
 <h3 id="Homebrew-Cask介绍"><a href="#Homebrew-Cask介绍" class="headerlink" title="Homebrew Cask介绍"></a>Homebrew Cask介绍</h3><p>Homebrew Cask 是 Homebrew 的扩展，借助它可以方便地在 macOS 上安装图形界面程序，即我们常用的各类应用。Homebrew 中文含义为自制、自酿酒，Cask 中文含义为桶、木桶，桶装酒是一种成品，也就是说每一个 homebrew cask 都可以直接使用的。</p>
+<p> <img src="https://camo.githubusercontent.com/f8b75a5e461338a90db6acf4db8f5bc9cf620bfba65a5a490ed10bd08f457b52/68747470733a2f2f692e696d6775722e636f6d2f464e4e4d36574c2e676966" alt="Homebrew-cask"></p>
 <h4 id="Homebrew-Cask安装"><a href="#Homebrew-Cask安装" class="headerlink" title="Homebrew Cask安装"></a>Homebrew Cask安装</h4><ul>
-<li>可以使用以下语句安装（若速度太慢采用下面方式）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap homebrew&#x2F;cask</span><br></pre></td></tr></table></figure></li>
+<li>可以使用以下语句安装（若速度太慢建议采用下面方式）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap homebrew&#x2F;cask</span><br></pre></td></tr></table></figure></li>
 <li>由于受源的限制，我们可以使用中科大的源来下载，使用以下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap --custom-remote --force-auto-update homebrew&#x2F;cask https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-cask.git</span><br></pre></td></tr></table></figure>
 若输入以下语句有出现homebrew cask版本信息，即为安装成功。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v</span><br></pre></td></tr></table></figure>
 
@@ -287,11 +286,13 @@
 <hr>
 <h3 id="brew换源"><a href="#brew换源" class="headerlink" title="brew换源"></a>brew换源</h3><p>本文均采用<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/help/brew.git.html">中科大的国内源</a>进行替换，<strong>若有需要其他源的可以参考附录3进行替换</strong>。</p>
 <ul>
-<li>查询shell类型,可以查看自己是bash还是zsh，用于下面替换。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo $0</span><br></pre></td></tr></table></figure></li>
+<li>查询shell类型,可以查看自己是bash还是zsh，用于下面替换源。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo $0</span><br></pre></td></tr></table></figure></li>
 <li>Homebrew替换源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 替换各个源,把以下三句话分别输入终端</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew&#x2F;core)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew&#x2F;cask)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-cask.git</span><br></pre></td></tr></table></figure></li>
 <li>Homebrew路径配置(二者选其一，选自己对应的shell)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">echo &#39;export HOMEBREW_CORE_GIT_REMOTE&#x3D;&quot;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-core.git&quot;&#39; &gt;&gt; ~&#x2F;.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">echo &#39;export HOMEBREW_CORE_GIT_REMOTE&#x3D;&quot;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-core.git&quot;&#39; &gt;&gt; ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure></li>
-<li>刷新环境变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">source ~&#x2F;.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">source ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure></li>
-<li>刷新源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+<li>更新环境变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">source ~&#x2F;.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">source ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure></li>
+<li>更新源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+
 
 </li>
 </ul>
