@@ -160,6 +160,259 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数学建模方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">数学建模方法</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/" class="archive-article-date">
+	
+  	<time datetime="2020-11-19T13:08:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="层次分析法"><a href="#层次分析法" class="headerlink" title="层次分析法"></a>层次分析法</h2><p>摘自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38207837">知乎网友</a>，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KE411q7Wh">教学视频</a>参考。</p>
+<ul>
+<li>层次分析法，简称AHP，是指将与决策总是有关的元素分解成目标、准则、方案等层次，在此基础之上进行定性和定量分析的决策方法。</li>
+<li>对于求解不同的放案进行权值打分问题</li>
+</ul>
+<h4 id="基本步骤："><a href="#基本步骤：" class="headerlink" title="基本步骤："></a>基本步骤：</h4><h5 id="3-1-建立层次结构模型"><a href="#3-1-建立层次结构模型" class="headerlink" title="3.1 建立层次结构模型"></a>3.1 建立层次结构模型</h5><p>将决策的目标、考虑的因素(决策准则)和决策对象按他们之间的相互关系分成最高层、中间层和最低层，绘制层次结构图。</p>
+<ol>
+<li>最高层(目标层)：决策的目的、要解决的问题；</li>
+<li>中间层(准则层或指标层)：考虑的因素、决策的准则；</li>
+<li>最低层(方案层)：决策时的备选方案；</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-08ab75dabd1234a80b74cb1bd1105df7_1440w.jpg" alt="图片"></p>
+<h5 id="3-2构造判断-成对比较-矩阵"><a href="#3-2构造判断-成对比较-矩阵" class="headerlink" title="3.2构造判断(成对比较)矩阵"></a>3.2构造判断(成对比较)矩阵</h5><p>那在确定各层次各因素之间的权重时，如果只是定性的结果(就是我认为景色占80%，费用10%等等)，则常常不容易被别人接受，因此Santy等人提出：一致矩阵法，即：</p>
+<ol>
+<li>不把所有因素放在一起比较，而是两两比较；</li>
+<li>对此时采用相对尺度，以尽可能减少性质不同的诸因素相互比较的困难，以提高准去性；</li>
+</ol>
+<p>成对比较矩阵是表示本层所有因素针对上一层某一个因素(准侧或目标)的相对重要性的比较。成对比较矩阵的元素 [公式] 表示的是第 [公式] 个因素相对于第 [公式] 个因素的比较结果，这个值使用的是Santy的1-9标度方法给出。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-bd09282ba98fb9d6650157fc760587ad_1440w.jpg" alt="图片"><br>那比如，举上面的旅游的例子，在旅游问题中第二层A的各个因素对目标层Z的影响两两比较的结果如下图：<br><img src="https://pic1.zhimg.com/80/v2-6f8f15bb07fe988eaa46d0cd78b9367c_1440w.jpg" alt="图片"></p>
+<blockquote>
+<p>以上判断矩阵的给出由专家打分和查阅网上资料可以得到，而在实际操作中，多采用自己打分的形式[doge]</p>
+</blockquote>
+<h5 id="3-3层次单排序及一致性检验"><a href="#3-3层次单排序及一致性检验" class="headerlink" title="3.3层次单排序及一致性检验"></a>3.3层次单排序及一致性检验</h5><h5 id="3-4层次总排序及其一致性检验"><a href="#3-4层次总排序及其一致性检验" class="headerlink" title="3.4层次总排序及其一致性检验"></a>3.4层次总排序及其一致性检验</h5><p>由于以上两步操作可直接由代码得到，因此不在这里详细叙述。</p>
+<p>下面贴出层次分析法的权重求解Matlab代码，此代码只需要输入判断矩阵即可得出相应的权重值，其中包含一次性检验，如一次性检验不通过，不会输出权重值。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">clc;</span><br><span class="line">clear;</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;请输入判断矩阵A&#x27;</span>);     <span class="comment">%111111111</span></span><br><span class="line">A=input(<span class="string">&#x27;A=&#x27;</span>);</span><br><span class="line">[m,n]=<span class="built_in">size</span>(A);                     <span class="comment">%获取指标个数</span></span><br><span class="line">RI=[<span class="number">0</span> <span class="number">0</span> <span class="number">0.58</span> <span class="number">0.90</span> <span class="number">1.12</span> <span class="number">1.24</span> <span class="number">1.32</span> <span class="number">1.41</span> <span class="number">1.45</span> <span class="number">1.49</span> <span class="number">1.51</span>];</span><br><span class="line">R=rank(A);                         <span class="comment">%求判断矩阵的秩</span></span><br><span class="line">[V,D]=eig(A);                      <span class="comment">%求判断矩阵的特征值和特征向量，V特征值，D特征向量；</span></span><br><span class="line">tz=<span class="built_in">max</span>(D);</span><br><span class="line">B=<span class="built_in">max</span>(tz);                         <span class="comment">%最大特征值</span></span><br><span class="line">B</span><br><span class="line">[row, col]=<span class="built_in">find</span>(D==B);             <span class="comment">%最大特征值所在位置</span></span><br><span class="line">C=V(:,col);                        <span class="comment">%对应特征向量</span></span><br><span class="line">CI=(B-n)/(n<span class="number">-1</span>);                    <span class="comment">%计算一致性检验指标CI</span></span><br><span class="line">CR=CI/RI(<span class="number">1</span>,n);</span><br><span class="line"><span class="keyword">if</span> CR&lt;<span class="number">0.10</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;CI=&#x27;</span>);<span class="built_in">disp</span>(CI);</span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;CR=&#x27;</span>);<span class="built_in">disp</span>(CR);</span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;对比矩阵A通过一致性检验，各向量权重向量W为：&#x27;</span>);</span><br><span class="line">    W=<span class="built_in">zeros</span>(n,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">        W(<span class="built_in">i</span>,<span class="number">1</span>)=C(<span class="built_in">i</span>,<span class="number">1</span>)/sum(C(:,<span class="number">1</span>)); <span class="comment">%特征向量标准化</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    W                              <span class="comment">%输出权重向量</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;对比矩阵A未通过一致性检验，需对对比矩阵A重新构造&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>例输入格式(为三阶判断矩阵):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A&#x3D;[1 1&#x2F;5 1&#x2F;7;5 1 1&#x2F;3;7 3 1]</span><br></pre></td></tr></table></figure>
+<p>输出形式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">B&#x3D;3.064       %最大特征值</span><br><span class="line">CI&#x3D;0.0324     %计算一致性检验指标CI</span><br><span class="line">CR&#x3D;0.0559</span><br><span class="line">对比矩阵A通过一致性检验，各向量权重向量W为：</span><br><span class="line">W&#x3D;  0.0719  </span><br><span class="line">    0.2790</span><br><span class="line">    0.6491</span><br></pre></td></tr></table></figure>
+<h2 id="因子分析"><a href="#因子分析" class="headerlink" title="因子分析"></a>因子分析</h2><p>此处使用spss软件进行因子分析，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Df4y1m7rX">教学视频</a>和<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12e411p7U8">教学视频</a>两集参考。</p>
+<p>定义：因子分析是指研究从变量群中提取共性因子的统计技术。最早由英国心理学家C.E.斯皮尔曼提出。他发现学生的各科成绩之间存在着一定的相关性，一科成绩好的学生，往往其他各科成绩也比较好，从而推想是否存在某些潜在的共性因子，或称某些一般智力条件影响着学生的学习成绩。因子分析可在许多变量中找出隐藏的具有代表性的因子。将相同本质的变量归入一个因子，可减少变量的数目，还可检验变量间关系的假设。</p>
+<p>概括:将影响一个目标的多个因素进行降维成少数几个因子，这些因子是一些共性因子。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-："><a href="#具体操作步骤-这里均不介绍具体原理-：" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li><strong>检验是否适合因子分析</strong>， 点击分析-&gt;降维-&gt;因子， 将需要降维的变量导入，点击描述勾选相关性矩阵中的系数，和KMO和巴特利特球形度检验，来检验各变量之间是否有相关性。</li>
+<li><strong>提取公因子</strong>， 点击提取，选择主成分法，勾选碎石图，因子的固定数量，自己预估公共因子的数目。</li>
+<li>点击旋转，旋转最大方差法</li>
+<li>点击选项，勾选按大小排序，方便第6步看出每个变量属于那些公因子。</li>
+<li><strong>因子命名</strong> ，看旋转后的成分矩阵表，几列代表几个公共因子，再看每一行，每一行中最大的数，即属于那一列，最后可以分配，之前导入的变量分别属于哪个公因子，在通过这些变量之间的关系进行因子命名。</li>
+<li><strong>因子得分</strong>，点击得分，勾选保存为变量，点击确定，即可在数据表中找到生成两行公因子的得分列。</li>
+<li><strong>总得分</strong>， 点击左上角转换-&gt;计算变量 ,总得分=公因子1的方差百分比*公因子1的得分+公因子2的方差百分比*公因子2的得分+···</li>
+<li>通过因子总得分即可进行排序。<h2 id="主成分分析法"><a href="#主成分分析法" class="headerlink" title="主成分分析法"></a>主成分分析法</h2>此处使用spss软件进行主成分分析，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wa4y1i7Ui">教学视频</a>参考。</li>
+</ol>
+<p>定义:主成分分析（Principal Component Analysis，PCA）， 是一种统计方法。通过正交变换将一组可能存在相关性的变量转换为一组线性不相关的变量，转换后的这组变量叫主成分。在实际课题中，为了全面分析问题，往往提出很多与此有关的变量（或因素），因为每个变量都在不同程度上反映这个课题的某些信息。主成分分析首先是由K.皮尔森（Karl Pearson）对非随机变量引入的，尔后H.霍特林将此方法推广到随机向量的情形。信息的大小通常用离差平方和或方差来衡量。</p>
+<p>概括：通过正交变换将一组可能存在相关性的变量转换为一组线性不相关的变量，转换后的这组变量叫主成分，与因子分析类似。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-1"><a href="#具体操作步骤-这里均不介绍具体原理-：-1" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>击分析-&gt;降维-&gt;因子， 将需要降维的变量导入，点击描述勾选相关性矩阵中的系数，和KMO和巴特利特球形度检验，来检验各变量之间是否有相关性。</li>
+<li>点击提取，选择主成分法，勾选碎石图</li>
+<li>点击旋转，方法为无，勾选载荷图。</li>
+<li>点击选项，勾选按大小排序。</li>
+<li>即可得到主成分。</li>
+<li><strong>总得分</strong>：这里直接选择得分，保存为变量即可得到主成分的得分，与视频中的方法殊途同归，二者得分上均相差一个倍数，求解总得分=主成分1的方差百分比*主成分1的得分+主成分2的方差百分比*主成分2的得分+···<blockquote>
+<p>这里注意一个技巧，在要进行数据归一化时，可以点击左上角的分析-&gt;描述统计-&gt;描述，将所需归一化的数据导入，勾选将标准化值另存为变量，即可在数据表中查看归一化后的数据。</p>
+</blockquote>
+<h2 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h2>此处使用spss软件进行一元线性回归，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ft411M7t8">教学视频</a>参考。</li>
+</ol>
+<p>定义:一元线性回归是分析只有一个自变量（自变量x和因变量y）线性相关关系的方法。一个经济指标的数值往往受许多因素影响，若其中只有一个因素是主要的，起决定性作用，则可用一元线性回归进行预测分析。</p>
+<p>概括:一个自变量去描述一个因变量。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-2"><a href="#具体操作步骤-这里均不介绍具体原理-：-2" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;回归-&gt;线性。</li>
+<li>将所需要的变量进行自变量（1个），因变量（1个）。</li>
+<li>看模型摘要中的调整后到R方，越接近1，拟合程度越高，且ANOVA中显著性低于0.05，说明回归显著。</li>
+<li>主要看系数表格，B那一列所代表的即为一次线性方程。</li>
+</ol>
+<h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><p>此处使用spss软件进行多元线性回归，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YK4y147Vm">教学视频</a>和b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1QQ4y1K7Sd">教学视频</a>参考。</p>
+<p>定义:在回归分析中，如果有两个或两个以上的自变量，就称为多元回归。事实上，一种现象常常是与多个因素相联系的，由多个自变量的最优组合共同来预测或估计因变量，比只用一个自变量进行预测或估计更有效，更符合实际。因此多元线性回归比一元线性回归的实用意义更大。</p>
+<p>概括:多个自变量去描述一个因变量。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-3"><a href="#具体操作步骤-这里均不介绍具体原理-：-3" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;回归-&gt;线性。</li>
+<li>点击统计，勾选共线性诊断和德宾·沃森。 </li>
+<li>点击图，将ZPRED导入到x，将ZRESID导入到y，勾选直方图，正态概率图，点击确定即可。</li>
+<li>看模型摘要中的调整后到R方，越接近1，拟合程度越高，其实0.1以上就可以接受。（R方表示自变量能解释因变量的百分之几）   </li>
+<li>看德宾·沃森约为2即可，VIF在30以下即可。</li>
+<li>看残差分布理想为处于正态分布。</li>
+<li>主要看系数表格，B那一列所代表的即为多元线性方程。</li>
+</ol>
+<h2 id="k-means聚类"><a href="#k-means聚类" class="headerlink" title="k-means聚类"></a>k-means聚类</h2><p>此处使用spss软件进行k-means聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Q54y1i7HH?from=search&seid=7060863454990800652">教学视频</a>和<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pC4y1x7sU/?spm_id_from=333.788.videocard.0">教学视频</a><br>定义:k均值聚类算法（k-means clustering algorithm）是一种迭代求解的聚类分析算法，其步骤是，预将数据分为K组，则随机选取K个对象作为初始的聚类中心，然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，误差平方和局部最小。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-4"><a href="#具体操作步骤-这里均不介绍具体原理-：-4" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;分类-&gt;k-means聚类。</li>
+<li>将所需考虑的指标导入到变量中， 要先将数据进行标准化，不然会影响到距离计算，如果数据没有标准化，也可以点击方法，将标准化选为Z分数。</li>
+<li>自己确定聚类数，方法选择迭代与分类。</li>
+<li>点击迭代次数，保持默认。</li>
+<li>点击保存，勾选聚类成员，勾选与聚类中心的距离，点击确定。</li>
+<li>直接看最终聚类中心表和每个聚类中的个案数量，即可看出聚类信息。<h2 id="系统聚类"><a href="#系统聚类" class="headerlink" title="系统聚类"></a>系统聚类</h2>此处使用spss软件进行系统聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Q54y1i7HH?from=search&seid=7060863454990800652">教学视频</a>和b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pC4y1x7sU/?spm_id_from=333.788.b_7265636f5f6c697374.2">教学视频</a>参考。</li>
+</ol>
+<p>定义:系统聚类法（hierarchical cluster method）一译“分层聚类法”。聚类分析的一种方法。其做法是开始时把每个样品作为一类，然后把最靠近的样品（即距离最小的群品）首先聚为小类，再将已聚合的小类按其类间距离再合并，不断继续下去，最后把一切子类都聚合到一个大类。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-5"><a href="#具体操作步骤-这里均不介绍具体原理-：-5" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;分类-&gt;系统聚类。</li>
+<li>将所需考虑的指标导入到变量中， 要先将数据进行标准化，不然会影响到距离计算，如果数据没有标准化，也可以点击方法，将标准化选为Z分数。</li>
+<li>点击绘图，勾选谱系图，点击确定。</li>
+<li>直接看谱系图，自己判断要分为几类。<h2 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h2>此处使用spss软件进行系统聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1qt4y1276a?from=search&seid=9776428284346921437">教学视频</a>参考。</li>
+</ol>
+<p>定义:按照信息论基本原理的解释，信息是系统有序程度的一个度量，熵是系统无序程度的一个度量；根据信息熵的定义，对于某项指标，可以用熵值来判断某个指标的离散程度，其信息熵值越小，指标的离散程度越大， 该指标对综合评价的影响（即权重）就越大，如果某项指标的值全部相等，则该指标在综合评价中不起作用。因此，可利用信息熵这个工具，计算出各个指标的权重，为多指标综合评价提供依据。</p>
+<p>概括:也是通过一定的数据，给各个指标赋予权重。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数学建模国赛感悟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/">数学建模国赛感悟</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/" class="archive-article-date">
+	
+  	<time datetime="2020-10-27T09:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;时间过了这么久，依然想写写自己对于这次国赛的一些感悟，毕竟也是第一次参加这种有点含金量的比赛。全国大学生数学建模官网上写着“一次参赛，终生受益！”这么一句标语，确实写了有快大半年的数模论文，作为半个建模人，在比赛的历练中也学到了很多，像Latex排版，因子分析，大数据处理等看起来高深的方法，也略有掌握。但身为大二的萌新，三个计算机学院的愣头青，就凭着一股满腔的热情，连数学建模这本书页没看过的人，在大佬林立的大三学长面前，不免感到有点捉襟见肘，面对浩瀚的数模知识库，感到自己是如此渺小。面对暑期培训一题一题题目的狂轰乱炸，不断的上知网查文献，与队友不定期的集中讨论，思考，分析，本着走一步再走一步的原则，靠着我们才大二本来就不如大三的心态，坚持着将题目做完，也很感谢我的队友陪我一起坚持下来。</p>
+<h2 id="数模培训阶段"><a href="#数模培训阶段" class="headerlink" title="数模培训阶段"></a>数模培训阶段</h2><p>&emsp;&emsp;当初报名暑期培训的时候，也是想暑假反正在家也没什么事，还不如来学校学点自己感兴趣的知识，就找了两个队友一起报名组队。培训分为两个阶段，第一阶段为7月15日～8月4日，每7天一题共3题，我们安排的地点是自己在家里做，安排的方式基本是题目出来那一晚晚上连麦对题目进行讨论，之后开始上网查找相关资料，第二天晚上继续讨论，由于我们队全都是计算机学院的，对于数学建模这方面的知识比较薄弱，且不在一起写的局限性，对于题目上下关联不大的，我们更多的是安排分题写，这样虽然质量不太高，但每个人基本能了解自己的思路，多线程推进，也加快了完成论文的速率。由于是在家里写的，这期间还要忙着学车，并没有对数模下太大的功夫，基本只是把自己写的这问写完，更别说达到写出色的水平，也还是怪自己太菜，遇到概率论的知识就不会了，好在网上有知识可以现学现抄。分开写时，我们多采用的是WPS多人协同编辑，排版很难统一，且数学公式的复杂，在Word中也很难美观的展示出来。这也使得我们前几篇的论文只有2分，1分（共5分），格式是一个很大的问题，这个在第二阶段有所改进。由于缺乏所需的知识，论文水平只能停留在初级阶段的水平，前期连数学建模，这个建模是什么意思都没搞懂（不知道萌新是否都是这种想法），真是废物啊。好在最后通过互相协作，将第一阶段的论文都提交成功。</p>
+        
+          <a class="article-more-a" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-链表相关操作集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -586,10 +839,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -598,7 +847,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,7 +855,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,7 +867,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
