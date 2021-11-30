@@ -182,7 +182,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>mac下安装了mysql很久了，但一直没怎么使用，最近做一个前后端项目需要使用mysql，但在设置里点Start mysql server，启动绿点闪了一下就变红了，无法启动，以前启动都是正常的.<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3Tzsx"><img src="https://z3.ax1x.com/2021/11/30/o3Tzsx.md.png" alt="o3Tzsx.md.png"></a></p>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><ul>
+<li>基于网上方案，首先去configuration下找到Error Log目录。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o37Kw8"><img src="https://z3.ax1x.com/2021/11/30/o37Kw8.md.png" alt="o37Kw8.md.png"></a></p>
+<ul>
+<li>输入以下语句查看目录信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;mysqld.local.err</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3HSpj"><img src="https://z3.ax1x.com/2021/11/30/o3HSpj.md.png" alt="o3HSpj.md.png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 关键错误信息</span><br><span class="line">2021-11-25T04:39:22.078870Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user &lt;via user signal&gt;. Shutting down mysqld (Version: 8.0.22).</span><br><span class="line">2021-11-25T04:39:22.648369Z 0 [ERROR] [MY-011945] [InnoDB] Cannot open &#39;&#x2F;usr&#x2F;local&#x2F;mysql-8.0.22-macos10.15-x86_64&#x2F;data&#x2F;ib_buffer_pool.incomplete&#39; for writing: Permission denied</span><br><span class="line">2021-11-25T04:39:22.789645Z 0 [ERROR] [MY-012595] [InnoDB] The error means mysqld does not have the access rights to the directory.</span><br><span class="line">2021-11-25T04:39:22.789703Z 0 [ERROR] [MY-012592] [InnoDB] Operating system error number 13 in a file operation.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>猜测可能是进入文件夹的权限不够。</p>
+</blockquote>
+<ul>
+<li><p>输入以下命令给文件夹增加权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次启动mysql，成功启动</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3bsqx"><img src="https://z3.ax1x.com/2021/11/30/o3bsqx.md.png" alt="o3bsqx.md.png"></a></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cbf87ce6fa62">1.Mac命令行启动MySQL</a></p>
+
       
 
       
@@ -190,6 +213,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1389,6 +1423,10 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -1405,19 +1443,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1425,7 +1455,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Swift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1433,7 +1471,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
