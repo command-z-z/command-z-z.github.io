@@ -160,6 +160,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim练级手册-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/">vim练级手册(一)</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/" class="archive-article-date">
+	
+  	<time datetime="2021-12-04T16:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-05</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-问题解决-mac启动mysql闪一下就退出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1096,211 +1160,6 @@
 
 
   
-    <article id="post-zz的算法小抄" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/">zz的算法小抄</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/" class="archive-article-date">
-	
-  	<time datetime="2021-05-30T12:15:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-30</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>DP=“递归”+“记忆”+“猜测”</p>
-<p><strong>求解步骤</strong></p>
-<ol>
-<li>定义子问题:$x\in X$，子问题，原问题（输入数据的规模不同）<ol>
-<li>子问题：描述（语言），参数。</li>
-<li>输入数据-序列，数据的前缀，后缀，中缀，连续的一段数据。</li>
-</ol>
-</li>
-<li>建立子问题间的关系（递归）<ol>
-<li>猜测（递归，分治中的不妨设类似）启动求解过程</li>
-<li>子问题的解看成节点</li>
-<li>子问题求解过程看成节点的遍历</li>
-<li>节点遍历需满足拓扑排序（当前节点只与已经求得值的节点有关）</li>
-</ol>
-</li>
-<li>明确边界条件</li>
-<li>得到原问题的解<ol>
-<li>表上遍历</li>
-</ol>
-</li>
-<li>分析时间复杂度<ol>
-<li>$T(n)=子问题个数*每一子问题求解时间$</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h2 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h2><p><strong>求解步骤</strong></p>
-<ol>
-<li>分解问题</li>
-<li>递归求解</li>
-<li>边界条件</li>
-</ol>
-<p><strong>递归算法的两个要素</strong></p>
-<ul>
-<li><p>必须有最终停止发展下线的边界条件。</p>
-</li>
-<li><p>必须有与原始问题结构一致，但输入规模小于原始问题规模的递归结构。</p>
-</li>
-</ul>
-<h4 id="主成分方法"><a href="#主成分方法" class="headerlink" title="主成分方法"></a>主成分方法</h4><p>递推式为：$T(n)=aT(n/b)+f(n)$</p>
-<p>$T(n)=f(n)+af(n/b)+a^2f(n/b^2)+…+n^{log_b^a}$<br>(1)渐进上升<br>$f(n)=o(n^{log_b^a-\epsilon})$<br>$T(n)=o(n^{log_b^a})$</p>
-<p>(2)渐进相等<br>$f(n)=o(n^{log_b^a}(log_2^n)^k)$(存在常数k)<br>$T(n)=o(n^{log_b^a}(log_2^n)^{k+1})$</p>
-<p>(3)渐进下降<br>$f(n)=o(n^{log_b^a+\epsilon})$<br>$T(n)=o(f(n))$</p>
-<hr>
-<h2 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h2><p><strong>求解步骤</strong></p>
-<ol>
-<li>把原问题分解成若干个子问题</li>
-<li>递归求解每一个子问题的解</li>
-<li>合并子问题的解</li>
-</ol>
-<blockquote>
-<p>与递归相比，多了合并子问题的解</p>
-</blockquote>
-<p><strong>合并时需要技巧，有时关系到时间复杂度</strong></p>
-<hr>
-<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><ul>
-<li>求解优化问题的一类算法（最少，最多，最长，最短）</li>
-</ul>
-<p><strong>求解步骤</strong></p>
-<ol>
-<li>遍历备选元素</li>
-<li>贪心策略确定选择一个元素</li>
-</ol>
-<ul>
-<li>决策过程<ul>
-<li>s集合大小依次增大</li>
-<li>I集合大小依次减小<ul>
-<li>剩余元素状态不变</li>
-<li>剩余元素状态改变（复杂）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>掌握局部信息，选择当前最优的方案，不一定能得到最优解，需证明</p>
-</blockquote>
-<h2 id="回溯与分支界限算法"><a href="#回溯与分支界限算法" class="headerlink" title="回溯与分支界限算法"></a>回溯与分支界限算法</h2><blockquote>
-<p>回溯基本用深度优先，分支界限基本用宽度优先。</p>
-</blockquote>
-<h3 id="回溯BackTrack"><a href="#回溯BackTrack" class="headerlink" title="回溯BackTrack"></a>回溯BackTrack</h3><ul>
-<li>穷举</li>
-<li>状态空间（状态空间树）</li>
-<li>路径（根-&gt;叶子）对应解</li>
-<li>求解问题过程就是状态树上遍历的过程</li>
-<li>DFS/BFS</li>
-<li>为了提高效率，很多时候会用到剪枝</li>
-</ul>
-<h3 id="分支界限-Branch-and-Bound"><a href="#分支界限-Branch-and-Bound" class="headerlink" title="分支界限 Branch and Bound"></a>分支界限 Branch and Bound</h3><ul>
-<li>常用于求解优化问题</li>
-<li>穷举所有的“状态”，利用上界或下界提高搜索效率。</li>
-<li>术语：<ul>
-<li>活节点：该节点刚被生成，子节点还未产生。</li>
-<li>当前节点（E-node）：当前正在展开节点。</li>
-<li>死节点：不需要展开的节点。</li>
-</ul>
-</li>
-<li>搜索方法：E-node需要确定<ul>
-<li>注意力（优先级的设定）</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>FILO（栈）宽度优先（右-&gt;左）</p>
-</li>
-<li><p>FIFO（队列）宽度优先（左-&gt;右）</p>
-</li>
-<li><p>LC</p>
-<ul>
-<li>在状态树上搜索</li>
-<li>在树t中设定各节点的值函数$c()$</li>
-<li>x是树上的节点（$c(x)$最小耗费量），$c(t)$问题的最优解）</li>
-<li>$c’(x)$近似的值函数</li>
-<li>两个函数维护活节点<ul>
-<li>least(活节点的优先级)</li>
-<li>add(x) (把新的节点加入到活节点中)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Bounding(剪枝)</p>
-<ul>
-<li>$c’(x)&lt;=c(x)$</li>
-<li>$c’(x)$解的下界</li>
-<li>if $c’(x)&gt;u$剪枝(u表示最小值)</li>
-<li>u的初始值，设为无穷大</li>
-<li>每次处理完E-node,更新u</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1423,7 +1282,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1431,11 +1290,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1463,11 +1322,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">

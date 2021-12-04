@@ -160,6 +160,211 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-zz的算法小抄" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/">zz的算法小抄</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/" class="archive-article-date">
+	
+  	<time datetime="2021-05-30T12:15:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-30</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>DP=“递归”+“记忆”+“猜测”</p>
+<p><strong>求解步骤</strong></p>
+<ol>
+<li>定义子问题:$x\in X$，子问题，原问题（输入数据的规模不同）<ol>
+<li>子问题：描述（语言），参数。</li>
+<li>输入数据-序列，数据的前缀，后缀，中缀，连续的一段数据。</li>
+</ol>
+</li>
+<li>建立子问题间的关系（递归）<ol>
+<li>猜测（递归，分治中的不妨设类似）启动求解过程</li>
+<li>子问题的解看成节点</li>
+<li>子问题求解过程看成节点的遍历</li>
+<li>节点遍历需满足拓扑排序（当前节点只与已经求得值的节点有关）</li>
+</ol>
+</li>
+<li>明确边界条件</li>
+<li>得到原问题的解<ol>
+<li>表上遍历</li>
+</ol>
+</li>
+<li>分析时间复杂度<ol>
+<li>$T(n)=子问题个数*每一子问题求解时间$</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h2><p><strong>求解步骤</strong></p>
+<ol>
+<li>分解问题</li>
+<li>递归求解</li>
+<li>边界条件</li>
+</ol>
+<p><strong>递归算法的两个要素</strong></p>
+<ul>
+<li><p>必须有最终停止发展下线的边界条件。</p>
+</li>
+<li><p>必须有与原始问题结构一致，但输入规模小于原始问题规模的递归结构。</p>
+</li>
+</ul>
+<h4 id="主成分方法"><a href="#主成分方法" class="headerlink" title="主成分方法"></a>主成分方法</h4><p>递推式为：$T(n)=aT(n/b)+f(n)$</p>
+<p>$T(n)=f(n)+af(n/b)+a^2f(n/b^2)+…+n^{log_b^a}$<br>(1)渐进上升<br>$f(n)=o(n^{log_b^a-\epsilon})$<br>$T(n)=o(n^{log_b^a})$</p>
+<p>(2)渐进相等<br>$f(n)=o(n^{log_b^a}(log_2^n)^k)$(存在常数k)<br>$T(n)=o(n^{log_b^a}(log_2^n)^{k+1})$</p>
+<p>(3)渐进下降<br>$f(n)=o(n^{log_b^a+\epsilon})$<br>$T(n)=o(f(n))$</p>
+<hr>
+<h2 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h2><p><strong>求解步骤</strong></p>
+<ol>
+<li>把原问题分解成若干个子问题</li>
+<li>递归求解每一个子问题的解</li>
+<li>合并子问题的解</li>
+</ol>
+<blockquote>
+<p>与递归相比，多了合并子问题的解</p>
+</blockquote>
+<p><strong>合并时需要技巧，有时关系到时间复杂度</strong></p>
+<hr>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><ul>
+<li>求解优化问题的一类算法（最少，最多，最长，最短）</li>
+</ul>
+<p><strong>求解步骤</strong></p>
+<ol>
+<li>遍历备选元素</li>
+<li>贪心策略确定选择一个元素</li>
+</ol>
+<ul>
+<li>决策过程<ul>
+<li>s集合大小依次增大</li>
+<li>I集合大小依次减小<ul>
+<li>剩余元素状态不变</li>
+<li>剩余元素状态改变（复杂）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>掌握局部信息，选择当前最优的方案，不一定能得到最优解，需证明</p>
+</blockquote>
+<h2 id="回溯与分支界限算法"><a href="#回溯与分支界限算法" class="headerlink" title="回溯与分支界限算法"></a>回溯与分支界限算法</h2><blockquote>
+<p>回溯基本用深度优先，分支界限基本用宽度优先。</p>
+</blockquote>
+<h3 id="回溯BackTrack"><a href="#回溯BackTrack" class="headerlink" title="回溯BackTrack"></a>回溯BackTrack</h3><ul>
+<li>穷举</li>
+<li>状态空间（状态空间树）</li>
+<li>路径（根-&gt;叶子）对应解</li>
+<li>求解问题过程就是状态树上遍历的过程</li>
+<li>DFS/BFS</li>
+<li>为了提高效率，很多时候会用到剪枝</li>
+</ul>
+<h3 id="分支界限-Branch-and-Bound"><a href="#分支界限-Branch-and-Bound" class="headerlink" title="分支界限 Branch and Bound"></a>分支界限 Branch and Bound</h3><ul>
+<li>常用于求解优化问题</li>
+<li>穷举所有的“状态”，利用上界或下界提高搜索效率。</li>
+<li>术语：<ul>
+<li>活节点：该节点刚被生成，子节点还未产生。</li>
+<li>当前节点（E-node）：当前正在展开节点。</li>
+<li>死节点：不需要展开的节点。</li>
+</ul>
+</li>
+<li>搜索方法：E-node需要确定<ul>
+<li>注意力（优先级的设定）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>FILO（栈）宽度优先（右-&gt;左）</p>
+</li>
+<li><p>FIFO（队列）宽度优先（左-&gt;右）</p>
+</li>
+<li><p>LC</p>
+<ul>
+<li>在状态树上搜索</li>
+<li>在树t中设定各节点的值函数$c()$</li>
+<li>x是树上的节点（$c(x)$最小耗费量），$c(t)$问题的最优解）</li>
+<li>$c’(x)$近似的值函数</li>
+<li>两个函数维护活节点<ul>
+<li>least(活节点的优先级)</li>
+<li>add(x) (把新的节点加入到活节点中)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Bounding(剪枝)</p>
+<ul>
+<li>$c’(x)&lt;=c(x)$</li>
+<li>$c’(x)$解的下界</li>
+<li>if $c’(x)&gt;u$剪枝(u表示最小值)</li>
+<li>u的初始值，设为无穷大</li>
+<li>每次处理完E-node,更新u</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2021RoboCup之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1222,105 +1427,6 @@
 
 
   
-    <article id="post-Notion模版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/24/Notion%E6%A8%A1%E7%89%88/">Notion模版分享</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/03/24/Notion%E6%A8%A1%E7%89%88/" class="archive-article-date">
-	
-  	<time datetime="2021-03-24T00:35:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;今天发现一款好看而又实用的软件，不仅可以用来整理学习笔记，还可以用来做一些事情规划，将笔记、任务管理及知识库相结合，Notion 打造出了一款「瑞士军刀」般的协作工具。对我来说，所有整洁而又井然有序的事情，都会让人舒心。不仅可以督促自己按时完成任务，还可以记录生活，回首过往，看到自己曾经的付出，会更有前进的动力，下面分享一下自己的几个notion板块。</p>
-<h4 id="1-Bullet-Journal（子弹笔记）"><a href="#1-Bullet-Journal（子弹笔记）" class="headerlink" title="1.Bullet Journal（子弹笔记）"></a>1.Bullet Journal（子弹笔记）</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Bullet-Journal-ecc59d07a73d4b8db1ab071b138d839b">模版</a></p>
-<p>主要对日常的一些事情，未来要做的事情进行一些记录，不同颜色表示事情急迫程度，可以填入相应的时间点，以及不同的符号也代表不同的意思，🚀代表Doing，🌕代表Done，🌍表示To-Do。</p>
-<p>此模版包含一年四季的季目标，以及12个月的月目标，Empty Week Template为周计划的模版，把日计划可以放入此page。合理安排一年的计划并细化到季度，月份，使所有事情调理清晰。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/c99IZd"><img src="https://z3.ax1x.com/2021/03/28/c99IZd.png" alt="c99IZd.png"></a></p>
-<h4 id="2-Reading-List"><a href="#2-Reading-List" class="headerlink" title="2.Reading List"></a>2.Reading List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Reading-List-34ff7ffbc99b4e1f9b457cf9852002b1">模版</a></p>
-<p>读书列表主要存放我所看过的书📖，正在看的书，以及准备看的书。每个元组包含，Type（书的类型），Name（书名），State（读书状态），Score（书本打分），Author（书籍作者），Reading data（读书开始日期），Finish data（读书结束日期），Link（书评）,Summary(简短评价)。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cmoMxf"><img src="https://z3.ax1x.com/2021/04/02/cmoMxf.md.png" alt="cmoMxf.md.png"></a></p>
-<h4 id="3-Movie-List"><a href="#3-Movie-List" class="headerlink" title="3.Movie List"></a>3.Movie List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Movie-List-8a712d8efbfe471b817cb475b038178d">模版</a></p>
-<p>电影列表主要存放我看过的电影以及想要看的电影，每个电影都是从IMDB上复制来的链接，以图片的形式进行展示更加直观。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cmo4sO"><img src="https://z3.ax1x.com/2021/04/02/cmo4sO.md.png" alt="cmo4sO.md.png"></a></p>
-<h4 id="4-TV-series-List"><a href="#4-TV-series-List" class="headerlink" title="4.TV series List"></a>4.TV series List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-TV-series-List-6129acc2ce3b4e7a9d611fdfa399b20b">模版</a></p>
-<p>电视剧列表主要存放我看过的电视剧，正在看的电视剧，想要看的电视剧，每个电视剧都是从IMDB上复制来的链接，以图片的形式进行展示更加直观。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7Sc6"><img src="https://z3.ax1x.com/2021/04/02/cm7Sc6.md.png" alt="cm7Sc6.md.png"></a></p>
-<h4 id="5-Computer-books-List"><a href="#5-Computer-books-List" class="headerlink" title="5.Computer books List"></a>5.Computer books List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Computer-books-List-111cc188e5f343e2809dd4e20d07254c">模版</a></p>
-<p>计算机书籍列表主要存放我所看过的书📖，正在看的书，以及准备看的书。每个元组包含，Type（书的类型），Name（书名），State（读书状态），Score（书本打分），Author（书籍作者），Reading data（读书开始日期），Finish data（读书结束日期），Link（书评）,Summary(简短评价)。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7CnO"><img src="https://z3.ax1x.com/2021/04/02/cm7CnO.md.png" alt="cm7CnO.md.png"></a></p>
-<h4 id="6-Homework-List"><a href="#6-Homework-List" class="headerlink" title="6.Homework List"></a>6.Homework List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/68bd189fa25d42369fe8e799fa98256c?v=fd3ecaea2722472c8900e1770c23e8f4">模版</a></p>
-<p>家庭作业列表，记录我的所有作业信息，作业截止时间，共分为To Do作业，Doing作业，Done作业，罗列相关的作业，避免作业的遗漏，以及明确ddl很关键。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm73Nj"><img src="https://z3.ax1x.com/2021/04/02/cm73Nj.md.png" alt="cm73Nj.md.png"></a></p>
-<h4 id="7-Journal"><a href="#7-Journal" class="headerlink" title="7.Journal"></a>7.Journal</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/a2c51179a3ee49c0bd8252f9c47539ef?v=6ce8b6d948a742da86a48cb904427ffd">模版</a></p>
-<p>这里会记录一些我的日记，周记以及一些反思内容。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7BE4"><img src="https://z3.ax1x.com/2021/04/02/cm7BE4.md.png" alt="cm7BE4.md.png"></a></p>
-<h4 id="8-Blog-Plan"><a href="#8-Blog-Plan" class="headerlink" title="8.Blog Plan"></a>8.Blog Plan</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/016e439d99e8407da0cd212ca28ec68a?v=b316f877845e4e15b12b2870cb0ca28b">模版</a></p>
-<p>这里主要是安排一些<a target="_blank" rel="noopener" href="https://command-z-z.github.io/">我的博客</a>所要写的内容，我的想法,避免自己因为拖延症，而经常性的拖着不完成。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7yCR"><img src="https://z3.ax1x.com/2021/04/02/cm7yCR.md.png" alt="cm7yCR.md.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/24/Notion%E6%A8%A1%E7%89%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1443,7 +1549,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1451,11 +1557,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,11 +1589,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
