@@ -160,6 +160,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cmake使用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/16/cmake%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">cmake使用方法</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/09/16/cmake%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
+	
+  	<time datetime="2021-09-16T15:23:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-16</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="cmake使用方法"><a href="#cmake使用方法" class="headerlink" title="cmake使用方法"></a>cmake使用方法</h3><p>本人最近在linux上使用c++编写代码，一般情况下可以使用g++进行对代码编译，但一旦涉及到程序的规模要来越大，一个工程可能有许多个文件夹和里面的源文件，这时输入的编译命令越来越长。通常一个小型c++项目含有十几个类，各类间还存在着复杂的依赖关系。其中一部分要编译成可执行文件，另一部分编译成库文件。如果仅考g++命令，我们需要输入大量的编译指令，整个编译过程会变的异常繁琐。因此，对于c++项目，使用一些工程管理工具会更高效，下面我们来谈论下使用cmake来管理源代码。</p>
+<p><strong>1.编写代码程序</strong><br>在一个cmake工程中，我们会用cmake命令生成一个makefile文件，然后使用make命令，根据这个makefile文件的内容，编译整个工程。接下来我们使用helloWorld.cpp为例，使用cmake制作一个工程，然后编译它，代码如下（文件存放目录/cmake/helloWorld.cpp）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.编写CMakeLists.txt文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 声明要求的cmake最低版本</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/16/cmake%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-item2-oh-my-zsh最全配置教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1241,161 +1321,9 @@
 
 
   
-    <article id="post-数字图像处理-学习笔记（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">数字图像处理-学习笔记（3）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-23T00:32:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h2><p>内容大致：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOtJu8"><img src="https://z3.ax1x.com/2021/04/23/cOtJu8.md.png" alt="cOtJu8.md.png"></a></p>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
-<li>图像分割就是根据某些特性把图片中的像素分成不同的部分（加不同的标签）</li>
-<li>特性可以是灰度、颜色、纹理等，目标可以对应单个区域，也可以对应多个区域。</li>
-<li>图像分割算法是基于亮度值的不连续性和相似性。</li>
-</ul>
-<p><strong>图像分析主要包括一下几部分内容：</strong></p>
-<ol>
-<li>把图像分割成不同区域，或把不同的目标分开（分割）。即把图像分成互不重叠的区域并提取出感兴趣目标</li>
-<li>找出各个区域的特征（特征提取）。</li>
-<li>识别图像中的内容，或对图像进行分类（识别与分类）。</li>
-<li>给出结论（描述、分类或其他的结论）</li>
-</ol>
-<h3 id="分类–分割依据"><a href="#分类–分割依据" class="headerlink" title="分类–分割依据"></a>分类–分割依据</h3><ul>
-<li><strong>相似性分割</strong>：将相似灰度级的像素聚集在一起，形成图像中的不同区域。这种基于相似性原理的方法也称为基于区域相关的分割技术。</li>
-<li><strong>非连续性分割</strong>：首先检测局部不连续性，然后将它们连接起来形成边界，这些边界把图像分以不同的区域。这种基于不连续性原理检出物体边缘的方法称为基于点相关的分割技术。</li>
-<li>两种方法是互补的。有时将它们结合起来，以求得到更好的分割效果。</li>
-</ul>
-<h3 id="基于边缘的图像分割"><a href="#基于边缘的图像分割" class="headerlink" title="基于边缘的图像分割"></a>基于边缘的图像分割</h3><h4 id="间断检测"><a href="#间断检测" class="headerlink" title="间断检测"></a>间断检测</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cX249P"><img src="https://z3.ax1x.com/2021/04/23/cX249P.md.png" alt="cX249P.md.png"></a></p>
-<h4 id="1-点检测"><a href="#1-点检测" class="headerlink" title="1.点检测"></a>1.点检测</h4><p><img src="https://raw.githubusercontent.com/command-z-z/My-image-library/master/20210423/1.1uha5ii2ddi8.png" alt="1"></p>
-<h4 id="2-线检测"><a href="#2-线检测" class="headerlink" title="2.线检测"></a>2.线检测</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9YNBn"><img src="https://z3.ax1x.com/2021/04/27/g9YNBn.md.png" alt="g9YNBn.md.png"></a></p>
-<h4 id="3-边缘检测"><a href="#3-边缘检测" class="headerlink" title="3.边缘检测"></a>3.边缘检测</h4><ul>
-<li>边缘点：边缘点是指其周围像素的灰度有阶跃变化或屋顶状变化的像素、常存在于目标与背景之间、目标与目标之间、目标与其影子之间。</li>
-<li>分析手段：因为灰度的变化，可以反映为导数；因此，根据边缘的形状，可以通过求导的方法来寻求边缘。</li>
-<li>边缘的参数：包括边缘强度和边缘方向或者说边缘的幅值和边缘的方向。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9dQSK"><img src="https://z3.ax1x.com/2021/04/27/g9dQSK.md.png" alt="g9dQSK.md.png"></a></p>
-<p><strong>边缘分割示例</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9wfUA"><img src="https://z3.ax1x.com/2021/04/27/g9wfUA.md.png" alt="g9wfUA.md.png"></a></p>
-<p><strong>阈值处理</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9wz80"><img src="https://z3.ax1x.com/2021/04/27/g9wz80.md.png" alt="g9wz80.md.png"></a></p>
-<h3 id="Canny边缘检测算法"><a href="#Canny边缘检测算法" class="headerlink" title="Canny边缘检测算法"></a>Canny边缘检测算法</h3><p>边缘检测的一般标准包括：</p>
-<ol>
-<li>低错误率：既要少将真正的边缘丢失也要少将非边缘判为边缘。</li>
-<li>边缘点应被很好地定位。检测出的边缘应在真正的边界上。</li>
-<li>单一的边缘响应。得到的边界为单像素宽。</li>
-</ol>
-<ul>
-<li>为了满足这些要求，Canny使用了变分法。Canny检测器中的最优函数使用四个指数项的和来描述，它可以由高斯函数的一阶导数来近似。</li>
-<li>在目前常用的边缘检测方法中，Canny边缘检测算法是具有严格定义的，可以提供良好可靠检测的方法之一。由于它具有满足边缘检测的三个标准和实现过程简单的优势，成为边缘检测最流行的算法之一。</li>
-</ul>
-<h5 id="Canny边缘检测算法的步骤"><a href="#Canny边缘检测算法的步骤" class="headerlink" title="Canny边缘检测算法的步骤"></a>Canny边缘检测算法的步骤</h5><ol>
-<li>灰度化<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9DQNd"><img src="https://z3.ax1x.com/2021/04/27/g9DQNd.md.png" alt="g9DQNd.md.png"></a></li>
-<li>使用高斯滤波器平滑图像、滤除噪声<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9raM6"><img src="https://z3.ax1x.com/2021/04/27/g9raM6.md.png" alt="g9raM6.md.png"></a></li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9rrIH"><img src="https://z3.ax1x.com/2021/04/27/g9rrIH.md.png" alt="g9rrIH.md.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9rIoQ"><img src="https://z3.ax1x.com/2021/04/27/g9rIoQ.md.png" alt="g9rIoQ.md.png"></a><br>3. 计算图像中每个像素点的梯度强度和方向。注：在opencv中，选取3x3的Sobel算子。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9sQSI"><img src="https://z3.ax1x.com/2021/04/27/g9sQSI.md.png" alt="g9sQSI.md.png"></a><br>4. 非极大值抑制<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9sRh9"><img src="https://z3.ax1x.com/2021/04/27/g9sRh9.md.png" alt="g9sRh9.md.png"></a><br>5. 双阈值检测<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9yHK0"><img src="https://z3.ax1x.com/2021/04/27/g9yHK0.md.png" alt="g9yHK0.md.png"></a><br>6. 抑制孤立低阈值点<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g96kVO"><img src="https://z3.ax1x.com/2021/04/27/g96kVO.md.png" alt="g96kVO.md.png"></a></p>
-<p><strong>Canny算法小结</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9cNkD"><img src="https://z3.ax1x.com/2021/04/27/g9cNkD.md.png" alt="g9cNkD.md.png"></a></p>
-<h4 id="边缘连接与边界检测"><a href="#边缘连接与边界检测" class="headerlink" title="边缘连接与边界检测"></a>边缘连接与边界检测</h4><ul>
-<li>理想情况下，边缘检测应该仅产生位于边缘上的像素集合。实际上，由于噪声、不均匀照明引起的边缘间断，以及其他引入灰度值虚假的不连续的影响，这些像素并不能完全描述边缘特性。</li>
-<li>因此，一般是在边缘检测后紧跟连接算法，将边缘像素组成有意义的边缘或区域边界。</li>
-<li>三种基本的边缘连接方法；<ul>
-<li>第一种方法需要有关局部区域中的边缘点（如一个3x3邻域）的知识</li>
-<li>第二种方法要求区域边界上的点已知</li>
-<li>第三种方法是处理整个边缘图像的全局方法。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Hough变换"><a href="#Hough变换" class="headerlink" title="Hough变换"></a>Hough变换</h3><p><strong>基于Hough变换的全局处理</strong></p>
-<ul>
-<li>Hough变换是基于表决原理的参数估计方法</li>
-<li>在图像处理领域，是一种重要的形状检测技术</li>
-<li>基本思想：图像中每一点对参数组合进行表决，赢得多数票的参数组合为胜者。</li>
-</ul>
-<p><strong>直线Hough变换的（k，b）空间方法：</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9H3P1"><img src="https://z3.ax1x.com/2021/04/27/g9H3P1.md.png" alt="g9H3P1.md.png"></a></p>
-<h3 id="基于阈值的图像分割"><a href="#基于阈值的图像分割" class="headerlink" title="基于阈值的图像分割"></a>基于阈值的图像分割</h3><ul>
-<li>基于全局阈值</li>
-<li>Otsu方法的最佳全局阈值（大津算法）</li>
-<li>图像平滑改善全局阈值</li>
-<li>基本自适应阈值</li>
-<li>通过边界特性选择阈值</li>
-</ul>
-<h3 id="边界表示与描述–边界追踪"><a href="#边界表示与描述–边界追踪" class="headerlink" title="边界表示与描述–边界追踪"></a>边界表示与描述–边界追踪</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9HG26"><img src="https://z3.ax1x.com/2021/04/27/g9HG26.md.png" alt="g9HG26.md.png"></a></p>
-<h3 id="边界表示与描述–链码"><a href="#边界表示与描述–链码" class="headerlink" title="边界表示与描述–链码"></a>边界表示与描述–链码</h3><ul>
-<li>链码由于表示由顺序连接的具有指定长度和方向的直线段组成的边界线</li>
-<li>这种表示方法基于线段的4或8连接</li>
-<li>每一段的方向使用数字编号方法进行编码<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9bQOS"><img src="https://z3.ax1x.com/2021/04/27/g9bQOS.md.png" alt="g9bQOS.md.png"></a></li>
-</ul>
-<h4 id="循环差分链码：用相邻链码的差代替链码"><a href="#循环差分链码：用相邻链码的差代替链码" class="headerlink" title="循环差分链码：用相邻链码的差代替链码"></a>循环差分链码：用相邻链码的差代替链码</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9bXX8"><img src="https://z3.ax1x.com/2021/04/27/g9bXX8.md.png" alt="g9bXX8.md.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
