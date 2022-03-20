@@ -182,11 +182,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>论文地址:<a href="luhttps://arxiv.org/abs/1506.02640lu">You Only Look Once: Unified, Real-Time Object Detection</a></li>
-<li>代码地址:<a target="_blank" rel="noopener" href="https://github.com/pjreddie/darknet">darknet版</a><h2 id="1-算法概述"><a href="#1-算法概述" class="headerlink" title="1.算法概述"></a>1.算法概述</h2></li>
+        <p>本文开始，笔者会对计算机视觉中的目标检测模块进行详细的学习与讲解，因为为本人自身理解，如有不足或错误，批评指出。yolov1作为yolo系列的开山之作，也作为one-stage系列的先河，我们需要了解他的检测原理。很多人觉得yolo都已经出到v4了，没必要再去了解前面几代的，但事实上yolo系列都是在yolov1的基础上改进提升的，从头开始学习有助于我们更加了解yolo的原理。下图展示了目标检测初期的算法，笔者后续也会补上相应R-CNN的系列。本系列主要讲解yolo以及one-stage算法系列。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/3BE75DBB6A39FEA3DC5D4645B1ABC2EA.619ssj04f8w0.webp" alt="3BE75DBB6A39FEA3DC5D4645B1ABC2EA"></p>
+<ul>
+<li>论文地址:<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1506.02640">You Only Look Once: Unified, Real-Time Object Detection</a></li>
+<li>代码地址:<a target="_blank" rel="noopener" href="https://github.com/pjreddie/darknet">darknet版</a></li>
 </ul>
-<h2 id="2，算法原理"><a href="#2，算法原理" class="headerlink" title="2，算法原理"></a>2，算法原理</h2><h2 id="3-算法比较"><a href="#3-算法比较" class="headerlink" title="3.算法比较"></a>3.算法比较</h2><h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2>
+<h2 id="1-算法概述"><a href="#1-算法概述" class="headerlink" title="1.算法概述"></a>1.算法概述</h2><p>传统的two-stage算法，由于要经过两步检测，速度较慢，而yolo作为one-stage算法相比与之前的R-CNN系列有以下优点。</p>
+<blockquote>
+<p>First, YOLO is extremely fast. Since we frame detection as a regression problem we don’t need a complex pipeline.</p>
+</blockquote>
+<blockquote>
+<p>Second, YOLO reasons globally about the image when making predictions. Unlike sliding window and region proposal-based techniques, YOLO sees the entire image.</p>
+</blockquote>
+<blockquote>
+<p>Third, YOLO learns generalizable representations of objects. When trained on natural images and tested on art- work, YOLO outperforms top detection methods like DPM and R-CNN by a wide margin.</p>
+</blockquote>
+<ol>
+<li>总结的来讲，yolo速度极快，直接将目标检测做了一个回归任务。</li>
+<li>yolo利用图像全局的信息进行推理，可以看到整张图片。</li>
+<li>yolo学习可归纳的物体特征表达，因此在一些漫画照上也能有较好的识别效果。<h2 id="2-算法原理"><a href="#2-算法原理" class="headerlink" title="2.算法原理"></a>2.算法原理</h2><h4 id="1-设计理念"><a href="#1-设计理念" class="headerlink" title="1.设计理念"></a>1.设计理念</h4>整体来看，Yolo算法采用一个单独的CNN模型实现end-to-end的目标检测，整个系统如下图所示：首先将输入图片resize到448x448，然后送入CNN网络，最后处理网络预测结果得到检测的目标。相比R-CNN算法，其是一个统一的框架，其速度更快，而且Yolo的训练过程也是end-to-end的。</li>
+</ol>
+<p>首先将输入图片resize以下，通过一个卷积神经网络提取特征，最后将输出的框进行非极大值抑制，滤除重复的框，最后输出结果。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/CDA8D77A15CE66864E54000CDD1FA347.q1hpn53ydy8.webp" alt="CDA8D77A15CE66864E54000CDD1FA347"></p>
+<p>具体来说，Yolo的CNN网络将输入的图片分割成 <code>S*S</code> 网格，然后每个单元格负责去检测那些中心点落在该格子内的目标，如下图所示，可以看到狗这个目标的中心落在左下角一个单元格内，那么该单元格负责预测这个狗。每个单元格会预测<code>B</code>个边界框（bounding box）以及边界框的置信度（confidence score）。</p>
+<p>所谓置信度其实包含两个方面，一是这个边界框含有目标的可能性大小，二是这个边界框的准确度。前者记为<code>Pr(object)</code>，当该边界框是背景时（即不包含目标），此时其值为0 。而当该边界框包含目标时,其值为1 。边界框的准确度可以用预测框与实际框（ground truth）的IOU（intersection over union，交并比）来表征，记为$IOU_{pred}^{truth}$ 。因此置信度可以定义为$IOU_{pred}^{truth}*Pr(object)$ 。</p>
+<p>很多人可能将Yolo的置信度看成边界框是否含有目标的概率，但是其实它是两个因子的乘积，预测框的准确度也反映在里面。边界框的大小与位置可以用4个值来表征：<code>(x,y,w,h)</code>，其中<code>(x,y)</code> 是边界框的中心坐标，而w和h是边界框的宽与高。还有一点要注意，中心坐标的预测值<code>(x,y)</code>是相对于每个单元格左上角坐标点的偏移值，并且单位是相对于单元格大小的，单元格的坐标定义如下图所示。而边界框的w和h预测值是相对于整个图片的宽与高的比例，这样理论上4个元素的大小应该在0到1范围。这样，每个边界框的预测值实际上包含5个元素<code>(x,y,w,h,c)</code>，其中前4个表征边界框的大小与位置，而最后一个值是置信度。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/631D60B257344EB758511D13765783D8.7jpj1er7cmw0.webp" alt="631D60B257344EB758511D13765783D8"></p>
+<p>还有分类问题，对于每一个单元格其还要给出预测出C个类别概率值，其表征的是由该单元格负责预测的边界框其目标属于各个类别的概率。但是这些概率值其实是在各个边界框置信度下的条件概率，即<code>Pr(class|object)</code>。值得注意的是，不管一个单元格预测多少个边界框，其只预测一组类别概率值，这是Yolo算法的一个缺点，在后来的改进版本中，Yolo9000是把类别概率预测值与边界框是绑定在一起的。同时，我们可以计算出各个边界框类别置信度（class-specific confidence scores）:$Pr(class|object)*Pr(object)*IOU_{pred}^{truth}$ 。</p>
+<h4 id="2-网络设计"><a href="#2-网络设计" class="headerlink" title="2.网络设计"></a>2.网络设计</h4><h4 id="3-损失函数"><a href="#3-损失函数" class="headerlink" title="3.损失函数"></a>3.损失函数</h4><h2 id="3-算法比较"><a href="#3-算法比较" class="headerlink" title="3.算法比较"></a>3.算法比较</h2><h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><h2 id="5-参考文章"><a href="#5-参考文章" class="headerlink" title="5.参考文章"></a>5.参考文章</h2>
       
 
       
@@ -1262,10 +1285,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
@@ -1278,15 +1297,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">计算机视觉论文</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1299,10 +1326,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计算机视觉论文</a>
               </li>
             
             <div class="clearfix"></div>
