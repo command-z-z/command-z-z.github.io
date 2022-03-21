@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/4 | 🌟Eugene的个人博客主页</title>
+  <title>vim练级手册(一) | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="🌟Eugene的个人博客主页">
-<meta property="og:url" content="http://example.com/archives/2021/04/index.html">
+  <meta name="description" content="本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。 快捷键简记表   快捷键 作用    u 撤销   &lt;C-r&gt; 重做   ss 上下分屏   sv 左右分屏   sh 向左切屏   sj 向下切屏   sk 向上切屏   sl 向右切屏   option+上下左右 改变切屏之后的屏幕大小    插入模式下左移光标    插入模式下下移光标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim练级手册(一)">
+<meta property="og:url" content="http://example.com/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。 快捷键简记表   快捷键 作用    u 撤销   &lt;C-r&gt; 重做   ss 上下分屏   sv 左右分屏   sh 向左切屏   sj 向下切屏   sk 向上切屏   sl 向右切屏   option+上下左右 改变切屏之后的屏幕大小    插入模式下左移光标    插入模式下下移光标">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-03-21T07:45:05.000Z">
+<meta property="article:modified_time" content="2022-03-21T15:08:55.014Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
@@ -158,262 +163,287 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vim练级手册-一-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vim练级手册(一)
+    </h1>
+  
+
+        
+        
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+<a href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/" class="archive-article-date">
+	
+  	<time datetime="2022-03-21T07:45:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-21</time>
+</a>
+        
+            </header>      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u</td>
+<td>撤销</td>
+</tr>
+<tr>
+<td>&lt;C-r&gt;</td>
+<td>重做</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>上下分屏</td>
+</tr>
+<tr>
+<td>sv</td>
+<td>左右分屏</td>
+</tr>
+<tr>
+<td>sh</td>
+<td>向左切屏</td>
+</tr>
+<tr>
+<td>sj</td>
+<td>向下切屏</td>
+</tr>
+<tr>
+<td>sk</td>
+<td>向上切屏</td>
+</tr>
+<tr>
+<td>sl</td>
+<td>向右切屏</td>
+</tr>
+<tr>
+<td>option+上下左右</td>
+<td>改变切屏之后的屏幕大小</td>
+</tr>
+<tr>
+<td><C-h></td>
+<td>插入模式下左移光标</td>
+</tr>
+<tr>
+<td><C-j></td>
+<td>插入模式下下移光标</td>
+</tr>
+<tr>
+<td><C-k></td>
+<td>插入模式下上移光标</td>
+</tr>
+<tr>
+<td><C-l></td>
+<td>插入模式下左移光标</td>
+</tr>
+<tr>
+<td>L</td>
+<td>行尾</td>
+</tr>
+<tr>
+<td>H</td>
+<td>行首</td>
+</tr>
+<tr>
+<td>S</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td><C-a></td>
+<td>全选</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;文件tree</span><br><span class="line">--.config</span><br><span class="line">----nivm</span><br><span class="line">------init.vim</span><br><span class="line">------vimrc.vim</span><br><span class="line">------maps.vim</span><br><span class="line">------lua</span><br><span class="line">--------plugins.lua</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="1-配置init-vim"><a href="#1-配置init-vim" class="headerlink" title="1.配置init.vim"></a>1.配置init.vim</h2><p>inti.vim文件vim配置文件的一个初始化文件，里面加载了其他配置的文件，便于管理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.config/nvim</span><br><span class="line">nvim ~/.config/nvim/init.vim</span><br></pre></td></tr></table></figure>
+<p>在init.vim中输入以下配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot; 配置文件导入 &quot;&#123;&#123;&#123;</span><br><span class="line">&quot; ---------------------------------------------------------------------</span><br><span class="line">&quot; 基础使用习惯配置</span><br><span class="line">runtime .&#x2F;vimrc.vim</span><br><span class="line">&quot; 插件管理</span><br><span class="line">&quot;.&#x2F;lua&#x2F;plugins.lua</span><br><span class="line">lua require(&#39;plugins&#39;)</span><br><span class="line">&quot; 按键映射</span><br><span class="line">runtime .&#x2F;maps.vim</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-配置vimrc-vim"><a href="#2-配置vimrc-vim" class="headerlink" title="2.配置vimrc.vim"></a>2.配置vimrc.vim</h2><p>这里是一些vim的基础配置，便于更加方便的使用vim</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&quot;----vim 个人使用习惯配置start------</span><br><span class="line">set encoding&#x3D;UTF-8</span><br><span class="line">&quot; leader设置成空格</span><br><span class="line">let mapleader&#x3D;&quot; &quot;</span><br><span class="line">&quot; 使用鼠标</span><br><span class="line">set mouse&#x3D;c</span><br><span class="line">&quot; 显示行号</span><br><span class="line">set nu</span><br><span class="line">&quot; 相对行号</span><br><span class="line">set relativenumber</span><br><span class="line">&quot; tab&#x3D;4个空格</span><br><span class="line">set tabstop&#x3D;4</span><br><span class="line">set shiftwidth&#x3D;4</span><br><span class="line">&quot; 改变 vim中光标的形状</span><br><span class="line">let g:db_ui_use_nerd_fonts&#x3D;1</span><br><span class="line">let &amp;t_SI.&#x3D;&quot;\e[5 q&quot; &quot;SI &#x3D; INSERT mode</span><br><span class="line">let &amp;t_SR.&#x3D;&quot;\e[4 q&quot; &quot;SR &#x3D; REPLACE mode</span><br><span class="line">let &amp;t_EI.&#x3D;&quot;\e[1 q&quot; &quot;EI &#x3D; NORMAL mode (ELSE)</span><br><span class="line">&quot; 高度光标所在行</span><br><span class="line">&quot;set cursorline</span><br><span class="line">&quot; 设置不换行</span><br><span class="line">&quot;set nowrap</span><br><span class="line">set wrap</span><br><span class="line">&quot; 显示按下的按键</span><br><span class="line">set showcmd</span><br><span class="line">&quot; 按tab显示菜单</span><br><span class="line">set wildmenu</span><br><span class="line">&quot; 不需要备份文件</span><br><span class="line">set nobackup</span><br><span class="line">&quot;----vim 个人使用习惯配置end------</span><br><span class="line">&quot;ssh 远程粘贴板</span><br><span class="line">if executable(&#39;clipboard-provider&#39;)</span><br><span class="line">    let g:clipboard &#x3D; &#123;</span><br><span class="line">          \ &#39;name&#39;: &#39;myClipboard&#39;,</span><br><span class="line">          \     &#39;copy&#39;: &#123;</span><br><span class="line">          \         &#39;+&#39;: &#39;clipboard-provider copy&#39;,</span><br><span class="line">          \         &#39;*&#39;: &#39;env COPY_PROVIDERS&#x3D;tmux clipboard-provider copy&#39;,</span><br><span class="line">          \     &#125;,</span><br><span class="line">          \     &#39;paste&#39;: &#123;</span><br><span class="line">          \         &#39;+&#39;: &#39;clipboard-provider paste&#39;,</span><br><span class="line">          \         &#39;*&#39;: &#39;env COPY_PROVIDERS&#x3D;tmux clipboard-provider paste&#39;,</span><br><span class="line">          \     &#125;,</span><br><span class="line">          \ &#125;</span><br><span class="line">endif</span><br><span class="line">&quot;随机选一个颜色风格</span><br><span class="line">function RandomColorScheme()</span><br><span class="line">  let mycolors &#x3D; split(globpath(&amp;rtp,&quot;**&#x2F;colors&#x2F;*.vim&quot;),&quot;\n&quot;) </span><br><span class="line">  exe &#39;so &#39; . mycolors[localtime() % len(mycolors)]</span><br><span class="line">  unlet mycolors</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">&quot;call RandomColorScheme()</span><br><span class="line"></span><br><span class="line">:command NewColor call RandomColorScheme()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 文件类型设置 &quot;&#123;&#123;&#123;</span><br><span class="line">&quot; ---------------------------------------------------------------------</span><br><span class="line">&quot; JSX 语法高亮</span><br><span class="line">&quot; set filetypes as typescriptreact</span><br><span class="line">autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype&#x3D;typescriptreact</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-配置maps-vim"><a href="#3-配置maps-vim" class="headerlink" title="3.配置maps.vim"></a>3.配置maps.vim</h2><p>这里是一些按键的映射，一些快捷键的操作，其余可以自己添加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; window</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Split window</span><br><span class="line">nmap ss :split&lt;Return&gt;&lt;C-w&gt;w</span><br><span class="line">nmap sv :vsplit&lt;Return&gt;&lt;C-w&gt;w</span><br><span class="line">&quot; Move window</span><br><span class="line">&quot;nmap &lt;Space&gt; &lt;C-w&gt;w</span><br><span class="line">&quot;map s&lt;left&gt; &lt;C-w&gt;h</span><br><span class="line">&quot;map s&lt;up&gt; &lt;C-w&gt;k</span><br><span class="line">&quot;map s&lt;down&gt; &lt;C-w&gt;j</span><br><span class="line">&quot;map s&lt;right&gt; &lt;C-w&gt;l</span><br><span class="line">map sh &lt;C-w&gt;h</span><br><span class="line">map sk &lt;C-w&gt;k</span><br><span class="line">map sj &lt;C-w&gt;j</span><br><span class="line">map sl &lt;C-w&gt;l</span><br><span class="line"></span><br><span class="line">&quot; Resize window</span><br><span class="line">&quot; 在mac&#x2F;linux中使用Alt键，在webssh</span><br><span class="line">&quot; 中alt没用，就使用Ctrl,WEBSSH主要的WINDOWS中使用</span><br><span class="line">nmap &lt;M-left&gt; &lt;C-w&gt;&lt;</span><br><span class="line">nmap &lt;C-left&gt; &lt;C-w&gt;&lt;</span><br><span class="line">nmap s&lt;left&gt; &lt;C-w&gt;&lt;</span><br><span class="line"></span><br><span class="line">nmap &lt;M-right&gt; &lt;C-w&gt;&gt;</span><br><span class="line">nmap &lt;C-right&gt; &lt;C-w&gt;&gt;</span><br><span class="line">nmap s&lt;right&gt; &lt;C-w&gt;&gt;</span><br><span class="line"></span><br><span class="line">nmap &lt;M-up&gt; &lt;C-w&gt;+</span><br><span class="line">nmap &lt;C-up&gt; &lt;C-w&gt;+</span><br><span class="line">nmap s&lt;up&gt; &lt;C-w&gt;+</span><br><span class="line"></span><br><span class="line">nmap &lt;M-down&gt; &lt;C-w&gt;-</span><br><span class="line">nmap &lt;C-down&gt; &lt;C-w&gt;-</span><br><span class="line">nmap s&lt;down&gt; &lt;C-w&gt;-</span><br><span class="line"></span><br><span class="line">&quot; 插入模式移动光标</span><br><span class="line">inoremap &lt;C-h&gt; &lt;Left&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-l&gt; &lt;Right&gt;</span><br><span class="line">inoremap &lt;C-d&gt; &lt;Delete&gt;</span><br><span class="line">&quot; hh在我用的单词里出现的频率极低，其实感觉home用的没有end多，统一风格都用大写的吧</span><br><span class="line">&quot;inoremap HH &lt;Home&gt;</span><br><span class="line">&quot; 单词中包含ll的太多了，所以用大写LL</span><br><span class="line">&quot;inoremap LL &lt;End&gt;</span><br><span class="line">&quot; jk &lt;Esc&gt;</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br><span class="line">&quot; 插入模式鼠标滚轮抵消,不然会出现滚动鼠标录入了一堆5j5k</span><br><span class="line">inoremap 5k &lt;Esc&gt;</span><br><span class="line">inoremap 5j &lt;Esc&gt;</span><br><span class="line">inoremap 9&lt;CR&gt; &lt;Esc&gt;a</span><br><span class="line">&quot; 快速跳转行首与行尾  </span><br><span class="line">nnoremap L $</span><br><span class="line">nnoremap H ^</span><br><span class="line">&quot; 向下5行</span><br><span class="line">noremap &lt;C-j&gt; 5j</span><br><span class="line">&quot; 向上5行</span><br><span class="line">noremap &lt;C-k&gt; 5k</span><br><span class="line">&quot; 保 存</span><br><span class="line">noremap &lt;C-s&gt; :w&lt;CR&gt;</span><br><span class="line">noremap s :w&lt;CR&gt;</span><br><span class="line">&quot; Coc智能处理，使用IDEA Alt+Enter 同样按键</span><br><span class="line">&quot;noremap &lt;M-Enter&gt; :CocAction&lt;CR&gt;</span><br><span class="line">inoremap &lt;C-s&gt; &lt;ESC&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; 代码格式化</span><br><span class="line">noremap &lt;leader&gt;f :Format&lt;CR&gt; </span><br><span class="line">noremap &lt;leader&gt;r :luafile ~&#x2F;.wp&#x2F;lua&#x2F;run.lua&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; 强制退出</span><br><span class="line">map Q :q&lt;CR&gt;</span><br><span class="line">&quot;map qq :q&lt;CR&gt;</span><br><span class="line">&quot; 重新加载设置</span><br><span class="line">map R :source $MYVIMRC&lt;CR&gt;</span><br><span class="line">&quot;自动关闭标签</span><br><span class="line">inoremap &lt;buffer&gt; &lt;C-v&gt; &lt;esc&gt;yiwi&lt;lt&gt;&lt;esc&gt;ea&gt;&lt;&#x2F;&gt;&lt;esc&gt;hpF&gt;i</span><br><span class="line">set iskeyword+&#x3D;&lt;,&gt;</span><br><span class="line">iab &lt;h1&gt; &lt;lt&gt;&#x2F;h1&gt; &lt;lt&gt;&#x2F;h1&gt;&lt;esc&gt;5ha</span><br><span class="line"></span><br><span class="line">&quot; 全选</span><br><span class="line">nmap &lt;C-a&gt; gg&lt;S-v&gt;G</span><br><span class="line">&quot; 加&#x2F;减数字1</span><br><span class="line">nnoremap + &lt;C-a&gt;</span><br><span class="line">nnoremap - &lt;C-x&gt;</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Buffers</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Open current directory</span><br><span class="line">&quot; 插入模式移动光标</span><br><span class="line">inoremap &lt;C-h&gt; &lt;Left&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-l&gt; &lt;Right&gt;</span><br><span class="line">inoremap &lt;C-d&gt; &lt;Delete&gt;</span><br><span class="line">&quot; hh在我用的单词里出现的频率极低，其实感觉home用的没有end多，统一风格都用大写的吧</span><br><span class="line">&quot;inoremap HH &lt;Home&gt;</span><br><span class="line">&quot; 单词中包含ll的太多了，所以用大写LL</span><br><span class="line">&quot;inoremap LL &lt;End&gt;</span><br><span class="line">&quot; jk &lt;Esc&gt;</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br><span class="line">&quot; 插入模式鼠标滚轮抵消,不然会出现滚动鼠标录入了一堆5j5k</span><br><span class="line">inoremap 5k &lt;Esc&gt;</span><br><span class="line">inoremap 5j &lt;Esc&gt;</span><br><span class="line">inoremap 9&lt;CR&gt; &lt;Esc&gt;a</span><br><span class="line">&quot; 快速跳转行首与行尾  </span><br><span class="line">nnoremap L $</span><br><span class="line">nnoremap H ^</span><br><span class="line">&quot; 向下5行</span><br><span class="line">noremap &lt;C-j&gt; 5j</span><br><span class="line">&quot; 向上5行</span><br><span class="line">noremap &lt;C-k&gt; 5k</span><br><span class="line">&quot; 保存</span><br><span class="line">noremap &lt;C-s&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; Coc智能处理，使用IDEA Alt+Enter 同样按键</span><br><span class="line">noremap &lt;M-Enter&gt; :CocAction&lt;CR&gt;</span><br><span class="line">inoremap &lt;C-s&gt; &lt;ESC&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; 代码格式化</span><br><span class="line">&quot;noremap &lt;leader&gt;f :Format&lt;CR&gt; </span><br><span class="line"></span><br><span class="line">&quot; 强制退出</span><br><span class="line">map Q :q&lt;CR&gt;</span><br><span class="line">&quot; 重新加载设置</span><br><span class="line">map R :source $MYVIMRC&lt;CR&gt;</span><br><span class="line">&quot;自动关闭标签</span><br><span class="line">inoremap &lt;buffer&gt; &lt;C-v&gt; &lt;esc&gt;yiwi&lt;lt&gt;&lt;esc&gt;ea&gt;&lt;&#x2F;&gt;&lt;esc&gt;hpF&gt;i</span><br><span class="line">set iskeyword+&#x3D;&lt;,&gt;</span><br><span class="line">iab &lt;h1&gt; &lt;lt&gt;h1&gt; &lt;lt&gt;&#x2F;h1&gt;&lt;esc&gt;5ha</span><br><span class="line"></span><br><span class="line">&quot; 全选</span><br><span class="line">nmap &lt;C-a&gt; gg&lt;S-v&gt;G</span><br><span class="line">&quot; 加&#x2F;减数字1</span><br><span class="line">nnoremap + &lt;C-a&gt;</span><br><span class="line">nnoremap - &lt;C-x&gt;</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Buffers</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Open current directory</span><br><span class="line">&quot;nmap te :tabedit</span><br><span class="line">&quot;nmap &lt;S-Tab&gt; :tabprev&lt;Return&gt;</span><br><span class="line">nmap &lt;S-Tab&gt; :bprev&lt;Return&gt;</span><br><span class="line">&quot;nmap &lt;Tab&gt; :tabnext&lt;Return&gt;</span><br><span class="line">nmap &lt;Tab&gt; :bnext&lt;Return&gt;</span><br><span class="line">&quot; 窗口管理器</span><br><span class="line">&quot; invoke with &#39;-&#39;</span><br><span class="line">nmap  -  &lt;Plug&gt;(choosewin)</span><br><span class="line">&quot;nmap  sw  &lt;Plug&gt;(choosewin)</span><br><span class="line">&quot;nmap  &lt;leader&gt;w  &lt;Plug&gt;(choosewin)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-配置lua-pugins-lua"><a href="#4-配置lua-pugins-lua" class="headerlink" title="4.配置lua/pugins.lua"></a>4.配置lua/pugins.lua</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">---@diagnostic disable: undefined-global</span><br><span class="line">--在没有安装packer的电脑上，自动安装packer插件</span><br><span class="line">local fn &#x3D; vim.fn</span><br><span class="line">local install_path &#x3D; fn.stdpath(&#39;data&#39;)..&#39;&#x2F;site&#x2F;pack&#x2F;packer&#x2F;start&#x2F;packer.nvim&#39;</span><br><span class="line">if fn.empty(fn.glob(install_path)) &gt; 0 then</span><br><span class="line">	 --fn.system(&#123;&#39;git&#39;, &#39;clone&#39;, &#39;--depth&#39;, &#39;1&#39;, &#39;https:&#x2F;&#x2F;github.com&#x2F;wbthomason&#x2F;packer.nvim&#39;, install_path&#125;)	--默认地址</span><br><span class="line">	fn.system(&#123;&#39;git&#39;, &#39;clone&#39;, &#39;--depth&#39;, &#39;1&#39;, &#39;https:&#x2F;&#x2F;codechina.csdn.net&#x2F;mirrors&#x2F;wbthomason&#x2F;packer.nvim.git&#39;, install_path&#125;)	--csdn加速镜像</span><br><span class="line">	vim.cmd &#39;packadd packer.nvim&#39;</span><br><span class="line">end</span><br><span class="line">-- Only required if you have packer configured as &#96;opt&#96;</span><br><span class="line">vim.cmd [[packadd packer.nvim]]</span><br><span class="line">return require(&#39;packer&#39;).startup(&#123;</span><br><span class="line">	function()</span><br><span class="line">		use &#39;wbthomason&#x2F;packer.nvim&#39;-- Packer can manage itself</span><br><span class="line">	end,</span><br><span class="line">	config &#x3D; &#123;</span><br><span class="line">		max_jobs &#x3D; 16,</span><br><span class="line">		git &#x3D; &#123;</span><br><span class="line">			default_url_format &#x3D; &#39;https:&#x2F;&#x2F;github.91chi.fun&#x2F;https:&#x2F;&#x2F;github.com&#x2F;%s&#39;</span><br><span class="line">		&#125;,</span><br><span class="line">		display &#x3D; &#123;</span><br><span class="line">			open_fn &#x3D; function()</span><br><span class="line">				return require(&#39;packer.util&#39;).float(&#123; border &#x3D; &#39;single&#39; &#125;)</span><br><span class="line">			end</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-28T15:36:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/">数字图像处理-学习笔记（5）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-27T08:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/16/Yolov1-%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Yolov1 详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">数字图像处理-学习笔记（4）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEinit-vim"><span class="toc-number"></span> <span class="toc-text">1.配置init.vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEvimrc-vim"><span class="toc-number"></span> <span class="toc-text">2.配置vimrc.vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AEmaps-vim"><span class="toc-number"></span> <span class="toc-text">3.配置maps.vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AElua-pugins-lua"><span class="toc-number"></span> <span class="toc-text">4.配置lua&#x2F;pugins.lua</span></a>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-23T00:32:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">数字图像处理-学习笔记（3）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-20T08:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">数字图像处理-学习笔记（2）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="archive-article-date">
-	
-  	<time datetime="2021-04-13T07:24:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理-学习笔记（1）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/04/06/%E6%97%A7%E7%A4%BE%E4%BC%9A%E4%B8%8E%E6%97%A0%E5%A5%88/" class="archive-article-date">
-	
-  	<time datetime="2021-04-06T15:14:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/04/06/%E6%97%A7%E7%A4%BE%E4%BC%9A%E4%B8%8E%E6%97%A0%E5%A5%88/">暴雪将至（旧社会与无奈）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -448,8 +478,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
