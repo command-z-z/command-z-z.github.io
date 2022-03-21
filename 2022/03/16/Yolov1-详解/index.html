@@ -18,8 +18,13 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/3BE75DBB6A39FEA3DC5D4645B1ABC2EA.619ssj04f8w0.webp">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/CDA8D77A15CE66864E54000CDD1FA347.q1hpn53ydy8.webp">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/631D60B257344EB758511D13765783D8.7jpj1er7cmw0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.7bdibq1bar40.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-14.iiprxlc19y8.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.5jz7mm1ryr80.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.3crozup5yie0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.73oq5ubdy4w0.webp">
 <meta property="article:published_time" content="2022-03-16T14:09:49.000Z">
-<meta property="article:modified_time" content="2022-03-20T03:55:44.004Z">
+<meta property="article:modified_time" content="2022-03-21T07:13:19.913Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="计算机视觉论文">
 <meta name="twitter:card" content="summary">
@@ -221,7 +226,33 @@
 <p>很多人可能将Yolo的置信度看成边界框是否含有目标的概率，但是其实它是两个因子的乘积，预测框的准确度也反映在里面。边界框的大小与位置可以用4个值来表征：<code>(x,y,w,h)</code>，其中<code>(x,y)</code> 是边界框的中心坐标，而w和h是边界框的宽与高。还有一点要注意，中心坐标的预测值<code>(x,y)</code>是相对于每个单元格左上角坐标点的偏移值，并且单位是相对于单元格大小的，单元格的坐标定义如下图所示。而边界框的w和h预测值是相对于整个图片的宽与高的比例，这样理论上4个元素的大小应该在0到1范围。这样，每个边界框的预测值实际上包含5个元素<code>(x,y,w,h,c)</code>，其中前4个表征边界框的大小与位置，而最后一个值是置信度。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/631D60B257344EB758511D13765783D8.7jpj1er7cmw0.webp" alt="631D60B257344EB758511D13765783D8"></p>
 <p>还有分类问题，对于每一个单元格其还要给出预测出C个类别概率值，其表征的是由该单元格负责预测的边界框其目标属于各个类别的概率。但是这些概率值其实是在各个边界框置信度下的条件概率，即<code>Pr(class|object)</code>。值得注意的是，不管一个单元格预测多少个边界框，其只预测一组类别概率值，这是Yolo算法的一个缺点，在后来的改进版本中，Yolo9000是把类别概率预测值与边界框是绑定在一起的。同时，我们可以计算出各个边界框类别置信度（class-specific confidence scores）:$Pr(class|object)*Pr(object)*IOU_{pred}^{truth}$ 。</p>
-<h4 id="2-网络设计"><a href="#2-网络设计" class="headerlink" title="2.网络设计"></a>2.网络设计</h4><h4 id="3-损失函数"><a href="#3-损失函数" class="headerlink" title="3.损失函数"></a>3.损失函数</h4><h2 id="3-算法比较"><a href="#3-算法比较" class="headerlink" title="3.算法比较"></a>3.算法比较</h2><h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><h2 id="5-参考文章"><a href="#5-参考文章" class="headerlink" title="5.参考文章"></a>5.参考文章</h2>
+<h4 id="2-网络设计"><a href="#2-网络设计" class="headerlink" title="2.网络设计"></a>2.网络设计</h4><p>对于一篇论文重要的之一是看他的网络架构，yolov1中的网络为后续v2，v3的网络奠定了基础，这里我直接贴上论文中的网络架构。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.7bdibq1bar40.webp" alt="截屏2022-03-21-11"></p>
+<p>输入图像大小为 <code>448*x448</code>，经过若干个卷积层与池化层，变为<code>7*7*1024</code>张量（图一中倒数第三个立方体），最后经过两层全连接层，输出张量维度为<code>7*7*30</code>，这就是Yolo v1的整个神经网络结构，和一般的卷积物体分类网络没有太多区别，最大的不同就是：分类网络最后的全连接层，一般连接于一个一维向量，向量的不同位代表不同类别，而这里的输出向量是一个三维的张量<code>（7*7*30）</code>。上图中Yolo的backbone网络结构，受启发于GoogLeNet，也是v2、v3中Darknet的先锋。本质上来说没有什么特别，没有使用BN层，用了一层Dropout。除了最后一层的输出使用了线性激活函数，其他层全部使用Leaky Relu激活函数。网络结构没有特别的东西，不再赘述。</p>
+<p>这里讲解下输出层大小的含义，<code>7*7</code>表示将最后的输出图片等分为49个小格子，由于每个格子会预测B个框，论文中B取2，每个bounfbox将预测四个值以及一个是否为物体的置信度，最后20维输出指的是预测20个类别，每个类别对应的概率，因此这深度值的30即为<br> <code>(4+1)*2+20</code>,具体图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-14.iiprxlc19y8.webp" alt="截屏2022-03-21-14"></p>
+<h4 id="3-损失函数"><a href="#3-损失函数" class="headerlink" title="3.损失函数"></a>3.损失函数</h4><p>论文中第二重要的就是看他的网络损失函数的设计，在yolov1论文中也给出了详细的关于损失函数的介绍，下面我直接截取了论文中的损失函数。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.5jz7mm1ryr80.webp" alt="截屏2022-03-21-11"></p>
+<p>看到这里读者或许会有疑问，Yolo里的每个格点，是怎么知道该预测哪个物体的？这就是神经网络算法的能力。首先拿到一批标注好的图片数据集，按照规则打好标签，之后让神经网络去拟合训练数据集。训练数据集中的标签是通过人工标注获得，当神经网络对数据集拟合的足够好时，那么就相当于神经网络具备了一定的和人一样的识别能力。</p>
+<p>神经网络结构确定之后，训练效果好坏，由Loss函数和优化器决定。Yolo v1使用普通的梯度下降法作为优化器。这里重点解读一下Yolo v1使用的Loss函数：</p>
+<p>论文中Loss函数，密密麻麻的公式初看可能比较难懂。其实论文中给出了比较详细的解释。所有的损失都是使用平方和误差公式，暂时先不看公式中的landa，输出的预测数值以及所造成的损失有:</p>
+<ul>
+<li><p>预测框的中心点(x,y) 。造成的损失是图五中的第一行。其中$1_{ij}^{obj}$为控制函数，在标签中包含物体的那些格点处，该值为 1 ；若格点不含有物体，该值为 0。也就是只对那些有真实物体所属的格点进行损失计算，若该格点不包含物体，那么预测数值不对损失函数造成影响。(x,y) 数值与标签用简单的平方和误差。</p>
+</li>
+<li><p>预测框的宽高(w,h) 。造成的损失是图五的第二行.$1_{ij}^{obj}$的含义一样，也是使得只有真实物体所属的格点才会造成损失。这里对(w,h)在损失函数中的处理分别取了根号，原因在于，如果不取根号，损失函数往往更倾向于调整尺寸比较大的预测框。例如，20个像素点的偏差，对于<code>800*600</code>的预测框几乎没有影响，此时的IOU数值还是很大，但是对于<code>30*40</code>的预测框影响就很大。取根号是为了尽可能的消除大尺寸框与小尺寸框之间的差异。</p>
+</li>
+<li><p>第三行与第四行，都是预测框的置信度C。当该格点不含有物体时，该置信度的标签为0；若含有物体时，该置信度的标签为预测框与真实物体框的IOU数值（IOU计算公式为：两个框交集的面积除以并集的面积）。</p>
+</li>
+<li><p>第五行为物体类别概率P，对应的类别位置，该标签数值为1，其余位置为0，与分类网络相同。</p>
+</li>
+</ul>
+<p>此时再来看$\lambda_{coord}$ 与 $\lambda_{noobj}$，Yolo面临的物体检测问题，是一个典型的类别数目不均衡的问题。其中49个格点，含有物体的格点往往只有3、4个，其余全是不含有物体的格点。此时如果不采取点措施，那么物体检测的mAP不会太高，因为模型更倾向于不含有物体的格点。$\lambda_{coord}$与 $\lambda_{noobj}$的作用，就是让含有物体的格点，在损失函数中的权重更大，让模型更加“重视”含有物体的格点所造成的损失。在论文中， $\lambda_{coord}$与$\lambda_{noobj}$的取值分别为5与0.5。</p>
+<h2 id="3-算法比较"><a href="#3-算法比较" class="headerlink" title="3.算法比较"></a>3.算法比较</h2><p>相比于其他的实时检测系统比如DPM，yolo有更高的准确率，在速度上也有优势。对于state of the art模型faster-rcnn，尽管在精度上低四五个点，但是在速度上大幅度提升，具体对比如下：<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.3crozup5yie0.webp" alt="截屏2022-03-21-15"></p>
+<p>与fast-rcnn进行比较发现，yolo在背景识别上的错误率小于fast-rcnn。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.73oq5ubdy4w0.webp" alt="截屏2022-03-21-15"></p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>Yolo v1整体思路简单清晰，但是透彻的理解还是需要花点功夫。从上次自以为全部看懂了Yolo v1，到写完这篇文章，这期间又明白了不少细节。v1中埋了不少伏笔，都成为了v2和v3的突破口。虽然版本演进，Yolo算法在不断完善，但是v1版本才是用回归做物体检测的开山之作。</p>
+<p>yolov1在性能上还有欠缺因此在后续yolo上有所改进，后续会写yolov2的讲解。</p>
+<h2 id="5-参考文章"><a href="#5-参考文章" class="headerlink" title="5.参考文章"></a>5.参考文章</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32525231">1.目标检测|YOLO原理与实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70387154">2.【论文解读】Yolo三部曲解读——Yolov1</a></p>
+
       
 
       
@@ -496,10 +527,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -508,7 +535,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,11 +543,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,11 +551,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Swift</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,11 +567,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
