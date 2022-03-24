@@ -160,6 +160,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-在Mac上配置Xcode与OpenCV开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/11/%E5%9C%A8Mac%E4%B8%8A%E9%85%8D%E7%BD%AEXcode%E4%B8%8EOpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">在Mac上配置Xcode与OpenCV开发环境</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/05/11/%E5%9C%A8Mac%E4%B8%8A%E9%85%8D%E7%BD%AEXcode%E4%B8%8EOpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="archive-article-date">
+	
+  	<time datetime="2021-05-11T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-11</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于笔者使用的是Mac，因此就Mac系统的OpenCV环境进行配置，使用的编辑器是Xcode，网上的教程老旧，且资料不是很完善，因此笔者在此记录下环境配置过程</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-安装Xcode"><a href="#1-安装Xcode" class="headerlink" title="1.安装Xcode"></a>1.安装Xcode</h4><p>在App Store中安装Xcode（具体不再赘述），目前版本为12.5，安装大小为11.7G，安装时间较长，具体取决于互联网速度与设备运行速度。</p>
+<h4 id="2-安装Homebrew"><a href="#2-安装Homebrew" class="headerlink" title="2.安装Homebrew"></a>2.安装Homebrew</h4><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装<a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>，可以复制以下代码，在终端中执行安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-安装OpenCV"><a href="#3-安装OpenCV" class="headerlink" title="3.安装OpenCV"></a>3.安装OpenCV</h4><p>完成了Homebrew的安装，只需要通过<code>brew</code>命令即可安装openCV,此过程要花费较多的时间，安装各种依赖库，仅需等待即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install opencv</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-安装pkg-config"><a href="#4-安装pkg-config" class="headerlink" title="4.安装pkg-config"></a>4.安装pkg-config</h4><p><code>pkg-config</code>是在编译应用程序和库时使用的辅助工具，可以帮助我们找到找到正确的OpenCV 链接器符号 (Linker Flags) ，在后续的步骤中会用到。<br>安装<code>pkg-config</code>,也只需要在终端输入以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install pkg-config</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-使用pkg-config"><a href="#5-使用pkg-config" class="headerlink" title="5.使用pkg-config"></a>5.使用pkg-config</h4><p>查看您的<code>opencv.pc</code>文件所在位置，一般<code>opencv.pc</code>文件所在位置为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;&lt;版本号&gt;&#x2F;lib&#x2F;pkgconfig&#x2F;opencv.pc</span><br></pre></td></tr></table></figure>
+<p>如笔者的版本为<code>4.5.2</code>，<code>opencv.pc</code>现已改为<code>opencv4.pc</code>(不同电脑可能有所不同，读者可以<code>cd</code>到相应文件目录查看具体信息)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib&#x2F;pkgconfig&#x2F;opencv4.pc</span><br></pre></td></tr></table></figure>
+<p>使用下面的命令查看<code>OpenCV</code>的链接器符号 (Linker Flags) ，笔者的代码为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg-config --cflags --libs &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib&#x2F;pkgconfig&#x2F;opencv4.pc</span><br></pre></td></tr></table></figure>
+<p>你会得到类似于如下的输出结果，我们需要参照输出结果在 Xcode 中进行配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-I&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;include&#x2F;opencv4 -L&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib -lopencv_gapi -lopencv_stitching -lopencv_alphamat -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_mcc -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_sfm -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_highgui -lopencv_datasets -lopencv_text -lopencv_plot -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_wechat_qrcode -lopencv_xfeatures2d -lopencv_shape -lopencv_ml -lopencv_ximgproc -lopencv_video -lopencv_dnn -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gU4UXj"><img src="https://z3.ax1x.com/2021/05/11/gU4UXj.md.png" alt="gU4UXj.md.png"></a></p>
+<h2 id="配置Xcode"><a href="#配置Xcode" class="headerlink" title="配置Xcode"></a>配置Xcode</h2><h4 id="6-创建Xcode项目"><a href="#6-创建Xcode项目" class="headerlink" title="6.创建Xcode项目"></a>6.创建Xcode项目</h4><p>在正式运行 OpenCV C++代码之前，首先需要在 Xcode 中创建一个空的C++项目，创建Command Line Tool,具体创建过程不在这里叙述。</p>
+<p>需要注意的是项目的 Language 应选择为 C++。</p>
+<h4 id="7-设置Header-Search-Paths"><a href="#7-设置Header-Search-Paths" class="headerlink" title="7.设置Header Search Paths"></a>7.设置Header Search Paths</h4><p>在 Xcode 中设置 <code>Header Search Paths</code>，先单击 Xco​​de 项目，然后点击 <code>Build Settings</code>，然后搜索<code>Header Search Paths</code>。将 <code>Header Search Paths</code> 路径设置为刚才得到的输出结果“-I”之后的路径，如我需要对如下路径进行添加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;include&#x2F;opencv4</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gUqwk9"><img src="https://z3.ax1x.com/2021/05/11/gUqwk9.md.png" alt="gUqwk9.md.png"></a></p>
+<h4 id="8-设置-Library-Search-Paths"><a href="#8-设置-Library-Search-Paths" class="headerlink" title="8.设置 Library Search Paths"></a>8.设置 Library Search Paths</h4><p>类似地，在 <code>Build Settings</code> 中搜索<code>Library Search Paths</code>，将 <code>Library Search Paths</code>路径设置为刚才得到的输出结果“-L”之后的路径，如我需要对如下路径进行添加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-测试运行"><a href="#9-测试运行" class="headerlink" title="9.测试运行"></a>9.测试运行</h4><p>配置到这一步 Xcode 相关内容已经结束。可以尝试运行简单的OpenCV程序判断是否能够正常运行，以下给出简单的示例程序，功能仅为打开图片与退出。</p>
+<p>你需要按照后文中“使用相对路径”方法配置相对路径并添加图片1.png到项目文件夹。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mat image= imread(<span class="string">&quot;1.png&quot;</span>);<span class="comment">// 读取图片</span></span><br><span class="line">    <span class="keyword">if</span>(!image.data)             <span class="comment">// 检查非法输入</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="built_in">cout</span> &lt;&lt;  <span class="string">&quot;无法读取照片&quot;</span> &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    namedWindow(<span class="string">&quot;Display window&quot;</span>,WINDOW_AUTOSIZE);   <span class="comment">// 创建图片显示自动调整大小的窗口</span></span><br><span class="line">    imshow(<span class="string">&quot;img&quot;</span>,image);    <span class="comment">// 在窗口显示图片</span></span><br><span class="line">    </span><br><span class="line">    waitKey(<span class="number">0</span>); <span class="comment">// 按键等待，需要在窗口任意输入字符退出，0代表永久等待</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>若运行过程出现问题请检查上述步骤是否正确，后文中给出了部分问题的解决方案，可能对您有帮助。</p>
+<h2 id="其它设置"><a href="#其它设置" class="headerlink" title="其它设置"></a>其它设置</h2><h3 id="使用相对路径"><a href="#使用相对路径" class="headerlink" title="使用相对路径"></a>使用相对路径</h3><p>Xcode使用图像或资源的绝对路径。为了设置相对路径需要设置<code>Working Directory</code>。依次点击 菜单栏<code>Product &gt; Scheme &gt; Edit Scheme</code> 中转到<code>Run中</code>的<code>option</code>下有<code>Use Custom Working Directory</code>选项，然后自定义项目目录。</p>
+<h2 id="可能出现的错误"><a href="#可能出现的错误" class="headerlink" title="可能出现的错误"></a>可能出现的错误</h2><h3 id="出现-“Not-a-Doxygen-trailing-comment”-错误"><a href="#出现-“Not-a-Doxygen-trailing-comment”-错误" class="headerlink" title="出现 “Not a Doxygen trailing comment” 错误"></a>出现 “Not a Doxygen trailing comment” 错误</h3><p>在<code>Build Settings</code> 中搜索 “<code>Documentation Comments</code>”，将 <code>Documentation Comments</code> 设置为”<code>No</code>”即可解决该问题。Doxygen 只是一种格式可以选择跳过检查。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://medium.com/@jaskaranvirdi/setting-up-opencv-and-c-development-environment-in-xcode-b6027728003">1.Setting up OpenCV and C++ development environment in Xcode for Computer Vision projects</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39929199/not-a-doxygen-trailing-comment">2.Not** a Doxygen trailing comment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/11/%E5%9C%A8Mac%E4%B8%8A%E9%85%8D%E7%BD%AEXcode%E4%B8%8EOpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数字图像处理-学习笔记（5）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1163,118 +1274,6 @@
 
 
   
-    <article id="post-Reptile-Learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/Reptile-Learning/">Reptile  Learning</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/02/18/Reptile-Learning/" class="archive-article-date">
-	
-  	<time datetime="2021-02-18T08:49:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-http-amp-https-协议"><a href="#1-http-amp-https-协议" class="headerlink" title="1.http &amp; https 协议"></a>1.http &amp; https 协议</h4><ul>
-<li>http协议<ul>
-<li>概念：服务器与客户端进行数据交互的一种形式。</li>
-</ul>
-</li>
-<li>常用请求头信息<ul>
-<li>User-Agent: 请求载体的身份标识</li>
-<li>Connection: 请求完毕后，是断开连接还是保持连接</li>
-</ul>
-</li>
-<li>常用响应头信息<ul>
-<li>Content-Type: 服务器响应回客户端的数据类型</li>
-</ul>
-</li>
-<li>https协议<ul>
-<li>s(secure)安全的超文本传输协议</li>
-</ul>
-</li>
-<li>加密方式<ul>
-<li>对称密钥加密</li>
-<li>非对称密钥加密</li>
-<li>证书密钥加密 </li>
-</ul>
-</li>
-</ul>
-<h4 id="2-requests模块"><a href="#2-requests模块" class="headerlink" title="2.requests模块"></a>2.requests模块</h4><blockquote>
-<p>requsets模块的编码流程<br>作用:模拟浏览器发请求。</p>
-</blockquote>
-<p>如何使用：</p>
-<ul>
-<li>指定url</li>
-<li>发起请求</li>
-<li>获取响应数据</li>
-<li>持久化存储</li>
-</ul>
-        
-          <a class="article-more-a" href="/2021/02/18/Reptile-Learning/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/18/Reptile-Learning/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1397,15 +1396,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">

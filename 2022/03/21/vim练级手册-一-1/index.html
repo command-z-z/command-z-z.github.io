@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>vim练级手册(一) | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。 快捷键简记表   快捷键 作用    u 撤销   &lt;C-r&gt; 重做   ss 上下分屏   sv 左右分屏   sh 向左切屏   sj 向下切屏   sk 向上切屏   sl 向右切屏   option+上下左右 改变切屏之后的屏幕大小    插入模式下左移光标    插入模式下下移光标">
+  <meta name="description" content="本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。 快捷键简记表   快捷键 作用    u 撤销   &lt;C-r&gt; 重做   ss 上下分屏   sv 左右分屏   sh 向左切屏   sj 向下切屏   sk 向上切屏   sl 向右切屏   option+上下左右 改变切屏之后的屏幕大小   &lt;C-h&gt; 插入模式下左移光标">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim练级手册(一)">
 <meta property="og:url" content="http://example.com/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
-<meta property="og:description" content="本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。 快捷键简记表   快捷键 作用    u 撤销   &lt;C-r&gt; 重做   ss 上下分屏   sv 左右分屏   sh 向左切屏   sj 向下切屏   sk 向上切屏   sl 向右切屏   option+上下左右 改变切屏之后的屏幕大小    插入模式下左移光标    插入模式下下移光标">
+<meta property="og:description" content="本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。 快捷键简记表   快捷键 作用    u 撤销   &lt;C-r&gt; 重做   ss 上下分屏   sv 左右分屏   sh 向左切屏   sj 向下切屏   sk 向上切屏   sl 向右切屏   option+上下左右 改变切屏之后的屏幕大小   &lt;C-h&gt; 插入模式下左移光标">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-03-21T07:45:05.000Z">
-<meta property="article:modified_time" content="2022-03-21T15:08:55.014Z">
+<meta property="article:modified_time" content="2022-03-24T15:36:49.479Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
@@ -235,20 +235,32 @@
 <td>改变切屏之后的屏幕大小</td>
 </tr>
 <tr>
-<td><C-h></td>
+<td>&lt;C-h&gt;</td>
 <td>插入模式下左移光标</td>
 </tr>
 <tr>
-<td><C-j></td>
+<td>&lt;C-j&gt;</td>
 <td>插入模式下下移光标</td>
 </tr>
 <tr>
-<td><C-k></td>
+<td>&lt;C-k&gt;</td>
 <td>插入模式下上移光标</td>
 </tr>
 <tr>
-<td><C-l></td>
+<td>&lt;C-l&gt;</td>
 <td>插入模式下左移光标</td>
+</tr>
+<tr>
+<td>jk</td>
+<td><Esc>从插入模式退出到普通模式</td>
+</tr>
+<tr>
+<td>&lt;C-j&gt;</td>
+<td><code>5j</code>向下5行</td>
+</tr>
+<tr>
+<td>&lt;C-k&gt;</td>
+<td><code>5k</code>向上5行</td>
 </tr>
 <tr>
 <td>L</td>
@@ -267,7 +279,7 @@
 <td>退出</td>
 </tr>
 <tr>
-<td><C-a></td>
+<td>&lt;C-a&gt;</td>
 <td>全选</td>
 </tr>
 </tbody></table>
@@ -570,15 +582,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
