@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>vim练级手册（三） ---界面美化 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="快捷键简记表   快捷键 作用    +数字 切换buffer(不同文件)   &lt;C-r&gt; 重做   ss 上下分屏   1.vim-airlinevim-airline是一款导航栏插件，可以看到文件信息等情况，可以更方便切换文件。 安装vim-airline首先使用packer包进行插件安装：修改~&#x2F;.config&#x2F;nvim&#x2F;lua&#x2F;plugins.lua文件，并在use &#39;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="vim练级手册（三） ---界面美化">
 <meta property="og:url" content="http://example.com/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="快捷键简记表   快捷键 作用    +数字 切换buffer(不同文件)   &lt;C-r&gt; 重做   ss 上下分屏   1.vim-airlinevim-airline是一款导航栏插件，可以看到文件信息等情况，可以更方便切换文件。 安装vim-airline首先使用packer包进行插件安装：修改~&#x2F;.config&#x2F;nvim&#x2F;lua&#x2F;plugins.lua文件，并在use &#39;">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-03-25T01:25:24.000Z">
-<meta property="article:modified_time" content="2022-03-25T01:25:24.124Z">
+<meta property="article:modified_time" content="2022-04-04T02:56:00.472Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
@@ -187,7 +190,56 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><leader>+数字</td>
+<td>切换buffer(不同文件)</td>
+</tr>
+<tr>
+<td>&lt;C-r&gt;</td>
+<td>重做</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>上下分屏</td>
+</tr>
+</tbody></table>
+<h2 id="1-vim-airline"><a href="#1-vim-airline" class="headerlink" title="1.vim-airline"></a>1.vim-airline</h2><p><code>vim-airline</code>是一款导航栏插件，可以看到文件信息等情况，可以更方便切换文件。</p>
+<h4 id="安装vim-airline"><a href="#安装vim-airline" class="headerlink" title="安装vim-airline"></a>安装vim-airline</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use &#123;</span><br><span class="line">        &quot;vim-airline&#x2F;vim-airline&quot;,</span><br><span class="line">        requires &#x3D; &#123;</span><br><span class="line">          &quot;vim-airline&#x2F;vim-airline-themes&quot;,</span><br><span class="line">          --综合图标支持such vim-airline lightline, vim-startify</span><br><span class="line">          &quot;ryanoasis&#x2F;vim-devicons&quot;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置vim-airline"><a href="#配置vim-airline" class="headerlink" title="配置vim-airline"></a>配置vim-airline</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;airline.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot; vim-airline</span><br><span class="line">let g:airline#extensions#tabline#enabled &#x3D; 1</span><br><span class="line">&quot; 使用字体</span><br><span class="line">let g:airline_powerline_fonts &#x3D; 1</span><br><span class="line">let g:airline#extensions#tabline#buffer_idx_mode &#x3D; 1</span><br><span class="line">nmap &lt;leader&gt;1 &lt;Plug&gt;AirlineSelectTab1</span><br><span class="line">nmap &lt;leader&gt;2 &lt;Plug&gt;AirlineSelectTab2</span><br><span class="line">nmap &lt;leader&gt;3 &lt;Plug&gt;AirlineSelectTab3</span><br><span class="line">nmap &lt;leader&gt;4 &lt;Plug&gt;AirlineSelectTab4</span><br><span class="line">nmap &lt;leader&gt;5 &lt;Plug&gt;AirlineSelectTab5</span><br><span class="line">nmap &lt;leader&gt;6 &lt;Plug&gt;AirlineSelectTab6</span><br><span class="line">nmap &lt;leader&gt;7 &lt;Plug&gt;AirlineSelectTab7</span><br><span class="line">nmap &lt;leader&gt;8 &lt;Plug&gt;AirlineSelectTab8</span><br><span class="line">nmap &lt;leader&gt;9 &lt;Plug&gt;AirlineSelectTab9</span><br></pre></td></tr></table></figure>
+
+<p>虽然<code>~/.config/nvim/after/plugin/</code>目录的配置文件会自动加载，但是airline的配置需要更高的加载优先级。所以要在init.vim中手动引用一下。<br>编辑<code>~/.config/nvim/init.vim</code>并增加下面一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;airline.rc.vim</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后就可以看到下方会出现一条bar，可以看到文件、模式等信息，同时上方出现buffer栏为当前打开的文件。</p>
+<h2 id="2-gruvbox-material"><a href="#2-gruvbox-material" class="headerlink" title="2.gruvbox-material"></a>2.gruvbox-material</h2><h4 id="安装gruvbox-material"><a href="#安装gruvbox-material" class="headerlink" title="安装gruvbox-material"></a>安装gruvbox-material</h4><p>使用packer包进行插件安装:<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim</code>增加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;sainnhe&#x2F;gruvbox_material&quot;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code></p>
+<h4 id="配置gruvbox-material"><a href="#配置gruvbox-material" class="headerlink" title="配置gruvbox-material"></a>配置gruvbox-material</h4><blockquote>
+<p>把主题相关的内容放到<code>~/.config/nvim/colors/</code>目录管理。</p>
+</blockquote>
+<p>创建<code>~/.config/nvim/colors/gruvbox_material.rc.vim</code>,内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot; Important!!</span><br><span class="line">if has(&#39;termguicolors&#39;)</span><br><span class="line">	set termguicolors</span><br><span class="line">endif</span><br><span class="line">&quot; For dark version.</span><br><span class="line">set background&#x3D;dark</span><br><span class="line">&quot; For light version.</span><br><span class="line">&quot;set background&#x3D;light</span><br><span class="line">&quot; Set contrast.</span><br><span class="line">&quot; This configuration option should be placed before &#96;colorscheme gruvbox-material&#96;.</span><br><span class="line">&quot; Available values: &#39;hard&#39;, &#39;medium&#39;(default), &#39;soft&#39;</span><br><span class="line">let g:gruvbox_material_background &#x3D; &#39;hard&#39;</span><br><span class="line">&quot; 使用try，如果配色方案不存在，也不会报错</span><br><span class="line">try</span><br><span class="line">	colorscheme gruvbox-material</span><br><span class="line">catch &#x2F;^Vim\%((\a\+)\)\&#x3D;:E185&#x2F;</span><br><span class="line">    &quot; deal with it</span><br><span class="line">endtry</span><br></pre></td></tr></table></figure>
+
+<p>编辑<code>~/.config/nvim/init.vim</code>并增加下面一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.config&#x2F;nvim&#x2F;colors&#x2F;gruvbox_material.rc.vim</span><br></pre></td></tr></table></figure>
+<p>做完这些配置，重启就可以看到效果了。</p>
+<h2 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120544801">03_[nvim0.5+从0单排]_界面美化与主题</a></p>
+
       
 
       
@@ -221,6 +273,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -285,6 +348,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vim练级手册（四） ---ranger文件管理插件
+        
+      </div>
+    </a>
+  
   
     <a href="/2022/03/24/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">vim练级手册（二）---模式讲解</div>
@@ -314,7 +386,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-vim-airline"><span class="toc-number"></span> <span class="toc-text">1.vim-airline</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85vim-airline"><span class="toc-number">1.</span> <span class="toc-text">安装vim-airline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEvim-airline"><span class="toc-number">2.</span> <span class="toc-text">配置vim-airline</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-gruvbox-material"><span class="toc-number"></span> <span class="toc-text">2.gruvbox-material</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85gruvbox-material"><span class="toc-number">1.</span> <span class="toc-text">安装gruvbox-material</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEgruvbox-material"><span class="toc-number">2.</span> <span class="toc-text">配置gruvbox-material</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">转载文章</span></a>
                     </div>
                 </span>
             </div>
