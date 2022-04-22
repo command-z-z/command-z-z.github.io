@@ -182,7 +182,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sr</td>
+<td>在nvim中打开悬浮ranger</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为悬浮ranger中的快捷键</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>悬浮ranger中打开文件</td>
+</tr>
+<tr>
+<td>ctrl-t</td>
+<td>将文件以新的Tab页打开</td>
+</tr>
+<tr>
+<td>ctrl-x</td>
+<td>上下分屏打开</td>
+</tr>
+<tr>
+<td>ctrl-v</td>
+<td>左右分屏打开</td>
+</tr>
+</tbody></table>
+<h4 id="先导安装"><a href="#先导安装" class="headerlink" title="先导安装"></a>先导安装</h4><p>在macOS中使用<code>brew install ranger</code>安装的<code>Ranger</code>默认使用python2运行的，不符合<code>rnvimr</code>的要求。<br>macOS用户请通过<code>pip3 install Ranger-fm</code>而不是<code>brew install ranger</code>安装<code>Ranger</code>。<br>否则，悬浮的ranger容易卡死</p>
+<h6 id="安装ranger"><a href="#安装ranger" class="headerlink" title="安装ranger"></a>安装ranger</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install Ranger-fm</span><br></pre></td></tr></table></figure>
+<h6 id="安装pynvim"><a href="#安装pynvim" class="headerlink" title="安装pynvim"></a>安装pynvim</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pynvim </span><br></pre></td></tr></table></figure>
+
+<h4 id="安装rnvimr插件"><a href="#安装rnvimr插件" class="headerlink" title="安装rnvimr插件"></a>安装rnvimr插件</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--内嵌浮动ranger插件</span><br><span class="line">use &quot;kevinhwang91&#x2F;rnvimr&quot;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置rnvimr插件"><a href="#配置rnvimr插件" class="headerlink" title="配置rnvimr插件"></a>配置rnvimr插件</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;rnvimr.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot; 让Ranger取代Netrw并成为文件浏览器</span><br><span class="line">let g:rnvimr_enable_ex &#x3D; 1</span><br><span class="line">&quot; 选择文件后隐藏游侠</span><br><span class="line">let g:rnvimr_enable_picker &#x3D; 1</span><br><span class="line">&quot; 使用multipane模式启动(单列)可以按~手动切换</span><br><span class="line">let g:rnvimr_ranger_cmd &#x3D; &#39;ranger --cmd&#x3D;&quot;set viewmode multipane&quot;&#39;</span><br><span class="line">&quot; 设置&lt;F3&gt; 启动文件管理器</span><br><span class="line">nnoremap &lt;F3&gt; :RnvimrToggle&lt;CR&gt;</span><br><span class="line">nnoremap sr :RnvimrToggle&lt;CR&gt;</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -190,6 +237,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -256,14 +314,6 @@
 <tbody><tr>
 <td><leader>+数字</td>
 <td>切换buffer(不同文件)</td>
-</tr>
-<tr>
-<td>&lt;C-r&gt;</td>
-<td>重做</td>
-</tr>
-<tr>
-<td>ss</td>
-<td>上下分屏</td>
 </tr>
 </tbody></table>
 <h2 id="1-vim-airline"><a href="#1-vim-airline" class="headerlink" title="1.vim-airline"></a>1.vim-airline</h2><p><code>vim-airline</code>是一款导航栏插件，可以看到文件信息等情况，可以更方便切换文件。</p>
@@ -1395,11 +1445,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1439,11 +1489,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
