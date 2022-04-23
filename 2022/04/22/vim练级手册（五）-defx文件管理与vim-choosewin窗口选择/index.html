@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/12 | 🌟Eugene的个人博客主页</title>
+  <title>vim练级手册（五） ---defx文件管理与vim-choosewin窗口选择 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="🌟Eugene的个人博客主页">
-<meta property="og:url" content="http://example.com/archives/2021/12/index.html">
+  <meta name="description" content="快捷键简记表   快捷键 作用    sf 启动文件管理defx    以下为defx中的快捷键   l&#x2F;Enter&#x2F;Right 悬浮ranger中打开文件   yy 复制文件   dd 移动文件   pp 粘贴   dD 删除   YY 复制路径   i 选择窗口,defx成为侧边栏   o 打开树结构   N 新建单个文件   M 同时新建多个文件   K 新建目录   a 文件重命名   m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim练级手册（五） ---defx文件管理与vim-choosewin窗口选择">
+<meta property="og:url" content="http://example.com/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="快捷键简记表   快捷键 作用    sf 启动文件管理defx    以下为defx中的快捷键   l&#x2F;Enter&#x2F;Right 悬浮ranger中打开文件   yy 复制文件   dd 移动文件   pp 粘贴   dD 删除   YY 复制路径   i 选择窗口,defx成为侧边栏   o 打开树结构   N 新建单个文件   M 同时新建多个文件   K 新建目录   a 文件重命名   m">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-04-22T03:18:43.000Z">
+<meta property="article:modified_time" content="2022-04-23T02:15:27.176Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
@@ -158,38 +163,164 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vim练级手册（五）-defx文件管理与vim-choosewin窗口选择" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/" class="archive-article-date">
-	
-  	<time datetime="2021-12-04T16:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/">vim练级手册(零)  --- nvim安装(先导篇)</a>
+    <h1 class="article-title" itemprop="name">
+      vim练级手册（五） ---defx文件管理与vim-choosewin窗口选择
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+<a href="/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/" class="archive-article-date">
+	
+  	<time datetime="2022-04-22T03:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-22</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sf</td>
+<td>启动文件管理defx</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为defx中的快捷键</td>
+</tr>
+<tr>
+<td>l/Enter/Right</td>
+<td>悬浮ranger中打开文件</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>pp</td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td>dD</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>YY</td>
+<td>复制路径</td>
+</tr>
+<tr>
+<td>i</td>
+<td>选择窗口,defx成为侧边栏</td>
+</tr>
+<tr>
+<td>o</td>
+<td>打开树结构</td>
+</tr>
+<tr>
+<td>N</td>
+<td>新建单个文件</td>
+</tr>
+<tr>
+<td>M</td>
+<td>同时新建多个文件</td>
+</tr>
+<tr>
+<td>K</td>
+<td>新建目录</td>
+</tr>
+<tr>
+<td>a</td>
+<td>文件重命名</td>
+</tr>
+<tr>
+<td>m/<space></td>
+<td>标记文件</td>
+</tr>
+</tbody></table>
+<h2 id="1-defx"><a href="#1-defx" class="headerlink" title="1.defx"></a>1.defx</h2><p>上一节介绍了一款悬浮的文件管理插件，为了符合大部分IDE习惯，将侧边栏作为文件管理，defx提供了这样的功能。</p>
+<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 文件管理插件，类似与ranger。小孩子才做选择，我都要</span><br><span class="line">use &#123;</span><br><span class="line">	&quot;Shougo&#x2F;defx.nvim&quot;,</span><br><span class="line">	requires &#x3D; &#123;</span><br><span class="line">		&quot;kristijanhusak&#x2F;defx-icons&quot;, -- defx文件管理图标支持</span><br><span class="line">		&quot;t9md&#x2F;vim-choosewin&quot; -- 窗口选择器,可以让defx使用i打开文件</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置defx"><a href="#配置defx" class="headerlink" title="配置defx"></a>配置defx</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;defx.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">if !exists(&#39;g:loaded_defx&#39;) | finish | endif</span><br><span class="line">&quot; Define mappings</span><br><span class="line">&quot;cnoreabbrev sf Defx -listed -new</span><br><span class="line">&quot;      \ -columns&#x3D;indent:mark:icon:icons:filename:git:size</span><br><span class="line">&quot;      \ -buffer-name&#x3D;tab&#96;tabpagenr()&#96;&lt;CR&gt;</span><br><span class="line">nnoremap &lt;silent&gt;sf :&lt;C-u&gt;Defx -listed -resume</span><br><span class="line">      \ -columns&#x3D;indent:mark:icon:icons:filename:git:size</span><br><span class="line">      \ -buffer-name&#x3D;tab&#96;tabpagenr()&#96;</span><br><span class="line">      \ &#96;expand(&#39;%:p:h&#39;)&#96; -search&#x3D;&#96;expand(&#39;%:p&#39;)&#96;&lt;CR&gt;</span><br><span class="line">&quot;nnoremap &lt;silent&gt;fi :&lt;C-u&gt;Defx -new &#96;expand(&#39;%:p:h&#39;)&#96; -search&#x3D;&#96;expand(&#39;%:p&#39;)&#96;&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">autocmd FileType defx call s:defx_my_settings()</span><br><span class="line">	function! s:defx_my_settings() abort</span><br><span class="line">	  &quot; Define mappings</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;CR&gt;</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; yy</span><br><span class="line">	  \ defx#do_action(&#39;copy&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; dd</span><br><span class="line">	  \ defx#do_action(&#39;move&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; pp</span><br><span class="line">	  \ defx#do_action(&#39;paste&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; l</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Right&gt;</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; E</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;, &#39;vsplit&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; n</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;, &#39;pedit&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; i</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;, &#39;choose&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; o</span><br><span class="line">	  \ defx#do_action(&#39;open_or_close_tree&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; K</span><br><span class="line">	  \ defx#do_action(&#39;new_directory&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; N</span><br><span class="line">	  \ defx#do_action(&#39;new_file&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; M</span><br><span class="line">	  \ defx#do_action(&#39;new_multiple_files&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; C</span><br><span class="line">	  \ defx#do_action(&#39;toggle_columns&#39;,</span><br><span class="line">	  \                &#39;mark:indent:icon:filename:type:size:time&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; S</span><br><span class="line">	  \ defx#do_action(&#39;toggle_sort&#39;, &#39;time&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; dD</span><br><span class="line">	  \ defx#do_action(&#39;remove&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; a</span><br><span class="line">	  \ defx#do_action(&#39;rename&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; !</span><br><span class="line">	  \ defx#do_action(&#39;execute_command&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; x</span><br><span class="line">	  \ defx#do_action(&#39;execute_system&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; YY</span><br><span class="line">	  \ defx#do_action(&#39;yank_path&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; .</span><br><span class="line">	  \ defx#do_action(&#39;toggle_ignored_files&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;BS&gt;</span><br><span class="line">	  \ defx#do_action(&#39;toggle_ignored_files&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; ;</span><br><span class="line">	  \ defx#do_action(&#39;repeat&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; h</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;, [&#39;..&#39;])</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Left&gt;</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;, [&#39;..&#39;])</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; ~</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; gh</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; gn</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;,[&#39;~&#x2F;.config&#x2F;nvim&#39;])</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; q</span><br><span class="line">	  \ defx#do_action(&#39;quit&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Space&gt;</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select&#39;) . &#39;j&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; m</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select&#39;) . &#39;j&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; vv</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select_all&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; *</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select_all&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; j</span><br><span class="line">	  \ line(&#39;.&#39;) &#x3D;&#x3D; line(&#39;$&#39;) ? &#39;gg&#39; : &#39;j&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; k</span><br><span class="line">	  \ line(&#39;.&#39;) &#x3D;&#x3D; 1 ? &#39;G&#39; : &#39;k&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;C-l&gt;</span><br><span class="line">	  \ defx#do_action(&#39;redraw&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;C-g&gt;</span><br><span class="line">	  \ defx#do_action(&#39;print&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; cd</span><br><span class="line">	  \ defx#do_action(&#39;change_vim_cwd&#39;)</span><br><span class="line">	endfunction</span><br><span class="line"></span><br><span class="line">call defx#custom#column(&#39;icon&#39;, &#123;</span><br><span class="line">      \ &#39;directory_icon&#39;: &#39;▸&#39;,</span><br><span class="line">      \ &#39;opened_icon&#39;: &#39;▾&#39;,</span><br><span class="line">      \ &#39;root_icon&#39;: &#39; &#39;,</span><br><span class="line">      \ &#125;)</span><br><span class="line">call defx#custom#column(&#39;git&#39;, &#39;indicators&#39;, &#123;</span><br><span class="line">  \ &#39;Modified&#39;  : &#39;M&#39;,</span><br><span class="line">  \ &#39;Staged&#39;    : &#39;✚&#39;,</span><br><span class="line">  \ &#39;Untracked&#39; : &#39;✭&#39;,</span><br><span class="line">  \ &#39;Renamed&#39;   : &#39;➜&#39;,</span><br><span class="line">  \ &#39;Unmerged&#39;  : &#39;═&#39;,</span><br><span class="line">  \ &#39;Ignored&#39;   : &#39;☒&#39;,</span><br><span class="line">  \ &#39;Deleted&#39;   : &#39;✖&#39;,</span><br><span class="line">  \ &#39;Unknown&#39;   : &#39;?&#39;</span><br><span class="line">  \ &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后使用<code>sf</code>即可唤起defx文件管理插件，并使用相应的快捷键进行文件操作。</p>
+<h4 id="defx-icons配置"><a href="#defx-icons配置" class="headerlink" title="defx-icons配置"></a>defx-icons配置</h4><p>为了使得我们的文件管理插件defx更加的美观，我们加入了defx-icons插件，使得各个文件可以显示图标，更加美观。</p>
+<p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;defx-icons.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot; 增加图标的宽度，来解决图标 与文件名重叠的问题</span><br><span class="line">let g:defx_icons_column_length &#x3D; 2</span><br></pre></td></tr></table></figure>
+
+<p>因为图标配置需要优先级比较高，所以要在init.vim中增加如下一行：<br><code>source ~/.config/nvim/after/plugin/defx-icons.rc.vim</code></p>
+<h4 id="vim-choosewin配置"><a href="#vim-choosewin配置" class="headerlink" title="vim-choosewin配置"></a>vim-choosewin配置</h4><p>这是一个窗口选择插件。<br>新增如下配置文件<br><code>~/.config/nvim/after/plugin/defx-icons.rc.vim</code></p>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;window选择器</span><br><span class="line">&quot; if you want to use overlay feature</span><br><span class="line">let g:choosewin_overlay_enable &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120629374">05_[nvim0.5+从0单排]_vim文件管理插件defx与窗口选择工具 vim-choosewin</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,19 +332,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vim练级手册（四） ---ranger文件管理插件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-defx"><span class="toc-number"></span> <span class="toc-text">1.defx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdefx"><span class="toc-number">2.</span> <span class="toc-text">配置defx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#defx-icons%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">defx-icons配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vim-choosewin%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">vim-choosewin配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">转载文章</span></a>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -248,8 +479,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
