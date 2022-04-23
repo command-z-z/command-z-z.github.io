@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/9 | 🌟Eugene的个人博客主页</title>
+  <title>vim练级手册（六） ---markdown预览插件 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="🌟Eugene的个人博客主页">
-<meta property="og:url" content="http://example.com/archives/2021/09/index.html">
+  <meta name="description" content="作为一个经常使用markdown写博客的人来说，markdown预览功能是十分必要的，将主流编辑器转为vim之后，markdown的编写也转为用vim写，因此找到了这款markdown预览工具。 快捷键简记表   快捷键 作用    :MarkdownPreview 在浏览器中打开markdown-preview   1.markdown-preview安装markdown-preview首先使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim练级手册（六） ---markdown预览插件">
+<meta property="og:url" content="http://example.com/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="作为一个经常使用markdown写博客的人来说，markdown预览功能是十分必要的，将主流编辑器转为vim之后，markdown的编写也转为用vim写，因此找到了这款markdown预览工具。 快捷键简记表   快捷键 作用    :MarkdownPreview 在浏览器中打开markdown-preview   1.markdown-preview安装markdown-preview首先使用">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-04-23T02:20:03.000Z">
+<meta property="article:modified_time" content="2022-04-23T02:39:33.790Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
@@ -158,62 +163,217 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vim练级手册（六）-markdown预览插件" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/09/16/cmake%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
-	
-  	<time datetime="2021-09-16T15:23:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/16/cmake%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">cmake使用方法</a>
+    <h1 class="article-title" itemprop="name">
+      vim练级手册（六） ---markdown预览插件
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+<a href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/" class="archive-article-date">
+	
+  	<time datetime="2022-04-23T02:20:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-23</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作为一个经常使用markdown写博客的人来说，markdown预览功能是十分必要的，将主流编辑器转为vim之后，markdown的编写也转为用vim写，因此找到了这款markdown预览工具。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:MarkdownPreview</td>
+<td>在浏览器中打开markdown-preview</td>
+</tr>
+</tbody></table>
+<h2 id="1-markdown-preview"><a href="#1-markdown-preview" class="headerlink" title="1.markdown-preview"></a>1.markdown-preview</h2><h4 id="安装markdown-preview"><a href="#安装markdown-preview" class="headerlink" title="安装markdown-preview"></a>安装markdown-preview</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--markdown预览插件</span><br><span class="line">use &quot;iamcco&#x2F;markdown-preview.nvim&quot;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<p>安装完成以后，执行以下命令:<br><code>:call mkdp#util#install()</code></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vim练级手册（七） ---telescope文件模糊搜索
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vim练级手册（五） ---defx文件管理与vim-choosewin窗口选择</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-markdown-preview"><span class="toc-number"></span> <span class="toc-text">1.markdown-preview</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85markdown-preview"><span class="toc-number">1.</span> <span class="toc-text">安装markdown-preview</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -248,8 +408,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
