@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>vim练级手册（七） ---telescope文件模糊搜索 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="快捷键简记表   快捷键 作用    ff 搜索当前目录下的文件   fg 当前目录下文件中的内容查找   fb buffer切换   &#x2F; 当前文件查找   1.telescopetelescope是一款神级模糊搜索工具，大大提高效率。 安装telescope首先使用packer包进行插件安装：修改~&#x2F;.config&#x2F;nvim&#x2F;lua&#x2F;plugins.lua文件，并在use &#39;wbthom">
+<meta property="og:type" content="article">
 <meta property="og:title" content="vim练级手册（七） ---telescope文件模糊搜索">
 <meta property="og:url" content="http://example.com/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="快捷键简记表   快捷键 作用    ff 搜索当前目录下的文件   fg 当前目录下文件中的内容查找   fb buffer切换   &#x2F; 当前文件查找   1.telescopetelescope是一款神级模糊搜索工具，大大提高效率。 安装telescope首先使用packer包进行插件安装：修改~&#x2F;.config&#x2F;nvim&#x2F;lua&#x2F;plugins.lua文件，并在use &#39;wbthom">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-23T02:49:59.000Z">
-<meta property="article:modified_time" content="2022-04-23T02:49:59.278Z">
+<meta property="article:modified_time" content="2022-04-23T03:20:51.541Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
@@ -187,7 +190,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><leader>ff</td>
+<td>搜索当前目录下的文件</td>
+</tr>
+<tr>
+<td><leader>fg</td>
+<td>当前目录下文件中的内容查找</td>
+</tr>
+<tr>
+<td><leader>fb</td>
+<td>buffer切换</td>
+</tr>
+<tr>
+<td><leader>/</td>
+<td>当前文件查找</td>
+</tr>
+</tbody></table>
+<h2 id="1-telescope"><a href="#1-telescope" class="headerlink" title="1.telescope"></a>1.telescope</h2><p><code>telescope</code>是一款神级模糊搜索工具，大大提高效率。</p>
+<h4 id="安装telescope"><a href="#安装telescope" class="headerlink" title="安装telescope"></a>安装telescope</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 文件搜索 预览 等</span><br><span class="line">use &#123;</span><br><span class="line">	&quot;nvim-telescope&#x2F;telescope.nvim&quot;,</span><br><span class="line">    requires &#x3D; &#123;</span><br><span class="line">      &quot;nvim-lua&#x2F;plenary.nvim&quot;,</span><br><span class="line">      &quot;kyazdani42&#x2F;nvim-web-devicons&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-- 加速文件搜索速度,如果安装失败需要到插件目录执行make命令手动编译</span><br><span class="line">-- 用了这个插件以后，貌似更快了(感觉输入更跟手了，可能是心理作用)。但是对于我的小项目感受不是很明显</span><br><span class="line">use &#123;&quot;nvim-telescope&#x2F;telescope-fzf-native.nvim&quot;, run &#x3D; &quot;make&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置telescope"><a href="#配置telescope" class="headerlink" title="配置telescope"></a>配置telescope</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;telescope.lua</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">local status, actions &#x3D; pcall(require, &quot;telescope.actions&quot;)</span><br><span class="line">if (not status) then</span><br><span class="line">  return</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--local actions &#x3D; require(&#39;telescope.actions&#39;)</span><br><span class="line">-- Global remapping</span><br><span class="line">------------------------------</span><br><span class="line">require(&quot;telescope&quot;).setup &#123;</span><br><span class="line">  defaults &#x3D; &#123;</span><br><span class="line">    mappings &#x3D; &#123;</span><br><span class="line">      n &#x3D; &#123;</span><br><span class="line">        [&quot;q&quot;] &#x3D; actions.close,</span><br><span class="line">        [&quot;l&quot;] &#x3D; actions.file_edit</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    file_ignore_patterns &#x3D; &#123;&quot;.&#x2F;node_modules&quot;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  extensions &#x3D; &#123;</span><br><span class="line">    fzf &#x3D; &#123;</span><br><span class="line">      fuzzy &#x3D; true, -- false will only do exact matching</span><br><span class="line">      override_generic_sorter &#x3D; true, -- override the generic sorter</span><br><span class="line">      override_file_sorter &#x3D; true, -- override the file sorter</span><br><span class="line">      case_mode &#x3D; &quot;smart_case&quot; -- or &quot;ignore_case&quot; or &quot;respect_case&quot;</span><br><span class="line">      -- the default case_mode is &quot;smart_case&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-- To get fzf loaed and working with telescope, you need to call</span><br><span class="line">-- load_extension, somewhere after setup function:</span><br><span class="line">require(&quot;telescope&quot;).load_extension(&quot;fzf&quot;)</span><br><span class="line"></span><br><span class="line">--按键设置</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;ff&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).find_files()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fg&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).live_grep()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fb&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).buffers()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fh&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).help_tags()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;sf&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).file_browser()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;&#x2F;&quot;, [[&lt;cmd&gt;lua require&#39;telescope.builtin&#39;.current_buffer_fuzzy_find&#123;&#125;&lt;CR&gt;]], &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="文本搜索支持"><a href="#文本搜索支持" class="headerlink" title="文本搜索支持"></a>文本搜索支持</h4><p>MacOS安装如下:<br><code>brew install ripgrep</code></p>
+<p>其余查看:<a target="_blank" rel="noopener" href="https://github.com/chinanf-boy/ripgrep-zh">https://github.com/chinanf-boy/ripgrep-zh</a></p>
+
       
 
       
@@ -221,6 +261,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -314,7 +365,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-telescope"><span class="toc-number"></span> <span class="toc-text">1.telescope</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85telescope"><span class="toc-number">1.</span> <span class="toc-text">安装telescope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEtelescope"><span class="toc-number">2.</span> <span class="toc-text">配置telescope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2%E6%94%AF%E6%8C%81"><span class="toc-number">3.</span> <span class="toc-text">文本搜索支持</span></a></li></ol>
                     </div>
                 </span>
             </div>
