@@ -160,6 +160,111 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu实现内网穿透" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">旧电脑配置成服务器教程</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="archive-article-date">
+	
+  	<time datetime="2022-01-22T11:38:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>笔者使用的主力机是macbook,但由于学业需要，还有一台老式的thinkpad，基本处于废弃状态，因此为了最大程度的使用资源，准备将其作为服务器使用。为了使用ssh可以远程连接上电脑，我们首先需要将电脑连入公网，以获得一个公网IP，本教程将手把手教大家，将旧电脑配置成服务器。</p>
+<h3 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h3><ul>
+<li>一台Thinkpad T440P</li>
+<li>SAKURA FRP（实现内网穿透的app）</li>
+<li>一台常用机（笔者为MBP）</li>
+<li>SSH连接工具（笔者使用SecureCRT）</li>
+<li>SFTP工具（笔者使用transmit）</li>
+</ul>
+<h3 id="1-安装linux操作系统"><a href="#1-安装linux操作系统" class="headerlink" title="1.安装linux操作系统"></a>1.安装linux操作系统</h3><p>基本上的服务器所选的操作系统都是Linux操作系统，因为其安全，方便，效率高。笔者选用的为ubuntu18.04，linux的安装过程不再赘述，网上教程一堆，不同电脑有不同的安装方法，读者可以选择相应电脑品牌安装方法。</p>
+<h3 id="2-内网穿透"><a href="#2-内网穿透" class="headerlink" title="2.内网穿透"></a>2.内网穿透</h3><ol>
+<li>在常用电脑中打开<a target="_blank" rel="noopener" href="https://www.natfrp.com/">SAKURA FRP</a>官网，注册账号，注册成功后，点击<code>穿透</code>-&gt;<code>隧道列表</code>-&gt;<code>新建隧道</code><br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8B%E5%8D%8811.72h7eg24ek40.webp" alt="截屏2022-01-22-下午11"></li>
+<li>选择穿透节点，隧道类型选择TCP，本地端口选择SSH（22），其余默认即可。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8B%E5%8D%8811.1rfsg7r9klmo.webp" alt="截屏2022-01-22-下午11"></li>
+<li>部署服务器，在服务器电脑上登入<a target="_blank" rel="noopener" href="https://www.natfrp.com/">SAKURA FRP</a>官网，选择<code>穿透</code>-&gt;<code>软件下载</code>-&gt;<code>Linux</code>-&gt;<code>arm64</code>,点击下载到服务器列表。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8B%E5%8D%8811.31c7obfxnjc0.webp" alt="截屏2022-01-22-下午11"></li>
+<li>下载完成后，我将应用移到桌面，在终端输入以下命令执行。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 frpc_linux_amd64 <span class="comment"># 添加运行权限</span></span><br><span class="line">./frpc_linux_amd64 <span class="comment">#运行该软件</span></span><br></pre></td></tr></table></figure>
+运行之后即可得到一个交互式 UI ，选择需要使用的隧道，按Tab键切换到 Token 输入框后输入 Token（访问密钥），然后切换到 Login 按钮并回车（终端支持的话，也可使用鼠标操作）。访问密钥在<a target="_blank" rel="noopener" href="https://www.natfrp.com/">SAKURA FRP</a>官网用户信息中查找。</li>
+</ol>
+<p><strong>出现如下信息说明内网穿透成功，会出现以下会出现<code>iP地址</code>与<code>端口号</code>,使用这两个信息即可进行SSH连接。</strong><br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-23-%E4%B8%8A%E5%8D%889.5cax6pqnoyw0.webp" alt="截屏2022-01-23-上午9"></p>
+<ol start="5">
+<li>在常用机中使用SSH连接工具，笔者使用SecrueCRT，<strong>输入第四步骤中得到的IP地址与端口号</strong>，输入用户名和密码,这两个即为你Linux的登录名和登录密码。出现以下信息即为连接成功。<blockquote>
+<p>切记端口号不是22，而是第四步骤IP地址后的几位数字。</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-23-%E4%B8%8A%E5%8D%889.qweqx0475cg.webp" alt="截屏2022-01-23-上午9"></p>
+<h3 id="3-服务器常开"><a href="#3-服务器常开" class="headerlink" title="3.服务器常开"></a>3.服务器常开</h3><p>作为一台服务器，需要24h常开，因此需要配置Linux合盖不休眠，在终端输入以下信息即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;system&#x2F;logind.conf</span><br><span class="line"># 在打开的文件中输入</span><br><span class="line">HandleLidSwitch&#x3D;lock</span><br></pre></td></tr></table></figure>
+<p>然后保存退出，重启电脑即可。</p>
+<hr>
+<p>至此一台旧电脑配置成服务器就已经完成了，小伙伴们还不赶紧尝试下。</p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/267900091">1. 内网穿透，远程连接办公室的Linux系统</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Cherry-Linux/p/10490285.html">2. Linux合上笔记本不进入休眠模式</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-github免费图床教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1008,118 +1113,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/09/16/cmake%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-item2-oh-my-zsh最全配置教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">item2 + oh my zsh最全配置教程</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" class="archive-article-date">
-	
-  	<time datetime="2021-07-16T07:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-16</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作为一名计算机专业的学生，学会使用Terminal是一件必备技能，而一款好看的终端界面，将大大提高生产效率。网上的配置资料零碎，基于自己的配置经验，决定写一份教程，以供参考，因为笔者已经装好环境，为了更好的安装体验，文中一些图片参考网上，将在文末注明出处。由于笔者使用的是Mac，因此介绍的是Mac上的一款终端替代软件<a target="_blank" rel="noopener" href="https://iterm2.com/"><code>item2</code></a>,并将使用<code>oh my zsh</code>对其进行配置，也将会介绍一些插件的使用，话不多说，先看效果图。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMkHyD"><img src="https://z3.ax1x.com/2021/07/16/WMkHyD.md.png" alt="WMkHyD.md.png"></a></p>
-<p>这里放上我的<a target="_blank" rel="noopener" href="https://github.com/command-z-z/oh-my-zsh-item2">GitHub仓库</a>，文件自取，欢迎<code>star🌟</code>。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="1-安装item2"><a href="#1-安装item2" class="headerlink" title="1. 安装item2"></a>1. 安装item2</h3><p>直接进入<a target="_blank" rel="noopener" href="https://iterm2.com/">item2官网</a>,点击download，根据提示一步步下载即可。</p>
-<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装Homebrew，可以复制以下代码，在终端中执行安装。<br><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot; </code></p>
-<h3 id="3-git的安装"><a href="#3-git的安装" class="headerlink" title="3.git的安装"></a>3.git的安装</h3><p>我们已经安装了homebrew，因此可以使用brew来快速安装git，复制一下代码:<br><code>brew install git</code></p>
-<h3 id="4-oh-my-zsh安装"><a href="#4-oh-my-zsh安装" class="headerlink" title="4.oh my zsh安装"></a>4.oh my zsh安装</h3><p>由于Mac默认使用的是Bash，相比于默认的Bash，Zsh有更多的自定义选项，并支持扩展。因此 Zsh可以实现更强大的命令补全，命令高亮等一系列酷炫功能,可以使用以下代码进行切换;<br><code>chsh -s /bin/zsh</code><br>如果想要切换回可以使用以下代码:<br><code>chsh -s /bin/bash</code><br>换到<code>zsh</code>之后就可以使用以下代码进行安装:<br><code>sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code><br>这里放下<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">oh my zsh</a>的github仓库<br>到此zsh的安装基本结束了，效果如下，为了达到更酷炫的效果，我们还需要一些插件进行配置。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMuZb8"><img src="https://z3.ax1x.com/2021/07/16/WMuZb8.md.png" alt="WMuZb8.md.png"></a></p>
-<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><h3 id="5-安装字体"><a href="#5-安装字体" class="headerlink" title="5.安装字体"></a>5.安装字体</h3><ol>
-<li>使用以下代码安装PowerLine<br><code>pip3 install powerline-status --user</code></li>
-<li>安装PowerFonts，将以下代码一条条放入终端，<code>//</code>后为注释不用复制。<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/Desktop/OpenSource  //首先在桌面上创建一个文件夹</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/Desktop/OpenSource  //进入此文件夹</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/powerline/fonts.git --depth=1  //克隆源码</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> fonts  //进入fonts文件夹</span><br><span class="line"></span><br><span class="line">./install.sh //安装</span><br></pre></td></tr></table></figure>
-安装好字体库之后，我们来设置iTerm2的字体，具体的操作是iTerm2 -&gt; Preferences（可以使用快捷键<code>command</code>+<code>,</code>） -&gt; Profiles -&gt; Text，在Font区域选中Change Font，然后找到Meslo LG字体。有L、M、S可选，看个人喜好：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMlSsI"><img src="https://z3.ax1x.com/2021/07/16/WMlSsI.md.png" alt="WMlSsI.md.png"></a><h3 id="6-安装背景配色"><a href="#6-安装背景配色" class="headerlink" title="6.安装背景配色"></a>6.安装背景配色</h3></li>
-<li>安装Solarized，代码如下：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Desktop/OpenSource</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/altercation/solarized</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> solarized/iterm2-colors-solarized/</span><br><span class="line"></span><br><span class="line">open .</span><br></pre></td></tr></table></figure>
-在打开的finder窗口中，双击Solarized Dark.itermcolors和Solarized Light.itermcolors即可安装明暗两种配色：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMlIfg"><img src="https://z3.ax1x.com/2021/07/16/WMlIfg.md.png" alt="WMlIfg.md.png"></a><br>再次进入iTerm2 -&gt; Preferences -&gt; Profiles -&gt; Colors -&gt; Color Presets中根据个人喜好选择这两种配色中的一种即可：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WM1djs"><img src="https://z3.ax1x.com/2021/07/16/WM1djs.md.png" alt="WM1djs.md.png"></a><h3 id="7-安装主题"><a href="#7-安装主题" class="headerlink" title="7.安装主题"></a>7.安装主题</h3>主题的安装网上有很多教程，也有很多主题选择，可以查看github上的<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">各种主题</a>，如果你和笔者一样不知道选择哪一个主题,可以选择<code>random</code>主题，它会在每次打开<code>item2</code>时切换一个主题，具体操作如下，输入以下代码:<br><code>vi ~/.zshrc</code><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WM4dBj"><img src="https://z3.ax1x.com/2021/07/16/WM4dBj.md.png" alt="WM4dBj.md.png"></a><br>在红线中修改主题为<code>random</code>，vim的使用简要说明，用上下左右键移动光标到要修改处，按键盘<code>a</code>进入insert模式，即可修改，修改完成按<code>esc</code>键退出，然后用键盘输入<code>:wq</code>即保存文件，其他操作可参考<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2020/10/08/Terminal-%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88/">vim资料</a>。</li>
-</ol>
-<p>输入以下代码，让文件生效：<br><code>source ~/.zshrc</code></p>
-<h3 id="8-背景修改"><a href="#8-背景修改" class="headerlink" title="8. 背景修改"></a>8. 背景修改</h3><p>具体操作iTerm2 -&gt; Preferences（可以使用快捷键<code>command</code>+<code>,</code>） -&gt; Profiles -&gt; Window，在红线处点击选择本地的一张图片作为背景。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMThQK"><img src="https://z3.ax1x.com/2021/07/16/WMThQK.md.png" alt="WMThQK.md.png"></a><br>在此页面你也可以修改上图中的Transparency和Blur修改背景的透明度以及模糊度，还可以修改其他参数，定制出属于你的美化终端。</p>
-<h2 id="快捷操作"><a href="#快捷操作" class="headerlink" title="快捷操作"></a>快捷操作</h2><p>为了方便大家提取，我已将我的4个文件背景配置输出为json文件，放在我的<a target="_blank" rel="noopener" href="https://github.com/command-z-z/oh-my-zsh-item2">github仓库</a>中,4张背景图也放置在仓库中有需要自取，具体操作为克隆仓库，然后按下图指示导入json文件即可，记得下载相应背景图。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMHJCn"><img src="https://z3.ax1x.com/2021/07/16/WMHJCn.md.png" alt="WMHJCn.md.png"></a></p>
-<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>zsh中内置了丰富的插件，可在官网上查看<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">Wiki</a>，选择合适的插件，这里讲解几种我自己常用的插件，有待挖掘：</p>
-<p>首先输入：<code>vi ~/.zshrc</code>，可以查看插件安装，在此输入插件名即可,有些上面已经装了就不再叙述。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMOTw8"><img src="https://z3.ax1x.com/2021/07/16/WMOTw8.md.png" alt="WMOTw8.md.png"></a></p>
-<h4 id="1-git（内置）"><a href="#1-git（内置）" class="headerlink" title="1. git（内置）"></a>1. git（内置）</h4><p>作用：可以使用各种<code>git</code>命令缩写。<br>比如:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add --all ===&gt; gaa</span><br><span class="line"></span><br><span class="line">git commit -m ===&gt; gcmsg</span><br></pre></td></tr></table></figure>
-<p>查看所有 git 命令缩写<br><code>cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh</code></p>
-<h4 id="2-z（内置）"><a href="#2-z（内置）" class="headerlink" title="2. z（内置）"></a>2. z（内置）</h4><p>作用：目录间快速跳转,不用再一直<code>cd</code>了<br>输入<code>z</code>查看可以跳转路径。<br><code>z -x 无效路径</code>可以删除路径。</p>
-<h4 id="3-git-open"><a href="#3-git-open" class="headerlink" title="3.git-open"></a>3.git-open</h4><p>作用：在终端里打开当前项目的远程仓库地址</p>
-<p>不要小看这个插件欧，每次改完本地代码，当你想用浏览器访问远程仓库的时候，就知道这个插件多方便了</p>
-<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open</code></p>
-<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 git-open)</code></p>
-<p>使配置生效:<br><code>source ~/.zshrc</code></p>
-<h4 id="4-sudo-内置"><a href="#4-sudo-内置" class="headerlink" title="4. sudo(内置)"></a>4. sudo(内置)</h4><p>作用:当有时输入语句权限不够时，可按两下<code>esc</code>自动补全sudo。</p>
-<h4 id="5-zsh-syntax-highlighting"><a href="#5-zsh-syntax-highlighting" class="headerlink" title="5. zsh-syntax-highlighting"></a>5. zsh-syntax-highlighting</h4><p>作用：平常用的ls、cd 等命令输入正确会绿色高亮显示，输入错误会显示其他的颜色。</p>
-<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</code></p>
-<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-syntax-highlighting)</code></p>
-<p>使配置生效:<br><code>source ~/.zshrc</code></p>
-<h4 id="6-zsh-autosuggestions"><a href="#6-zsh-autosuggestions" class="headerlink" title="6.zsh-autosuggestions"></a>6.zsh-autosuggestions</h4><p>作用：会给出建议的命令（灰色部分）按键盘 → 补全</p>
-<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code></p>
-<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-autosuggestions)</code></p>
-<p>使配置生效:<br><code>source ~/.zshrc</code></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9c3439cc3bdb">1.iTerm2 + Oh My Zsh 打造舒适终端体验</a><br><a target="_blank" rel="noopener" href="https://hufangyun.com/2017/zsh-plugin/">2.zsh oh-my-zsh 插件推荐</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">展开全文 >></a>
         </p>
       
 

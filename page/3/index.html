@@ -160,6 +160,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-item2-oh-my-zsh最全配置教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">item2 + oh my zsh最全配置教程</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" class="archive-article-date">
+	
+  	<time datetime="2021-07-16T07:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-16</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作为一名计算机专业的学生，学会使用Terminal是一件必备技能，而一款好看的终端界面，将大大提高生产效率。网上的配置资料零碎，基于自己的配置经验，决定写一份教程，以供参考，因为笔者已经装好环境，为了更好的安装体验，文中一些图片参考网上，将在文末注明出处。由于笔者使用的是Mac，因此介绍的是Mac上的一款终端替代软件<a target="_blank" rel="noopener" href="https://iterm2.com/"><code>item2</code></a>,并将使用<code>oh my zsh</code>对其进行配置，也将会介绍一些插件的使用，话不多说，先看效果图。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMkHyD"><img src="https://z3.ax1x.com/2021/07/16/WMkHyD.md.png" alt="WMkHyD.md.png"></a></p>
+<p>这里放上我的<a target="_blank" rel="noopener" href="https://github.com/command-z-z/oh-my-zsh-item2">GitHub仓库</a>，文件自取，欢迎<code>star🌟</code>。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="1-安装item2"><a href="#1-安装item2" class="headerlink" title="1. 安装item2"></a>1. 安装item2</h3><p>直接进入<a target="_blank" rel="noopener" href="https://iterm2.com/">item2官网</a>,点击download，根据提示一步步下载即可。</p>
+<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装Homebrew，可以复制以下代码，在终端中执行安装。<br><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot; </code></p>
+<h3 id="3-git的安装"><a href="#3-git的安装" class="headerlink" title="3.git的安装"></a>3.git的安装</h3><p>我们已经安装了homebrew，因此可以使用brew来快速安装git，复制一下代码:<br><code>brew install git</code></p>
+<h3 id="4-oh-my-zsh安装"><a href="#4-oh-my-zsh安装" class="headerlink" title="4.oh my zsh安装"></a>4.oh my zsh安装</h3><p>由于Mac默认使用的是Bash，相比于默认的Bash，Zsh有更多的自定义选项，并支持扩展。因此 Zsh可以实现更强大的命令补全，命令高亮等一系列酷炫功能,可以使用以下代码进行切换;<br><code>chsh -s /bin/zsh</code><br>如果想要切换回可以使用以下代码:<br><code>chsh -s /bin/bash</code><br>换到<code>zsh</code>之后就可以使用以下代码进行安装:<br><code>sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code><br>这里放下<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">oh my zsh</a>的github仓库<br>到此zsh的安装基本结束了，效果如下，为了达到更酷炫的效果，我们还需要一些插件进行配置。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMuZb8"><img src="https://z3.ax1x.com/2021/07/16/WMuZb8.md.png" alt="WMuZb8.md.png"></a></p>
+<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><h3 id="5-安装字体"><a href="#5-安装字体" class="headerlink" title="5.安装字体"></a>5.安装字体</h3><ol>
+<li>使用以下代码安装PowerLine<br><code>pip3 install powerline-status --user</code></li>
+<li>安装PowerFonts，将以下代码一条条放入终端，<code>//</code>后为注释不用复制。<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/Desktop/OpenSource  //首先在桌面上创建一个文件夹</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/Desktop/OpenSource  //进入此文件夹</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/powerline/fonts.git --depth=1  //克隆源码</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> fonts  //进入fonts文件夹</span><br><span class="line"></span><br><span class="line">./install.sh //安装</span><br></pre></td></tr></table></figure>
+安装好字体库之后，我们来设置iTerm2的字体，具体的操作是iTerm2 -&gt; Preferences（可以使用快捷键<code>command</code>+<code>,</code>） -&gt; Profiles -&gt; Text，在Font区域选中Change Font，然后找到Meslo LG字体。有L、M、S可选，看个人喜好：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMlSsI"><img src="https://z3.ax1x.com/2021/07/16/WMlSsI.md.png" alt="WMlSsI.md.png"></a><h3 id="6-安装背景配色"><a href="#6-安装背景配色" class="headerlink" title="6.安装背景配色"></a>6.安装背景配色</h3></li>
+<li>安装Solarized，代码如下：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Desktop/OpenSource</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/altercation/solarized</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> solarized/iterm2-colors-solarized/</span><br><span class="line"></span><br><span class="line">open .</span><br></pre></td></tr></table></figure>
+在打开的finder窗口中，双击Solarized Dark.itermcolors和Solarized Light.itermcolors即可安装明暗两种配色：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMlIfg"><img src="https://z3.ax1x.com/2021/07/16/WMlIfg.md.png" alt="WMlIfg.md.png"></a><br>再次进入iTerm2 -&gt; Preferences -&gt; Profiles -&gt; Colors -&gt; Color Presets中根据个人喜好选择这两种配色中的一种即可：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WM1djs"><img src="https://z3.ax1x.com/2021/07/16/WM1djs.md.png" alt="WM1djs.md.png"></a><h3 id="7-安装主题"><a href="#7-安装主题" class="headerlink" title="7.安装主题"></a>7.安装主题</h3>主题的安装网上有很多教程，也有很多主题选择，可以查看github上的<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">各种主题</a>，如果你和笔者一样不知道选择哪一个主题,可以选择<code>random</code>主题，它会在每次打开<code>item2</code>时切换一个主题，具体操作如下，输入以下代码:<br><code>vi ~/.zshrc</code><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WM4dBj"><img src="https://z3.ax1x.com/2021/07/16/WM4dBj.md.png" alt="WM4dBj.md.png"></a><br>在红线中修改主题为<code>random</code>，vim的使用简要说明，用上下左右键移动光标到要修改处，按键盘<code>a</code>进入insert模式，即可修改，修改完成按<code>esc</code>键退出，然后用键盘输入<code>:wq</code>即保存文件，其他操作可参考<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2020/10/08/Terminal-%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88/">vim资料</a>。</li>
+</ol>
+<p>输入以下代码，让文件生效：<br><code>source ~/.zshrc</code></p>
+<h3 id="8-背景修改"><a href="#8-背景修改" class="headerlink" title="8. 背景修改"></a>8. 背景修改</h3><p>具体操作iTerm2 -&gt; Preferences（可以使用快捷键<code>command</code>+<code>,</code>） -&gt; Profiles -&gt; Window，在红线处点击选择本地的一张图片作为背景。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMThQK"><img src="https://z3.ax1x.com/2021/07/16/WMThQK.md.png" alt="WMThQK.md.png"></a><br>在此页面你也可以修改上图中的Transparency和Blur修改背景的透明度以及模糊度，还可以修改其他参数，定制出属于你的美化终端。</p>
+<h2 id="快捷操作"><a href="#快捷操作" class="headerlink" title="快捷操作"></a>快捷操作</h2><p>为了方便大家提取，我已将我的4个文件背景配置输出为json文件，放在我的<a target="_blank" rel="noopener" href="https://github.com/command-z-z/oh-my-zsh-item2">github仓库</a>中,4张背景图也放置在仓库中有需要自取，具体操作为克隆仓库，然后按下图指示导入json文件即可，记得下载相应背景图。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMHJCn"><img src="https://z3.ax1x.com/2021/07/16/WMHJCn.md.png" alt="WMHJCn.md.png"></a></p>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>zsh中内置了丰富的插件，可在官网上查看<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">Wiki</a>，选择合适的插件，这里讲解几种我自己常用的插件，有待挖掘：</p>
+<p>首先输入：<code>vi ~/.zshrc</code>，可以查看插件安装，在此输入插件名即可,有些上面已经装了就不再叙述。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMOTw8"><img src="https://z3.ax1x.com/2021/07/16/WMOTw8.md.png" alt="WMOTw8.md.png"></a></p>
+<h4 id="1-git（内置）"><a href="#1-git（内置）" class="headerlink" title="1. git（内置）"></a>1. git（内置）</h4><p>作用：可以使用各种<code>git</code>命令缩写。<br>比如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add --all ===&gt; gaa</span><br><span class="line"></span><br><span class="line">git commit -m ===&gt; gcmsg</span><br></pre></td></tr></table></figure>
+<p>查看所有 git 命令缩写<br><code>cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh</code></p>
+<h4 id="2-z（内置）"><a href="#2-z（内置）" class="headerlink" title="2. z（内置）"></a>2. z（内置）</h4><p>作用：目录间快速跳转,不用再一直<code>cd</code>了<br>输入<code>z</code>查看可以跳转路径。<br><code>z -x 无效路径</code>可以删除路径。</p>
+<h4 id="3-git-open"><a href="#3-git-open" class="headerlink" title="3.git-open"></a>3.git-open</h4><p>作用：在终端里打开当前项目的远程仓库地址</p>
+<p>不要小看这个插件欧，每次改完本地代码，当你想用浏览器访问远程仓库的时候，就知道这个插件多方便了</p>
+<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open</code></p>
+<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 git-open)</code></p>
+<p>使配置生效:<br><code>source ~/.zshrc</code></p>
+<h4 id="4-sudo-内置"><a href="#4-sudo-内置" class="headerlink" title="4. sudo(内置)"></a>4. sudo(内置)</h4><p>作用:当有时输入语句权限不够时，可按两下<code>esc</code>自动补全sudo。</p>
+<h4 id="5-zsh-syntax-highlighting"><a href="#5-zsh-syntax-highlighting" class="headerlink" title="5. zsh-syntax-highlighting"></a>5. zsh-syntax-highlighting</h4><p>作用：平常用的ls、cd 等命令输入正确会绿色高亮显示，输入错误会显示其他的颜色。</p>
+<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</code></p>
+<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-syntax-highlighting)</code></p>
+<p>使配置生效:<br><code>source ~/.zshrc</code></p>
+<h4 id="6-zsh-autosuggestions"><a href="#6-zsh-autosuggestions" class="headerlink" title="6.zsh-autosuggestions"></a>6.zsh-autosuggestions</h4><p>作用：会给出建议的命令（灰色部分）按键盘 → 补全</p>
+<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code></p>
+<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-autosuggestions)</code></p>
+<p>使配置生效:<br><code>source ~/.zshrc</code></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9c3439cc3bdb">1.iTerm2 + Oh My Zsh 打造舒适终端体验</a><br><a target="_blank" rel="noopener" href="https://hufangyun.com/2017/zsh-plugin/">2.zsh oh-my-zsh 插件推荐</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Swift-学习笔记-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1252,172 +1364,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数字图像处理-学习笔记（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">数字图像处理-学习笔记（2）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-20T08:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="空间域图像增强"><a href="#空间域图像增强" class="headerlink" title="空间域图像增强"></a>空间域图像增强</h2><p>内容大致：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7qn4s"><img src="https://z3.ax1x.com/2021/04/20/c7qn4s.md.png" alt="c7qn4s.md.png"></a></p>
-<h4 id="4-空间滤波"><a href="#4-空间滤波" class="headerlink" title="4.空间滤波"></a>4.空间滤波</h4><p>空间滤波：使用空间模板进行的图像处理。<br>空间滤波器：模板本身。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7LAR1"><img src="https://z3.ax1x.com/2021/04/20/c7LAR1.md.png" alt="c7LAR1.md.png"></a></p>
-<p><strong>分类</strong></p>
-<ul>
-<li>平滑滤波器、低通滤波器，作用：边缘平滑、去噪。</li>
-<li>锐化滤波器、高通滤波器，作用：边缘提取与增强。<blockquote>
-<p>低通滤波去除了图像的高频部分，即细节信息，留下的低频信息代表了概貌。常用例子，比如美图秀秀的磨皮，去掉了脸部细节信息（痘坑，痘印，暗斑等）。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="1-平滑滤波器"><a href="#1-平滑滤波器" class="headerlink" title="1.平滑滤波器"></a>1.平滑滤波器</h3><p>平滑空间滤波器的分类</p>
-<ul>
-<li>线性滤波器：均值滤波器、高斯滤波。</li>
-<li>非线性滤波器：中值滤波器、最大值滤波器、最小值滤波器。<br>平滑空间滤波器的作用：</li>
-</ul>
-<ol>
-<li>模糊处理：去除图像中一些不重要的细节。</li>
-<li>减少噪声</li>
-</ol>
-<p><strong>图像噪声：定义和描述方式</strong><br>噪声是妨碍人们感觉器官对所接收信源信息理解的因素。噪声在理论上可定义为“不可预测，只能用概率统计方法来认识的随机误差”。噪声可用随机过程及其概率分布函数和概率密度函数，通常用其数字特征，即均值方差、相关函数等进行处理。</p>
-<p><strong>图像噪声的特点</strong></p>
-<ol>
-<li>噪声在图像中的分布和大小不规则，即随机性。</li>
-<li>噪声与图像之间具有相关性。</li>
-<li>噪声具有叠加性。</li>
-</ol>
-<p><strong>图像噪声分类</strong></p>
-<ul>
-<li>按其产生的原因：外部噪声和内部噪声。</li>
-<li>按统计特性：平稳噪声和非平稳噪声。</li>
-<li>按噪声和信号之间的关系：加性噪声和乘性噪声。</li>
-</ul>
-<h5 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h5><p>对于一个滑动窗口内的各像素灰度级求平均值、用该均值来代替窗口中心像素的灰度值。比如：<br>$$g(x,y)=\frac{f(x-1,y)+f(x,y)+f(x+1,y)}{3}$$</p>
-<blockquote>
-<p>均值滤波的关键是设计合理的滤波器，包括形状和大小。</p>
-</blockquote>
-<p>作用：</p>
-<ol>
-<li>减小图像灰度的“尖锐”变化，减小噪声。</li>
-<li>由于图像边缘是由图像灰度尖锐变化引起的，所以也存在边缘模糊的问题（局限性）。</li>
-</ol>
-<p>常用滤波器：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLWIL4"><img src="https://z3.ax1x.com/2021/04/22/cLWIL4.md.png" alt="cLWIL4.md.png"></a></p>
-<blockquote>
-<p>运用滤波器，滤波器窗口（3x3，5x5）越大，平滑的越厉害，模糊也越严重。</p>
-</blockquote>
-<p>均值滤波的一个重要应用是为了对感兴趣的物体得到一个粗略的描述，模糊一幅图像。</p>
-<h5 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h5><p>一种特殊的线性滤波，其使用高斯函数作为权函数。<br>$$p(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{\frac{-x^2}{2\sigma^2}}$$</p>
-<p><strong>$\sigma$值的意义及选取</strong><br>高斯滤波器模板的生成最重要的参数就是高斯分布的标准差$\sigma$。标准差代表着数据的离散程度，如果$\sigma$较小，那么生成的模板的中心系数较大,而周围的系数较小，这样对图像的平滑效果就部署很明显；反之，$\sigma$较大,则生成的模板的各个系数相差就不是很大，比较类似均值模板，对图像的平滑效果比较明显。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLhV41"><img src="https://z3.ax1x.com/2021/04/22/cLhV41.md.png" alt="cLhV41.md.png"></a></p>
-<p><strong>均值滤波和高斯滤波特点</strong></p>
-<ul>
-<li>系数之和等于1。</li>
-<li>系数都是非负。</li>
-<li>执行速度快。</li>
-<li>容易造成图像模糊。实质上在求平均过程中，噪声的灰度值也加入了均值当中，从而向周围扩散，导致图像模糊，边缘不清晰。</li>
-<li>滤波前后图像亮度不变。</li>
-</ul>
-<h4 id="统计排序滤波器"><a href="#统计排序滤波器" class="headerlink" title="统计排序滤波器"></a>统计排序滤波器</h4><p>定义：是一种非线性滤波器，基于滤波器所在图像区域中像素的排序，由排序结果决定的值代替中心像素的值。<br>分类：</p>
-<ul>
-<li>中值滤波器：用像素邻域内的中间值代替该像素。</li>
-<li>最大值滤波器：用像素邻域内的最大值代替该像素。</li>
-<li>最小值滤波器：用像素邻域内的最小值代替该像素。</li>
-</ul>
-<h5 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h5><p>定义：对于一个滑动窗口内nm个像素按灰度值进行排序，用中值来替代窗口中心像素原来的灰度。<br>$$g(x,y)=median f(s,t)$$</p>
-<blockquote>
-<p>作用：强迫突出的亮点（暗点）更像它周围的值，以消除孤立的亮点（暗点）。</p>
-</blockquote>
-<p> 思考：为什么中值滤波更好地保持了边缘？其边缘没有模糊？<br> 解释：在目标和背景边界处的像素，当其邻域中大多数为目标点时，他就取目标的灰度值，当其邻域中大多数为背景点时，它就取背景的灰度值，因此不模糊。</p>
-<p> <strong>中值滤波特点</strong></p>
-<ul>
-<li>计算复杂度高（排序），执行速度慢。</li>
-<li>滤波前后图像亮度发生改变（但非常接近）</li>
-<li>不容易造成图像模糊，具有非常好的抗噪性能。中值滤波能够在抑制随机噪声的同时不使边缘模糊。</li>
-</ul>
-<h5 id="极值滤波"><a href="#极值滤波" class="headerlink" title="极值滤波"></a>极值滤波</h5><h6 id="最大值滤波"><a href="#最大值滤波" class="headerlink" title="最大值滤波"></a>最大值滤波</h6><p>对于一个滑动窗口mn内的各像素求灰度值最大值，用该最大值来替代窗口中心像素原来的灰度值。<br>$$g(x,y)=max f(s,t)$$</p>
-<h6 id="最小值滤波"><a href="#最小值滤波" class="headerlink" title="最小值滤波"></a>最小值滤波</h6><p>对于一个滑动窗口mn内的各像素求灰度值最小值，用该最小值来替代窗口中心像素原来的灰度值。<br>$$g(x,y)=min f(s,t)$$</p>
-<h3 id="2-锐化滤波器"><a href="#2-锐化滤波器" class="headerlink" title="2.锐化滤波器"></a>2.锐化滤波器</h3><p>定义：使模糊图像变清晰，增强图像的边缘等细节。一般先去除噪声，再进行锐化处理。</p>
-<p>微分滤波器的原理：<br>均值产生钝化的效果，而均值与积分相似，由此而联想到，微分能不能产生相反的效果，即锐化的效果？</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLozOf"><img src="https://z3.ax1x.com/2021/04/22/cLozOf.md.png" alt="cLozOf.md.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTZ60"><img src="https://z3.ax1x.com/2021/04/22/cLTZ60.md.png" alt="cLTZ60.md.png"></a></p>
-<h4 id="1-Roberts交叉梯度算子"><a href="#1-Roberts交叉梯度算子" class="headerlink" title="1.Roberts交叉梯度算子"></a>1.Roberts交叉梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTa7D"><img src="https://z3.ax1x.com/2021/04/22/cLTa7D.md.png" alt="cLTa7D.md.png"></a></p>
-<h4 id="2-Sobel梯度算子"><a href="#2-Sobel梯度算子" class="headerlink" title="2.Sobel梯度算子"></a>2.Sobel梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTbuV"><img src="https://z3.ax1x.com/2021/04/22/cLTbuV.md.png" alt="cLTbuV.md.png"></a></p>
-<blockquote>
-<p>这里有个错误，上图中应改为（$z_1+2z_2+z_3$）</p>
-</blockquote>
-<p>Sobel梯度算子的计算方法具体参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/libocao/article/details/88958239">文章</a></p>
-<h4 id="3-Prewitt梯度算子"><a href="#3-Prewitt梯度算子" class="headerlink" title="3.Prewitt梯度算子"></a>3.Prewitt梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOAIjP"><img src="https://z3.ax1x.com/2021/04/22/cOAIjP.md.png" alt="cOAIjP.md.png"></a></p>
-<h4 id="4-常用梯度算子"><a href="#4-常用梯度算子" class="headerlink" title="4.常用梯度算子"></a>4.常用梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOAv3n"><img src="https://z3.ax1x.com/2021/04/22/cOAv3n.md.png" alt="cOAv3n.md.png"></a></p>
-<h4 id="5-拉普拉斯算子"><a href="#5-拉普拉斯算子" class="headerlink" title="5.拉普拉斯算子"></a>5.拉普拉斯算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cO1xgO"><img src="https://z3.ax1x.com/2021/04/23/cO1xgO.md.png" alt="cO1xgO.md.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cO1zvD"><img src="https://z3.ax1x.com/2021/04/23/cO1zvD.md.png" alt="cO1zvD.md.png"></a></p>
-<h2 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOVpRA"><img src="https://z3.ax1x.com/2021/04/22/cOVpRA.md.png" alt="cOVpRA.md.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">展开全文 >></a>
         </p>
       
 

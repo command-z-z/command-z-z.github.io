@@ -160,6 +160,172 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数字图像处理-学习笔记（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">数字图像处理-学习笔记（2）</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/" class="archive-article-date">
+	
+  	<time datetime="2021-04-20T08:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="空间域图像增强"><a href="#空间域图像增强" class="headerlink" title="空间域图像增强"></a>空间域图像增强</h2><p>内容大致：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7qn4s"><img src="https://z3.ax1x.com/2021/04/20/c7qn4s.md.png" alt="c7qn4s.md.png"></a></p>
+<h4 id="4-空间滤波"><a href="#4-空间滤波" class="headerlink" title="4.空间滤波"></a>4.空间滤波</h4><p>空间滤波：使用空间模板进行的图像处理。<br>空间滤波器：模板本身。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7LAR1"><img src="https://z3.ax1x.com/2021/04/20/c7LAR1.md.png" alt="c7LAR1.md.png"></a></p>
+<p><strong>分类</strong></p>
+<ul>
+<li>平滑滤波器、低通滤波器，作用：边缘平滑、去噪。</li>
+<li>锐化滤波器、高通滤波器，作用：边缘提取与增强。<blockquote>
+<p>低通滤波去除了图像的高频部分，即细节信息，留下的低频信息代表了概貌。常用例子，比如美图秀秀的磨皮，去掉了脸部细节信息（痘坑，痘印，暗斑等）。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="1-平滑滤波器"><a href="#1-平滑滤波器" class="headerlink" title="1.平滑滤波器"></a>1.平滑滤波器</h3><p>平滑空间滤波器的分类</p>
+<ul>
+<li>线性滤波器：均值滤波器、高斯滤波。</li>
+<li>非线性滤波器：中值滤波器、最大值滤波器、最小值滤波器。<br>平滑空间滤波器的作用：</li>
+</ul>
+<ol>
+<li>模糊处理：去除图像中一些不重要的细节。</li>
+<li>减少噪声</li>
+</ol>
+<p><strong>图像噪声：定义和描述方式</strong><br>噪声是妨碍人们感觉器官对所接收信源信息理解的因素。噪声在理论上可定义为“不可预测，只能用概率统计方法来认识的随机误差”。噪声可用随机过程及其概率分布函数和概率密度函数，通常用其数字特征，即均值方差、相关函数等进行处理。</p>
+<p><strong>图像噪声的特点</strong></p>
+<ol>
+<li>噪声在图像中的分布和大小不规则，即随机性。</li>
+<li>噪声与图像之间具有相关性。</li>
+<li>噪声具有叠加性。</li>
+</ol>
+<p><strong>图像噪声分类</strong></p>
+<ul>
+<li>按其产生的原因：外部噪声和内部噪声。</li>
+<li>按统计特性：平稳噪声和非平稳噪声。</li>
+<li>按噪声和信号之间的关系：加性噪声和乘性噪声。</li>
+</ul>
+<h5 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h5><p>对于一个滑动窗口内的各像素灰度级求平均值、用该均值来代替窗口中心像素的灰度值。比如：<br>$$g(x,y)=\frac{f(x-1,y)+f(x,y)+f(x+1,y)}{3}$$</p>
+<blockquote>
+<p>均值滤波的关键是设计合理的滤波器，包括形状和大小。</p>
+</blockquote>
+<p>作用：</p>
+<ol>
+<li>减小图像灰度的“尖锐”变化，减小噪声。</li>
+<li>由于图像边缘是由图像灰度尖锐变化引起的，所以也存在边缘模糊的问题（局限性）。</li>
+</ol>
+<p>常用滤波器：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLWIL4"><img src="https://z3.ax1x.com/2021/04/22/cLWIL4.md.png" alt="cLWIL4.md.png"></a></p>
+<blockquote>
+<p>运用滤波器，滤波器窗口（3x3，5x5）越大，平滑的越厉害，模糊也越严重。</p>
+</blockquote>
+<p>均值滤波的一个重要应用是为了对感兴趣的物体得到一个粗略的描述，模糊一幅图像。</p>
+<h5 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h5><p>一种特殊的线性滤波，其使用高斯函数作为权函数。<br>$$p(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{\frac{-x^2}{2\sigma^2}}$$</p>
+<p><strong>$\sigma$值的意义及选取</strong><br>高斯滤波器模板的生成最重要的参数就是高斯分布的标准差$\sigma$。标准差代表着数据的离散程度，如果$\sigma$较小，那么生成的模板的中心系数较大,而周围的系数较小，这样对图像的平滑效果就部署很明显；反之，$\sigma$较大,则生成的模板的各个系数相差就不是很大，比较类似均值模板，对图像的平滑效果比较明显。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLhV41"><img src="https://z3.ax1x.com/2021/04/22/cLhV41.md.png" alt="cLhV41.md.png"></a></p>
+<p><strong>均值滤波和高斯滤波特点</strong></p>
+<ul>
+<li>系数之和等于1。</li>
+<li>系数都是非负。</li>
+<li>执行速度快。</li>
+<li>容易造成图像模糊。实质上在求平均过程中，噪声的灰度值也加入了均值当中，从而向周围扩散，导致图像模糊，边缘不清晰。</li>
+<li>滤波前后图像亮度不变。</li>
+</ul>
+<h4 id="统计排序滤波器"><a href="#统计排序滤波器" class="headerlink" title="统计排序滤波器"></a>统计排序滤波器</h4><p>定义：是一种非线性滤波器，基于滤波器所在图像区域中像素的排序，由排序结果决定的值代替中心像素的值。<br>分类：</p>
+<ul>
+<li>中值滤波器：用像素邻域内的中间值代替该像素。</li>
+<li>最大值滤波器：用像素邻域内的最大值代替该像素。</li>
+<li>最小值滤波器：用像素邻域内的最小值代替该像素。</li>
+</ul>
+<h5 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h5><p>定义：对于一个滑动窗口内nm个像素按灰度值进行排序，用中值来替代窗口中心像素原来的灰度。<br>$$g(x,y)=median f(s,t)$$</p>
+<blockquote>
+<p>作用：强迫突出的亮点（暗点）更像它周围的值，以消除孤立的亮点（暗点）。</p>
+</blockquote>
+<p> 思考：为什么中值滤波更好地保持了边缘？其边缘没有模糊？<br> 解释：在目标和背景边界处的像素，当其邻域中大多数为目标点时，他就取目标的灰度值，当其邻域中大多数为背景点时，它就取背景的灰度值，因此不模糊。</p>
+<p> <strong>中值滤波特点</strong></p>
+<ul>
+<li>计算复杂度高（排序），执行速度慢。</li>
+<li>滤波前后图像亮度发生改变（但非常接近）</li>
+<li>不容易造成图像模糊，具有非常好的抗噪性能。中值滤波能够在抑制随机噪声的同时不使边缘模糊。</li>
+</ul>
+<h5 id="极值滤波"><a href="#极值滤波" class="headerlink" title="极值滤波"></a>极值滤波</h5><h6 id="最大值滤波"><a href="#最大值滤波" class="headerlink" title="最大值滤波"></a>最大值滤波</h6><p>对于一个滑动窗口mn内的各像素求灰度值最大值，用该最大值来替代窗口中心像素原来的灰度值。<br>$$g(x,y)=max f(s,t)$$</p>
+<h6 id="最小值滤波"><a href="#最小值滤波" class="headerlink" title="最小值滤波"></a>最小值滤波</h6><p>对于一个滑动窗口mn内的各像素求灰度值最小值，用该最小值来替代窗口中心像素原来的灰度值。<br>$$g(x,y)=min f(s,t)$$</p>
+<h3 id="2-锐化滤波器"><a href="#2-锐化滤波器" class="headerlink" title="2.锐化滤波器"></a>2.锐化滤波器</h3><p>定义：使模糊图像变清晰，增强图像的边缘等细节。一般先去除噪声，再进行锐化处理。</p>
+<p>微分滤波器的原理：<br>均值产生钝化的效果，而均值与积分相似，由此而联想到，微分能不能产生相反的效果，即锐化的效果？</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLozOf"><img src="https://z3.ax1x.com/2021/04/22/cLozOf.md.png" alt="cLozOf.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTZ60"><img src="https://z3.ax1x.com/2021/04/22/cLTZ60.md.png" alt="cLTZ60.md.png"></a></p>
+<h4 id="1-Roberts交叉梯度算子"><a href="#1-Roberts交叉梯度算子" class="headerlink" title="1.Roberts交叉梯度算子"></a>1.Roberts交叉梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTa7D"><img src="https://z3.ax1x.com/2021/04/22/cLTa7D.md.png" alt="cLTa7D.md.png"></a></p>
+<h4 id="2-Sobel梯度算子"><a href="#2-Sobel梯度算子" class="headerlink" title="2.Sobel梯度算子"></a>2.Sobel梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTbuV"><img src="https://z3.ax1x.com/2021/04/22/cLTbuV.md.png" alt="cLTbuV.md.png"></a></p>
+<blockquote>
+<p>这里有个错误，上图中应改为（$z_1+2z_2+z_3$）</p>
+</blockquote>
+<p>Sobel梯度算子的计算方法具体参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/libocao/article/details/88958239">文章</a></p>
+<h4 id="3-Prewitt梯度算子"><a href="#3-Prewitt梯度算子" class="headerlink" title="3.Prewitt梯度算子"></a>3.Prewitt梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOAIjP"><img src="https://z3.ax1x.com/2021/04/22/cOAIjP.md.png" alt="cOAIjP.md.png"></a></p>
+<h4 id="4-常用梯度算子"><a href="#4-常用梯度算子" class="headerlink" title="4.常用梯度算子"></a>4.常用梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOAv3n"><img src="https://z3.ax1x.com/2021/04/22/cOAv3n.md.png" alt="cOAv3n.md.png"></a></p>
+<h4 id="5-拉普拉斯算子"><a href="#5-拉普拉斯算子" class="headerlink" title="5.拉普拉斯算子"></a>5.拉普拉斯算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cO1xgO"><img src="https://z3.ax1x.com/2021/04/23/cO1xgO.md.png" alt="cO1xgO.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cO1zvD"><img src="https://z3.ax1x.com/2021/04/23/cO1zvD.md.png" alt="cO1zvD.md.png"></a></p>
+<h2 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOVpRA"><img src="https://z3.ax1x.com/2021/04/22/cOVpRA.md.png" alt="cOVpRA.md.png"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数字图像处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -962,130 +1128,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Tableau绘图-学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Tableau绘图 学习笔记</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-	
-  	<time datetime="2021-01-25T23:08:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1E4411B7ef">教学视频</a>参考</p>
-<h3 id="第一次课"><a href="#第一次课" class="headerlink" title="第一次课"></a>第一次课</h3><h4 id="1-绘制条形图"><a href="#1-绘制条形图" class="headerlink" title="1.绘制条形图"></a>1.绘制条形图</h4><h5 id="1-1-条形图1-各地区酒店数量"><a href="#1-1-条形图1-各地区酒店数量" class="headerlink" title="1.1 条形图1(各地区酒店数量)"></a>1.1 条形图1(各地区酒店数量)</h5><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVsenH"><img src="https://s3.ax1x.com/2021/02/01/yVsenH.md.png" alt="yVsenH.md.png"></a></p>
-<h5 id="1-2-条形图2-各地区酒店均价"><a href="#1-2-条形图2-各地区酒店均价" class="headerlink" title="1.2 条形图2(各地区酒店均价)"></a>1.2 条形图2(各地区酒店均价)</h5><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVsgb9"><img src="https://s3.ax1x.com/2021/02/01/yVsgb9.md.png" alt="yVsgb9.md.png"></a></p>
-<h5 id="1-3-堆积图-价格等级"><a href="#1-3-堆积图-价格等级" class="headerlink" title="1.3 堆积图(价格等级)"></a>1.3 堆积图(价格等级)</h5><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVyKr4"><img src="https://s3.ax1x.com/2021/02/01/yVyKr4.md.png" alt="yVyKr4.md.png"></a></p>
-<blockquote>
-<p>说明：不同颜色表示同一地区不同等级酒店的个数。</p>
-</blockquote>
-<h4 id="2-直方图"><a href="#2-直方图" class="headerlink" title="2.直方图"></a>2.直方图</h4><p>与条形图的区别，用来看分布，而非实际大小。<br>首先要创建数据桶，才能创建直方图。<br>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVcaEd"><img src="https://s3.ax1x.com/2021/02/01/yVcaEd.md.png" alt="yVcaEd.md.png"></a></p>
-<blockquote>
-<p>说明：直方图即为横坐标为某一区间的条形图。</p>
-</blockquote>
-<h3 id="第二次课"><a href="#第二次课" class="headerlink" title="第二次课"></a>第二次课</h3><h4 id="1-折线图"><a href="#1-折线图" class="headerlink" title="1.折线图"></a>1.折线图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMNCQS"><img src="https://s3.ax1x.com/2021/02/03/yMNCQS.md.png" alt="yMNCQS.md.png"></a></p>
-<h4 id="2-饼图"><a href="#2-饼图" class="headerlink" title="2.饼图"></a>2.饼图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yM0nr8"><img src="https://s3.ax1x.com/2021/02/03/yM0nr8.md.png" alt="yM0nr8.md.png"></a></p>
-<h4 id="3-环形图"><a href="#3-环形图" class="headerlink" title="3.环形图"></a>3.环形图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMrqL6"><img src="https://s3.ax1x.com/2021/02/03/yMrqL6.md.png" alt="yMrqL6.md.png"></a></p>
-<h3 id="第三次课"><a href="#第三次课" class="headerlink" title="第三次课"></a>第三次课</h3><h4 id="1-凸显表"><a href="#1-凸显表" class="headerlink" title="1.凸显表"></a>1.凸显表</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMygET"><img src="https://s3.ax1x.com/2021/02/03/yMygET.md.png" alt="yMygET.md.png"></a></p>
-<h4 id="2-树形图"><a href="#2-树形图" class="headerlink" title="2.树形图"></a>2.树形图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yM6Ns1"><img src="https://s3.ax1x.com/2021/02/03/yM6Ns1.md.png" alt="yM6Ns1.md.png"></a></p>
-<blockquote>
-<p>树形图的大小和颜色分别可以代表不同的维度，即一张表包含两个信息。</p>
-</blockquote>
-<h4 id="3-气泡图"><a href="#3-气泡图" class="headerlink" title="3.气泡图"></a>3.气泡图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMg9N8"><img src="https://s3.ax1x.com/2021/02/03/yMg9N8.md.png" alt="yMg9N8.md.png"></a></p>
-<blockquote>
-<p>气泡大小表示电影数量多少，颜色深浅表示累计票房多少。</p>
-</blockquote>
-<h4 id="4-词云图"><a href="#4-词云图" class="headerlink" title="4.词云图"></a>4.词云图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMgoKs"><img src="https://s3.ax1x.com/2021/02/03/yMgoKs.md.png" alt="yMgoKs.md.png"></a></p>
-<h3 id="第四次课"><a href="#第四次课" class="headerlink" title="第四次课"></a>第四次课</h3><h4 id="1-标靶图"><a href="#1-标靶图" class="headerlink" title="1.标靶图"></a>1.标靶图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yQOXZV"><img src="https://s3.ax1x.com/2021/02/03/yQOXZV.md.png" alt="yQOXZV.md.png"></a></p>
-<h4 id="2-甘特图"><a href="#2-甘特图" class="headerlink" title="2.甘特图"></a>2.甘特图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylPO1K"><img src="https://s3.ax1x.com/2021/02/03/ylPO1K.md.png" alt="ylPO1K.md.png"></a></p>
-<h4 id="3-瀑布图"><a href="#3-瀑布图" class="headerlink" title="3.瀑布图"></a>3.瀑布图</h4><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylAYDS"><img src="https://s3.ax1x.com/2021/02/03/ylAYDS.md.png" alt="ylAYDS.md.png"></a></p>
-<h3 id="第五次课"><a href="#第五次课" class="headerlink" title="第五次课"></a>第五次课</h3><h4 id="1-国家销售地图"><a href="#1-国家销售地图" class="headerlink" title="1. 国家销售地图"></a>1. 国家销售地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylebQI"><img src="https://s3.ax1x.com/2021/02/03/ylebQI.md.png" alt="ylebQI.md.png"></a></p>
-<h4 id="2-仪表板的使用"><a href="#2-仪表板的使用" class="headerlink" title="2.仪表板的使用"></a>2.仪表板的使用</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylevTS"><img src="https://s3.ax1x.com/2021/02/03/ylevTS.md.png" alt="ylevTS.md.png"></a></p>
-<blockquote>
-<p>将多个图表合并成一个图使用。</p>
-</blockquote>
-<h3 id="第六次课"><a href="#第六次课" class="headerlink" title="第六次课"></a>第六次课</h3><h4 id="1-填充地图"><a href="#1-填充地图" class="headerlink" title="1.填充地图"></a>1.填充地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylKap4"><img src="https://s3.ax1x.com/2021/02/03/ylKap4.md.png" alt="ylKap4.md.png"></a></p>
-<h4 id="2-多维地图"><a href="#2-多维地图" class="headerlink" title="2.多维地图"></a>2.多维地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylMmHx"><img src="https://s3.ax1x.com/2021/02/03/ylMmHx.md.png" alt="ylMmHx.md.png"></a></p>
-<h4 id="3-混合地图"><a href="#3-混合地图" class="headerlink" title="3.混合地图"></a>3.混合地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylMOIK"><img src="https://s3.ax1x.com/2021/02/03/ylMOIK.md.png" alt="ylMOIK.md.png"></a></p>
-<h3 id="第七次课"><a href="#第七次课" class="headerlink" title="第七次课"></a>第七次课</h3><h4 id="1-多边形地图"><a href="#1-多边形地图" class="headerlink" title="1.多边形地图"></a>1.多边形地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylcb3F"><img src="https://s3.ax1x.com/2021/02/04/ylcb3F.md.png" alt="ylcb3F.md.png"></a></p>
-<h3 id="第八次课"><a href="#第八次课" class="headerlink" title="第八次课"></a>第八次课</h3><h4 id="1-划分地理区域"><a href="#1-划分地理区域" class="headerlink" title="1.划分地理区域"></a>1.划分地理区域</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yl4RPI"><img src="https://s3.ax1x.com/2021/02/04/yl4RPI.md.png" alt="yl4RPI.md.png"></a></p>
-<h3 id="第九次课"><a href="#第九次课" class="headerlink" title="第九次课"></a>第九次课</h3><p>计算字段与表计算：粒度、聚合与比率。</p>
-<h3 id="第十次课"><a href="#第十次课" class="headerlink" title="第十次课"></a>第十次课</h3><h4 id="1-人口金字塔"><a href="#1-人口金字塔" class="headerlink" title="1.人口金字塔"></a>1.人口金字塔</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1PZ4I"><img src="https://s3.ax1x.com/2021/02/04/y1PZ4I.md.png" alt="y1PZ4I.md.png"></a></p>
-<h4 id="2-漏斗图"><a href="#2-漏斗图" class="headerlink" title="2.漏斗图"></a>2.漏斗图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1PKv8"><img src="https://s3.ax1x.com/2021/02/04/y1PKv8.md.png" alt="y1PKv8.md.png"></a></p>
-<h4 id="3-箱线图"><a href="#3-箱线图" class="headerlink" title="3.箱线图"></a>3.箱线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1FSOO"><img src="https://s3.ax1x.com/2021/02/04/y1FSOO.md.png" alt="y1FSOO.md.png"></a></p>
-<h3 id="第十一次课"><a href="#第十一次课" class="headerlink" title="第十一次课"></a>第十一次课</h3><h4 id="1-范围-线图"><a href="#1-范围-线图" class="headerlink" title="1.范围-线图"></a>1.范围-线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1tdts"><img src="https://s3.ax1x.com/2021/02/04/y1tdts.md.png" alt="y1tdts.md.png"></a></p>
-<blockquote>
-<p>反映某个个体在群体中的情况</p>
-</blockquote>
-<h3 id="第十二次课"><a href="#第十二次课" class="headerlink" title="第十二次课"></a>第十二次课</h3><h4 id="1-网络图"><a href="#1-网络图" class="headerlink" title="1.网络图"></a>1.网络图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1akpn"><img src="https://s3.ax1x.com/2021/02/04/y1akpn.md.png" alt="y1akpn.md.png"></a></p>
-<h4 id="2-弧线图"><a href="#2-弧线图" class="headerlink" title="2.弧线图"></a>2.弧线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1rVXR"><img src="https://s3.ax1x.com/2021/02/04/y1rVXR.md.png" alt="y1rVXR.md.png"></a></p>
-<h3 id="第十三次课"><a href="#第十三次课" class="headerlink" title="第十三次课"></a>第十三次课</h3><h4 id="1-雷达图"><a href="#1-雷达图" class="headerlink" title="1.雷达图"></a>1.雷达图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y3GJqe"><img src="https://s3.ax1x.com/2021/02/04/y3GJqe.md.png" alt="y3GJqe.md.png"></a></p>
-<h4 id="2-凹凸图"><a href="#2-凹凸图" class="headerlink" title="2.凹凸图"></a>2.凹凸图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y3GQ8x"><img src="https://s3.ax1x.com/2021/02/04/y3GQ8x.png" alt="y3GQ8x.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
         </p>
       
 
