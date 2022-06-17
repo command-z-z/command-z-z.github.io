@@ -160,6 +160,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-GMT地形图绘制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">GMT地形图绘制 学习笔记（1） -绘制底图</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/" class="archive-article-date">
+	
+  	<time datetime="2021-01-27T15:03:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
+<h3 id="绘制全球地图"><a href="#绘制全球地图" class="headerlink" title="绘制全球地图"></a>绘制全球地图</h3><h4 id="J-amp-R选项的基本用法"><a href="#J-amp-R选项的基本用法" class="headerlink" title="-J &amp; -R选项的基本用法"></a>-J &amp; -R选项的基本用法</h4><p>-J 选项指定地图投影参数以及地图的尺寸。 -R 选项指定要绘制的区域范围（即经纬度范围）。 如运行以下代码可以绘制全球地图（无边框版）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap1pdf </span><br><span class="line">    gmt coast -JH180&#x2F;12c -R0&#x2F;360&#x2F;-90&#x2F;90 -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9bohn"><img src="https://s3.ax1x.com/2021/01/28/y9bohn.jpg" alt="y9bohn.jpg"></a><br>其中，-JH180/12c指定地图投影参数,H表示使用<strong>Hammer投影</strong>，地图中心位于经度 180° 处，地图宽度为12厘米（12c）；-R0/360/-90/90 指定要绘制的区域范围，即经度0° 到360°，纬度-90° 到90°，四个数字之间用斜杠/分隔。</p>
+<h4 id="B选项的基本用法"><a href="#B选项的基本用法" class="headerlink" title="-B选项的基本用法"></a>-B选项的基本用法</h4><p>-B 选项可以为地理底图加上边框并绘制经纬线。运行以下代码，可绘制全球地图（有边框版）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap2 pdf</span><br><span class="line">    gmt coast -JH180&#x2F;12c -Rg -Bg -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9q4KK"><img src="https://s3.ax1x.com/2021/01/28/y9q4KK.jpg" alt="y9q4KK.jpg"></a><br>其中，-Rg与-R0/360/-90/90是完全等效的。由于绘制全球地图是很常见的需求，因而GMT 为其设计了一个更简单的写法。-Rg中g代表global；-Bg 选项中的-B用于给底图加上边框，其中的g则用于向底图中加入网格线（g代表grid）。</p>
+<h4 id="绘制区域地图"><a href="#绘制区域地图" class="headerlink" title="绘制区域地图"></a>绘制区域地图</h4><p>绘制区域地图与绘制全球地图没有本质区别，依然需要使用-J指定投影方式，使用-R指定绘图区域范围，使用-B指定底图边框。运行以下代码，可绘制新西兰地图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealand1 png &#x2F;&#x2F;此处为输出格式，这里测试后都改为png格式，便于Latex文本加入。</span><br><span class="line">    gmt coast -JM12c -RNZ -Ba -W0.5p -A10000</span><br><span class="line">gmt end show &#x2F;&#x2F;编译好后会直接输出</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9O5Ae"><img src="https://s3.ax1x.com/2021/01/28/y9O5Ae.md.png" alt="y9O5Ae.md.png"></a></p>
+<p>其中，-JM12c指定了使用墨卡托投影（绘制区域地图最常用的投影方式），地图宽度为12厘米；-RNZ指定了绘图区域范围，此处NZ是新西兰的国家代码，GMT会自动根据国家代码提取该国家的区域范围并用于绘图；-Ba用于给底图添加边框。对于某些地图投影GMT默认使用图中所示的黑白相间的底图边框。a用于添加标注（annotation，即图中的经纬度数字）。如果对于根据国家代码自动确定的区域范围不太满意，也可以使用-R选项最原始的方式来指定区域范围。通过上面的图，我们大概知道了新西兰的经纬度范围。运行以下代码重新绘制新西兰地图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap2 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Ba -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p>此代码同样可以生成类似上图新西兰区域图</p>
+<p>还可以对底图进行进一步的修改以使其更加美观</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap3 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Bxa4 -Bya3 -BWSen+t&quot;New Zealand&quot; -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9jkRA"><img src="https://s3.ax1x.com/2021/01/28/y9jkRA.md.png" alt="y9jkRA.md.png"></a><br>其中，-Bxa4 表示设置X轴（x）的标注间隔为4度一个（a4），-Bya3表示设置y轴的标注间隔为3度一个（a3），-BWSen中WSEN分别是西南东北四个方向的英文单词首字母，用于控制四条边的属性。大写的WS表示给西边和南边添加标注，而小写的en则表示对于东边和北边只绘制边框但不显示标注，-BWSen+t”New Zealand”中+t用于给整张图添加标题（title）。由于标题New Zealand中含有空格，我们需要使用单引号或双引号将其括起来。</p>
+<h3 id="绘制坐标轴"><a href="#绘制坐标轴" class="headerlink" title="绘制坐标轴"></a>绘制坐标轴</h3><h4 id="绘制线性坐标"><a href="#绘制线性坐标" class="headerlink" title="绘制线性坐标"></a>绘制线性坐标</h4><p>绘制线性坐标轴，需要使用-R指定坐标轴范围，使用-B绘制边框并指定边框和坐标轴属性，同时，还需要使用-JX指定线性坐标轴的宽度和高度。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin linearxy png</span><br><span class="line">    gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8 -JX8c&#x2F;5c -Bxa10f5g10+l&quot;X Label&quot; -Bya4f2g2+l&quot;Y Label&quot; -BWSen+t&quot;Linear X-Y Plot&quot;</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9vdnP"><img src="https://s3.ax1x.com/2021/01/28/y9vdnP.md.png" alt="y9vdnP.md.png"></a><br>其中，-JX8c/5c表明线性坐标轴的宽度为8厘米，高度为5厘米，-R10/70/-4/8表明X轴范围为10到70，Y轴范围为-4到8，-Bxa10f5g10+l”X Label” 设置了X 轴的属性，a10f5g10 分别设置了标注（annotation）间隔为10，刻度（frame）间隔为5，网格线（grid ）间隔为10；+l”X Label”则为X轴添加了标签；对于Y 轴同理.</p>
+<h4 id="绘制三维坐标"><a href="#绘制三维坐标" class="headerlink" title="绘制三维坐标"></a>绘制三维坐标</h4><p>三维坐标轴只需要在二维坐标的基础上针对Z轴指定Z轴的范围、Z轴的高度以及三维视角即可。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin 3dmap png</span><br><span class="line">gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8&#x2F;-10&#x2F;10 -JX8c5c -JZ5c -Bxa10+lX -Bya4+lY -Bzaf+lDepth -BSEwnZ+b+t&#39;3D Plot&#39; -p130&#x2F;30</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9xC3d"><img src="https://s3.ax1x.com/2021/01/28/y9xC3d.md.png" alt="y9xC3d.md.png"></a></p>
+<p>其中，-R 选项中有6个数字，后面两个数字表示Z轴最小值和最大值，-JZ5c指定了Z轴的高度为5厘米，-Bzaf指定了 轴的标注和刻度属性，-BSEwnZ+b中Z+b表示绘制一条Z轴，并绘制出整个长方体的所有边，-p130/30则指定了看这个长方体的视角130 和30分别为三维视角的方位角和高度角，方位角的取值范围为0 到360 度，高度角的取值范围为0 到90 度。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Tableau绘图-学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1057,146 +1156,9 @@
 
 
   
-    <article id="post-C-操作符重载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">C++操作符重载</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="archive-article-date">
-	
-  	<time datetime="2020-11-27T09:19:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-27</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="可重载运算符-不可重载运算符"><a href="#可重载运算符-不可重载运算符" class="headerlink" title="可重载运算符/不可重载运算符"></a>可重载运算符/不可重载运算符</h2><p>下面是可重载的运算符列表：</p>
-<table>
-<thead>
-<tr>
-<th align="left">运算符</th>
-<th align="left">具体操作符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">双目算术运算符</td>
-<td align="left">+ (加)，-(减)，*(乘)，/(除)，% (取模)</td>
-</tr>
-<tr>
-<td align="left">关系运算符</td>
-<td align="left">==(等于)，!= (不等于)，&lt; (小于)，&gt; (大于&gt;，&lt;=(小于等于)，&gt;=(大于等于)</td>
-</tr>
-<tr>
-<td align="left">逻辑运算符</td>
-<td align="left">||(逻辑或)，&amp;&amp;(逻辑与)，!(逻辑非)</td>
-</tr>
-<tr>
-<td align="left">单目运算符</td>
-<td align="left">+ (正)，-(负)，*(指针)，&amp;(取地址)</td>
-</tr>
-<tr>
-<td align="left">自增自减运算符</td>
-<td align="left">++(自增)，--(自减)</td>
-</tr>
-<tr>
-<td align="left">位运算符</td>
-<td align="left">| (按位或)，&amp; (按位与)，~(按位取反)，^(按位异或),，&lt;&lt; (左移)，&gt;&gt;(右移)</td>
-</tr>
-<tr>
-<td align="left">赋值运算符</td>
-<td align="left">=, +=, -=, *=, /= , % = , &amp;=, |=, ^=, &lt;&lt;=, &gt;&gt;=</td>
-</tr>
-<tr>
-<td align="left">空间申请与释放</td>
-<td align="left">new, delete, new[ ] , delete[]</td>
-</tr>
-<tr>
-<td align="left">其他运算符</td>
-<td align="left">()(函数调用)，-&gt;(成员访问)，,(逗号)，[](下标)</td>
-</tr>
-</tbody></table>
-<p>下面是不可重载的运算符列表:</p>
-<ul>
-<li><code>.</code>：成员访问运算符</li>
-<li><code>.*</code>,<code>-&gt;*</code>：成员指针访问运算符</li>
-<li><code>::</code>：域运算符</li>
-<li><code>sizeof</code>：长度运算符</li>
-<li><code>?:</code>：条件运算符</li>
-<li><code>#</code>：预处理符号</li>
-</ul>
-<h2 id="友元函数-成员函数"><a href="#友元函数-成员函数" class="headerlink" title="友元函数/成员函数"></a>友元函数/成员函数</h2><ul>
-<li><p>只能重载为友元函数（或普通函数）<br><code>&lt;&lt;</code>和<code>&gt;&gt;</code>的重载必须作为类的<strong>友元函数</strong>,不能作为成员函数.<br>运算符重载为成员函数，第一个参数必须是本类的对象。而&lt;&lt;和&gt;&gt;的第一个操作数一定是ostream类型，所以<code>&lt;&lt;</code>只能重载为友元函数。</p>
-</li>
-<li><p>只能重载为成员函数<br>有四个操作符必须只能用“成员”函数重载 <code>=</code> <code>（）</code> <code>[]</code> <code>-&gt;</code></p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1360,11 +1322,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
