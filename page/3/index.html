@@ -164,6 +164,129 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue项目创建出现downloading-template问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/14/vue%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%BA%E7%8E%B0downloading-template%E9%97%AE%E9%A2%98/">在Mac配置vue环境以及项目创建</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/11/14/vue%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%BA%E7%8E%B0downloading-template%E9%97%AE%E9%A2%98/" class="archive-article-date">
+	
+  	<time datetime="2021-11-14T13:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-14</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于笔者使用的是Mac，因此就Mac系统的vue环境进行配置，使用的编辑器是vs code，由于前端需求，就自己配置过程，写下此配置手册，以及在创建时遇到的问题，以及插件推荐。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-安装vs-code"><a href="#1-安装vs-code" class="headerlink" title="1.安装vs code"></a>1.安装vs code</h4><p>vs code仅为一个轻量级的编辑器，可以安装相应插件，提高代码编写效率，<strong>后文有推荐</strong>，安装其他编辑器也可以，可以点击<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">vs code</a>选择相应的PC平台安装，笔者为Mac端版本，具体下载速度受网络影响。</p>
+<h4 id="2-安装Homebrew"><a href="#2-安装Homebrew" class="headerlink" title="2.安装Homebrew"></a>2.安装Homebrew</h4><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装<a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>，可以复制以下代码，在终端中执行安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后输入<code>brew -v</code>,如果出现版本信息即为安装成功。</p>
+<h4 id="3-安装node-js"><a href="#3-安装node-js" class="headerlink" title="3.安装node.js"></a>3.安装node.js</h4><p>完成了Homebrew的安装，只需要通过<code>brew</code>命令即可安装node.js输入以下命令。或者选择去<a target="_blank" rel="noopener" href="https://nodejs.org/en/">nodejs</a>官网下载安装最新LTS版本，按步骤安装即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nodejs</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>node -v</code>,如果出现版本信息即为安装成功。同时相应的也会安装npm,Node.js自带了软件包管理工具npm，可以使用npm安装各种插件，输入<code>npm -v</code>出现相应的版本信息即为安装完成。</p>
+<h4 id="4-安装cnpm（淘宝镜像）"><a href="#4-安装cnpm（淘宝镜像）" class="headerlink" title="4.安装cnpm（淘宝镜像）"></a>4.安装cnpm（淘宝镜像）</h4><p>由于npm服务器在国外，下载速度较慢，为了得到更好的体验，我们选择国内镜像源，在终端输入以下代码,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>cnpm -v</code>,如果出现版本信息即为安装成功。</p>
+<h4 id="5-安装webpack"><a href="#5-安装webpack" class="headerlink" title="5.安装webpack"></a>5.安装webpack</h4><p>webpack是当前前端最热门的前端资源模块化管理和打包工具，输入以下命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install webpack -g</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>webpack -v</code>,如果出现版本信息即为安装成功。</p>
+<h4 id="6-安装vue脚手架（自动搭建vue项目框架的工具）"><a href="#6-安装vue脚手架（自动搭建vue项目框架的工具）" class="headerlink" title="6.安装vue脚手架（自动搭建vue项目框架的工具）"></a>6.安装vue脚手架（自动搭建vue项目框架的工具）</h4><p>vue脚手架的作用是用来自动一键生成vue+webpack的项目模版，包括依赖库，免去你手动安装各种插件，寻找各种cdn并一个个引入的麻烦,输入以下命令安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cnpm install -g vue-cli</span><br></pre></td></tr></table></figure>
+<p>安装完成后输入<code>vue -V</code>(为大写的V),如果出现版本信息即为安装成功。</p>
+<h4 id="7-创建vue项目"><a href="#7-创建vue项目" class="headerlink" title="7.创建vue项目"></a>7.创建vue项目</h4><p>为了方便起见我在桌面建立了一个test文件夹<code>mkdir test</code>,然后<code>cd test</code>,输入以下命令创建项目（此处若出现问题，请参考后文解决措施）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack-simple myProject</span><br></pre></td></tr></table></figure>
+<p>然后按步骤输入项目信息，注意Project name不支持大写字母为项目名，项目创建好后，它也给出了提示信息，继续操作即可。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/I7snyV"><img src="https://z3.ax1x.com/2021/11/19/I7snyV.png" alt="I7snyV.png"></a></p>
+<h4 id="8-安装组件"><a href="#8-安装组件" class="headerlink" title="8.安装组件"></a>8.安装组件</h4><p>每一个项目都有一个package.json文件，里面有很多组件信息，使用<code>npm install</code>将按照package.json安装所需要的组件放在生成的node_modules文件夹中，项目下的每一个文件中都可以通过import引入node_modules的组件来加以使用,首先输入<code>cd myProject</code>进行项目目录中，然后输入以下命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="9-启动项目"><a href="#9-启动项目" class="headerlink" title="9.启动项目"></a>9.启动项目</h4><p>完成以上步骤后,输入以下命令启动项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>若在网站上出现以下内容，即为安装成功<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/I7yC11"><img src="https://z3.ax1x.com/2021/11/19/I7yC11.md.png" alt="I7yC11.md.png"></a><br>若运行过程出现问题请检查上述步骤是否正确，后文中给出了部分问题的解决方案，可能对您有帮助。</p>
+<hr>
+<h2 id="vs-code插件推荐"><a href="#vs-code插件推荐" class="headerlink" title="vs code插件推荐"></a>vs code插件推荐</h2><h5 id="1-Vetur-——-语法高亮、智能感知、Emmet等包含格式化功能，-Alt-Shift-F-（格式化全文），Ctrl-K-Ctrl-F（格式化选中代码，两个Ctrl需要同时按着）"><a href="#1-Vetur-——-语法高亮、智能感知、Emmet等包含格式化功能，-Alt-Shift-F-（格式化全文），Ctrl-K-Ctrl-F（格式化选中代码，两个Ctrl需要同时按着）" class="headerlink" title="1.Vetur —— 语法高亮、智能感知、Emmet等包含格式化功能， Alt+Shift+F （格式化全文），Ctrl+K Ctrl+F（格式化选中代码，两个Ctrl需要同时按着）"></a>1.Vetur —— 语法高亮、智能感知、Emmet等包含格式化功能， Alt+Shift+F （格式化全文），Ctrl+K Ctrl+F（格式化选中代码，两个Ctrl需要同时按着）</h5><h5 id="2-EsLint-——-语法纠错"><a href="#2-EsLint-——-语法纠错" class="headerlink" title="2.EsLint —— 语法纠错"></a>2.EsLint —— 语法纠错</h5><h5 id="3-Auto-Close-Tag-——-自动闭合HTML-XML标签"><a href="#3-Auto-Close-Tag-——-自动闭合HTML-XML标签" class="headerlink" title="3.Auto Close Tag —— 自动闭合HTML/XML标签"></a>3.Auto Close Tag —— 自动闭合HTML/XML标签</h5><h5 id="4-Bracket-Pair-Colorizer-——-给括号加上不同的颜色，便于区分不同的区块，使用者可以定义不同括号类型和不同颜色"><a href="#4-Bracket-Pair-Colorizer-——-给括号加上不同的颜色，便于区分不同的区块，使用者可以定义不同括号类型和不同颜色" class="headerlink" title="4.Bracket Pair Colorizer —— 给括号加上不同的颜色，便于区分不同的区块，使用者可以定义不同括号类型和不同颜色"></a>4.Bracket Pair Colorizer —— 给括号加上不同的颜色，便于区分不同的区块，使用者可以定义不同括号类型和不同颜色</h5><hr>
+<h2 id="可能出现的错误："><a href="#可能出现的错误：" class="headerlink" title="可能出现的错误："></a>可能出现的错误：</h2><h3 id="vue-init项目构建时，一直处于-“downloading-template”-状态下。"><a href="#vue-init项目构建时，一直处于-“downloading-template”-状态下。" class="headerlink" title="vue init项目构建时，一直处于 “downloading template” 状态下。"></a>vue init项目构建时，一直处于 “downloading template” 状态下。</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/IbQkGQ"><img src="https://z3.ax1x.com/2021/11/19/IbQkGQ.md.png" alt="IbQkGQ.md.png"></a></p>
+<p>发现是在下载模版时无法连接到github的问题，属于网络问题，解决方案有以下两种：</p>
+<h3 id="1-修改github的host"><a href="#1-修改github的host" class="headerlink" title="1. 修改github的host"></a>1. 修改github的host</h3><h5 id="1-在终端输入以下命令："><a href="#1-在终端输入以下命令：" class="headerlink" title="1. 在终端输入以下命令："></a>1. 在终端输入以下命令：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi &#x2F;etc&#x2F;hosts</span><br></pre></td></tr></table></figure>
+<h5 id="2-查找github-IP地址"><a href="#2-查找github-IP地址" class="headerlink" title="2. 查找github IP地址"></a>2. 查找github IP地址</h5><p>在<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">ip地址查询网站</a>,搜索<code>github.com</code>,查询相应ip地址，此时笔者的ip显示为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IP Address:140.82.114.3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：ip地址会随着时间更换，建议每次都查询一遍</p>
+</blockquote>
+<h5 id="3-通过vi编辑器，添加以下内容："><a href="#3-通过vi编辑器，添加以下内容：" class="headerlink" title="3. 通过vi编辑器，添加以下内容："></a>3. 通过vi编辑器，添加以下内容：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Github</span><br><span class="line">140.82.114.3 github.com</span><br></pre></td></tr></table></figure>
+<p>完成后保存文件，vi的使用可参考<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2020/10/08/Terminal-%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88/">vi教程</a>,然后重新进行vue init尝试。</p>
+<h3 id="2-手动下载webpack-simple"><a href="#2-手动下载webpack-simple" class="headerlink" title="2. 手动下载webpack-simple"></a>2. 手动下载webpack-simple</h3><p>如果方法一未能解决问题，可以使用方法二，具体步骤如下：</p>
+<h5 id="1-手动下载模版"><a href="#1-手动下载模版" class="headerlink" title="1. 手动下载模版"></a>1. 手动下载模版</h5><p>需要手动下载<code>webpack-simple</code>模板 ，进入到<a target="_blank" rel="noopener" href="https://github.com/vuejs-templates/">github项目地址</a>（可能因为网络原因无法访问，请多次尝试），选择<code>webpack-simple</code>下载到本地。</p>
+<h5 id="2-查找相应路径"><a href="#2-查找相应路径" class="headerlink" title="2. 查找相应路径"></a>2. 查找相应路径</h5><p>将下载下来的 <code>webpack-simple </code>解压，放到 <code>/Users/apple/.vue-templates/webpack-simple</code>目录中，如果不确定自己电脑中具体需要将解压的文件放置在什么位置，可以先运行<code>vue init webpack-simple projectName --offline</code>命令，会提示如下错误 <code>vue-cli · Local template &quot;/Users/apple/.vue-templates/webpack-simple&quot; not found.</code>错误信息中的 <code>/Users/apple/.vue-templates/webpack-simple</code> 便是需要存放<code>webpack-simple</code>的位置。</p>
+<h5 id="3-创建相应文件夹"><a href="#3-创建相应文件夹" class="headerlink" title="3. 创建相应文件夹"></a>3. 创建相应文件夹</h5><p>一般情况下，进入第2步中的时候，会发现 <code>/Users/apple/.vue-templates/webpack-simple</code>该目录找不到，而且通过鼠标创建 <code>.vue-templates</code>文件夹是不成功的，这个时候需要通过命令<code>mkdir .vue-templates</code>指令来创建。</p>
+<h5 id="4-放入文件夹"><a href="#4-放入文件夹" class="headerlink" title="4. 放入文件夹"></a>4. 放入文件夹</h5><p>将 webpack-simple 文件夹顺利放到 <code>/Users/apple/.vue-templates/webpack-simple</code> 之后，在命令行执行<code>vue init webpack-simple projectName --offline</code>命令就可以创建 vue 项目了。</p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2273e26ff6e8">1.Mac下vue开发环境的搭建步骤以及新建项目总结</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gaozhiqiang/p/11528554.html">2.使用vue-cli创建工程的时候提示vue-cli Failed to download repo vuejs-templates/webpack-simple:self signed certificate in certificate chain的解决方法</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/14/vue%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%BA%E7%8E%B0downloading-template%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cmake使用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1198,133 +1321,6 @@
 
 
   
-    <article id="post-数字图像处理-学习笔记（4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">数字图像处理-学习笔记（4）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-27T08:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-集合的平移"><a href="#1-集合的平移" class="headerlink" title="1.集合的平移"></a>1.集合的平移</h3><p>由集合A中所有元素平移后组成的元素集合称为集合A的平移，记为$(A)_z$</p>
-<p>$$(A)_z={w|w=a+z,a\in A}$$<br>其中，w表示集合A中的元素a平移z后形成的元素。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCnX0U"><img src="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png" alt="gCnX0U.md.png"></a></p>
-<hr>
-<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B= {z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
-<p><strong>腐蚀运算的含义是</strong>：每当在目标图像A中找到一个结构元素B相同的子图像时，就把该子图像中与B的原点位置对应的那个像素位置标注为1，图像A上标注出的所有这样的像素组成的集合，即为腐蚀运算的结果。</p>
-<p>简而言之，腐蚀运算的实质就是在目标图像中标出那些与结构元素相同的子图像的原点位置的像素。</p>
-<p>注意，结构元素中的原点位置可以不为1。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gC8FGF"><img src="https://z3.ax1x.com/2021/04/27/gC8FGF.md.png" alt="gC8FGF.md.png"></a></p>
-<blockquote>
-<p>将目标图像进行缩小</p>
-</blockquote>
-<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>腐蚀运算的结果不仅与结构元素的形状（矩形、圆形、菱形等）选取有关，而且还与原点位置的选取有关。</p>
-<p><strong>腐蚀运算的应用</strong><br>利用腐蚀算法消除物体之间的粘连示例</p>
-<hr>
-<h3 id="3-膨胀与腐蚀–膨胀"><a href="#3-膨胀与腐蚀–膨胀" class="headerlink" title="3.膨胀与腐蚀–膨胀"></a>3.膨胀与腐蚀–膨胀</h3><p>膨胀：A被B膨胀的定义为：<br>$$A \oplus B = {z | (B)_z  \cap A \neq \varnothing }$$<br>该式表明膨胀过程是B首先做关于原点的映像，然后平移z。A被B膨胀是所有位移z的集合，这样B和A至少有一个元素是重叠的。</p>
-<p>腐蚀是一种收缩或细化操作，而膨胀则会“增长”或“粗化”<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCGtl4"><img src="https://z3.ax1x.com/2021/04/27/gCGtl4.md.png" alt="gCGtl4.md.png"></a></p>
-<blockquote>
-<p>将目标图像进行扩展1</p>
-</blockquote>
-<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>当目标图像不变，但所给的结构元素的形状改变时；或结构元素的形状不变，而其原点位置改变时，膨胀运算的结果会发生改变。</p>
-<p><strong>膨胀运算的应用</strong><br>利用膨胀运算将相邻的物体连接起来</p>
-<h4 id="腐蚀运算与膨胀运算的对偶性-示例"><a href="#腐蚀运算与膨胀运算的对偶性-示例" class="headerlink" title="腐蚀运算与膨胀运算的对偶性-示例"></a>腐蚀运算与膨胀运算的对偶性-示例</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJ8HI"><img src="https://z3.ax1x.com/2021/04/27/gCJ8HI.md.png" alt="gCJ8HI.md.png"></a></p>
-<blockquote>
-<p>原目标图像A进行膨胀(腐蚀)与目标图像的补的腐蚀(膨胀)相同。</p>
-</blockquote>
-<h3 id="4-开闭运算–开操作"><a href="#4-开闭运算–开操作" class="headerlink" title="4.开闭运算–开操作"></a>4.开闭运算–开操作</h3><p>定义：使用同一个结构元素对目标图像先进行<strong>腐蚀</strong>运算，然后再进行<strong>膨胀</strong>运算称为开操作。</p>
-<p>开操作一般使对象的轮廓变得光滑，断开狭窄的间断和消除细的突出物。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJC3F"><img src="https://z3.ax1x.com/2021/04/27/gCJC3F.md.png" alt="gCJC3F.md.png"></a></p>
-<h3 id="5-闭操作"><a href="#5-闭操作" class="headerlink" title="5.闭操作"></a>5.闭操作</h3><p>定义：使用同一个结构元素对目标图像先进行膨胀运算，然后再进行腐蚀运算称为闭操作。</p>
-<p>闭操作同样使轮廓线更光滑，但它通常消弭狭窄的间断和长细的鸿沟，消除小的孔洞，并填补轮廓线中的断裂。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCYkRS"><img src="https://z3.ax1x.com/2021/04/27/gCYkRS.md.png" alt="gCYkRS.md.png"></a></p>
-<blockquote>
-<p>上图腐蚀有点问题</p>
-</blockquote>
-<h3 id="6-击中或击不中变换"><a href="#6-击中或击不中变换" class="headerlink" title="6.击中或击不中变换"></a>6.击中或击不中变换</h3><p>击中或击不中变换是形状检测的基本工具。</p>
-<blockquote>
-<p>在某些应用中，我们可能对检测某个集合内由1和0组成的某些模式感兴趣，在这种情况下不需要背景。因此，击中或击不中就简化为简单的腐蚀。</p>
-</blockquote>
-<p>可以参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/horseinch/article/details/50127955">文章</a></p>
-<h3 id="7-形态学应用"><a href="#7-形态学应用" class="headerlink" title="7.形态学应用"></a>7.形态学应用</h3><ol>
-<li>边界提取</li>
-<li>孔洞填充</li>
-<li>连通分量的提取</li>
-<li>凸壳</li>
-<li>细化</li>
-<li>粗化</li>
-<li>骨架</li>
-<li>裁剪</li>
-</ol>
-<h3 id="8-灰度级形态学"><a href="#8-灰度级形态学" class="headerlink" title="8.灰度级形态学"></a>8.灰度级形态学</h3><ol>
-<li>腐蚀膨胀</li>
-<li>开闭操作</li>
-<li>顶帽变换、底帽变换</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1455,11 +1451,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,11 +1471,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1499,11 +1495,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
