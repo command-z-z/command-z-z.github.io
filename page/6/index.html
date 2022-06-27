@@ -164,6 +164,194 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-String-new与String直接赋值的区别-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/19/String-new%E4%B8%8EString%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB-Java/">String new与String直接赋值的区别 -Java</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/12/19/String-new%E4%B8%8EString%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB-Java/" class="archive-article-date">
+	
+  	<time datetime="2020-12-19T03:57:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-19</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Java字符串池（String-Pool）"><a href="#Java字符串池（String-Pool）" class="headerlink" title="Java字符串池（String Pool）"></a>Java字符串池（String Pool）</h4><p>在工作中，String类是我们使用频率非常高的一种对象类型。JVM为了提升性能和减少内存开销，避免字符串的重复创建，其维护了一块特殊的内存空间，这就是我们今天要讨论的核心，即字符串池（String Pool）。字符串池由String类私有的维护。</p>
+<h4 id="new与直接赋值的区别"><a href="#new与直接赋值的区别" class="headerlink" title="new与直接赋值的区别"></a>new与直接赋值的区别</h4><p>我们知道，在Java中有两种创建字符串对象的方式：1）采用字面值的方式赋值  2）采用new关键字新建一个字符串对象。这两种方式在性能和内存占用方面存在着差别。</p>
+<p>方式一：采用字面值的方式赋值，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String str =<span class="string">&quot;aaa&quot;</span>;</span><br><span class="line">        String str2=<span class="string">&quot;aaa&quot;</span>;</span><br><span class="line">        System.out.println(str==str2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>采用字面值的方式创建一个字符串时，JVM首先会去字符串池中查找是否存在”aaa”这个对象，如果不存在，则在字符串池中创建”aaa”这个对象，然后将池中”aaa”这个对象的引用地址返回给字符串常量str，这样str会指向池中”aaa”这个字符串对象；如果存在，则不创建任何对象，直接将池中”aaa”这个对象的地址返回，赋给字符串常量。</p>
+<p>在本例中，执行：str == str2 ，会得到以下结果：<code>true</code></p>
+<p>这是因为，创建字符串对象str2时，字符串池中已经存在”aaa”这个对象，直接把对象”aaa”的引用地址返回给str2，这样str2指向了池中”aaa”这个对象，也就是说str和str2指向了同一个对象，因此语句System.out.println(str == str2)输出：true。</p>
+<p>方式二：采用new关键字新建一个字符串对象，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringTest2</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String str3 = <span class="keyword">new</span> String(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        String str4 = <span class="keyword">new</span> String(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        System.out.println(str3==str4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>采用new关键字新建一个字符串对象时，JVM首先在字符串池中查找有没有”aaa”这个字符串对象，如果有，则不在池中再去创建”aaa”这个对象了，直接在堆中创建一个”aaa”字符串对象，然后将堆中的这个”aaa”对象的地址返回赋给引用str3，这样，str3就指向了堆中创建的这个”aaa”字符串对象；如果没有，则首先在字符串池中创建一个”aaa”字符串对象，然后再在堆中创建一个”aaa”字符串对象，然后将堆中这个”aaa”字符串对象的地址返回赋给str3引用，这样，str3指向了堆中创建的这个”aaa”字符串对象。</p>
+<p>在这个例子中，执行：str3 == str4，得到以下结果：<code>false</code>.</p>
+<p> 因为，采用new关键字创建对象时，每次new出来的都是一个新的对象，也即是说引用str3和str4指向的是两个不同的对象，因此语句System.out.println(str3 == str4)输出：false。</p>
+<p>转载自  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/fangfuhai/p/5500065.html">博客园</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/19/String-new%E4%B8%8EString%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB-Java/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-学习笔记（1）-类和对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">Java 学习笔记（1）-类和对象</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
+	
+  	<time datetime="2020-12-18T01:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-18</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-面向对象的基本概念"><a href="#1-面向对象的基本概念" class="headerlink" title="1.面向对象的基本概念"></a>1.面向对象的基本概念</h4><ul>
+<li><strong>类是同种对象的集合与抽象</strong>，类是一种抽象的数据类型，它是具有一定共性的对象的抽象，二属于累的某一对象则被称为是类的一个实例，是类的一次实例化结果。</li>
+</ul>
+<blockquote>
+<p>注意，无论类写得多么庞大，系统都不会给类分配内存空间，因为类的抽象的概述，系统不可能给抽象的东西分配空间，而对象是具体的，实际存在的。</p>
+</blockquote>
+<ul>
+<li>属性是对象的特征，属性可以是数据，也可以是另一种对象。</li>
+</ul>
+<h4 id="2-面向对象的基本特征"><a href="#2-面向对象的基本特征" class="headerlink" title="2.面向对象的基本特征"></a>2.面向对象的基本特征</h4><ul>
+<li>抽象性</li>
+<li>封装性</li>
+<li>继承性</li>
+<li>多态性</li>
+</ul>
+<p>以上将在学习笔记（2）中具体介绍。</p>
+<h4 id="3-类的使用"><a href="#3-类的使用" class="headerlink" title="3.类的使用"></a>3.类的使用</h4><blockquote>
+<p>包含main方法的类叫主类</p>
+</blockquote>
+<p><strong>Java语言的命名规则是什么？</strong></p>
+<blockquote>
+<p>修饰符public代表该类能被所有类访问，修饰符public表明所定义的类为公共类，注意一个Java文件可以包含多个类，但最多包含一个公共类。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java-GUI-设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -999,168 +1187,6 @@
 
 
   
-    <article id="post-数学建模国赛感悟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/">数学建模国赛感悟</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/" class="archive-article-date">
-	
-  	<time datetime="2020-10-27T09:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;时间过了这么久，依然想写写自己对于这次国赛的一些感悟，毕竟也是第一次参加这种有点含金量的比赛。全国大学生数学建模官网上写着“一次参赛，终生受益！”这么一句标语，确实写了有快大半年的数模论文，作为半个建模人，在比赛的历练中也学到了很多，像Latex排版，因子分析，大数据处理等看起来高深的方法，也略有掌握。但身为大二的萌新，三个计算机学院的愣头青，就凭着一股满腔的热情，连数学建模这本书页没看过的人，在大佬林立的大三学长面前，不免感到有点捉襟见肘，面对浩瀚的数模知识库，感到自己是如此渺小。面对暑期培训一题一题题目的狂轰乱炸，不断的上知网查文献，与队友不定期的集中讨论，思考，分析，本着走一步再走一步的原则，靠着我们才大二本来就不如大三的心态，坚持着将题目做完，也很感谢我的队友陪我一起坚持下来。</p>
-<h2 id="数模培训阶段"><a href="#数模培训阶段" class="headerlink" title="数模培训阶段"></a>数模培训阶段</h2><p>&emsp;&emsp;当初报名暑期培训的时候，也是想暑假反正在家也没什么事，还不如来学校学点自己感兴趣的知识，就找了两个队友一起报名组队。培训分为两个阶段，第一阶段为7月15日～8月4日，每7天一题共3题，我们安排的地点是自己在家里做，安排的方式基本是题目出来那一晚晚上连麦对题目进行讨论，之后开始上网查找相关资料，第二天晚上继续讨论，由于我们队全都是计算机学院的，对于数学建模这方面的知识比较薄弱，且不在一起写的局限性，对于题目上下关联不大的，我们更多的是安排分题写，这样虽然质量不太高，但每个人基本能了解自己的思路，多线程推进，也加快了完成论文的速率。由于是在家里写的，这期间还要忙着学车，并没有对数模下太大的功夫，基本只是把自己写的这问写完，更别说达到写出色的水平，也还是怪自己太菜，遇到概率论的知识就不会了，好在网上有知识可以现学现抄。分开写时，我们多采用的是WPS多人协同编辑，排版很难统一，且数学公式的复杂，在Word中也很难美观的展示出来。这也使得我们前几篇的论文只有2分，1分（共5分），格式是一个很大的问题，这个在第二阶段有所改进。由于缺乏所需的知识，论文水平只能停留在初级阶段的水平，前期连数学建模，这个建模是什么意思都没搞懂（不知道萌新是否都是这种想法），真是废物啊。好在最后通过互相协作，将第一阶段的论文都提交成功。</p>
-        
-          <a class="article-more-a" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-链表相关操作集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/">链表相关操作集</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/" class="archive-article-date">
-	
-  	<time datetime="2020-10-09T05:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="循环双向链表"><a href="#循环双向链表" class="headerlink" title="循环双向链表"></a>循环双向链表</h3><ul>
-<li>本次数据结构进行了双向链表的学习，并在链表中增加了哑元节点，哑元节点的加入使得链表的插入和删除得到了简化，不用再去判断删除或插入的是否在链首。</li>
-<li>并在问题中，运用了双向循环列表解决约瑟夫问题，N个人围成一圈，从第一个开始报数，第3个将被杀掉，最后剩下一个，其余人都将被杀掉,直到找到最后一个。</li>
-<li>push函数实现了链表的循环，每增加一个元素，将其的prev与前元素相连，next与first相连，实现循环。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">dnode</span>//结点的定义</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> nodeValue;</span><br><span class="line">    dnode* prev;</span><br><span class="line">    dnode* next;</span><br><span class="line">    dnode() &#123;</span><br><span class="line">        next = <span class="keyword">this</span>;</span><br><span class="line">        prev = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dnode(<span class="keyword">const</span> <span class="keyword">int</span>&amp; value) : nodeValue(value) &#123;</span><br><span class="line">        next = <span class="keyword">this</span>;</span><br><span class="line">        prev = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">list</span> &#123;</span><span class="comment">//双向链表的定义</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    dnode* first = <span class="keyword">new</span> dnode();</span><br><span class="line">    <span class="built_in">list</span>() ;</span><br><span class="line">    ~<span class="built_in">list</span>();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(dnode* p)</span></span>;<span class="comment">//删除一个结点</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> i)</span></span>;<span class="comment">//将元素添加到链表</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> x)</span></span>;<span class="comment">//插入操作</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> i)</span></span>;<span class="comment">//删除操作</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">list</span>::<span class="built_in">list</span>() &#123;</span><br><span class="line">    first-&gt;next = first;</span><br><span class="line">    first-&gt;prev = first;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::clear</span><span class="params">(dnode* p)</span> </span>&#123;<span class="comment">//删除节点</span></span><br><span class="line">    dnode* t = p-&gt;prev;</span><br><span class="line">    t-&gt;next = p-&gt;next;</span><br><span class="line">    p-&gt;next-&gt;prev = t;<span class="comment">//将两个结点前后相连</span></span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">list</span>::~<span class="built_in">list</span>() &#123;</span><br><span class="line">dnode* p = first;</span><br><span class="line"><span class="keyword">while</span> (p-&gt;next != p)</span><br><span class="line">&#123;</span><br><span class="line">    p = p-&gt;next;</span><br><span class="line">    dnode* f = p-&gt;prev;</span><br><span class="line">    clear(f);<span class="comment">//删除节点</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::push</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    dnode* n = <span class="keyword">new</span> dnode(i);</span><br><span class="line">    dnode* p = first-&gt;prev;</span><br><span class="line">    n-&gt;prev = p;</span><br><span class="line">    n-&gt;next = first;</span><br><span class="line">    p-&gt;next = n;</span><br><span class="line">    first-&gt;prev = n;</span><br><span class="line">&#125;<span class="comment">//双向循环链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::insert</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="function">dnode <span class="title">n</span><span class="params">(x)</span></span>;</span><br><span class="line">    dnode* p = first;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;<span class="comment">//找到第i个元素</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;next == first)p = p-&gt;next;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    dnode* t = p-&gt;prev;</span><br><span class="line">    n.next = p;</span><br><span class="line">    n.prev = t;</span><br><span class="line">    t-&gt;next = &amp;n;</span><br><span class="line">    p-&gt;prev = &amp;n;<span class="comment">//前后链接</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::erase</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    dnode* p = first;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;<span class="comment">//找到第i个元素</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;next == first)p = p-&gt;next;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    dnode* t = p-&gt;prev;</span><br><span class="line">    t-&gt;next = p-&gt;next;</span><br><span class="line">    p-&gt;next-&gt;prev = t;<span class="comment">//将第i个元素前后的元素链接</span></span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">list</span> l;</span><br><span class="line">    dnode* p = l.first;</span><br><span class="line">    l.push(<span class="number">12</span>);</span><br><span class="line">    l.push(<span class="number">38</span>);</span><br><span class="line">    l.push(<span class="number">42</span>);</span><br><span class="line">    l.push(<span class="number">21</span>);</span><br><span class="line">    l.erase(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p-&gt;nodeValue &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;约瑟夫环问题求解：&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">list</span> l1;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">41</span>; i++) &#123;</span><br><span class="line">        l1.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    dnode* d = l1.first-&gt;next;<span class="comment">//从链表有元素的位置开始</span></span><br><span class="line">    <span class="keyword">while</span> (l1.first-&gt;next-&gt;next!=l1.first) &#123;<span class="comment">//只剩下一个元素的时候停止循环</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (d-&gt;next == l1.first)d = d-&gt;next;<span class="comment">//循环回去之后要走两格</span></span><br><span class="line">            d = d-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        dnode* n = d-&gt;prev;</span><br><span class="line">        <span class="keyword">if</span> (n == l1.first) &#123;</span><br><span class="line">            n = n-&gt;prev;</span><br><span class="line">        &#125;<span class="comment">//转达最末尾的元素</span></span><br><span class="line">        dnode* p1 = n-&gt;prev;</span><br><span class="line">        dnode* p2 = n-&gt;next;</span><br><span class="line">        p2-&gt;prev = p1;</span><br><span class="line">        p1-&gt;next = p2;</span><br><span class="line">        <span class="keyword">delete</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;the last one is:&quot;</span> &lt;&lt; d-&gt;nodeValue &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1356,6 +1382,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
             
             <div class="clearfix"></div>

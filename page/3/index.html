@@ -164,6 +164,265 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mac软件推荐-开发人员篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E7%AF%87/">mac软件推荐--开发人员篇</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E7%AF%87/" class="archive-article-date">
+	
+  	<time datetime="2021-11-29T12:39:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-29</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E7%AF%87/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-brew介绍以及换源教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/21/brew%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E6%8D%A2%E6%BA%90%E6%95%99%E7%A8%8B/">Homebrew介绍以及换源教程</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/11/21/brew%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E6%8D%A2%E6%BA%90%E6%95%99%E7%A8%8B/" class="archive-article-date">
+	
+  	<time datetime="2021-11-20T23:24:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-21</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#Homebrew%E4%BB%8B%E7%BB%8D">Homebrew介绍</a></li>
+<li><a href="#Homebrew%E5%AE%89%E8%A3%85">Homebrew安装</a><ul>
+<li><a href="#%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E8%A6%81%E6%B1%82">电脑配置要求</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%B8%E8%BD%BD">安装与卸载</a></li>
+<li><a href="#Homebrew%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">Homebrew基本使用</a></li>
+</ul>
+</li>
+<li><a href="#Homebrew-cask%E4%BB%8B%E7%BB%8D">Homebrew-Cask介绍</a><ul>
+<li><a href="#Homebrew-cask%E5%AE%89%E8%A3%85">Homebrew-Cask安装</a></li>
+<li><a href="#Homebrew-cask%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">Homebrew-Cask基本使用</a></li>
+</ul>
+</li>
+<li><a href="#brew%E6%8D%A2%E6%BA%90">brew换源</a></li>
+<li><a href="#%E6%9C%AC%E6%96%87%E5%8F%82%E8%80%83%E4%B8%8E%E9%99%84%E5%BD%95">本文参考与附录</a></li>
+</ul>
+<hr>
+<h3 id="Homebrew介绍"><a href="#Homebrew介绍" class="headerlink" title="Homebrew介绍"></a>Homebrew介绍</h3><p>Homebrew是一款Mac OS平台下的软件包管理工具，拥有安装、卸载、更新、查看、搜索等很多实用的功能。简单的一条指令，就可以实现包管理，而不用你关心各种依赖和文件路径的情况，十分方便快捷。</p>
+<p>援引<a target="_blank" rel="noopener" href="https://brew.sh/">官方</a>的一句话：又提示缺少套件啦？别担心，Homebrew 随时守候。Homebrew —— OS X 不可或缺的套件管理器。</p>
+<p><code>Homebrew</code>主要由四个部分组成<code>brew</code>,<code>homebrew-core</code>,<code>homebrew-bottles</code>,<code>homebrew-cask</code></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th align="right">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>brew</td>
+<td align="right">Homebrew源代码仓库</td>
+</tr>
+<tr>
+<td>homebrew-core</td>
+<td align="right">homebrew核心软件仓库</td>
+</tr>
+<tr>
+<td>homebrew-bottles</td>
+<td align="right">Homebrew预编译二进制软件包</td>
+</tr>
+<tr>
+<td>homebrew-cask</td>
+<td align="right">提供macOS应用和大型二进制文件</td>
+</tr>
+</tbody></table>
+<h3 id="Homebrew安装"><a href="#Homebrew安装" class="headerlink" title="Homebrew安装"></a>Homebrew安装</h3><h4 id="电脑配置要求"><a href="#电脑配置要求" class="headerlink" title="电脑配置要求"></a>电脑配置要求</h4><ul>
+<li>Intel CPU（M1暂未尝试，可找网上相关教程）</li>
+<li>OS X 10.9 or higher</li>
+<li>Xcode命令行工具（使用以下命令或者在apple store中下载Xcode）<br><code>xcode-select --install</code></li>
+<li>支持shell(zsh或bash)</li>
+</ul>
+<h4 id="安装与卸载"><a href="#安装与卸载" class="headerlink" title="安装与卸载"></a>安装与卸载</h4><ul>
+<li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
+若输入以下语句有出现homebrew版本信息，即为安装成功（homebrew-cask暂无）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v</span><br></pre></td></tr></table></figure>
+<a target="_blank" rel="noopener" href="https://imgtu.com/i/oivTKA"><img src="https://z3.ax1x.com/2021/11/24/oivTKA.md.png" alt="oivTKA.md.png"></a></li>
+<li>卸载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cd &#96;brew --prefix&#96;</span><br><span class="line">$ rm -rf Cellar</span><br><span class="line">$ brew prune</span><br><span class="line">$ rm &#96;git ls-files&#96;</span><br><span class="line">$ rm -r Library&#x2F;Homebrew Library&#x2F;Aliases Library&#x2F;Formula Library&#x2F;Contributions</span><br><span class="line">$ rm -rf .git</span><br><span class="line">$ rm -rf ~&#x2F;Library&#x2F;Caches&#x2F;Homebrew</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Homebrew基本使用"><a href="#Homebrew基本使用" class="headerlink" title="Homebrew基本使用"></a>Homebrew基本使用</h4><ul>
+<li><p>安装任意包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install &lt;packageName&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载任意包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew uninstall &lt;packageName&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询可用包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew search &lt;packageName&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看已安装包列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看任意包信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew info &lt;packageName&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新Homebrew</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看Homebrew版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="Homebrew-Cask介绍"><a href="#Homebrew-Cask介绍" class="headerlink" title="Homebrew-Cask介绍"></a>Homebrew-Cask介绍</h3><p>Homebrew Cask 是 Homebrew 的扩展，借助它可以方便地在 macOS 上安装图形界面程序，即我们常用的各类应用。Homebrew 中文含义为自制、自酿酒，Cask 中文含义为桶、木桶，桶装酒是一种成品，也就是说每一个 homebrew cask 都可以直接使用的。</p>
+<p> <img src="https://camo.githubusercontent.com/f8b75a5e461338a90db6acf4db8f5bc9cf620bfba65a5a490ed10bd08f457b52/68747470733a2f2f692e696d6775722e636f6d2f464e4e4d36574c2e676966" alt="Homebrew-cask"></p>
+<h4 id="Homebrew-Cask安装"><a href="#Homebrew-Cask安装" class="headerlink" title="Homebrew-Cask安装"></a>Homebrew-Cask安装</h4><ul>
+<li>可以使用以下语句安装（若速度太慢建议采用下面方式）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap homebrew&#x2F;cask</span><br></pre></td></tr></table></figure></li>
+<li>由于受源的限制，我们可以使用中科大的源来下载，使用以下命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap --custom-remote --force-auto-update homebrew&#x2F;cask https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-cask.git</span><br></pre></td></tr></table></figure>
+若输入以下语句有出现homebrew cask版本信息，即为安装成功。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Homebrew-Cask基本使用"><a href="#Homebrew-Cask基本使用" class="headerlink" title="Homebrew-Cask基本使用"></a>Homebrew-Cask基本使用</h4><ul>
+<li>安装软件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install --cask xxx</span><br></pre></td></tr></table></figure>
+由于homebrew cask是homebrew的扩展，因此也可以使用以下命令安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install xxx</span><br></pre></td></tr></table></figure></li>
+<li>搜索软件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew search --cask xxx</span><br></pre></td></tr></table></figure>
+由于homebrew cask是homebrew的扩展，因此也可以使用以下命令搜索<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew search xxx</span><br></pre></td></tr></table></figure></li>
+<li>其他操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参考brew的操作</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="brew换源"><a href="#brew换源" class="headerlink" title="brew换源"></a>brew换源</h3><p>本文均采用<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/help/brew.git.html">中科大的国内源</a>进行替换，<strong>若有需要其他源的可以参考附录3进行替换</strong>。</p>
+<ul>
+<li>查询shell类型,可以查看自己是bash还是zsh，用于下面替换源。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ echo $0</span><br></pre></td></tr></table></figure></li>
+<li>Homebrew替换源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 替换各个源,把以下三句话分别输入终端</span><br><span class="line">$ git -C &quot;$(brew --repo)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;brew.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew&#x2F;core)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-core.git</span><br><span class="line">$ git -C &quot;$(brew --repo homebrew&#x2F;cask)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-cask.git</span><br></pre></td></tr></table></figure></li>
+<li>Homebrew路径配置(二者选其一，选自己对应的shell)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">echo &#39;export HOMEBREW_CORE_GIT_REMOTE&#x3D;&quot;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-core.git&quot;&#39; &gt;&gt; ~&#x2F;.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">echo &#39;export HOMEBREW_CORE_GIT_REMOTE&#x3D;&quot;https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;homebrew-core.git&quot;&#39; &gt;&gt; ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure></li>
+<li>更新环境变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 对于 bash 用户</span><br><span class="line">source ~&#x2F;.bash_profile</span><br><span class="line"></span><br><span class="line"># 对于 zsh 用户</span><br><span class="line">source ~&#x2F;.zshrc</span><br></pre></td></tr></table></figure></li>
+<li>更新源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew update</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="本文参考与附录"><a href="#本文参考与附录" class="headerlink" title="本文参考与附录"></a>本文参考与附录</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/de6f1d2d37bf">1.Homebrew介绍和使用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5f7c188b7ad1">2.再谈 Homebrew Cask 在 macOS 上的应用安装</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/orzs/p/14182070.html">3.Mac 下 brew 切换为国内源</a></p>
+<p><a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/help/homebrew-cask.git.html">4.中科大源</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Homebrew">5.Homebrew github网址</a></p>
+<p><a target="_blank" rel="noopener" href="https://brew.sh/">6.Homebrew 官网</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/21/brew%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E6%8D%A2%E6%BA%90%E6%95%99%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vue项目创建出现downloading-template问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1099,228 +1358,6 @@
 
 
   
-    <article id="post-在Mac上配置Xcode与OpenCV开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/11/%E5%9C%A8Mac%E4%B8%8A%E9%85%8D%E7%BD%AEXcode%E4%B8%8EOpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">在Mac上配置Xcode与OpenCV开发环境</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/05/11/%E5%9C%A8Mac%E4%B8%8A%E9%85%8D%E7%BD%AEXcode%E4%B8%8EOpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="archive-article-date">
-	
-  	<time datetime="2021-05-11T00:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-11</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于笔者使用的是Mac，因此就Mac系统的OpenCV环境进行配置，使用的编辑器是Xcode，网上的教程老旧，且资料不是很完善，因此笔者在此记录下环境配置过程</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-安装Xcode"><a href="#1-安装Xcode" class="headerlink" title="1.安装Xcode"></a>1.安装Xcode</h4><p>在App Store中安装Xcode（具体不再赘述），目前版本为12.5，安装大小为11.7G，安装时间较长，具体取决于互联网速度与设备运行速度。</p>
-<h4 id="2-安装Homebrew"><a href="#2-安装Homebrew" class="headerlink" title="2.安装Homebrew"></a>2.安装Homebrew</h4><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装<a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>，可以复制以下代码，在终端中执行安装。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-安装OpenCV"><a href="#3-安装OpenCV" class="headerlink" title="3.安装OpenCV"></a>3.安装OpenCV</h4><p>完成了Homebrew的安装，只需要通过<code>brew</code>命令即可安装openCV,此过程要花费较多的时间，安装各种依赖库，仅需等待即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install opencv</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-安装pkg-config"><a href="#4-安装pkg-config" class="headerlink" title="4.安装pkg-config"></a>4.安装pkg-config</h4><p><code>pkg-config</code>是在编译应用程序和库时使用的辅助工具，可以帮助我们找到找到正确的OpenCV 链接器符号 (Linker Flags) ，在后续的步骤中会用到。<br>安装<code>pkg-config</code>,也只需要在终端输入以下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install pkg-config</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-使用pkg-config"><a href="#5-使用pkg-config" class="headerlink" title="5.使用pkg-config"></a>5.使用pkg-config</h4><p>查看您的<code>opencv.pc</code>文件所在位置，一般<code>opencv.pc</code>文件所在位置为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;&lt;版本号&gt;&#x2F;lib&#x2F;pkgconfig&#x2F;opencv.pc</span><br></pre></td></tr></table></figure>
-<p>如笔者的版本为<code>4.5.2</code>，<code>opencv.pc</code>现已改为<code>opencv4.pc</code>(不同电脑可能有所不同，读者可以<code>cd</code>到相应文件目录查看具体信息)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib&#x2F;pkgconfig&#x2F;opencv4.pc</span><br></pre></td></tr></table></figure>
-<p>使用下面的命令查看<code>OpenCV</code>的链接器符号 (Linker Flags) ，笔者的代码为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg-config --cflags --libs &#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib&#x2F;pkgconfig&#x2F;opencv4.pc</span><br></pre></td></tr></table></figure>
-<p>你会得到类似于如下的输出结果，我们需要参照输出结果在 Xcode 中进行配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-I&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;include&#x2F;opencv4 -L&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib -lopencv_gapi -lopencv_stitching -lopencv_alphamat -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_mcc -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_sfm -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_highgui -lopencv_datasets -lopencv_text -lopencv_plot -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_wechat_qrcode -lopencv_xfeatures2d -lopencv_shape -lopencv_ml -lopencv_ximgproc -lopencv_video -lopencv_dnn -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gU4UXj"><img src="https://z3.ax1x.com/2021/05/11/gU4UXj.md.png" alt="gU4UXj.md.png"></a></p>
-<h2 id="配置Xcode"><a href="#配置Xcode" class="headerlink" title="配置Xcode"></a>配置Xcode</h2><h4 id="6-创建Xcode项目"><a href="#6-创建Xcode项目" class="headerlink" title="6.创建Xcode项目"></a>6.创建Xcode项目</h4><p>在正式运行 OpenCV C++代码之前，首先需要在 Xcode 中创建一个空的C++项目，创建Command Line Tool,具体创建过程不在这里叙述。</p>
-<p>需要注意的是项目的 Language 应选择为 C++。</p>
-<h4 id="7-设置Header-Search-Paths"><a href="#7-设置Header-Search-Paths" class="headerlink" title="7.设置Header Search Paths"></a>7.设置Header Search Paths</h4><p>在 Xcode 中设置 <code>Header Search Paths</code>，先单击 Xco​​de 项目，然后点击 <code>Build Settings</code>，然后搜索<code>Header Search Paths</code>。将 <code>Header Search Paths</code> 路径设置为刚才得到的输出结果“-I”之后的路径，如我需要对如下路径进行添加。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;include&#x2F;opencv4</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gUqwk9"><img src="https://z3.ax1x.com/2021/05/11/gUqwk9.md.png" alt="gUqwk9.md.png"></a></p>
-<h4 id="8-设置-Library-Search-Paths"><a href="#8-设置-Library-Search-Paths" class="headerlink" title="8.设置 Library Search Paths"></a>8.设置 Library Search Paths</h4><p>类似地，在 <code>Build Settings</code> 中搜索<code>Library Search Paths</code>，将 <code>Library Search Paths</code>路径设置为刚才得到的输出结果“-L”之后的路径，如我需要对如下路径进行添加。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;opencv&#x2F;4.5.2&#x2F;lib</span><br></pre></td></tr></table></figure>
-
-<h4 id="9-测试运行"><a href="#9-测试运行" class="headerlink" title="9.测试运行"></a>9.测试运行</h4><p>配置到这一步 Xcode 相关内容已经结束。可以尝试运行简单的OpenCV程序判断是否能够正常运行，以下给出简单的示例程序，功能仅为打开图片与退出。</p>
-<p>你需要按照后文中“使用相对路径”方法配置相对路径并添加图片1.png到项目文件夹。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mat image= imread(<span class="string">&quot;1.png&quot;</span>);<span class="comment">// 读取图片</span></span><br><span class="line">    <span class="keyword">if</span>(!image.data)             <span class="comment">// 检查非法输入</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="built_in">cout</span> &lt;&lt;  <span class="string">&quot;无法读取照片&quot;</span> &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    namedWindow(<span class="string">&quot;Display window&quot;</span>,WINDOW_AUTOSIZE);   <span class="comment">// 创建图片显示自动调整大小的窗口</span></span><br><span class="line">    imshow(<span class="string">&quot;img&quot;</span>,image);    <span class="comment">// 在窗口显示图片</span></span><br><span class="line">    </span><br><span class="line">    waitKey(<span class="number">0</span>); <span class="comment">// 按键等待，需要在窗口任意输入字符退出，0代表永久等待</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>若运行过程出现问题请检查上述步骤是否正确，后文中给出了部分问题的解决方案，可能对您有帮助。</p>
-<h2 id="其它设置"><a href="#其它设置" class="headerlink" title="其它设置"></a>其它设置</h2><h3 id="使用相对路径"><a href="#使用相对路径" class="headerlink" title="使用相对路径"></a>使用相对路径</h3><p>Xcode使用图像或资源的绝对路径。为了设置相对路径需要设置<code>Working Directory</code>。依次点击 菜单栏<code>Product &gt; Scheme &gt; Edit Scheme</code> 中转到<code>Run中</code>的<code>option</code>下有<code>Use Custom Working Directory</code>选项，然后自定义项目目录。</p>
-<h2 id="可能出现的错误"><a href="#可能出现的错误" class="headerlink" title="可能出现的错误"></a>可能出现的错误</h2><h3 id="出现-“Not-a-Doxygen-trailing-comment”-错误"><a href="#出现-“Not-a-Doxygen-trailing-comment”-错误" class="headerlink" title="出现 “Not a Doxygen trailing comment” 错误"></a>出现 “Not a Doxygen trailing comment” 错误</h3><p>在<code>Build Settings</code> 中搜索 “<code>Documentation Comments</code>”，将 <code>Documentation Comments</code> 设置为”<code>No</code>”即可解决该问题。Doxygen 只是一种格式可以选择跳过检查。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://medium.com/@jaskaranvirdi/setting-up-opencv-and-c-development-environment-in-xcode-b6027728003">1.Setting up OpenCV and C++ development environment in Xcode for Computer Vision projects</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39929199/not-a-doxygen-trailing-comment">2.Not** a Doxygen trailing comment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/11/%E5%9C%A8Mac%E4%B8%8A%E9%85%8D%E7%BD%AEXcode%E4%B8%8EOpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数字图像处理-学习笔记（5）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/">数字图像处理-学习笔记（5）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-28T15:36:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="频率域图像增强"><a href="#频率域图像增强" class="headerlink" title="频率域图像增强"></a>频率域图像增强</h2><p><strong>为什么要在频率域研究图像增强？</strong></p>
-<ul>
-<li>可以利用频率成分和图像外表之间的对应关系。一些在空间域表述困难的增强任务，在频率域中变得非常普通。</li>
-<li>滤波在频率域更为直观，它可以解释空间域滤波的某些性质</li>
-<li>可以在频率域指定滤波器，做逆变换，然后在空间域使用结果滤波器作为空间域滤波器的指导，一旦通过频率试验选择了空间滤波，通常实施都在空间域进行。</li>
-</ul>
-<h3 id="傅立叶变换"><a href="#傅立叶变换" class="headerlink" title="傅立叶变换"></a>傅立叶变换</h3><p>性质：</p>
-<ul>
-<li>平移性质</li>
-<li>分配律</li>
-<li>尺度变换</li>
-<li>旋转性</li>
-<li>周期性和共轭对称性</li>
-<li>平均值</li>
-<li>可分性</li>
-<li>卷积</li>
-</ul>
-<h3 id="频率域图像增强-1"><a href="#频率域图像增强-1" class="headerlink" title="频率域图像增强"></a>频率域图像增强</h3><ul>
-<li>低通滤波器</li>
-<li>高通滤波器</li>
-</ul>
-<p><strong>傅立叶变换的频率分量和图像空间特征之间的联系</strong></p>
-<ul>
-<li>变化最慢的频率成分（u=v=0）对应一幅图像的平均灰度级<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gEarjI"><img src="https://z3.ax1x.com/2021/04/30/gEarjI.md.png" alt="gEarjI.md.png"></a></li>
-<li>当从变换的原点移开时，低频对应着图像的慢变化分量，如图像的平滑部分。</li>
-<li>进一步离开原点时，较高的频率对应图像中变化越来越快的灰度级，如边缘或噪声等尖锐部分。</li>
-</ul>
-<p><strong>频率域的滤波步骤</strong></p>
-<ol>
-<li>用$(-1)^{x+y}乘以输入图像进行中心变换f(x,y)(-1)^{x+y} \leftrightarrow F(u-M/2,v-N/2)$</li>
-<li>计算1中的DFT$ F(u,v)$</li>
-<li>用滤波器函数$H(u,v)$乘以$F(u,v)$</li>
-<li>计算3中结果的IDFT</li>
-<li>得到4中结果的实部</li>
-<li>用$(-1)^{x+y}乘以5中的结果$</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1516,6 +1553,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
             
             <div class="clearfix"></div>
