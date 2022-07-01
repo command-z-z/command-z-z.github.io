@@ -164,6 +164,168 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-问题解决-mac启动mysql闪一下就退出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/30/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-mac%E5%90%AF%E5%8A%A8mysql%E9%97%AA%E4%B8%80%E4%B8%8B%E5%B0%B1%E9%80%80%E5%87%BA/">问题解决:mac启动mysql闪一下就退出</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/11/30/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-mac%E5%90%AF%E5%8A%A8mysql%E9%97%AA%E4%B8%80%E4%B8%8B%E5%B0%B1%E9%80%80%E5%87%BA/" class="archive-article-date">
+	
+  	<time datetime="2021-11-30T01:10:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>mac下安装了mysql很久了，但一直没怎么使用，最近做一个前后端项目需要使用mysql，但在设置里点Start mysql server，启动绿点闪了一下就变红了，无法启动，以前启动都是正常的.<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3Tzsx"><img src="https://z3.ax1x.com/2021/11/30/o3Tzsx.md.png" alt="o3Tzsx.md.png"></a></p>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><ul>
+<li>基于网上方案，首先去configuration下找到Error Log目录。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o37Kw8"><img src="https://z3.ax1x.com/2021/11/30/o37Kw8.md.png" alt="o37Kw8.md.png"></a></p>
+<ul>
+<li>输入以下语句查看目录信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;mysqld.local.err</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3HSpj"><img src="https://z3.ax1x.com/2021/11/30/o3HSpj.md.png" alt="o3HSpj.md.png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 关键错误信息</span><br><span class="line">2021-11-25T04:39:22.078870Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user &lt;via user signal&gt;. Shutting down mysqld (Version: 8.0.22).</span><br><span class="line">2021-11-25T04:39:22.648369Z 0 [ERROR] [MY-011945] [InnoDB] Cannot open &#39;&#x2F;usr&#x2F;local&#x2F;mysql-8.0.22-macos10.15-x86_64&#x2F;data&#x2F;ib_buffer_pool.incomplete&#39; for writing: Permission denied</span><br><span class="line">2021-11-25T04:39:22.789645Z 0 [ERROR] [MY-012595] [InnoDB] The error means mysqld does not have the access rights to the directory.</span><br><span class="line">2021-11-25T04:39:22.789703Z 0 [ERROR] [MY-012592] [InnoDB] Operating system error number 13 in a file operation.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>猜测可能是进入文件夹的权限不够。</p>
+</blockquote>
+<ul>
+<li><p>输入以下命令给文件夹增加权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次启动mysql，成功启动</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3bsqx"><img src="https://z3.ax1x.com/2021/11/30/o3bsqx.md.png" alt="o3bsqx.md.png"></a></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cbf87ce6fa62">1.Mac命令行启动MySQL</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/30/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-mac%E5%90%AF%E5%8A%A8mysql%E9%97%AA%E4%B8%80%E4%B8%8B%E5%B0%B1%E9%80%80%E5%87%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mac软件推荐-效率篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E6%95%88%E7%8E%87%E7%AF%87/">mac软件推荐--效率篇</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E6%95%88%E7%8E%87%E7%AF%87/" class="archive-article-date">
+	
+  	<time datetime="2021-11-29T12:39:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-29</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E6%95%88%E7%8E%87%E7%AF%87/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mac软件推荐-开发人员篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1143,221 +1305,6 @@
 
 
   
-    <article id="post-2021RoboCup之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/25/2021RoboCup%E4%B9%8B%E6%97%85/">2021RoboCup之旅</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/05/25/2021RoboCup%E4%B9%8B%E6%97%85/" class="archive-article-date">
-	
-  	<time datetime="2021-05-25T07:11:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;RoboCup之旅结束了，在这里记录下自己的感悟与对人生选择的反思。与之前的数学建模不同，机器人是一个全新的领域，是我所未知的方向，正符合我热爱探索，热爱新事物的追求。当时选拔招新的时候，对机器人也完全没有概念，学校总共有两个方向，一个是视觉组，一个是足球机器人组，也可能是对球类运动的热爱，我内心更加偏向于参加足球组，基于自己当时什么也不会，只是报着玩玩。</p>
-<h2 id="竞赛培训"><a href="#竞赛培训" class="headerlink" title="竞赛培训"></a>竞赛培训</h2><p>&emsp;&emsp;大二上学期结束，就有学长组织大家进行足球机器人的培训，所谓的培训也不过就是Linux的环境配置以及看一看b站上的教程。由于当时手上只有一台Mac，不好装双系统，还有自己寒假还有数学建模美赛要准备，就一直拖着没动，想着把美赛干完后在开始。寒假里时间飞逝，等我打完美赛，过了个年，时间就所剩无几，正值当时学长也不在群里催促，也就一直没干活。等到寒假结束了，开学了，开始着手准备二手win机（还有其他原因是由所上课限制，一台Mac无法安装对应软件），打算买一台windows电脑。由于提前到了学校进行缓考，所有还有6天左右的时间在学校没事干，正好机子也到了，开始进行各种安装，首先Linux双系统安装，从设置bios命令啊，制作启动盘啊，一大堆工作，跟着教程一步步走，出现报错就查各种资料，然后还有进行机器人rocos环境配置，又是一大堆报错，教程上还有一堆错误，就这么东搞西搞，大概花了两天时间，把所有环境给配好了，趁着剩下的时间把教程快速过了一遍，实际上没什么学会。</p>
-<h2 id="校内组织"><a href="#校内组织" class="headerlink" title="校内组织"></a>校内组织</h2><p>&emsp;&emsp;开学之后，学长就开始组织人们集训，当时去国赛的人有10个，人数众多，大家也都不怎么会，而且学长也比较忙，没时间来指导，基本靠自己看b站视频，那段时间现在想想也算浪费了，每天花1个半小时去实验室，看一集教程，跟着做，提升很小，大概就这么过了一个月，有些队员就走了。有隔段时间安排工作，但又受进度所限，总是无法完成，再加上一些队员积极性不高，小型组基本没什么进展。真正让我开始懂得这比赛方式是从看上一届的代码开始，虽然刚开始看时也基本看不懂，但功夫不负有心人，慢慢的在调试下，懂得了代码运行逻辑（也只是少部分）。这时比赛将至，老师只给了四个参赛名额，幸运的是我被留了下来，后面也基本我在组织团队。由于当时我对于这个框架还是非常模糊，很多地方不懂，再加上没有人教学（后来发现上届比赛的终稿丢了，只剩下个半成品），当时压力很大，一度想过退出（但我知道一旦我退出来，这个比赛基本就进行不下去了），但在学长的劝说下，后面没办法只能硬着头皮搞。</p>
-<p>&emsp;&emsp;后面只剩下四个人，大家的积极性其实都有所提高，而且已经报名了，没有退路了。我们就开始对要写的策略进行分类，分为前场，中场，后场，角球的进攻和防守，以及一些其他的开球、点球之类的。后面我主要包了全部防守和前场进攻还有自动放球。刚开始也不太会写，但在大量阅读源码，以及不断调试之后，基本掌握了整套框架。其他一些部分也由其他队友分担了，后期队友还挺给力，所以基本明天都有所进度的提升，这让我感到挺安心的。就这样每天慢慢的写，后面一有时间，就叫学长过来，解答我们的疑惑，代码上基本没问题了。最后剩下的最关键的问题是，我们学校的仪器设备老旧，我们无法进行实地测试，再加上我们对于这个连接视觉机，连接发射器也不太懂，一直没有在实验室解决，所以实地调参的工作一直没做（换而言之，我们没有真正实地跑过代码，不知道能不能跑成功）。这个问题一直到最后也没解决，怕到时候去了现场无法跑代码，会给学校丢脸了。直到去比赛前，这件事一直悬挂在我心上，成为最大的负担。时间一分一秒的流逝，我们只能在代码上努力了，指导老师基本不管，后面也是我们自己买机票，自己找酒店，解决所有的事，马上就到了出发的日子了。</p>
-<h2 id="出发起航"><a href="#出发起航" class="headerlink" title="出发起航"></a>出发起航</h2><p>&emsp;&emsp;5月19日，早上3点，我就起床了，由于昨晚把任务基本都安排了，所以所有的事，做的都井然有序，大概四点，把所有东西准备好了（机器人，行李等），坐上提前预约的出租车，出发萧山机场，一切都看似美好的进行着，但我内心却一直担心着现场的调试状况。就这样大概10:30到达了天津，前往酒店放好东西，稍作调整，就立即出发前往比赛场所。到了现场，那里有很多项目，各式各样的机器人比赛，我们没时间闲逛，直接前往小型组场地。到了那里已经有几只队伍到达，我们不敢闲下来，便立刻开始准备，但我们对于实地一点都不会，（之前也已经做好准备，到那里就问那边负责人Mark）。所以我们就一直厚着脸皮，疯狂抓着负责人询问如何连接视觉机，连接发射器，Mark真就一下子就帮我们调好了。第一次，真的第一次，我们在实地的场地上跑了起来。吃完了午饭，一个下午就一直在现场进行调试，可以说对我们信心大增。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2Vscex"><img src="https://z3.ax1x.com/2021/05/30/2Vscex.md.jpg" alt="2Vscex.md.jpg"></a></p>
-<h2 id="比赛日（5-20-5-22）"><a href="#比赛日（5-20-5-22）" class="headerlink" title="比赛日（5.20-5.22）"></a>比赛日（5.20-5.22）</h2><p>&emsp;&emsp;由于20号是下午开始比赛，所以一大早我们就去现场进行调试，对射球力度，以及一些代码上的修改，为下午的比赛做准备。后面谁知此次比赛大量队伍弃赛，我们第一场，直接不战而胜（怎么说也算赢了一场，真的挺开心的），但后面那场打浙江大学，我们深知我们肯定是打不过的，所以我们就拿来练手。比赛即将开始，我们突然发现我们的车号匹配出现了问题，而且这个问题不太好改，但比赛以及开始了。没办法，一个上半场，我们直接把4个暂停全部用完了，一直在改代码，还出现一堆犯规，不断被罚车。这些都是我们经验不足，没有进行实战所导致的问题，不过幸好，这场我们以练手为目的，最终0:7落败（也还过得去）。第一天的比赛我们以一胜一负结束了，晚上还进行了技巧挑战赛，我们心态已经放平，基本报着玩的心态在打。</p>
-<p>&emsp;&emsp;第二天一早就开始比赛，遇到的第三只队伍也弃赛了，我们又赢一场，但我们分析了小组局势，我们只有赢了与中国地质大学，才能拿到出线名额，而那场就是今天的最后一场决战了。我们抓紧时间调试着，修改代码，积极准备着。比赛开始，我们发现地质大学的进攻并不强，基本都是我们主导进攻，他们基本在防守，这增大了我们信心，但后来我们因为一些犯规不断打乱我们的进攻节奏，在上半场快结束的时候，我方前锋面对敌人三人防守，寻找空隙，抓准时机，一击必中，进球有效。下半场我们调整策略，在保持进攻的基础上，做好防守，不让中国地质大学反击的机会，最后我们挺住下半场，以1:0赢得了比赛，成功晋级4强。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/2Vgi7t"><img src="https://z3.ax1x.com/2021/05/30/2Vgi7t.md.jpg" alt="2Vgi7t.md.jpg"></a></p>
-<p>&emsp;&emsp;由于晋级了四强，晚上我们还要打半决赛，但对我们来说今年的目标已经达成，心理上已经没有太多期望了，就报着玩的心态打打。但可能也是这种心态，我们因为两次失误，让两只对手都1:0击败了我们，对于自己来说也挺可惜的，除了浙大，大家水平基本相同，但第四的成绩也算有所突破吧。后面基本没什么我们的比赛了，大家内心也不紧张了，放下心来休息。</p>
-<p>&emsp;&emsp;22号，我们基本没有事情，到了下午5点去了现场参加了颁奖典礼，最后领了我们的二等奖奖状，也算是有所收获，不虚此行。最后和队友吃吃喝喝，等待第二天起航回校。</p>
-<h2 id="总结与反思"><a href="#总结与反思" class="headerlink" title="总结与反思"></a>总结与反思</h2><ol>
-<li>由于缺乏实地的调试，有很多参数我们一直调不对，射门力度在我们看来1000和8000都没什么区别，最后也一直没找到合适的力度。、</li>
-<li>缺乏实战经验，有很多测试上没有问题，而在实际比赛中出现了，使得我们经常犯规。</li>
-<li>机器人硬件的不足，机器人是买的，它的吸球，接球，踢球都不稳，使得我们打不出战术。</li>
-<li>对于代码整体框架并没有统一，存在两种语言混搭，不太便于修改。</li>
-<li>队友之间的默契配合，以及不放弃的决心，一起拼搏，一起努力的状态，值得肯定。</li>
-<li>对于实地调试中不懂的地方，会立即和负责人说明，帮忙解决。</li>
-<li>和其他高校进行交流，相互借机器人车，探讨提升机器人以及未来规划，收获很多。</li>
-</ol>
-<p>最后讲讲自己的感受，经历了这次比赛，我的心里受到了很大的疲惫，对于未来比赛的选择更加谨慎，深刻认识到要与志同道合的人一起拼搏，才能体会到比赛的乐趣。以及自己的性格貌似都是保守派的，只有所有事情都做到我心安了，才开始会更好，但打了这么多的比赛，发现有时候应该莽一点，激进点，也许能收获胜利。此次比赛也给我留下深刻印象，现在那种比赛的感觉都还历历在目，至少在我以后回忆起来会是个不错的经历。</p>
-<p>以此照片进行留念：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/2VfPxS"><img src="https://z3.ax1x.com/2021/05/30/2VfPxS.md.jpg" alt="2VfPxS.md.jpg"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/25/2021RoboCup%E4%B9%8B%E6%97%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Swift-学习笔记-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/14/Swift-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/">Swift 学习笔记(一)</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/05/14/Swift-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/" class="archive-article-date">
-	
-  	<time datetime="2021-05-14T10:35:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-14</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近对未来的职业生涯进行了分析，由于笔者手头有一台Mac，之前也大致看过乔布斯传，逐渐被Apple的设计风格所吸引，未来可能更多的选择，设计师，前端，移动应用开发等工作，虽然现在是CS专业，但这并不能阻止我的自我迭代，在现在连找工作都内卷的时代，没有一份拿的出手的绝活，很难在社会上立足。自认为ios开发是一个门槛较高的职业，选择此条道路的人相对较少，且有学长铺路，因此把swift学习作为职业规划第一步。这是第一、二节swift课程，主要学习来源为官方的教程和hacking with swift以及YouTube上的video。</p>
-<h1 id="Simple-Values"><a href="#Simple-Values" class="headerlink" title="Simple Values"></a>Simple Values</h1><p>常量(constant)用let定义，即一次初始化后就不能修改，变量(variable)用var来定义，即还可以再次修改其值。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myVariable = <span class="number">42</span></span><br><span class="line">myVariable = <span class="number">50</span></span><br><span class="line"><span class="keyword">let</span> myConstant = <span class="number">42</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">swift也不需要定义数据类型，可以让编译器自行推测数据类型，如果要明确数据类型，可以用`：`做提示。</span><br><span class="line">```swift</span><br><span class="line"><span class="keyword">let</span> explicitDouble: <span class="type">Double</span> = <span class="number">70</span></span><br></pre></td></tr></table></figure>
-
-<p>可以直接进行类型转换，将两个相同类型的值进行拼接。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> label = <span class="string">&quot;The width is &quot;</span></span><br><span class="line"><span class="keyword">let</span> width = <span class="number">94</span></span><br><span class="line"><span class="keyword">let</span> widthLabel = label + <span class="type">String</span>(width)</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>\</code>+<code>（）</code>可以在一个字符串中嵌入数字</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> apples = <span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> oranges = <span class="number">5</span></span><br><span class="line"><span class="keyword">let</span> appleSummary = <span class="string">&quot;I have \(apples) apples.&quot;</span></span><br><span class="line"><span class="keyword">let</span> fruitSummary = <span class="string">&quot;I have \(apples + oranges) pieces of fruit.&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>使用三个引号<code>&quot;&quot;&quot;</code>可以匹配多行字符串:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> apples = <span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> oranges = <span class="number">5</span></span><br><span class="line"><span class="keyword">let</span> appleSummary = <span class="string">&quot;I have \(apples) apples.&quot;</span></span><br><span class="line"><span class="keyword">let</span> fruitSummary = <span class="string">&quot;I have \(apples + oranges) pieces of fruit.&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>使用<code>[]</code>来定义数组和字典，并通过索引来寻找元素，也可使用<code>append</code>函数来扩充数组的元素。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> shoppingList = [<span class="string">&quot;catfish&quot;</span>, <span class="string">&quot;water&quot;</span>, <span class="string">&quot;tulips&quot;</span>]</span><br><span class="line">shoppingList[<span class="number">1</span>] = <span class="string">&quot;bottle of water&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> occupations = [</span><br><span class="line">    <span class="string">&quot;Malcolm&quot;</span>: <span class="string">&quot;Captain&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Kaylee&quot;</span>: <span class="string">&quot;Mechanic&quot;</span>,</span><br><span class="line"> ]</span><br><span class="line">occupations[<span class="string">&quot;Jayne&quot;</span>] = <span class="string">&quot;Public Relations&quot;</span></span><br><span class="line"></span><br><span class="line">shoppingList.append(<span class="string">&quot;blue paint&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(shoppingList)</span><br></pre></td></tr></table></figure>
-
-<p>创建空的数组和字典，并且注明数据类型:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> emptyArray = [<span class="type">String</span>]()</span><br><span class="line"><span class="keyword">let</span> emptyDictionary = [<span class="type">String</span>: <span class="type">Float</span>]()</span><br></pre></td></tr></table></figure>
-
-<p>但数据类型可以推测时，定义变量数组和字典:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shoppingList = []</span><br><span class="line">occupations = [:]</span><br></pre></td></tr></table></figure>
-
-<h1 id="Control-Flow"><a href="#Control-Flow" class="headerlink" title="Control Flow"></a>Control Flow</h1><p>使用<code>if</code>进行条件的判断，使用<code>for-in</code>进行循环，注意使用大括号括住所需代码。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> individualScores = [<span class="number">75</span>, <span class="number">43</span>, <span class="number">103</span>, <span class="number">87</span>, <span class="number">12</span>]</span><br><span class="line"><span class="keyword">var</span> teamScore = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> score <span class="keyword">in</span> individualScores &#123;</span><br><span class="line">    <span class="keyword">if</span> score &gt; <span class="number">50</span> &#123;</span><br><span class="line">        teamScore += <span class="number">3</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        teamScore += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(teamScore)</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>?</code>来定义一个变量为可选择项，表示值是missing的，不赋值表示<code>nil</code>，赋值表示其值。可以使用<code>if let</code>来判断一个值是否为optional。可选择的值<code>optionalName</code>会被赋值给<code>let</code>后的常量，并在判断中可以使用。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> optionalString: <span class="type">String?</span> = <span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="built_in">print</span>(optionalString == <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> optionalName: <span class="type">String?</span> = <span class="string">&quot;John Appleseed&quot;</span></span><br><span class="line"><span class="keyword">var</span> greeting = <span class="string">&quot;Hello!&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> name = optionalName &#123;</span><br><span class="line">    greeting = <span class="string">&quot;Hello, \(name)&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>??</code>操作符，当一个optional值为<code>nil</code>时，会使用<code>??</code>后的值进行代替。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nickname: <span class="type">String?</span> = <span class="literal">nil</span></span><br><span class="line"><span class="keyword">let</span> fullName: <span class="type">String</span> = <span class="string">&quot;John Appleseed&quot;</span></span><br><span class="line"><span class="keyword">let</span> informalGreeting = <span class="string">&quot;Hi \(nickname ?? fullName)&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>switch</code>的使用，swift提供了多种case的判断条件，如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vegetable = <span class="string">&quot;red pepper&quot;</span></span><br><span class="line"><span class="keyword">switch</span> vegetable &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;celery&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Add some raisins and make ants on a log.&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;cucumber&quot;</span>, <span class="string">&quot;watercress&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;That would make a good tea sandwich.&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x.hasSuffix(<span class="string">&quot;pepper&quot;</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Is it a spicy \(x)?&quot;</span>)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Everything tastes good in soup.&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>switch当匹配到一个case，就会执行其相应代码，然后退出switch，但必须有default</p>
-</blockquote>
-<p>使用<code>for in</code>来遍历字典中的元素，且可以嵌套循环,可以使用<code>_</code>来不使用此元素。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> interestingNumbers = [</span><br><span class="line">    <span class="string">&quot;Prime&quot;</span>: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>],</span><br><span class="line">    <span class="string">&quot;Fibonacci&quot;</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>],</span><br><span class="line">    <span class="string">&quot;Square&quot;</span>: [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>],</span><br><span class="line">]</span><br><span class="line"><span class="keyword">var</span> largest = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> (<span class="number">_</span>, numbers) <span class="keyword">in</span> interestingNumbers &#123;</span><br><span class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers &#123;</span><br><span class="line">        <span class="keyword">if</span> number &gt; largest &#123;</span><br><span class="line">            largest = number</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(largest)</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>while</code>和<code>repeat-while</code>来进行循环。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> n &lt; <span class="number">100</span> &#123;</span><br><span class="line">    n *= <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> m = <span class="number">2</span></span><br><span class="line"><span class="keyword">repeat</span> &#123;</span><br><span class="line">    m *= <span class="number">2</span></span><br><span class="line">&#125; <span class="keyword">while</span> m &lt; <span class="number">100</span></span><br><span class="line"><span class="built_in">print</span>(m)</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>..&lt;</code>来进行一个范围的循环此循环不包含上限值，可以使用<code>...</code>来包含上限值的循环。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> total = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">4</span> &#123;</span><br><span class="line">    total += i</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(total)</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swift</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/14/Swift-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1557,6 +1504,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Paddle</a>
               </li>
             
             <div class="clearfix"></div>
