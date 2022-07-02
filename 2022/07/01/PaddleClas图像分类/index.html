@@ -16,7 +16,7 @@
 <meta property="og:description" content="概述本文将讲解利用PaddleCals实现对图像进行分类的任务，利用AI Studio平台训练，并通过猫十二分类例子讲解如何进行训练与预测。 版本 PaddlePaddle 2.1.2 PaddleClas 2.3  下载PaddleClas此时可以将PaddleClas下载到项目中。 1!git clone https:&#x2F;&#x2F;gitee.com&#x2F;paddlepaddl">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-07-01T13:01:31.000Z">
-<meta property="article:modified_time" content="2022-07-01T14:40:18.038Z">
+<meta property="article:modified_time" content="2022-07-02T07:54:20.070Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="Paddle">
 <meta name="twitter:card" content="summary">
@@ -410,6 +410,9 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># GPU设置</span><br><span class="line">!export CUDA_VISIBLE_DEVICES&#x3D;0</span><br><span class="line"></span><br><span class="line"># -o Arch.pretrained&#x3D;True 使用预训练模型，当选择为True时，预训练权重会自动下载到本地</span><br><span class="line">!python tools&#x2F;train.py -c &#x2F;home&#x2F;aistudio&#x2F;PaddleClas&#x2F;ppcls&#x2F;configs&#x2F;ImageNet&#x2F;ResNet&#x2F;ResNet50_vd.yaml -o Arch.pretrained&#x3D;True</span><br></pre></td></tr></table></figure>
 
+<p>使用多卡训练</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">!export CUDA_VISIBLE_DEVICES&#x3D;0,1,2,3</span><br><span class="line">!python3 -m paddle.distributed.launch \</span><br><span class="line">    --gpus&#x3D;&quot;0,1,2,3&quot; \</span><br><span class="line">    tools&#x2F;train.py \</span><br><span class="line">        -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Arch.pretrained&#x3D;True</span><br></pre></td></tr></table></figure>
+
 <h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><p>输入以下命令进行单张图片预测：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 预测</span><br><span class="line">!python3 tools&#x2F;infer.py -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Infer.infer_imgs&#x3D;&#x2F;home&#x2F;aistudio&#x2F;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_test&#x2F;ou9Ik17GtHSThRCDLZm3f6vB8ybQ4xsl.jpg  -o Global.pretrained_model&#x3D;output&#x2F;ResNet50_vd&#x2F;best_model</span><br></pre></td></tr></table></figure>
 <p>输入以下命令进行批量图片预测，并重定向到output.txt文件中。</p>
@@ -741,11 +744,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,6 +761,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -785,11 +792,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>

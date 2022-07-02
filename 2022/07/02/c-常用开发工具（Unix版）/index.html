@@ -6,29 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Yolov1 详解 | 🌟Eugene的个人博客主页</title>
+  <title>c++常用开发工具（Unix版） | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文开始，笔者会对计算机视觉中的目标检测模块进行详细的学习与讲解，因为为本人自身理解，如有不足或错误，批评指出。yolov1作为yolo系列的开山之作，也作为one-stage系列的先河，我们需要了解他的检测原理。很多人觉得yolo都已经出到v4了，没必要再去了解前面几代的，但事实上yolo系列都是在yolov1的基础上改进提升的，从头开始学习有助于我们更加了解yolo的原理。下图展示了目标检测初">
+  <meta name="description" content="1.gcc编译工具2.gdb程序调试工具3.make程序维护工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yolov1 详解">
-<meta property="og:url" content="http://example.com/2022/03/16/Yolov1-%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:title" content="c++常用开发工具（Unix版）">
+<meta property="og:url" content="http://example.com/2022/07/02/c-%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%EF%BC%88Unix%E7%89%88%EF%BC%89/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
-<meta property="og:description" content="本文开始，笔者会对计算机视觉中的目标检测模块进行详细的学习与讲解，因为为本人自身理解，如有不足或错误，批评指出。yolov1作为yolo系列的开山之作，也作为one-stage系列的先河，我们需要了解他的检测原理。很多人觉得yolo都已经出到v4了，没必要再去了解前面几代的，但事实上yolo系列都是在yolov1的基础上改进提升的，从头开始学习有助于我们更加了解yolo的原理。下图展示了目标检测初">
+<meta property="og:description" content="1.gcc编译工具2.gdb程序调试工具3.make程序维护工具">
 <meta property="og:locale">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/3BE75DBB6A39FEA3DC5D4645B1ABC2EA.619ssj04f8w0.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/CDA8D77A15CE66864E54000CDD1FA347.q1hpn53ydy8.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/631D60B257344EB758511D13765783D8.7jpj1er7cmw0.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.7bdibq1bar40.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-14.iiprxlc19y8.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.5jz7mm1ryr80.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.3crozup5yie0.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.73oq5ubdy4w0.webp">
-<meta property="article:published_time" content="2022-03-16T14:09:49.000Z">
-<meta property="article:modified_time" content="2022-03-21T07:13:19.913Z">
+<meta property="article:published_time" content="2022-07-02T07:05:17.000Z">
+<meta property="article:modified_time" content="2022-07-02T07:07:30.237Z">
 <meta property="article:author" content="command_zz">
-<meta property="article:tag" content="计算机视觉论文">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/3BE75DBB6A39FEA3DC5D4645B1ABC2EA.619ssj04f8w0.webp">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
   
@@ -176,14 +167,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Yolov1-详解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-c-常用开发工具（Unix版）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Yolov1 详解
+      c++常用开发工具（Unix版）
     </h1>
   
 
@@ -194,69 +185,16 @@
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
 	</span>
 
-<a href="/2022/03/16/Yolov1-%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+<a href="/2022/07/02/c-%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%EF%BC%88Unix%E7%89%88%EF%BC%89/" class="archive-article-date">
 	
-  	<time datetime="2022-03-16T14:09:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-16</time>
+  	<time datetime="2022-07-02T07:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-02</time>
 </a>
         
             </header>      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文开始，笔者会对计算机视觉中的目标检测模块进行详细的学习与讲解，因为为本人自身理解，如有不足或错误，批评指出。yolov1作为yolo系列的开山之作，也作为one-stage系列的先河，我们需要了解他的检测原理。很多人觉得yolo都已经出到v4了，没必要再去了解前面几代的，但事实上yolo系列都是在yolov1的基础上改进提升的，从头开始学习有助于我们更加了解yolo的原理。下图展示了目标检测初期的算法，笔者后续也会补上相应R-CNN的系列。本系列主要讲解yolo以及one-stage算法系列。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/3BE75DBB6A39FEA3DC5D4645B1ABC2EA.619ssj04f8w0.webp" alt="3BE75DBB6A39FEA3DC5D4645B1ABC2EA"></p>
-<ul>
-<li>论文地址:<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1506.02640">You Only Look Once: Unified, Real-Time Object Detection</a></li>
-<li>代码地址:<a target="_blank" rel="noopener" href="https://github.com/pjreddie/darknet">darknet版</a></li>
-</ul>
-<h2 id="1-算法概述"><a href="#1-算法概述" class="headerlink" title="1.算法概述"></a>1.算法概述</h2><p>传统的two-stage算法，由于要经过两步检测，速度较慢，而yolo作为one-stage算法相比与之前的R-CNN系列有以下优点。</p>
-<blockquote>
-<p>First, YOLO is extremely fast. Since we frame detection as a regression problem we don’t need a complex pipeline.</p>
-</blockquote>
-<blockquote>
-<p>Second, YOLO reasons globally about the image when making predictions. Unlike sliding window and region proposal-based techniques, YOLO sees the entire image.</p>
-</blockquote>
-<blockquote>
-<p>Third, YOLO learns generalizable representations of objects. When trained on natural images and tested on art- work, YOLO outperforms top detection methods like DPM and R-CNN by a wide margin.</p>
-</blockquote>
-<ol>
-<li>总结的来讲，yolo速度极快，直接将目标检测做了一个回归任务。</li>
-<li>yolo利用图像全局的信息进行推理，可以看到整张图片。</li>
-<li>yolo学习可归纳的物体特征表达，因此在一些漫画照上也能有较好的识别效果。<h2 id="2-算法原理"><a href="#2-算法原理" class="headerlink" title="2.算法原理"></a>2.算法原理</h2><h4 id="1-设计理念"><a href="#1-设计理念" class="headerlink" title="1.设计理念"></a>1.设计理念</h4>整体来看，Yolo算法采用一个单独的CNN模型实现end-to-end的目标检测，整个系统如下图所示：首先将输入图片resize到448x448，然后送入CNN网络，最后处理网络预测结果得到检测的目标。相比R-CNN算法，其是一个统一的框架，其速度更快，而且Yolo的训练过程也是end-to-end的。</li>
-</ol>
-<p>首先将输入图片resize以下，通过一个卷积神经网络提取特征，最后将输出的框进行非极大值抑制，滤除重复的框，最后输出结果。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/CDA8D77A15CE66864E54000CDD1FA347.q1hpn53ydy8.webp" alt="CDA8D77A15CE66864E54000CDD1FA347"></p>
-<p>具体来说，Yolo的CNN网络将输入的图片分割成 <code>S*S</code> 网格，然后每个单元格负责去检测那些中心点落在该格子内的目标，如下图所示，可以看到狗这个目标的中心落在左下角一个单元格内，那么该单元格负责预测这个狗。每个单元格会预测<code>B</code>个边界框（bounding box）以及边界框的置信度（confidence score）。</p>
-<p>所谓置信度其实包含两个方面，一是这个边界框含有目标的可能性大小，二是这个边界框的准确度。前者记为<code>Pr(object)</code>，当该边界框是背景时（即不包含目标），此时其值为0 。而当该边界框包含目标时,其值为1 。边界框的准确度可以用预测框与实际框（ground truth）的IOU（intersection over union，交并比）来表征，记为$IOU_{pred}^{truth}$ 。因此置信度可以定义为$IOU_{pred}^{truth}*Pr(object)$ 。</p>
-<p>很多人可能将Yolo的置信度看成边界框是否含有目标的概率，但是其实它是两个因子的乘积，预测框的准确度也反映在里面。边界框的大小与位置可以用4个值来表征：<code>(x,y,w,h)</code>，其中<code>(x,y)</code> 是边界框的中心坐标，而w和h是边界框的宽与高。还有一点要注意，中心坐标的预测值<code>(x,y)</code>是相对于每个单元格左上角坐标点的偏移值，并且单位是相对于单元格大小的，单元格的坐标定义如下图所示。而边界框的w和h预测值是相对于整个图片的宽与高的比例，这样理论上4个元素的大小应该在0到1范围。这样，每个边界框的预测值实际上包含5个元素<code>(x,y,w,h,c)</code>，其中前4个表征边界框的大小与位置，而最后一个值是置信度。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/631D60B257344EB758511D13765783D8.7jpj1er7cmw0.webp" alt="631D60B257344EB758511D13765783D8"></p>
-<p>还有分类问题，对于每一个单元格其还要给出预测出C个类别概率值，其表征的是由该单元格负责预测的边界框其目标属于各个类别的概率。但是这些概率值其实是在各个边界框置信度下的条件概率，即<code>Pr(class|object)</code>。值得注意的是，不管一个单元格预测多少个边界框，其只预测一组类别概率值，这是Yolo算法的一个缺点，在后来的改进版本中，Yolo9000是把类别概率预测值与边界框是绑定在一起的。同时，我们可以计算出各个边界框类别置信度（class-specific confidence scores）:$Pr(class|object)*Pr(object)*IOU_{pred}^{truth}$ 。</p>
-<h4 id="2-网络设计"><a href="#2-网络设计" class="headerlink" title="2.网络设计"></a>2.网络设计</h4><p>对于一篇论文重要的之一是看他的网络架构，yolov1中的网络为后续v2，v3的网络奠定了基础，这里我直接贴上论文中的网络架构。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.7bdibq1bar40.webp" alt="截屏2022-03-21-11"></p>
-<p>输入图像大小为 <code>448*x448</code>，经过若干个卷积层与池化层，变为<code>7*7*1024</code>张量（图一中倒数第三个立方体），最后经过两层全连接层，输出张量维度为<code>7*7*30</code>，这就是Yolo v1的整个神经网络结构，和一般的卷积物体分类网络没有太多区别，最大的不同就是：分类网络最后的全连接层，一般连接于一个一维向量，向量的不同位代表不同类别，而这里的输出向量是一个三维的张量<code>（7*7*30）</code>。上图中Yolo的backbone网络结构，受启发于GoogLeNet，也是v2、v3中Darknet的先锋。本质上来说没有什么特别，没有使用BN层，用了一层Dropout。除了最后一层的输出使用了线性激活函数，其他层全部使用Leaky Relu激活函数。网络结构没有特别的东西，不再赘述。</p>
-<p>这里讲解下输出层大小的含义，<code>7*7</code>表示将最后的输出图片等分为49个小格子，由于每个格子会预测B个框，论文中B取2，每个bounfbox将预测四个值以及一个是否为物体的置信度，最后20维输出指的是预测20个类别，每个类别对应的概率，因此这深度值的30即为<br> <code>(4+1)*2+20</code>,具体图如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-14.iiprxlc19y8.webp" alt="截屏2022-03-21-14"></p>
-<h4 id="3-损失函数"><a href="#3-损失函数" class="headerlink" title="3.损失函数"></a>3.损失函数</h4><p>论文中第二重要的就是看他的网络损失函数的设计，在yolov1论文中也给出了详细的关于损失函数的介绍，下面我直接截取了论文中的损失函数。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.5jz7mm1ryr80.webp" alt="截屏2022-03-21-11"></p>
-<p>看到这里读者或许会有疑问，Yolo里的每个格点，是怎么知道该预测哪个物体的？这就是神经网络算法的能力。首先拿到一批标注好的图片数据集，按照规则打好标签，之后让神经网络去拟合训练数据集。训练数据集中的标签是通过人工标注获得，当神经网络对数据集拟合的足够好时，那么就相当于神经网络具备了一定的和人一样的识别能力。</p>
-<p>神经网络结构确定之后，训练效果好坏，由Loss函数和优化器决定。Yolo v1使用普通的梯度下降法作为优化器。这里重点解读一下Yolo v1使用的Loss函数：</p>
-<p>论文中Loss函数，密密麻麻的公式初看可能比较难懂。其实论文中给出了比较详细的解释。所有的损失都是使用平方和误差公式，暂时先不看公式中的landa，输出的预测数值以及所造成的损失有:</p>
-<ul>
-<li><p>预测框的中心点(x,y) 。造成的损失是图五中的第一行。其中$1_{ij}^{obj}$为控制函数，在标签中包含物体的那些格点处，该值为 1 ；若格点不含有物体，该值为 0。也就是只对那些有真实物体所属的格点进行损失计算，若该格点不包含物体，那么预测数值不对损失函数造成影响。(x,y) 数值与标签用简单的平方和误差。</p>
-</li>
-<li><p>预测框的宽高(w,h) 。造成的损失是图五的第二行.$1_{ij}^{obj}$的含义一样，也是使得只有真实物体所属的格点才会造成损失。这里对(w,h)在损失函数中的处理分别取了根号，原因在于，如果不取根号，损失函数往往更倾向于调整尺寸比较大的预测框。例如，20个像素点的偏差，对于<code>800*600</code>的预测框几乎没有影响，此时的IOU数值还是很大，但是对于<code>30*40</code>的预测框影响就很大。取根号是为了尽可能的消除大尺寸框与小尺寸框之间的差异。</p>
-</li>
-<li><p>第三行与第四行，都是预测框的置信度C。当该格点不含有物体时，该置信度的标签为0；若含有物体时，该置信度的标签为预测框与真实物体框的IOU数值（IOU计算公式为：两个框交集的面积除以并集的面积）。</p>
-</li>
-<li><p>第五行为物体类别概率P，对应的类别位置，该标签数值为1，其余位置为0，与分类网络相同。</p>
-</li>
-</ul>
-<p>此时再来看$\lambda_{coord}$ 与 $\lambda_{noobj}$，Yolo面临的物体检测问题，是一个典型的类别数目不均衡的问题。其中49个格点，含有物体的格点往往只有3、4个，其余全是不含有物体的格点。此时如果不采取点措施，那么物体检测的mAP不会太高，因为模型更倾向于不含有物体的格点。$\lambda_{coord}$与 $\lambda_{noobj}$的作用，就是让含有物体的格点，在损失函数中的权重更大，让模型更加“重视”含有物体的格点所造成的损失。在论文中， $\lambda_{coord}$与$\lambda_{noobj}$的取值分别为5与0.5。</p>
-<h2 id="3-算法比较"><a href="#3-算法比较" class="headerlink" title="3.算法比较"></a>3.算法比较</h2><p>相比于其他的实时检测系统比如DPM，yolo有更高的准确率，在速度上也有优势。对于state of the art模型faster-rcnn，尽管在精度上低四五个点，但是在速度上大幅度提升，具体对比如下：<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.3crozup5yie0.webp" alt="截屏2022-03-21-15"></p>
-<p>与fast-rcnn进行比较发现，yolo在背景识别上的错误率小于fast-rcnn。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.73oq5ubdy4w0.webp" alt="截屏2022-03-21-15"></p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>Yolo v1整体思路简单清晰，但是透彻的理解还是需要花点功夫。从上次自以为全部看懂了Yolo v1，到写完这篇文章，这期间又明白了不少细节。v1中埋了不少伏笔，都成为了v2和v3的突破口。虽然版本演进，Yolo算法在不断完善，但是v1版本才是用回归做物体检测的开山之作。</p>
-<p>yolov1在性能上还有欠缺因此在后续yolo上有所改进，后续会写yolov2的讲解。</p>
-<h2 id="5-参考文章"><a href="#5-参考文章" class="headerlink" title="5.参考文章"></a>5.参考文章</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32525231">1.目标检测|YOLO原理与实现</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70387154">2.【论文解读】Yolo三部曲解读——Yolov1</a></p>
-
+        <h2 id="1-gcc编译工具"><a href="#1-gcc编译工具" class="headerlink" title="1.gcc编译工具"></a>1.gcc编译工具</h2><h2 id="2-gdb程序调试工具"><a href="#2-gdb程序调试工具" class="headerlink" title="2.gdb程序调试工具"></a>2.gdb程序调试工具</h2><h2 id="3-make程序维护工具"><a href="#3-make程序维护工具" class="headerlink" title="3.make程序维护工具"></a>3.make程序维护工具</h2>
       
 
       
@@ -295,7 +233,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机视觉论文</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		
 		</ul>
@@ -351,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/16/Yolov1-%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/07/02/c-%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%EF%BC%88Unix%E7%89%88%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -365,18 +303,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          vim练级手册(一)  ---基本配置
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">旧电脑配置成服务器教程</div>
+    <a href="/2022/07/01/PaddleDetection%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PaddleDetection目标检测</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -403,7 +332,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1.算法概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">2.算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.设计理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.网络设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-number">2.0.3.</span> <span class="toc-text">3.损失函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83"><span class="toc-number">3.</span> <span class="toc-text">3.算法比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">4.总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">5.</span> <span class="toc-text">5.参考文章</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-gcc%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">1.gcc编译工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-gdb%E7%A8%8B%E5%BA%8F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">2.gdb程序调试工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-make%E7%A8%8B%E5%BA%8F%E7%BB%B4%E6%8A%A4%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">3.make程序维护工具</span></a></li></ol>
                     </div>
                 </span>
             </div>
