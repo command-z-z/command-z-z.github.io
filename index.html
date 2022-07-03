@@ -186,7 +186,84 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-gcc编译工具"><a href="#1-gcc编译工具" class="headerlink" title="1.gcc编译工具"></a>1.gcc编译工具</h2><h2 id="2-gdb程序调试工具"><a href="#2-gdb程序调试工具" class="headerlink" title="2.gdb程序调试工具"></a>2.gdb程序调试工具</h2><h2 id="3-make程序维护工具"><a href="#3-make程序维护工具" class="headerlink" title="3.make程序维护工具"></a>3.make程序维护工具</h2>
+        <p>在Linux、MacOS上编写C、C++程序离不开gcc，gdb，make三大法宝，尽管现在有很多集成的IDE已经实现了这样的功能，但是学习这种最原始的C编译方式能更好从底层来了解c的编译模式。本人习惯用vim作为开发工具，因此使用这些工具成了必备的技能，现在对这些工具进行一个总结。</p>
+<h2 id="1-gcc编译工具"><a href="#1-gcc编译工具" class="headerlink" title="1.gcc编译工具"></a>1.gcc编译工具</h2><p>c语言编译过程大致可以预处理、编译、汇编、链接四个部分，gcc当然也可以通过相应的命令来实现这四个部分，具体执行如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">预处理 gcc -E hello.c -o helle.i</span><br><span class="line">编译    gcc -S hello.i -o hello.s</span><br><span class="line">汇编    gcc -c hello.s -o hello.o</span><br><span class="line">链接    gcc hello.o -o hello</span><br></pre></td></tr></table></figure>
+
+<p>当然，为了方便我们可以直接使用，以下命令快速生成可执行文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc hello.c -o hello</span><br></pre></td></tr></table></figure>
+<p>使用以下命令进行执行,即可运行文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;hello</span><br></pre></td></tr></table></figure>
+
+<p>一个大型项目往往有很多个文件构成，同时可能还需要调用library中的库，因此往往将文件使用<code>-c</code>命令生成<code>.o</code>文件，同时也可以使用-l*library,调用系统库，最后在执行链接命令，多文件gcc，将会在后续的make中详细讲解。</p>
+<h2 id="2-gdb程序调试工具"><a href="#2-gdb程序调试工具" class="headerlink" title="2.gdb程序调试工具"></a>2.gdb程序调试工具</h2><p>gdb是GNU开发的组织发布的一个功能强大的、在UNIX/Linux操作系统上使用的C/C++和汇编语言程序的调试工具。gdb主要帮助用户在调试程序时完成4方面的工作：</p>
+<ul>
+<li>启动程序，按用户要求影响程序运行行为。</li>
+<li>使运行程序在指定条件处停止。</li>
+<li>当程序停止时,检查它出现了什么问题。</li>
+<li>动态改变程序的执行环境，这样就可以先纠正一个错误，然后再纠正其他错误。</li>
+</ul>
+<p>那么如何使用gdb呢？首先为了让程序能够被gdb调试，需要在编译过程中加入-g命令，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g hello.c -o hello</span><br></pre></td></tr></table></figure>
+<p>于是可以使用gdb hello来启动gdb调试程序了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb hello</span><br></pre></td></tr></table></figure>
+<p>相关操作命令如下：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>run</td>
+<td>运行程序</td>
+</tr>
+<tr>
+<td>b+行数</td>
+<td>在相应的行上打断点</td>
+</tr>
+<tr>
+<td>p+变量名</td>
+<td>输出相应变量的内容</td>
+</tr>
+<tr>
+<td>n</td>
+<td>单步调试(不进函数)</td>
+</tr>
+<tr>
+<td>s</td>
+<td>单步调试(进函数)</td>
+</tr>
+<tr>
+<td>c</td>
+<td>继续执行代码直到下一个断点或程序结束</td>
+</tr>
+<tr>
+<td>list1,25</td>
+<td>列出当前断点处后续几行代码，默认为10行</td>
+</tr>
+<tr>
+<td>watch+变量名</td>
+<td>运行代码直到相应变量改变,监控变量</td>
+</tr>
+<tr>
+<td>i b</td>
+<td>查看break信息</td>
+</tr>
+<tr>
+<td>i watch</td>
+<td>查看监控的信息</td>
+</tr>
+<tr>
+<td>d bnum</td>
+<td>删除断点 bnum为断点号码</td>
+</tr>
+</tbody></table>
+<h2 id="3-make程序维护工具"><a href="#3-make程序维护工具" class="headerlink" title="3.make程序维护工具"></a>3.make程序维护工具</h2><p>可以通过<a target="_blank" rel="noopener" href="https://blog.csdn.net/yredh_114/article/details/69389134">makefire葵花宝典</a>进行进一步的学习与了解。</p>
+<p>make的主要功能是，执行生成新版本的目标程序所需的各个步骤，即自动检测一个大型程序的哪一部分需要重新编译，然后发出命令，重新编译它们。make执行的关键在于能够找出上一次各文件修改的时间，利用时间来比较相依文件最后一次的修改时间。若目标文件的修改时间早于依赖文件的修改时间，则必须利用依赖文件进行处理。</p>
+<p>make命令，主要要在项目中创建一个makefile文件，文件其实是一些gcc命令的集成，具体我们分为5层来讲解如何编写makefile文件。</p>
+
       
 
       
@@ -1487,11 +1564,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color4">R语言</a>
               </li>
              
               <li class="article-tag-list-item">
