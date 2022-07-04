@@ -263,6 +263,26 @@
 <h2 id="3-make程序维护工具"><a href="#3-make程序维护工具" class="headerlink" title="3.make程序维护工具"></a>3.make程序维护工具</h2><p>可以通过<a target="_blank" rel="noopener" href="https://blog.csdn.net/yredh_114/article/details/69389134">makefire葵花宝典</a>进行进一步的学习与了解。</p>
 <p>make的主要功能是，执行生成新版本的目标程序所需的各个步骤，即自动检测一个大型程序的哪一部分需要重新编译，然后发出命令，重新编译它们。make执行的关键在于能够找出上一次各文件修改的时间，利用时间来比较相依文件最后一次的修改时间。若目标文件的修改时间早于依赖文件的修改时间，则必须利用依赖文件进行处理。</p>
 <p>make命令，主要要在项目中创建一个makefile文件，文件其实是一些gcc命令的集成，具体我们分为5层来讲解如何编写makefile文件。</p>
+<ul>
+<li>第一层：显示规则<br>目标文件：依赖文件<br>[TAB]指令</li>
+</ul>
+<p>第一个目标文件是最终目标！！！！<br>例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hello:hello.o</span><br><span class="line">    gcc hello.o -o hello</span><br><span class="line">hello.o:hello.s</span><br><span class="line">    gcc -c hello.s -o hello.o</span><br><span class="line">hello.s:hello.i</span><br><span class="line">    gcc -S hello.i -o hello.s</span><br><span class="line">hello.i:hello.c</span><br><span class="line">    gcc -E hello.c -o hello.i</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm *.o *.s *.i hello</span><br></pre></td></tr></table></figure>
+<p>例2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">test:circle.o cube.o main.o</span><br><span class="line">    gcc circle.o cube.o main.o -o test</span><br><span class="line"></span><br><span class="line">circle.o:circle.c</span><br><span class="line">    gcc -c circle.c -o circle.o</span><br><span class="line"></span><br><span class="line">cube.o:cube.c</span><br><span class="line">    gcc -c cube.c -o cube.o</span><br><span class="line"></span><br><span class="line">main.o:main.c</span><br><span class="line">    gcc -c main.c -o main.o</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -rf *.o test</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第二层:变量 =（替换） +=（追加） ：=（恒等于）<br>使用变量， $(变量名)  替换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">TAR &#x3D; test </span><br><span class="line">CC :&#x3D; gcc</span><br><span class="line">OBJ &#x3D; circlr.o cube.o mian.o</span><br><span class="line"></span><br><span class="line">$(TAR):$(OBJ)</span><br><span class="line">    $(CC) $(OBJ) -o $(TAR) </span><br><span class="line"></span><br><span class="line">circle.o:circle.c</span><br><span class="line">    $(CC) -c circle.c -o circle.o</span><br><span class="line"></span><br><span class="line">cube.o:cube.c</span><br><span class="line">    $(CC) -c cube.c -o cube.o</span><br><span class="line"></span><br><span class="line">main.o:main.c</span><br><span class="line">    $(CC) -c main.c -o main.o</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -rf *.o test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三层：隐含规则 <code>%.c</code> <code>%.o</code>任意的点.c或.o 文件 <code>*.c</code> <code>*.o</code> 所有的.c或.o</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TAR &#x3D; test </span><br><span class="line">CC :&#x3D; gcc</span><br><span class="line">OBJ &#x3D; circlr.o cube.o mian.o</span><br><span class="line"></span><br><span class="line">$(TAR):$(OBJ)</span><br><span class="line">    $(CC) $(OBJ) -o $(TAR) </span><br><span class="line"></span><br><span class="line">%.o:%.c</span><br><span class="line">    $(CC) -c %.c -o %.o</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -rf *.o $(TAR)</span><br></pre></td></tr></table></figure></li>
+<li><p>第四层：通配符<code>$^</code>所有依赖文件   <code>$@</code>所有的目标文件   <code>$&lt;</code>所有依赖文件的第一个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TAR &#x3D; test </span><br><span class="line">CC :&#x3D; gcc</span><br><span class="line">OBJ &#x3D; circlr.o cube.o mian.o</span><br><span class="line"></span><br><span class="line">$(TAR):$(OBJ)</span><br><span class="line">    $(CC) $^ -o $@ </span><br><span class="line"></span><br><span class="line">%.o:%.c</span><br><span class="line">    $(CC) -c $^ -o $@</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -rf *.o $(TAR)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第五层：函数<br>参考葵花宝典和makefile教程。</p>
+</li>
+</ul>
+<h2 id="学习网址"><a href="#学习网址" class="headerlink" title="学习网址"></a>学习网址</h2><p><a target="_blank" rel="noopener" href="https://github.com/theicfire/makefiletutorial">1. github仓库</a><br><a target="_blank" rel="noopener" href="https://makefiletutorial.com/">2. makefile外文教程</a><br><a target="_blank" rel="noopener" href="https://makefiletutorial.vercel.app/#/">3. makefile中文教程</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yredh_114/article/details/69389134">4.葵花宝典</a></p>
 
       
 
@@ -1142,126 +1162,29 @@
 
 
   
-    <article id="post-vim练级手册（七）-telescope文件模糊搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2021服务外包之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/">vim练级手册（七） ---telescope文件模糊搜索</a>
+      <a class="article-title" href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/">2021服务外包之旅</a>
     </h1>
   
 
         
         
-<a href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/" class="archive-article-date">
+<a href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/" class="archive-article-date">
 	
-  	<time datetime="2022-04-23T02:49:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-23</time>
+  	<time datetime="2022-05-30T07:22:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-30</time>
 </a>
         
             </header>      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><leader>ff</td>
-<td>搜索当前目录下的文件</td>
-</tr>
-<tr>
-<td><leader>fg</td>
-<td>当前目录下文件中的内容查找</td>
-</tr>
-<tr>
-<td><leader>fb</td>
-<td>buffer切换</td>
-</tr>
-<tr>
-<td><leader>fo</td>
-<td>old file曾经打开过的文件</td>
-</tr>
-<tr>
-<td><leader>fh</td>
-<td>打开帮助文档</td>
-</tr>
-<tr>
-<td><leader>ma</td>
-<td>在当前文件中查找标记</td>
-</tr>
-<tr>
-<td><leader>mA</td>
-<td>在所有文件中查找标记</td>
-</tr>
-<tr>
-<td></td>
-<td>vim-bookmarks快捷键</td>
-</tr>
-<tr>
-<td>mm</td>
-<td>当前行做标记</td>
-</tr>
-<tr>
-<td>mi</td>
-<td>当前行做标记,并写上相应的注释</td>
-</tr>
-<tr>
-<td>mn</td>
-<td>跳到下一个标记</td>
-</tr>
-<tr>
-<td>mp</td>
-<td>跳到上一个标记</td>
-</tr>
-<tr>
-<td>ma</td>
-<td>show all bookmarks</td>
-</tr>
-<tr>
-<td>mc</td>
-<td>删除当前buffer的标记</td>
-</tr>
-<tr>
-<td>mx</td>
-<td>删除所有buffer的标记</td>
-</tr>
-</tbody></table>
-<h2 id="1-telescope"><a href="#1-telescope" class="headerlink" title="1.telescope"></a>1.telescope</h2><p><code>telescope</code>是一款神级模糊搜索工具，大大提高效率。</p>
-<h4 id="安装telescope"><a href="#安装telescope" class="headerlink" title="安装telescope"></a>安装telescope</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 文件搜索 预览 等</span><br><span class="line">use &#123;</span><br><span class="line">	&quot;nvim-telescope&#x2F;telescope.nvim&quot;,</span><br><span class="line">    requires &#x3D; &#123;</span><br><span class="line">      &quot;nvim-lua&#x2F;plenary.nvim&quot;,</span><br><span class="line">      &quot;kyazdani42&#x2F;nvim-web-devicons&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-- 加速文件搜索速度,如果安装失败需要到插件目录执行make命令手动编译</span><br><span class="line">-- 用了这个插件以后，貌似更快了(感觉输入更跟手了，可能是心理作用)。但是对于我的小项目感受不是很明显</span><br><span class="line">use &#123;&quot;nvim-telescope&#x2F;telescope-fzf-native.nvim&quot;, run &#x3D; &quot;make&quot;&#125;</span><br></pre></td></tr></table></figure>
-<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
-<h4 id="配置telescope"><a href="#配置telescope" class="headerlink" title="配置telescope"></a>配置telescope</h4><p>创建以下文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;telescope.lua</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
-</blockquote>
-<p>在文件中添加以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">local status, actions &#x3D; pcall(require, &quot;telescope.actions&quot;)</span><br><span class="line">if (not status) then</span><br><span class="line">  return</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--local actions &#x3D; require(&#39;telescope.actions&#39;)</span><br><span class="line">-- Global remapping</span><br><span class="line">------------------------------</span><br><span class="line">require(&quot;telescope&quot;).setup &#123;</span><br><span class="line">  defaults &#x3D; &#123;</span><br><span class="line">    mappings &#x3D; &#123;</span><br><span class="line">      n &#x3D; &#123;</span><br><span class="line">        [&quot;q&quot;] &#x3D; actions.close,</span><br><span class="line">        [&quot;l&quot;] &#x3D; actions.file_edit</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    file_ignore_patterns &#x3D; &#123;&quot;.&#x2F;node_modules&quot;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  extensions &#x3D; &#123;</span><br><span class="line">    fzf &#x3D; &#123;</span><br><span class="line">      fuzzy &#x3D; true, -- false will only do exact matching</span><br><span class="line">      override_generic_sorter &#x3D; true, -- override the generic sorter</span><br><span class="line">      override_file_sorter &#x3D; true, -- override the file sorter</span><br><span class="line">      case_mode &#x3D; &quot;smart_case&quot; -- or &quot;ignore_case&quot; or &quot;respect_case&quot;</span><br><span class="line">      -- the default case_mode is &quot;smart_case&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- To get fzf loaed and working with telescope, you need to call</span><br><span class="line">-- load_extension, somewhere after setup function:</span><br><span class="line">require(&quot;telescope&quot;).load_extension(&quot;fzf&quot;)</span><br><span class="line">require(&#39;telescope&#39;).load_extension(&#39;vim_bookmarks&#39;)</span><br><span class="line"></span><br><span class="line">--按键设置</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;ff&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).find_files()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fg&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).live_grep()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fb&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).buffers()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fh&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).help_tags()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;ma&quot;, [[&lt;cmd&gt;Telescope vim_bookmarks current_file&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;mA&quot;, [[&lt;cmd&gt;Telescope vim_bookmarks all&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fo&quot;, [[&lt;cmd&gt;Telescope oldfiles theme&#x3D;dropdown previewer&#x3D;false&lt;cr&gt;]], &#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>vim-bookmarks报错需要安装如下插件。</p>
-</blockquote>
-<h4 id="文本搜索支持"><a href="#文本搜索支持" class="headerlink" title="文本搜索支持"></a>文本搜索支持</h4><p>MacOS安装如下:<br><code>brew install ripgrep</code></p>
-<p>其余查看:<a target="_blank" rel="noopener" href="https://github.com/chinanf-boy/ripgrep-zh">https://github.com/chinanf-boy/ripgrep-zh</a></p>
-<h2 id="2-vim-bookmarks插件安装"><a href="#2-vim-bookmarks插件安装" class="headerlink" title="2.vim-bookmarks插件安装"></a>2.vim-bookmarks插件安装</h2><p>作为一款标记插件，并支持telescope查找</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 打标签</span><br><span class="line">use &#39;MattesGroeger&#x2F;vim-bookmarks&#39;</span><br><span class="line">-- telescope查询标签支持</span><br><span class="line">use &quot;tom-anders&#x2F;telescope-vim-bookmarks.nvim&quot;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置vim-bookmarks"><a href="#配置vim-bookmarks" class="headerlink" title="配置vim-bookmarks"></a>配置vim-bookmarks</h4><p>创建以下文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;bookmarks.rc.vim</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
-</blockquote>
-<p>在文件中添加以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">highlight BookmarkSign ctermbg&#x3D;NONE ctermfg&#x3D;160</span><br><span class="line">highlight BookmarkLine ctermbg&#x3D;194 ctermfg&#x3D;NONE</span><br><span class="line">let g:bookmark_sign &#x3D; &#39;♥&#39;</span><br><span class="line">let g:bookmark_highlight_lines &#x3D; 1</span><br></pre></td></tr></table></figure>
-
-<p>简单的进行配置即可，快捷键在最上方总结了。</p>
-
+        
       
 
       
@@ -1274,7 +1197,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -1284,7 +1207,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/">展开全文 >></a>
         </p>
       
 
@@ -1314,46 +1237,29 @@
 
 
   
-    <article id="post-vim练级手册（六）-markdown预览插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2021中国机器人大赛线上之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/">vim练级手册（六） ---markdown预览插件</a>
+      <a class="article-title" href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/">2021中国机器人大赛线上之旅</a>
     </h1>
   
 
         
         
-<a href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/" class="archive-article-date">
+<a href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/" class="archive-article-date">
 	
-  	<time datetime="2022-04-23T02:20:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-23</time>
+  	<time datetime="2022-04-25T07:22:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
 </a>
         
             </header>      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>作为一个经常使用markdown写博客的人来说，markdown预览功能是十分必要的，将主流编辑器转为vim之后，markdown的编写也转为用vim写，因此找到了这款markdown预览工具。</p>
-<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>:MarkdownPreview</td>
-<td>在浏览器中打开markdown-preview</td>
-</tr>
-</tbody></table>
-<h2 id="1-markdown-preview"><a href="#1-markdown-preview" class="headerlink" title="1.markdown-preview"></a>1.markdown-preview</h2><h4 id="安装markdown-preview"><a href="#安装markdown-preview" class="headerlink" title="安装markdown-preview"></a>安装markdown-preview</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--markdown预览插件</span><br><span class="line">use &quot;iamcco&#x2F;markdown-preview.nvim&quot;</span><br></pre></td></tr></table></figure>
-<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
-<p>安装完成以后，执行以下命令:<br><code>:call mkdp#util#install()</code></p>
-
+        
       
 
       
@@ -1366,7 +1272,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -1376,7 +1282,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/">展开全文 >></a>
         </p>
       
 
@@ -1576,15 +1482,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计算机视觉论文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计算机视觉论文</a>
               </li>
              
               <li class="article-tag-list-item">
