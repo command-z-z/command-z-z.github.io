@@ -164,6 +164,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C-迭代器（STL迭代器）iterator详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/27/C-%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88STL%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%89iterator%E8%AF%A6%E8%A7%A3/">C++迭代器（STL迭代器）iterator详解</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/11/27/C-%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88STL%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%89iterator%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+	
+  	<time datetime="2020-11-27T08:53:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="迭代器的含义"><a href="#迭代器的含义" class="headerlink" title="迭代器的含义"></a>迭代器的含义</h3><p>要访问顺序容器和关联容器中的元素，需要通过“迭代器（iterator）”进行。迭代器是一个变量，相当于容器和操纵容器的算法之间的中介。迭代器可以指向容器中的某个元素，通过迭代器就可以读写它指向的元素。从这一点上看，迭代器和指针类似。</p>
+<h3 id="迭代器的分类"><a href="#迭代器的分类" class="headerlink" title="迭代器的分类"></a>迭代器的分类</h3><ol>
+<li>正向迭代器，定义方法如下：<br><code>容器类名::iterator  迭代器名;</code></li>
+<li>常量正向迭代器，定义方法如下：<br><code>容器类名::const_iterator  迭代器名;</code></li>
+<li>反向迭代器，定义方法如下：<br><code>容器类名::reverse_iterator  迭代器名;</code></li>
+<li>常量反向迭代器，定义方法如下：<br><code>容器类名::const_reverse_iterator  迭代器名;</code></li>
+</ol>
+<h3 id="迭代器用法示例"><a href="#迭代器用法示例" class="headerlink" title="迭代器用法示例"></a>迭代器用法示例</h3><p>通过迭代器可以读取它指向的元素，<code>*迭代器名</code>就表示迭代器指向的元素。通过非常量迭代器还能修改其指向的元素。</p>
+<p>迭代器都可以进行<code>++</code>操作。反向迭代器和正向迭代器的区别在于：</p>
+<ul>
+<li>对正向迭代器进行<code>++</code>操作时，迭代器会指向容器中的后一个元素；</li>
+<li>而对反向迭代器进行<code>++</code>操作时，迭代器会指向容器中的前一个元素。</li>
+</ul>
+<p>下面的程序演示了如何通过迭代器遍历一个 vector 容器中的所有元素。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;  <span class="comment">//v是存放int类型变量的可变长数组，开始时没有元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n&lt;<span class="number">5</span>; ++n)</span><br><span class="line">        v.push_back(n);  <span class="comment">//push_back成员函数在vector容器尾部添加一个元素</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator i;  <span class="comment">//定义正向迭代器</span></span><br><span class="line">    <span class="keyword">for</span> (i = v.begin(); i != v.end(); ++i) &#123;  <span class="comment">//用迭代器遍历容器</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *i &lt;&lt; <span class="string">&quot; &quot;</span>;  <span class="comment">//*i 就是迭代器i指向的元素</span></span><br><span class="line">        *i *= <span class="number">2</span>;  <span class="comment">//每个元素变为原来的2倍</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//用反向迭代器遍历容器</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::reverse_iterator j = v.rbegin(); j != v.rend(); ++j)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *j &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序的输出结果是:<br>0 1 2 3 4<br>8 6 4 2 0</p>
+<blockquote>
+<p>注意：用反向迭代器时，调用的函数是<code>rbegin </code>和<code>rend</code><br><code>rbegin</code>成员函数返回指向容器中最后一个元素的迭代器，<code>rend</code> 成员函数返回指向容器中第一个元素前面的位置的迭代器，因此本循环实际上是从后往前遍历整个数组。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/11/27/C-%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88STL%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%89iterator%E8%AF%A6%E8%A7%A3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/27/C-%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%88STL%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%89iterator%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-命运读后感" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
