@@ -164,6 +164,158 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数字图像处理-学习笔记（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">数字图像处理-学习笔记（3）</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/" class="archive-article-date">
+	
+  	<time datetime="2021-04-23T00:32:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h2><p>内容大致：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOtJu8"><img src="https://z3.ax1x.com/2021/04/23/cOtJu8.md.png" alt="cOtJu8.md.png"></a></p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>图像分割就是根据某些特性把图片中的像素分成不同的部分（加不同的标签）</li>
+<li>特性可以是灰度、颜色、纹理等，目标可以对应单个区域，也可以对应多个区域。</li>
+<li>图像分割算法是基于亮度值的不连续性和相似性。</li>
+</ul>
+<p><strong>图像分析主要包括一下几部分内容：</strong></p>
+<ol>
+<li>把图像分割成不同区域，或把不同的目标分开（分割）。即把图像分成互不重叠的区域并提取出感兴趣目标</li>
+<li>找出各个区域的特征（特征提取）。</li>
+<li>识别图像中的内容，或对图像进行分类（识别与分类）。</li>
+<li>给出结论（描述、分类或其他的结论）</li>
+</ol>
+<h3 id="分类–分割依据"><a href="#分类–分割依据" class="headerlink" title="分类–分割依据"></a>分类–分割依据</h3><ul>
+<li><strong>相似性分割</strong>：将相似灰度级的像素聚集在一起，形成图像中的不同区域。这种基于相似性原理的方法也称为基于区域相关的分割技术。</li>
+<li><strong>非连续性分割</strong>：首先检测局部不连续性，然后将它们连接起来形成边界，这些边界把图像分以不同的区域。这种基于不连续性原理检出物体边缘的方法称为基于点相关的分割技术。</li>
+<li>两种方法是互补的。有时将它们结合起来，以求得到更好的分割效果。</li>
+</ul>
+<h3 id="基于边缘的图像分割"><a href="#基于边缘的图像分割" class="headerlink" title="基于边缘的图像分割"></a>基于边缘的图像分割</h3><h4 id="间断检测"><a href="#间断检测" class="headerlink" title="间断检测"></a>间断检测</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cX249P"><img src="https://z3.ax1x.com/2021/04/23/cX249P.md.png" alt="cX249P.md.png"></a></p>
+<h4 id="1-点检测"><a href="#1-点检测" class="headerlink" title="1.点检测"></a>1.点检测</h4><p><img src="https://raw.githubusercontent.com/command-z-z/My-image-library/master/20210423/1.1uha5ii2ddi8.png" alt="1"></p>
+<h4 id="2-线检测"><a href="#2-线检测" class="headerlink" title="2.线检测"></a>2.线检测</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9YNBn"><img src="https://z3.ax1x.com/2021/04/27/g9YNBn.md.png" alt="g9YNBn.md.png"></a></p>
+<h4 id="3-边缘检测"><a href="#3-边缘检测" class="headerlink" title="3.边缘检测"></a>3.边缘检测</h4><ul>
+<li>边缘点：边缘点是指其周围像素的灰度有阶跃变化或屋顶状变化的像素、常存在于目标与背景之间、目标与目标之间、目标与其影子之间。</li>
+<li>分析手段：因为灰度的变化，可以反映为导数；因此，根据边缘的形状，可以通过求导的方法来寻求边缘。</li>
+<li>边缘的参数：包括边缘强度和边缘方向或者说边缘的幅值和边缘的方向。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9dQSK"><img src="https://z3.ax1x.com/2021/04/27/g9dQSK.md.png" alt="g9dQSK.md.png"></a></p>
+<p><strong>边缘分割示例</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9wfUA"><img src="https://z3.ax1x.com/2021/04/27/g9wfUA.md.png" alt="g9wfUA.md.png"></a></p>
+<p><strong>阈值处理</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9wz80"><img src="https://z3.ax1x.com/2021/04/27/g9wz80.md.png" alt="g9wz80.md.png"></a></p>
+<h3 id="Canny边缘检测算法"><a href="#Canny边缘检测算法" class="headerlink" title="Canny边缘检测算法"></a>Canny边缘检测算法</h3><p>边缘检测的一般标准包括：</p>
+<ol>
+<li>低错误率：既要少将真正的边缘丢失也要少将非边缘判为边缘。</li>
+<li>边缘点应被很好地定位。检测出的边缘应在真正的边界上。</li>
+<li>单一的边缘响应。得到的边界为单像素宽。</li>
+</ol>
+<ul>
+<li>为了满足这些要求，Canny使用了变分法。Canny检测器中的最优函数使用四个指数项的和来描述，它可以由高斯函数的一阶导数来近似。</li>
+<li>在目前常用的边缘检测方法中，Canny边缘检测算法是具有严格定义的，可以提供良好可靠检测的方法之一。由于它具有满足边缘检测的三个标准和实现过程简单的优势，成为边缘检测最流行的算法之一。</li>
+</ul>
+<h5 id="Canny边缘检测算法的步骤"><a href="#Canny边缘检测算法的步骤" class="headerlink" title="Canny边缘检测算法的步骤"></a>Canny边缘检测算法的步骤</h5><ol>
+<li>灰度化<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9DQNd"><img src="https://z3.ax1x.com/2021/04/27/g9DQNd.md.png" alt="g9DQNd.md.png"></a></li>
+<li>使用高斯滤波器平滑图像、滤除噪声<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9raM6"><img src="https://z3.ax1x.com/2021/04/27/g9raM6.md.png" alt="g9raM6.md.png"></a></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9rrIH"><img src="https://z3.ax1x.com/2021/04/27/g9rrIH.md.png" alt="g9rrIH.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9rIoQ"><img src="https://z3.ax1x.com/2021/04/27/g9rIoQ.md.png" alt="g9rIoQ.md.png"></a><br>3. 计算图像中每个像素点的梯度强度和方向。注：在opencv中，选取3x3的Sobel算子。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9sQSI"><img src="https://z3.ax1x.com/2021/04/27/g9sQSI.md.png" alt="g9sQSI.md.png"></a><br>4. 非极大值抑制<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9sRh9"><img src="https://z3.ax1x.com/2021/04/27/g9sRh9.md.png" alt="g9sRh9.md.png"></a><br>5. 双阈值检测<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9yHK0"><img src="https://z3.ax1x.com/2021/04/27/g9yHK0.md.png" alt="g9yHK0.md.png"></a><br>6. 抑制孤立低阈值点<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g96kVO"><img src="https://z3.ax1x.com/2021/04/27/g96kVO.md.png" alt="g96kVO.md.png"></a></p>
+<p><strong>Canny算法小结</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9cNkD"><img src="https://z3.ax1x.com/2021/04/27/g9cNkD.md.png" alt="g9cNkD.md.png"></a></p>
+<h4 id="边缘连接与边界检测"><a href="#边缘连接与边界检测" class="headerlink" title="边缘连接与边界检测"></a>边缘连接与边界检测</h4><ul>
+<li>理想情况下，边缘检测应该仅产生位于边缘上的像素集合。实际上，由于噪声、不均匀照明引起的边缘间断，以及其他引入灰度值虚假的不连续的影响，这些像素并不能完全描述边缘特性。</li>
+<li>因此，一般是在边缘检测后紧跟连接算法，将边缘像素组成有意义的边缘或区域边界。</li>
+<li>三种基本的边缘连接方法；<ul>
+<li>第一种方法需要有关局部区域中的边缘点（如一个3x3邻域）的知识</li>
+<li>第二种方法要求区域边界上的点已知</li>
+<li>第三种方法是处理整个边缘图像的全局方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Hough变换"><a href="#Hough变换" class="headerlink" title="Hough变换"></a>Hough变换</h3><p><strong>基于Hough变换的全局处理</strong></p>
+<ul>
+<li>Hough变换是基于表决原理的参数估计方法</li>
+<li>在图像处理领域，是一种重要的形状检测技术</li>
+<li>基本思想：图像中每一点对参数组合进行表决，赢得多数票的参数组合为胜者。</li>
+</ul>
+<p><strong>直线Hough变换的（k，b）空间方法：</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9H3P1"><img src="https://z3.ax1x.com/2021/04/27/g9H3P1.md.png" alt="g9H3P1.md.png"></a></p>
+<h3 id="基于阈值的图像分割"><a href="#基于阈值的图像分割" class="headerlink" title="基于阈值的图像分割"></a>基于阈值的图像分割</h3><ul>
+<li>基于全局阈值</li>
+<li>Otsu方法的最佳全局阈值（大津算法）</li>
+<li>图像平滑改善全局阈值</li>
+<li>基本自适应阈值</li>
+<li>通过边界特性选择阈值</li>
+</ul>
+<h3 id="边界表示与描述–边界追踪"><a href="#边界表示与描述–边界追踪" class="headerlink" title="边界表示与描述–边界追踪"></a>边界表示与描述–边界追踪</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9HG26"><img src="https://z3.ax1x.com/2021/04/27/g9HG26.md.png" alt="g9HG26.md.png"></a></p>
+<h3 id="边界表示与描述–链码"><a href="#边界表示与描述–链码" class="headerlink" title="边界表示与描述–链码"></a>边界表示与描述–链码</h3><ul>
+<li>链码由于表示由顺序连接的具有指定长度和方向的直线段组成的边界线</li>
+<li>这种表示方法基于线段的4或8连接</li>
+<li>每一段的方向使用数字编号方法进行编码<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9bQOS"><img src="https://z3.ax1x.com/2021/04/27/g9bQOS.md.png" alt="g9bQOS.md.png"></a></li>
+</ul>
+<h4 id="循环差分链码：用相邻链码的差代替链码"><a href="#循环差分链码：用相邻链码的差代替链码" class="headerlink" title="循环差分链码：用相邻链码的差代替链码"></a>循环差分链码：用相邻链码的差代替链码</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9bXX8"><img src="https://z3.ax1x.com/2021/04/27/g9bXX8.md.png" alt="g9bXX8.md.png"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数字图像处理-学习笔记（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1062,108 +1214,9 @@
 
 
   
-    <article id="post-GMT地形图绘制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">GMT地形图绘制 学习笔记（1） -绘制底图</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/" class="archive-article-date">
-	
-  	<time datetime="2021-01-27T15:03:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
-<h3 id="绘制全球地图"><a href="#绘制全球地图" class="headerlink" title="绘制全球地图"></a>绘制全球地图</h3><h4 id="J-amp-R选项的基本用法"><a href="#J-amp-R选项的基本用法" class="headerlink" title="-J &amp; -R选项的基本用法"></a>-J &amp; -R选项的基本用法</h4><p>-J 选项指定地图投影参数以及地图的尺寸。 -R 选项指定要绘制的区域范围（即经纬度范围）。 如运行以下代码可以绘制全球地图（无边框版）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap1pdf </span><br><span class="line">    gmt coast -JH180&#x2F;12c -R0&#x2F;360&#x2F;-90&#x2F;90 -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9bohn"><img src="https://s3.ax1x.com/2021/01/28/y9bohn.jpg" alt="y9bohn.jpg"></a><br>其中，-JH180/12c指定地图投影参数,H表示使用<strong>Hammer投影</strong>，地图中心位于经度 180° 处，地图宽度为12厘米（12c）；-R0/360/-90/90 指定要绘制的区域范围，即经度0° 到360°，纬度-90° 到90°，四个数字之间用斜杠/分隔。</p>
-<h4 id="B选项的基本用法"><a href="#B选项的基本用法" class="headerlink" title="-B选项的基本用法"></a>-B选项的基本用法</h4><p>-B 选项可以为地理底图加上边框并绘制经纬线。运行以下代码，可绘制全球地图（有边框版）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap2 pdf</span><br><span class="line">    gmt coast -JH180&#x2F;12c -Rg -Bg -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9q4KK"><img src="https://s3.ax1x.com/2021/01/28/y9q4KK.jpg" alt="y9q4KK.jpg"></a><br>其中，-Rg与-R0/360/-90/90是完全等效的。由于绘制全球地图是很常见的需求，因而GMT 为其设计了一个更简单的写法。-Rg中g代表global；-Bg 选项中的-B用于给底图加上边框，其中的g则用于向底图中加入网格线（g代表grid）。</p>
-<h4 id="绘制区域地图"><a href="#绘制区域地图" class="headerlink" title="绘制区域地图"></a>绘制区域地图</h4><p>绘制区域地图与绘制全球地图没有本质区别，依然需要使用-J指定投影方式，使用-R指定绘图区域范围，使用-B指定底图边框。运行以下代码，可绘制新西兰地图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealand1 png &#x2F;&#x2F;此处为输出格式，这里测试后都改为png格式，便于Latex文本加入。</span><br><span class="line">    gmt coast -JM12c -RNZ -Ba -W0.5p -A10000</span><br><span class="line">gmt end show &#x2F;&#x2F;编译好后会直接输出</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9O5Ae"><img src="https://s3.ax1x.com/2021/01/28/y9O5Ae.md.png" alt="y9O5Ae.md.png"></a></p>
-<p>其中，-JM12c指定了使用墨卡托投影（绘制区域地图最常用的投影方式），地图宽度为12厘米；-RNZ指定了绘图区域范围，此处NZ是新西兰的国家代码，GMT会自动根据国家代码提取该国家的区域范围并用于绘图；-Ba用于给底图添加边框。对于某些地图投影GMT默认使用图中所示的黑白相间的底图边框。a用于添加标注（annotation，即图中的经纬度数字）。如果对于根据国家代码自动确定的区域范围不太满意，也可以使用-R选项最原始的方式来指定区域范围。通过上面的图，我们大概知道了新西兰的经纬度范围。运行以下代码重新绘制新西兰地图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap2 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Ba -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p>此代码同样可以生成类似上图新西兰区域图</p>
-<p>还可以对底图进行进一步的修改以使其更加美观</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap3 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Bxa4 -Bya3 -BWSen+t&quot;New Zealand&quot; -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9jkRA"><img src="https://s3.ax1x.com/2021/01/28/y9jkRA.md.png" alt="y9jkRA.md.png"></a><br>其中，-Bxa4 表示设置X轴（x）的标注间隔为4度一个（a4），-Bya3表示设置y轴的标注间隔为3度一个（a3），-BWSen中WSEN分别是西南东北四个方向的英文单词首字母，用于控制四条边的属性。大写的WS表示给西边和南边添加标注，而小写的en则表示对于东边和北边只绘制边框但不显示标注，-BWSen+t”New Zealand”中+t用于给整张图添加标题（title）。由于标题New Zealand中含有空格，我们需要使用单引号或双引号将其括起来。</p>
-<h3 id="绘制坐标轴"><a href="#绘制坐标轴" class="headerlink" title="绘制坐标轴"></a>绘制坐标轴</h3><h4 id="绘制线性坐标"><a href="#绘制线性坐标" class="headerlink" title="绘制线性坐标"></a>绘制线性坐标</h4><p>绘制线性坐标轴，需要使用-R指定坐标轴范围，使用-B绘制边框并指定边框和坐标轴属性，同时，还需要使用-JX指定线性坐标轴的宽度和高度。例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin linearxy png</span><br><span class="line">    gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8 -JX8c&#x2F;5c -Bxa10f5g10+l&quot;X Label&quot; -Bya4f2g2+l&quot;Y Label&quot; -BWSen+t&quot;Linear X-Y Plot&quot;</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9vdnP"><img src="https://s3.ax1x.com/2021/01/28/y9vdnP.md.png" alt="y9vdnP.md.png"></a><br>其中，-JX8c/5c表明线性坐标轴的宽度为8厘米，高度为5厘米，-R10/70/-4/8表明X轴范围为10到70，Y轴范围为-4到8，-Bxa10f5g10+l”X Label” 设置了X 轴的属性，a10f5g10 分别设置了标注（annotation）间隔为10，刻度（frame）间隔为5，网格线（grid ）间隔为10；+l”X Label”则为X轴添加了标签；对于Y 轴同理.</p>
-<h4 id="绘制三维坐标"><a href="#绘制三维坐标" class="headerlink" title="绘制三维坐标"></a>绘制三维坐标</h4><p>三维坐标轴只需要在二维坐标的基础上针对Z轴指定Z轴的范围、Z轴的高度以及三维视角即可。例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin 3dmap png</span><br><span class="line">gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8&#x2F;-10&#x2F;10 -JX8c5c -JZ5c -Bxa10+lX -Bya4+lY -Bzaf+lDepth -BSEwnZ+b+t&#39;3D Plot&#39; -p130&#x2F;30</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9xC3d"><img src="https://s3.ax1x.com/2021/01/28/y9xC3d.md.png" alt="y9xC3d.md.png"></a></p>
-<p>其中，-R 选项中有6个数字，后面两个数字表示Z轴最小值和最大值，-JZ5c指定了Z轴的高度为5厘米，-Bzaf指定了 轴的标注和刻度属性，-BSEwnZ+b中Z+b表示绘制一条Z轴，并绘制出整个长方体的所有边，-p130/30则指定了看这个长方体的视角130 和30分别为三维视角的方位角和高度角，方位角的取值范围为0 到360 度，高度角的取值范围为0 到90 度。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
     </nav>
   
 

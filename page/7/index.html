@@ -164,6 +164,143 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C-操作符重载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">C++操作符重载</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="archive-article-date">
+	
+  	<time datetime="2020-11-27T09:19:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="可重载运算符-不可重载运算符"><a href="#可重载运算符-不可重载运算符" class="headerlink" title="可重载运算符/不可重载运算符"></a>可重载运算符/不可重载运算符</h2><p>下面是可重载的运算符列表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">具体操作符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">双目算术运算符</td>
+<td align="left">+ (加)，-(减)，*(乘)，/(除)，% (取模)</td>
+</tr>
+<tr>
+<td align="left">关系运算符</td>
+<td align="left">==(等于)，!= (不等于)，&lt; (小于)，&gt; (大于&gt;，&lt;=(小于等于)，&gt;=(大于等于)</td>
+</tr>
+<tr>
+<td align="left">逻辑运算符</td>
+<td align="left">||(逻辑或)，&amp;&amp;(逻辑与)，!(逻辑非)</td>
+</tr>
+<tr>
+<td align="left">单目运算符</td>
+<td align="left">+ (正)，-(负)，*(指针)，&amp;(取地址)</td>
+</tr>
+<tr>
+<td align="left">自增自减运算符</td>
+<td align="left">++(自增)，--(自减)</td>
+</tr>
+<tr>
+<td align="left">位运算符</td>
+<td align="left">| (按位或)，&amp; (按位与)，~(按位取反)，^(按位异或),，&lt;&lt; (左移)，&gt;&gt;(右移)</td>
+</tr>
+<tr>
+<td align="left">赋值运算符</td>
+<td align="left">=, +=, -=, *=, /= , % = , &amp;=, |=, ^=, &lt;&lt;=, &gt;&gt;=</td>
+</tr>
+<tr>
+<td align="left">空间申请与释放</td>
+<td align="left">new, delete, new[ ] , delete[]</td>
+</tr>
+<tr>
+<td align="left">其他运算符</td>
+<td align="left">()(函数调用)，-&gt;(成员访问)，,(逗号)，[](下标)</td>
+</tr>
+</tbody></table>
+<p>下面是不可重载的运算符列表:</p>
+<ul>
+<li><code>.</code>：成员访问运算符</li>
+<li><code>.*</code>,<code>-&gt;*</code>：成员指针访问运算符</li>
+<li><code>::</code>：域运算符</li>
+<li><code>sizeof</code>：长度运算符</li>
+<li><code>?:</code>：条件运算符</li>
+<li><code>#</code>：预处理符号</li>
+</ul>
+<h2 id="友元函数-成员函数"><a href="#友元函数-成员函数" class="headerlink" title="友元函数/成员函数"></a>友元函数/成员函数</h2><ul>
+<li><p>只能重载为友元函数（或普通函数）<br><code>&lt;&lt;</code>和<code>&gt;&gt;</code>的重载必须作为类的<strong>友元函数</strong>,不能作为成员函数.<br>运算符重载为成员函数，第一个参数必须是本类的对象。而&lt;&lt;和&gt;&gt;的第一个操作数一定是ostream类型，所以<code>&lt;&lt;</code>只能重载为友元函数。</p>
+</li>
+<li><p>只能重载为成员函数<br>有四个操作符必须只能用“成员”函数重载 <code>=</code> <code>（）</code> <code>[]</code> <code>-&gt;</code></p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/27/C-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C-迭代器（STL迭代器）iterator详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1027,144 +1164,9 @@
 
 
   
-    <article id="post-hexo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/08/hexo/">hexo博客搭建及操作集</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/10/08/hexo/" class="archive-article-date">
-	
-  	<time datetime="2020-10-08T14:23:03.188Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h3 id="How-to-displace-partly-article"><a href="#How-to-displace-partly-article" class="headerlink" title="How to displace partly article?"></a>How to displace partly article?</h3><p>add<code>&lt;!-- more --&gt;</code>in some place,which you want to hide.</p>
-<hr>
-<h2 id="How-to-create-a-Hexo-Blog"><a href="#How-to-create-a-Hexo-Blog" class="headerlink" title="How to create a Hexo Blog"></a>How to create a Hexo Blog</h2><h3 id="1-install-Node-js"><a href="#1-install-Node-js" class="headerlink" title="1.install Node.js"></a>1.install <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js</a></h3><p>if you are macos users,you can install by command in Terminal as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
-<p>However,you should install <a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a> firstly<br>after these,you can input <code>node -v</code>to make sure install successful.<br>Besides,you can input <code>npm -v</code>to check out installation of npm(Be installed at the same time when install Node.js)</p>
-<h3 id="2-change-source"><a href="#2-change-source" class="headerlink" title="2.change source"></a>2.change source</h3><p>Because original source is too slow,so we need to change the source that be in the national location.you can input command sa follows:<br><code>npm install -g cnpm --registry=http://registry.npm.taobao.org</code><br>we change the source to Taobao,you can also check out installation of cnpm by <code>cnpm -v</code></p>
-<h3 id="3-install-hexo-frame"><a href="#3-install-hexo-frame" class="headerlink" title="3.install hexo frame"></a>3.install hexo frame</h3><p>It’s so easy that yan can only input sentence<code>cnpm install -g hexo-cli </code><br>Now,you are already install hexo frame<br>you can check out by command<code>hexo -v</code></p>
-<h3 id="4-build-blog"><a href="#4-build-blog" class="headerlink" title="4.build blog"></a>4.build blog</h3><p>Now, we can really build our blog.<br>first,<code>mkdir blog</code>create blog catalogue<br>second,<code>cd blog</code> enter blog catalogue<br>Then,<code>sudo hexo init</code>create blog ,initialize blog<br><code>hexo s</code>start local blog service<br><code>http://localhost:4000/</code> Go to local access address</p>
-<h3 id="5-create-new-article"><a href="#5-create-new-article" class="headerlink" title="5.create new article"></a>5.create new article</h3><p><code>hexo n &quot;我的第一篇文章&quot;</code> create new blog file(.md)<br><code>cd source/_posts</code> enten path to modify blog file content<br>return blog address<br><code>hexo clean</code>clean cache<br><code>hexo g</code> create</p>
-<h3 id="6-create-a-github-repositories"><a href="#6-create-a-github-repositories" class="headerlink" title="6.create a github repositories"></a>6.create a github repositories</h3><p>named’YourGithubName.github.io’<br>Then <code>cnpm install --save hexo-deployer-git</code> install git deploying plug-ins in blod catalogue<br><code>cd blog</code> to configure <code>config.yml</code> file<br>add following code :</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line">	<span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">	deploy:</span><br><span class="line">  		<span class="built_in">type</span>: git</span><br><span class="line"> 		repo: https://github.com/YourGithubName/YourGithubName.github.io.git</span><br><span class="line">  		branch: master</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-deploy-to-github-repositories"><a href="#7-deploy-to-github-repositories" class="headerlink" title="7.deploy to github repositories"></a>7.deploy to github repositories</h3><p><code>hexo d</code> deploy to your website<br><code>https://YourGithubName.github.io/</code> go to this website to check out </p>
-<blockquote>
-<p>you can also change theme ,have a try by yourself</p>
-</blockquote>
-<hr>
-<h2 id="Problems-encountered"><a href="#Problems-encountered" class="headerlink" title="Problems encountered"></a>Problems encountered</h2><h3 id="1-port-4000-has-been-used"><a href="#1-port-4000-has-been-used" class="headerlink" title="1.port 4000 has been used"></a>1.port 4000 has been used</h3><ul>
-<li><p>The first method: kill the process，which use port 4000.</p>
-</li>
-<li><p>The second method:add the following code in <code>_config.yml</code>that is in blog catalogue:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 4001</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
-<p>change to 4001 port.<br>solve the problem…</p>
-</li>
-</ul>
-<h3 id="2-添加音乐"><a href="#2-添加音乐" class="headerlink" title="2.添加音乐"></a>2.添加音乐</h3><ol>
-<li>打开网易云音乐网页版，打开所需要的音乐，复制选择的背景音乐分享外链</li>
-<li>引入播放器代码</li>
-<li>在<code>themes/yilia/layout/_partial/left-col.ejs</code>文件<code>nav</code>标签中添加代码。<blockquote>
-<p>放在<code>&lt;nav&gt;</code>和<code>&lt;/nav&gt;</code>之内</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 网易云音乐插件 --&gt;</span><br><span class="line">&lt;% if (theme.music &amp;&amp; theme.music.enable)&#123; %&gt;</span><br><span class="line">    &lt;div style&#x3D;&quot;position:absolute; bottom:120px left:auto; width:85%&quot;&gt;</span><br><span class="line">        &lt;iframe frameborder&#x3D;&quot;no&quot; border&#x3D;&quot;0&quot; marginwidth&#x3D;&quot;0&quot; marginheight&#x3D;&quot;0&quot; width&#x3D;&quot;240&quot; height&#x3D;&quot;52&quot; src&#x3D;&quot;&#x2F;&#x2F;music.163.com&#x2F;outchain&#x2F;player?type&#x3D;2&amp;id&#x3D;&lt;%&#x3D;theme.music.id||1334445174%&gt;&amp;auto&#x3D;&lt;%&#x3D;theme.music.autoplay?1:0%&gt;&amp;height&#x3D;32&quot;&gt;&lt;&#x2F;iframe&gt;   &#x2F;&#x2F;这段即音乐外链</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></li>
-<li>在yilia主题配置文件中添加属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 网易云音乐插件</span><br><span class="line">music:</span><br><span class="line">  enable: true</span><br><span class="line">  #id: 1332647902  # 网易云分享的ID</span><br><span class="line">  autoplay: true  # 是否开启自动播放</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="github的问题"><a href="#github的问题" class="headerlink" title="github的问题"></a>github的问题</h3><ul>
-<li>2021.9.17 最近很久没有写过博客了，碰巧有点时间想写一写一些关于cmake的知识。可以昨晚在使用hexo时却出现了以下问题，特此记录，并给出解决措施。</li>
-</ul>
-<p><strong>问题描述如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.</span><br><span class="line"></span><br><span class="line">remote: Please see https:&#x2F;&#x2F;github.blog&#x2F;2020-12-15-token-authentication-requirements-for-git-operations&#x2F; for more information.</span><br></pre></td></tr></table></figure>
-<p>经查找发现，原来是github至2021.8.13日起，停止使用密码进行验证登入了，我之前一直都是使用密码登入的，所以github推荐使用personal access token代替验证登入，而我这里选择使用SSH登入，方法如下。</p>
-<p><strong>解决措施</strong><br>1.在本地获取你主机的SSH公钥,使用以下命令,一直确定即可：<br> <code>ssh-keygen -t rsa -C &quot;GitHub账号&quot; </code></p>
-<p>2.然后用：cat+公钥路径，把出现的key复制下来</p>
-<p>3.在github的SSH and GPG keys中将公钥添加进去即可。</p>
-<p>4.记得修改hexo中的<code>_config.yml</code>文件中的协议，修改为SSH的网址形式。</p>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/08/hexo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
     </nav>
   
 
