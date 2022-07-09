@@ -467,7 +467,9 @@
 <h3 id="4-getline函数"><a href="#4-getline函数" class="headerlink" title="4.getline函数"></a>4.getline函数</h3><ul>
 <li>把一整行都读入char型数组str[100]中：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char str[100];</span><br><span class="line">cin.getline(str, 100);</span><br></pre></td></tr></table></figure></li>
 <li>如果是string容器，则需要用下面的方式输入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">getline(cin, str);</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>不会因为空格导致不能输入整行</p>
+</blockquote>
 </li>
 </ul>
 <h3 id="5-cin"><a href="#5-cin" class="headerlink" title="5.cin"></a>5.cin</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">cin &gt;&gt; str;</span><br></pre></td></tr></table></figure>
