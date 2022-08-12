@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.scanf输入字符数组使用%s读入的时候以空格跟换行为读入结束标志，如下代码所示： 1234567891011121314#include &lt;stdio.h&gt;int main()&amp;#123;    char str[10];    scanf(&quot;%s&quot;, str);    printf(&quot;%s&quot;, str);    return 0;&amp;#12">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-07-06T02:20:44.000Z">
-<meta property="article:modified_time" content="2022-07-09T15:04:01.399Z">
+<meta property="article:modified_time" content="2022-07-10T05:36:28.984Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,9 @@
 </blockquote>
 <h3 id="3-gets输入，puts输出"><a href="#3-gets输入，puts输出" class="headerlink" title="3.gets输入，puts输出"></a>3.gets输入，puts输出</h3><p>gets用来输入一行字符串，并将其存放于一维数组中，puts用来输出一行字符串，并紧跟一个换行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">    char str1[20];</span><br><span class="line">    char str2[5][10];</span><br><span class="line">    gets(str1);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; 3; i++)&#123;</span><br><span class="line">        gets(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    puts(srt1);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; 3; i++)&#123;</span><br><span class="line">        puts(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">WoAiDeRenBuAiWo</span><br><span class="line">QAQ</span><br><span class="line">T_T</span><br><span class="line">WoAiNi</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>gets用\n作为结束标志。</p>
+</blockquote>
 <h3 id="4-getline函数"><a href="#4-getline函数" class="headerlink" title="4.getline函数"></a>4.getline函数</h3><ul>
 <li>把一整行都读入char型数组str[100]中：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char str[100];</span><br><span class="line">cin.getline(str, 100);</span><br></pre></td></tr></table></figure></li>
 <li>如果是string容器，则需要用下面的方式输入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">getline(cin, str);</span><br></pre></td></tr></table></figure>

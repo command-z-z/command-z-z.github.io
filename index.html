@@ -164,6 +164,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-图算法专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">图算法专题</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" class="archive-article-date">
+	
+  	<time datetime="2022-08-12T03:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-12</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-dijkstra算法"><a href="#1-dijkstra算法" class="headerlink" title="1.dijkstra算法"></a>1.dijkstra算法</h2><p>狄杰斯特拉算法寻找图的最短路径。</p>
+<p>PAT A1003<br>思路：Dijkstra算法求最短路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, c1, c2;</span><br><span class="line">int G[MAXV][MAXV], weight[MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">int d[MAXV], w[MAXV], num[MAXV];</span><br><span class="line"></span><br><span class="line">void Difkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    memset(num, 0, sizeof(num));</span><br><span class="line">    memset(w, 0, sizeof(w));</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    w[s] &#x3D; weight[s];</span><br><span class="line">    num[s] &#x3D; 1;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    num[v] &#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    if (w[u] + weight[v] &gt; w[v]) &#123;</span><br><span class="line">                        w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    &#125;</span><br><span class="line">                    num[v] +&#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;c1, &amp;c2);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, weight + i);</span><br><span class="line">    &#125;</span><br><span class="line">    int u, v, we;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d %d&quot;, &amp;u, &amp;v, &amp;we);</span><br><span class="line">        G[u][v] &#x3D; we;</span><br><span class="line">        G[v][u] &#x3D; we;</span><br><span class="line">    &#125;</span><br><span class="line">    Difkstra(c1);</span><br><span class="line">    printf(&quot;%d %d\n&quot;, num[c2], w[c2]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>PAT A1030<br>思路Dijkstra + DFS<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iterator&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, S, D;</span><br><span class="line">int G[MAXV][MAXV], C[MAXV][MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt;pre[MAXV];</span><br><span class="line">int d[MAXV];</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) return;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;int&gt;tempPath;</span><br><span class="line">vector&lt;int&gt;path;</span><br><span class="line">int optValue &#x3D; INF;</span><br><span class="line">&#x2F;&#x2F;v目的节点</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    &#x2F;&#x2F;递归边界</span><br><span class="line">    if (v &#x3D;&#x3D; S) &#123;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int value &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F;边权</span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt; 0; i--) &#123;</span><br><span class="line">            value +&#x3D; C[tempPath[i]][tempPath[i - 1]];</span><br><span class="line">        &#125;</span><br><span class="line">        if (value &lt; optValue) &#123;</span><br><span class="line">            optValue &#x3D; value;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d %d %d&quot;, &amp;n, &amp;m, &amp;S, &amp;D);</span><br><span class="line">    int c1, c2;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    fill(C[0], C[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d&quot;, &amp;c1, &amp;c2);</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;G[c1][c2], &amp;C[c1][c2]);</span><br><span class="line">        G[c2][c1] &#x3D; G[c1][c2];</span><br><span class="line">        C[c2][c1] &#x3D; C[c1][c2];</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(S);</span><br><span class="line">    DFS(D);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, path[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d %d\n&quot;, d[D], optValue);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意点：无向图，建立邻接矩阵时，两个方向都有初始化。</p>
+</blockquote>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前缀中缀后缀表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -463,7 +549,9 @@
 </blockquote>
 <h3 id="3-gets输入，puts输出"><a href="#3-gets输入，puts输出" class="headerlink" title="3.gets输入，puts输出"></a>3.gets输入，puts输出</h3><p>gets用来输入一行字符串，并将其存放于一维数组中，puts用来输出一行字符串，并紧跟一个换行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">    char str1[20];</span><br><span class="line">    char str2[5][10];</span><br><span class="line">    gets(str1);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; 3; i++)&#123;</span><br><span class="line">        gets(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    puts(srt1);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; 3; i++)&#123;</span><br><span class="line">        puts(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">WoAiDeRenBuAiWo</span><br><span class="line">QAQ</span><br><span class="line">T_T</span><br><span class="line">WoAiNi</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>gets用\n作为结束标志。</p>
+</blockquote>
 <h3 id="4-getline函数"><a href="#4-getline函数" class="headerlink" title="4.getline函数"></a>4.getline函数</h3><ul>
 <li>把一整行都读入char型数组str[100]中：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char str[100];</span><br><span class="line">cin.getline(str, 100);</span><br></pre></td></tr></table></figure></li>
 <li>如果是string容器，则需要用下面的方式输入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">getline(cin, str);</span><br></pre></td></tr></table></figure>
@@ -1297,111 +1385,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-my-zsh配置与插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">oh my zsh配置与插件</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/" class="archive-article-date">
-	
-  	<time datetime="2022-06-16T16:00:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-17</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>上次写了一篇zsh的配置文章<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">item2-oh-my-zsh最全配置教程.md</a>,详细的写了环境的配置，以及一些插件的推荐，过了这么长时间我的配置又有了新的提升，新增如下特性。</p>
-<ul>
-<li>快捷键的绑定</li>
-<li>取别名</li>
-<li>插件的增加</li>
-</ul>
-<h3 id="1-快捷键的绑定"><a href="#1-快捷键的绑定" class="headerlink" title="1.快捷键的绑定"></a>1.快捷键的绑定</h3><p>作为一名期望全键盘操作的工作者，将所有常使用的键绑定在主工作区是十分重要的，键盘上下左右键的分布，使得手每次都要进行移动，十分麻烦，因此想办法进行快捷键的绑定。修改<code>~/.zshrc</code>文件，添加如下内容。</p>
-<ul>
-<li>绑定补全键<br>补全命令需要每次按右键才能补全完成，因此使用以下语句，将补全快捷键绑定在 <code>,</code>上，使得操作更加快速便捷。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用,补全历史记录</span><br><span class="line">bindkey &#39;,&#39; autosuggest-accept</span><br></pre></td></tr></table></figure></li>
-<li>绑定上下左右键<br>参考vim的案件模式，将上下左右进行映射，使用control+hjkl进行代替。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bindkey &#39;^h&#39;  backward-char         #control+h:向左移动一个单词</span><br><span class="line">bindkey &#39;^l&#39;  forward-char          #control+l：向右移动一个单词</span><br><span class="line">bindkey &#39;^k&#39;  up-line-or-history    #control+k：向上翻看历史记录</span><br><span class="line">bindkey &#39;^j&#39;  down-line-or-history  #control+j：向下翻看历史记录</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="2-取别名"><a href="#2-取别名" class="headerlink" title="2.取别名"></a>2.取别名</h3><p>使用<code>alias</code>关键字，可以给一些较长语句取别名，按键更加的快速，修改<code>~/.zshrc</code>文件,我的一些配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alias mysql&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysql</span><br><span class="line">alias ls&#x3D;&#39;lsd&#39;</span><br><span class="line">alias vim&#x3D;&#39;nvim&#39;</span><br><span class="line">alias ra&#x3D;&#39;ranger&#39;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-插件的增加"><a href="#3-插件的增加" class="headerlink" title="3.插件的增加"></a>3.插件的增加</h3><p>在上一篇文章中已经写了一些插件推荐，这里在增加一些插件。</p>
-<h5 id="1-dash"><a href="#1-dash" class="headerlink" title="1.dash"></a>1.dash</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dash">dash链接</a></p>
-<p>在<code>~/.zshrc</code>插件中增加<code>plugins=(... dash)</code></p>
-<p>在终端输入dash即可快速打开dash软件，查找相应的API。</p>
-<h5 id="2-vi-mode"><a href="#2-vi-mode" class="headerlink" title="2.vi-mode"></a>2.vi-mode</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode">vi-mode链接</a><br>在<code>~/.zshrc</code>插件中增加<code>plugins=(... vi-mode)</code></p>
-<p>在终端输入时，按<code>ESC</code>键可以快速进入终端vim模式,按<code>vv</code>进入vim中修改语句。<br>如下语句将nvim作为vi-mode的默认启动vim器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># vi-mode 使用nvim作为默认打开工具</span><br><span class="line">EDITOR&#x3D;nvim </span><br><span class="line">export EDITOR</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-vscode"><a href="#3-vscode" class="headerlink" title="3.vscode"></a>3.vscode</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode">vscode链接</a><br>由于实际应用中有时也会用到vscode，如下可在终端快速打开vscode</p>
-<p>1.Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)<br><code>git clone https://github.com/valentinocossar/vscode.git $ZSH_CUSTOM/plugins/vscode</code><br>2.Add the plugin to the list of plugins for Oh My Zsh to load:<br><code>plugins=(vscode)</code></p>
-<p>使用<code>vs</code>即可打开vscode</p>
-<h5 id="4-sublime"><a href="#4-sublime" class="headerlink" title="4.sublime"></a>4.sublime</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sublime">sublime链接</a><br>由于实际应用中有时也会用到sublime，如下可在终端快速打开sublime</p>
-<p>在<code>~/.zshrc</code>插件中增加<code>plugins=(... vi-mode)</code></p>
-<p>使用<code>st</code>即可打开sublime.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zsh</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">展开全文 >></a>
         </p>
       
 

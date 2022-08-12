@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: 算法 | 🌟Eugene的个人博客主页</title>
+  <title>图算法专题 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="🌟Eugene的个人博客主页">
-<meta property="og:url" content="http://example.com/tags/%E7%AE%97%E6%B3%95/index.html">
+  <meta name="description" content="1.dijkstra算法狄杰斯特拉算法寻找图的最短路径。 PAT A1003思路：Dijkstra算法求最短路径。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include &lt;cstd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图算法专题">
+<meta property="og:url" content="http://example.com/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="1.dijkstra算法狄杰斯特拉算法寻找图的最短路径。 PAT A1003思路：Dijkstra算法求最短路径。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include &lt;cstd">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-08-12T03:30:38.000Z">
+<meta property="article:modified_time" content="2022-08-12T13:35:21.092Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
@@ -162,38 +167,78 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-图算法专题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      图算法专题
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+
+        
+        
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
 <a href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" class="archive-article-date">
 	
   	<time datetime="2022-08-12T03:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">图算法专题</a>
-    </h1>
-  
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-dijkstra算法"><a href="#1-dijkstra算法" class="headerlink" title="1.dijkstra算法"></a>1.dijkstra算法</h2><p>狄杰斯特拉算法寻找图的最短路径。</p>
+<p>PAT A1003<br>思路：Dijkstra算法求最短路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, c1, c2;</span><br><span class="line">int G[MAXV][MAXV], weight[MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">int d[MAXV], w[MAXV], num[MAXV];</span><br><span class="line"></span><br><span class="line">void Difkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    memset(num, 0, sizeof(num));</span><br><span class="line">    memset(w, 0, sizeof(w));</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    w[s] &#x3D; weight[s];</span><br><span class="line">    num[s] &#x3D; 1;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    num[v] &#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    if (w[u] + weight[v] &gt; w[v]) &#123;</span><br><span class="line">                        w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    &#125;</span><br><span class="line">                    num[v] +&#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;c1, &amp;c2);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, weight + i);</span><br><span class="line">    &#125;</span><br><span class="line">    int u, v, we;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d %d&quot;, &amp;u, &amp;v, &amp;we);</span><br><span class="line">        G[u][v] &#x3D; we;</span><br><span class="line">        G[v][u] &#x3D; we;</span><br><span class="line">    &#125;</span><br><span class="line">    Difkstra(c1);</span><br><span class="line">    printf(&quot;%d %d\n&quot;, num[c2], w[c2]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<ul>
+<li>PAT A1030<br>思路Dijkstra + DFS<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iterator&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, S, D;</span><br><span class="line">int G[MAXV][MAXV], C[MAXV][MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt;pre[MAXV];</span><br><span class="line">int d[MAXV];</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) return;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;int&gt;tempPath;</span><br><span class="line">vector&lt;int&gt;path;</span><br><span class="line">int optValue &#x3D; INF;</span><br><span class="line">&#x2F;&#x2F;v目的节点</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    &#x2F;&#x2F;递归边界</span><br><span class="line">    if (v &#x3D;&#x3D; S) &#123;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int value &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F;边权</span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt; 0; i--) &#123;</span><br><span class="line">            value +&#x3D; C[tempPath[i]][tempPath[i - 1]];</span><br><span class="line">        &#125;</span><br><span class="line">        if (value &lt; optValue) &#123;</span><br><span class="line">            optValue &#x3D; value;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d %d %d&quot;, &amp;n, &amp;m, &amp;S, &amp;D);</span><br><span class="line">    int c1, c2;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    fill(C[0], C[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d&quot;, &amp;c1, &amp;c2);</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;G[c1][c2], &amp;C[c1][c2]);</span><br><span class="line">        G[c2][c1] &#x3D; G[c1][c2];</span><br><span class="line">        C[c2][c1] &#x3D; C[c1][c2];</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(S);</span><br><span class="line">    DFS(D);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, path[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d %d\n&quot;, d[D], optValue);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意点：无向图，建立邻接矩阵时，两个方向都有初始化。</p>
+</blockquote>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,69 +250,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/09/%E5%89%8D%E7%BC%80%E4%B8%AD%E7%BC%80%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前缀中缀后缀表达式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/" class="archive-article-date">
-	
-  	<time datetime="2021-05-30T12:15:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-30</time>
-</a>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-dijkstra%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">1.dijkstra算法</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-    	 
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/05/30/zz%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/">zz的算法小抄</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -302,9 +397,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
