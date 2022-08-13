@@ -164,6 +164,183 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim练级手册（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/24/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%8C%EF%BC%89/">vim练级手册（二）---模式讲解</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/03/24/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+	
+  	<time datetime="2022-03-24T15:14:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-24</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习vim最重要的是了解其常用的模式，vim中常用的模式有:<code>normal</code>,<code>insert</code>,<code>visual</code>,<code>command</code>,<code>replece</code></p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>insert模式</td>
+<td></td>
+</tr>
+<tr>
+<td>i</td>
+<td>在光标前进入 insert 模式</td>
+</tr>
+<tr>
+<td>I</td>
+<td>在当前行左边第一个非空字符前进入 insert 模式，类似其他编辑器的&lt;c-a&gt; 快捷键</td>
+</tr>
+<tr>
+<td>a</td>
+<td>在光标后进入 insert 模式</td>
+</tr>
+<tr>
+<td>A</td>
+<td>在当前行右边第一个非空字符前进入 insert 模式，类似其他编辑器的 &lt;c-e&gt; 快捷键</td>
+</tr>
+<tr>
+<td>o</td>
+<td>在光标的下一行插入</td>
+</tr>
+<tr>
+<td>O</td>
+<td>在光标的上一行插入</td>
+</tr>
+<tr>
+<td>s</td>
+<td>删除当前字符，并进入 insert 模式</td>
+</tr>
+<tr>
+<td>S</td>
+<td>删除当前行，并进入插入模式</td>
+</tr>
+<tr>
+<td>cc</td>
+<td>删除当前行，并进入插入模式</td>
+</tr>
+<tr>
+<td>visual模式</td>
+<td></td>
+</tr>
+<tr>
+<td>v</td>
+<td>选中当前字符，并进入 visual 模式，随着光标的游走来选中字符</td>
+</tr>
+<tr>
+<td>V</td>
+<td>选中当前行，并进入 visual 模式，随着光标的上下移动整行选中字符</td>
+</tr>
+<tr>
+<td>&lt;c-v&gt;</td>
+<td>选中当前字符，并进去 visual 模式，随着光标的移动以长方形的模式选中字符</td>
+</tr>
+<tr>
+<td>replace模式</td>
+<td></td>
+</tr>
+<tr>
+<td>r</td>
+<td>替换单个字符，自动返回 normal 模式</td>
+</tr>
+<tr>
+<td>R</td>
+<td>连续替换多个字符，手动 &lt;esc&gt; 返回 normal 模式</td>
+</tr>
+</tbody></table>
+<h2 id="1-normal模式"><a href="#1-normal模式" class="headerlink" title="1.normal模式"></a>1.normal模式</h2><p>当我们使用<code>vim</code>进入 Vim 编辑器时，默认就是 <code>normal</code> 模式。</p>
+<p>我们大部分时间都呆在该模式下，该模式下，我们几乎可以做除了插入数据以外的任何操作，其中一部分就是上一章我们讲到的那些。</p>
+<p>一般情况下，我们都是从 <code>normal</code> 模式去到其他的模式进行操作，如果想回来，那就按<code>&lt;esc&gt;</code>键，有时候你可能会搞不清楚现在在哪个模式下，多按几下<code> &lt;esc&gt;</code> 返回 <code>normal</code> 模式总是没有错的。因为接下讲到的其他模式都是从 <code>normal</code> 模式进入的。</p>
+<h2 id="2-insert模式"><a href="#2-insert模式" class="headerlink" title="2.insert模式"></a>2.insert模式</h2><p>跟 <code>normal</code> 交互最频繁的就是 <code>insert </code>模式，不管我们的光标移动多灵活，最终目的就是去往该去的地方，然后插入数据。</p>
+<p>在该模式下，我们可以像其他 IDE 一样，输入所有我们需要输入的信息。</p>
+<p>在该模式下，光标移动不会很方便，默认情况下只能通过键盘方向键和鼠标来移动。所以才需要返回 <code>normal</code> 模式移动光标，再进入 <code>insert</code> 模式，如此往复，开始你会觉得很别扭，经常按错键，但是练熟以后你会爱上它的，因为 <code>normal</code> 模式下操作真的很方便。不过在 <code>insert</code> 模式中也想手不离开键盘中心区，就进行短距离的移动也不是不可以，不过需要配置一下我们的 Vim 编辑器，当然，这是后话，以后我再介绍。</p>
+<p>进入 <code>insert</code> 模式有很多种方式，除了最常用的 <code>i</code>还有如下方式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i   &quot; 在光标前进入 insert 模式</span><br><span class="line">I   &quot; 在当前行左边第一个非空字符前进入 insert 模式，类似其他编辑器的 &lt;c-a&gt; 快捷键</span><br><span class="line">a   &quot; 在光标后进入 insert 模式</span><br><span class="line">A   &quot; 在当前行右边第一个非空字符前进入 insert 模式，类似其他编辑器的 &lt;c-e&gt; 快捷键</span><br><span class="line">o   &quot; 在光标的下一行插入</span><br><span class="line">O   &quot; 在光标的上一行插入</span><br><span class="line">s   &quot; 删除当前字符，并进入 insert 模式&quot;</span><br><span class="line">S   &quot; 删除当前行，并进入插入模式</span><br><span class="line">cc  &quot; 删除当前行，并进入插入模式</span><br></pre></td></tr></table></figure>
+<p>这就已经很多了，对吧。但是除了这些“循规蹈矩”的操作外，还有很多更方便，更有趣的键位，比如<code> c</code> 键，就可以引申出许多高效的插入方式，但是不要贪多，我们慢慢学。</p>
+<p>现在你应该立马练习起来，把每个键位先尝试一下，然后忘掉几个，只先频繁使用几个你最常用的方式，我建议先从 <code>i</code>, <code>a</code>, <code>o</code>, <code>cc </code>开始，你觉得？</p>
+<h2 id="3-visual模式"><a href="#3-visual模式" class="headerlink" title="3.visual模式"></a>3.visual模式</h2><p><code>visual</code> 模式简单来说，是选中一些字符，是指进入一个“块”中，我们可以对这个块进行删除、复制等简单或复杂的操作</p>
+<p>进入<code> visual</code> 模式后，我们可以使用上一章讲到的所有移动光标的操作来扩大“块”的范围，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">v       &quot; 选中当前字符，并进入 visual 模式，随着光标的游走来选中字符</span><br><span class="line">V       &quot; 选中当前行，并进入 visual 模式，随着光标的上下移动整行选中字符</span><br><span class="line">&lt;c-v&gt;   &quot; 选中当前字符，并进去 visual 模式，随着光标的移动以长方形的模式选中字符</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-command模式"><a href="#4-command模式" class="headerlink" title="4. command模式"></a>4. command模式</h2><p><code>command</code> 模式顾名思义就是命令行模式，该模式下可以执行保存推出、分割窗口、插件管理等命令。</p>
+<p>按下 : 进入<code> command</code> 模式，输入命令后回车 <code>&lt;cr&gt;</code> 生效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:e hello.py</span><br></pre></td></tr></table></figure>
+<p>上面的例子将打开同一文件夹下的hellp.py文件。</p>
+<h2 id="5-replece模式"><a href="#5-replece模式" class="headerlink" title="5.replece模式"></a>5.replece模式</h2><p><code>replace</code> 模式的使用频率相对较少，主要在替换单个或连续多个字符时使用。</p>
+<p>将光标移动到想要替换的字符上，按下<code>r</code>进入 <code>replace</code> 模式，然后按下按下任意字符，此时你会看到字符已经替换成功，并且自动返回<code> normal</code> 模式。</p>
+<p>如果你想要连续替换多个字符，需要使用 <code>R</code>，比如有一个单词 <code>code</code>，我们将光标移动到 <code>c </code>上，然后按下 R，随后键入 <code>name</code>，你会发现整个单词被替换过来，并且现在仍然停留在 <code>replace</code> 模式下，需要按下<code> &lt;esc&gt;</code> 才会返回 <code>normal</code> 模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r   &quot; 替换单个字符，自动返回 normal 模式</span><br><span class="line">R   &quot; 连续替换多个字符，手动 &lt;esc&gt; 返回 normal 模式</span><br></pre></td></tr></table></figure>
+<p>该模式在使用得当的情况下，会让开发非常有效率，同样的，我们需要多加练习才行。</p>
+<p>现在我们讲的这么多模式，并不是让你全到牢记，你难免会迷糊，没有关系，现在你只需要大概了解有这么个东西，后面我们会经常用到这些名词，看得多了也就熟了。</p>
+<h3 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h3><p><a target="_blank" rel="noopener" href="https://vim.wxnacy.com/#docs/mode">Vim 练级手册</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/24/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-问题解决-Mac处理-DS-Store文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1045,70 +1222,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E6%95%88%E7%8E%87%E7%AF%87/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac软件推荐-开发人员篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E7%AF%87/">mac软件推荐--开发人员篇</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E7%AF%87/" class="archive-article-date">
-	
-  	<time datetime="2021-11-29T12:39:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-29</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E7%AF%87/">展开全文 >></a>
         </p>
       
 

@@ -164,6 +164,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim-作为macOS-Finder的打开方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/vim-%E4%BD%9C%E4%B8%BAmacOS-Finder%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">vim拓展-作为macOS Finder的打开方式</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/13/vim-%E4%BD%9C%E4%B8%BAmacOS-Finder%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+	
+  	<time datetime="2022-08-13T12:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本人作为vim的忠实用户，喜欢折腾各种插件和配置，希望达到更高效的编码速度。但一直有个问题困扰我很久，“双击finder里的文件，默认打开的编辑器为VSC或Xcode等”。作为vim用户还是希望能一直把vim作为主编辑器，本文将解决如何将终端的vim作为默认文件启动器。</p>
+<h3 id="基于AppleScript的解决方案："><a href="#基于AppleScript的解决方案：" class="headerlink" title="基于AppleScript的解决方案："></a>基于AppleScript的解决方案：</h3><ol>
+<li>打开<code>Automator.app</code></li>
+<li>选择<code>New Document</code></li>
+<li>点击<code>Application</code></li>
+<li>找到<code>Run AppleScript</code></li>
+<li>编写AppleScript脚本来唤起终端与vim（脚本如下）</li>
+<li>保存为<code>Applications/iTermVim.app</code></li>
+<li>找到你想要以这种方式打开的文件，比如<code>xxx.cpp</code>,<code>command + i</code>获取信息然后修改<code>Open with</code>为上面的应用然后<code>Change All   ...</code></li>
+</ol>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">on</span> <span class="built_in">run</span> &#123;input, parameters&#125;</span><br><span class="line">  <span class="keyword">set</span> filename <span class="keyword">to</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> input</span><br><span class="line">  <span class="keyword">set</span> cmd <span class="keyword">to</span> <span class="string">&quot;clear; cd `dirname &quot;</span> &amp; filename &amp; <span class="string">&quot;`;vim &quot;</span> &amp; <span class="literal">quote</span> &amp; filename &amp; <span class="literal">quote</span></span><br><span class="line">  <span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">&quot;iTerm&quot;</span></span><br><span class="line">    <span class="built_in">activate</span></span><br><span class="line">    <span class="keyword">tell</span> <span class="keyword">the</span> current window</span><br><span class="line">      create <span class="literal">tab</span> <span class="keyword">with</span> default profile</span><br><span class="line">      <span class="keyword">tell</span> <span class="keyword">the</span> current session</span><br><span class="line">        <span class="built_in">write</span> <span class="built_in">text</span> cmd</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="built_in">run</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此脚本要在iterm启动下才能执行,并建立新的Tab，当然你可以自己修改配置。</p>
+</blockquote>
+<p>我这里的代码是采取是用 iTerm 与唤起 vim、窗口置前、在新窗口中打开、同时 cd 到目录。你也可以改成用 macOS 自带的 Terminal.app、在新窗口而非新 tab 打开、应用不同的 profile、或是执行其他 executable 等……任你发挥啦。</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://huangxuan.me/2019/09/03/vim-from-finder/">把「终端下的 Vim」作为 macOS Finder 的打开方式</a></li>
+<li><a target="_blank" rel="noopener" href="https://bl.ocks.org/napcs/2d8376e941133ccfad63e33bf1b1b60c">Open file in Terminal Vim on OSX</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/charlietran/43639b0f4e0a01c7c20df8f1929b76f2">Open file in iTerm vim for MacOS Sierra</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/vim-%E4%BD%9C%E4%B8%BAmacOS-Finder%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-图算法专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1268,123 +1363,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/06/24/svm%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vim练级手册（八）-symbols-outline大纲视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/">vim练级手册（八） ---symbols_outline大纲视图</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-	
-  	<time datetime="2022-06-20T14:46:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-20</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&lt;leader&gt; o</td>
-<td>打开大纲视图</td>
-</tr>
-<tr>
-<td>q</td>
-<td>退出</td>
-</tr>
-<tr>
-<td>o</td>
-<td>定位symbol对应的位置</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>跳到symbol对应的位置</td>
-</tr>
-<tr>
-<td>K</td>
-<td>悬浮看symbol内容</td>
-</tr>
-<tr>
-<td>a</td>
-<td>重新命名symbol</td>
-</tr>
-</tbody></table>
-<h2 id="1-symbols-outline-安装"><a href="#1-symbols-outline-安装" class="headerlink" title="1.symbols_outline 安装"></a>1.symbols_outline 安装</h2><h4 id="安装symbols-outline"><a href="#安装symbols-outline" class="headerlink" title="安装symbols-outline"></a>安装symbols-outline</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 文件大纲	</span><br><span class="line">use	&#39;simrat39&#x2F;symbols-outline.nvim&#39;</span><br></pre></td></tr></table></figure>
-<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
-<h4 id="配置symbols-outline插件"><a href="#配置symbols-outline插件" class="headerlink" title="配置symbols_outline插件"></a>配置symbols_outline插件</h4><p>创建以下文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;symbols_outline.lua</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
-</blockquote>
-<p>在文件中添加以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">-- init.lua</span><br><span class="line">vim.g.symbols_outline &#x3D; &#123;</span><br><span class="line">    highlight_hovered_item &#x3D; true,</span><br><span class="line">    show_guides &#x3D; true,</span><br><span class="line">    auto_preview &#x3D; true,</span><br><span class="line">    position &#x3D; &#39;right&#39;,</span><br><span class="line">    relative_width &#x3D; true,</span><br><span class="line">    width &#x3D; 25,</span><br><span class="line">    auto_close &#x3D; false,</span><br><span class="line">    show_numbers &#x3D; false,</span><br><span class="line">    show_relative_numbers &#x3D; false,</span><br><span class="line">    show_symbol_details &#x3D; true,</span><br><span class="line">    preview_bg_highlight &#x3D; &#39;Pmenu&#39;,</span><br><span class="line">    keymaps &#x3D; &#123; -- These keymaps can be a string or a table for multiple keys</span><br><span class="line">        close &#x3D; &#123;&quot;&lt;Esc&gt;&quot;, &quot;q&quot;&#125;,</span><br><span class="line">        goto_location &#x3D; &quot;&lt;Cr&gt;&quot;,</span><br><span class="line">        focus_location &#x3D; &quot;o&quot;,</span><br><span class="line">        hover_symbol &#x3D; &quot;&lt;C-space&gt;&quot;,</span><br><span class="line">        toggle_preview &#x3D; &quot;K&quot;,</span><br><span class="line">        rename_symbol &#x3D; &quot;r&quot;,</span><br><span class="line">        code_actions &#x3D; &quot;a&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    lsp_blacklist &#x3D; &#123;&#125;,</span><br><span class="line">    symbol_blacklist &#x3D; &#123;&#125;,</span><br><span class="line">    symbols &#x3D; &#123;</span><br><span class="line">        File &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSURI&quot;&#125;,</span><br><span class="line">        Module &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Namespace &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Package &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Class &#x3D; &#123;icon &#x3D; &quot;𝓒&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Method &#x3D; &#123;icon &#x3D; &quot;ƒ&quot;, hl &#x3D; &quot;TSMethod&quot;&#125;,</span><br><span class="line">        Property &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSMethod&quot;&#125;,</span><br><span class="line">        Field &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSField&quot;&#125;,</span><br><span class="line">        Constructor &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstructor&quot;&#125;,</span><br><span class="line">        Enum &#x3D; &#123;icon &#x3D; &quot;ℰ&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Interface &#x3D; &#123;icon &#x3D; &quot;ﰮ&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Function &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSFunction&quot;&#125;,</span><br><span class="line">        Variable &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        Constant &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        String &#x3D; &#123;icon &#x3D; &quot;𝓐&quot;, hl &#x3D; &quot;TSString&quot;&#125;,</span><br><span class="line">        Number &#x3D; &#123;icon &#x3D; &quot;#&quot;, hl &#x3D; &quot;TSNumber&quot;&#125;,</span><br><span class="line">        Boolean &#x3D; &#123;icon &#x3D; &quot;⊨&quot;, hl &#x3D; &quot;TSBoolean&quot;&#125;,</span><br><span class="line">        Array &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        Object &#x3D; &#123;icon &#x3D; &quot;⦿&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Key &#x3D; &#123;icon &#x3D; &quot;🔐&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Null &#x3D; &#123;icon &#x3D; &quot;NULL&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        EnumMember &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSField&quot;&#125;,</span><br><span class="line">        Struct &#x3D; &#123;icon &#x3D; &quot;𝓢&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Event &#x3D; &#123;icon &#x3D; &quot;🗲&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Operator &#x3D; &#123;icon &#x3D; &quot;+&quot;, hl &#x3D; &quot;TSOperator&quot;&#125;,</span><br><span class="line">        TypeParameter &#x3D; &#123;icon &#x3D; &quot;𝙏&quot;, hl &#x3D; &quot;TSParameter&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/">展开全文 >></a>
         </p>
       
 
