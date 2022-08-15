@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>🌟Eugene的个人博客主页</title>
+  <title>图算法刷题专题 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="🌟Eugene的个人博客主页">
-<meta property="og:url" content="http://example.com/page/6/index.html">
+  <meta name="description" content="A1003 Emergency思路：Dijkstra算法求最短路径。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include &lt;cstdio&gt;#include &lt;cstr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图算法刷题专题">
+<meta property="og:url" content="http://example.com/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E4%B8%93%E9%A2%98/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="A1003 Emergency思路：Dijkstra算法求最短路径。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include &lt;cstdio&gt;#include &lt;cstr">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-08-12T03:30:38.000Z">
+<meta property="article:modified_time" content="2022-08-14T12:26:38.559Z">
 <meta property="article:author" content="command_zz">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
@@ -162,546 +167,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-数学建模美赛感悟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-图算法刷题专题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/20/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%BE%8E%E8%B5%9B%E6%84%9F%E6%82%9F/">数学建模美赛感悟</a>
+    <h1 class="article-title" itemprop="name">
+      图算法刷题专题
     </h1>
   
 
         
         
-<a href="/2021/02/20/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%BE%8E%E8%B5%9B%E6%84%9F%E6%82%9F/" class="archive-article-date">
+	<!-- 不蒜子统计 -->
+	<span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+<a href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E4%B8%93%E9%A2%98/" class="archive-article-date">
 	
-  	<time datetime="2021-02-20T07:59:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
+  	<time datetime="2022-08-12T03:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-12</time>
 </a>
         
             </header>      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&emsp;&emsp;又参加了一次数学建模比赛，感觉这次相较于上次比赛在态度上有了很大的转变，这次目的并不是抱着试一试的心态，而更加有了拿奖的想法。不过和国赛一样，参加美赛一样需要参加学校组织的培训，但时间都安排在了上课时间与专业课有些许冲突，就只能逃了马原这种课去听数学建模课，那段时间课业压力，论文压力，忙碌的昏天黑地的，心力憔悴而又百感交集，转眼困难也已经过去了，在这记录一下自己的心酸历程。</p>
-<h4 id="校内培训阶段"><a href="#校内培训阶段" class="headerlink" title="校内培训阶段"></a>校内培训阶段</h4><p>&emsp;&emsp;校内培训为期六周，每周公布一道题目，要求在隔周二中午前上交。在有课要上的阶段写论文，写出来的论文水平实属有限，但每次都坚持着把它写完，出题晚上的小组讨论，而后的分配任务，似乎都有序的进行着，然后最终都是在周末抽时间来补完论文，在周一晚上通宵赶论文，周二早上排好版，中午之前上交。由于需要花费大量的精力于美赛上，那段时间感觉备受折磨，课程也因为没有时间复习而跟不上了，好在坚持完成了六周的培训，有了参加美赛的资格。在美赛培训课上，这次竟然被两次抽中上台讲解，确实很慌张，但也得到了历练，一直用一句话激励着自己，“你曾经觉得过不去的事情都已经过去了”，对于未知事情到来之前都会有恐惧与紧张，只有不断磨炼自己的内心，才能使这种感觉愈发的感到微弱吧。</p>
-<h4 id="家中自主训练阶段"><a href="#家中自主训练阶段" class="headerlink" title="家中自主训练阶段"></a>家中自主训练阶段</h4><p>&emsp;&emsp;由于年前再次受到疫情的影响，学校提前的放假了，而且不能在校内进行集训，因此我们只能回家自主训练（白嫖宾馆的美梦泡汤了）。回到家中，安排了自己学习的时间，这段时间我主要是负责学习绘图（由于美赛俗称美术竞赛，对于论文的排版，图的丰富好看有很大的加分，因此也投机学习绘制好看的图），原本想学习R语言绘图，但由于时间紧迫无法一下子学会这么多知识，因此辗转GUI软件，发现了一款非常好用的画图工具Tableau，学习如何画地图时还找到一款GMT的地图工具，并抽时间进行学习。随后在1月28到31日四天安排了一次模拟训练，这次我们找的是去年美赛的E题（由于我们实力有限，决定孤注一掷选择F题，可以得到最大效益，E题为一道地理科学题）。美赛时间安排在2月5日早上6点到9日早上10点截止，在这之前我们不再进行做题，只是把前年的题目看了看，把历年o奖论文拿出来分析，找到其中可以借鉴的地方，不断整理笔记，每天晚上讨论进度，为比赛做准备。</p>
-        
-          <a class="article-more-a" href="/2021/02/20/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%BE%8E%E8%B5%9B%E6%84%9F%E6%82%9F/#more">more >></a>
-        
-      
+        <h3 id="A1003-Emergency"><a href="#A1003-Emergency" class="headerlink" title="A1003 Emergency"></a>A1003 Emergency</h3><p>思路：Dijkstra算法求最短路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, c1, c2;</span><br><span class="line">int G[MAXV][MAXV], weight[MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">int d[MAXV], w[MAXV], num[MAXV];</span><br><span class="line"></span><br><span class="line">void Difkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    memset(num, 0, sizeof(num));</span><br><span class="line">    memset(w, 0, sizeof(w));</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    w[s] &#x3D; weight[s];</span><br><span class="line">    num[s] &#x3D; 1;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    num[v] &#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    if (w[u] + weight[v] &gt; w[v]) &#123;</span><br><span class="line">                        w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    &#125;</span><br><span class="line">                    num[v] +&#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;c1, &amp;c2);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, weight + i);</span><br><span class="line">    &#125;</span><br><span class="line">    int u, v, we;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d %d&quot;, &amp;u, &amp;v, &amp;we);</span><br><span class="line">        G[u][v] &#x3D; we;</span><br><span class="line">        G[v][u] &#x3D; we;</span><br><span class="line">    &#125;</span><br><span class="line">    Difkstra(c1);</span><br><span class="line">    printf(&quot;%d %d\n&quot;, num[c2], w[c2]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/20/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%BE%8E%E8%B5%9B%E6%84%9F%E6%82%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Reptile-Learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/Reptile-Learning/">Reptile  Learning</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/02/18/Reptile-Learning/" class="archive-article-date">
-	
-  	<time datetime="2021-02-18T08:49:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-http-amp-https-协议"><a href="#1-http-amp-https-协议" class="headerlink" title="1.http &amp; https 协议"></a>1.http &amp; https 协议</h4><ul>
-<li>http协议<ul>
-<li>概念：服务器与客户端进行数据交互的一种形式。</li>
-</ul>
-</li>
-<li>常用请求头信息<ul>
-<li>User-Agent: 请求载体的身份标识</li>
-<li>Connection: 请求完毕后，是断开连接还是保持连接</li>
-</ul>
-</li>
-<li>常用响应头信息<ul>
-<li>Content-Type: 服务器响应回客户端的数据类型</li>
-</ul>
-</li>
-<li>https协议<ul>
-<li>s(secure)安全的超文本传输协议</li>
-</ul>
-</li>
-<li>加密方式<ul>
-<li>对称密钥加密</li>
-<li>非对称密钥加密</li>
-<li>证书密钥加密 </li>
-</ul>
-</li>
-</ul>
-<h4 id="2-requests模块"><a href="#2-requests模块" class="headerlink" title="2.requests模块"></a>2.requests模块</h4><blockquote>
-<p>requsets模块的编码流程<br>作用:模拟浏览器发请求。</p>
-</blockquote>
-<p>如何使用：</p>
-<ul>
-<li>指定url</li>
-<li>发起请求</li>
-<li>获取响应数据</li>
-<li>持久化存储</li>
-</ul>
-        
-          <a class="article-more-a" href="/2021/02/18/Reptile-Learning/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/18/Reptile-Learning/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/">Git从入门到入土</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/" class="archive-article-date">
-	
-  	<time datetime="2021-02-12T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-12</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GMT地形图绘制-学习笔记（2）-绘制海岸线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">GMT地形图绘制 学习笔记（2） -绘制海岸线</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/" class="archive-article-date">
-	
-  	<time datetime="2021-01-28T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-28</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
-<h3 id="绘制海岸线"><a href="#绘制海岸线" class="headerlink" title="绘制海岸线"></a>绘制海岸线</h3><p>GMT 中使用coast模块绘制海岸线、湖岸线等。该模块不仅可以绘制这些岸线，还可以绘制比例尺和行政边界等。</p>
-<h4 id="绘制海岸线、湖岸线-W"><a href="#绘制海岸线、湖岸线-W" class="headerlink" title="绘制海岸线、湖岸线(-W)"></a>绘制海岸线、湖岸线(-W)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline png,pdf &#x2F;&#x2F;同时生成两个后缀文件</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/yCS8tU"><img src="https://z3.ax1x.com/2021/01/28/yCS8tU.md.png" alt="yCS8tU.md.png"></a></p>
-<p>默认情况下-W选项会绘制所有水体与陆地的界限，包括海岸线、湖岸线、湖中岛的边界等。根据水体或陆地的不同，coast模块将岸线分为从1到4的四个级别，依次指海岸线、湖岸线、湖中岛，以及湖中岛内的湖边界，因而，可以在使用-W选项时指定要绘制哪一个等级的岸线。如下面的代码,-W1/0.5p,black表示用0.5p宽的黑色线条绘制1级海岸线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline2 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCpW24"><img src="https://z3.ax1x.com/2021/01/28/yCpW24.md.png" alt="yCpW24.md.png"></a><br>也可以在一个命令中多次使用-W选项，分别用不同的线条绘制不同等级的岸线。如，绘制0.5p黑色的海岸线后，同时使用-W2/1p,lightred绘制1p宽的浅红色湖岸线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline3 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred   &#x2F;&#x2F;0.5p 1p 区别是线的粗细</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9VMj"><img src="https://z3.ax1x.com/2021/01/28/yC9VMj.md.png" alt="yC9VMj.md.png"></a></p>
-<h4 id="设置绘制对象的最小面积-A"><a href="#设置绘制对象的最小面积-A" class="headerlink" title="设置绘制对象的最小面积(-A)"></a>设置绘制对象的最小面积(-A)</h4><p>因为美国的岛屿和湖泊很多，上图看上去依然很乱。我们可以通过-A选项设置要绘制的对象的最小面积（单位为平方千米）。-A5000表示只绘制面积大于5000平方千米的湖泊或岛屿</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline4 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred -A5000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9wFK"><img src="https://z3.ax1x.com/2021/01/28/yC9wFK.md.png" alt="yC9wFK.md.png"></a></p>
-<h4 id="填充陆地与水体"><a href="#填充陆地与水体" class="headerlink" title="填充陆地与水体"></a>填充陆地与水体</h4><p>在绘制时，还可以为陆地和水体设置不同的填充色。使用-G选项设置陆地区域的填充色，-S设置水体的颜色，-C则设置湖泊的颜色（若不指定-C，则湖泊颜色由-S控制）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline5 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9geI"><img src="https://z3.ax1x.com/2021/01/28/yC9geI.md.png" alt="yC9geI.md.png"></a><br>也可以同时使用-W 选项和-G 选项，即绘制岸线并填充颜色。</p>
-<h4 id="绘制国界-州界"><a href="#绘制国界-州界" class="headerlink" title="绘制国界/州界"></a>绘制国界/州界</h4><p>使用-N选项可以绘制国界/州界等行政边界。-N1表示绘制国界线，-N2表示绘制州界/省界线（目前只有美洲各国以及澳大利亚的洲界的数据）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline6 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -N1&#x2F;1p -N2&#x2F;0.25p</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCdns"><img src="https://z3.ax1x.com/2021/01/28/yCCdns.md.png" alt="yCCdns.md.png"></a><br>除了-N选项之外，-E选项也可以用于绘制州界、国界和省界。</p>
-<h4 id="添加比例尺"><a href="#添加比例尺" class="headerlink" title="添加比例尺"></a>添加比例尺</h4><p>绘制比例尺需要如下参数：要绘制哪个纬度的比例尺、比例尺在图中的位置、比例尺的长度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline7 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -Lg-60&#x2F;25+c25+w1000k+f+u</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCH3D"><img src="https://z3.ax1x.com/2021/01/28/yCCH3D.md.png" alt="yCCH3D.md.png"></a></p>
-<p>以上代码使用了-Lg-60/25+c25+w1000k+f+u增加比例尺，其中+w1000k表示比例尺长度为1000千米，+c25表示绘制纬度为北纬25°处的比例尺，g-60/25则表示将比例尺画在北纬25°西经60° 处，+f表示比例尺的风格为图中所示黑白相间的铁轨形式，+u表示显示比例尺对应的单位。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GMT地形图绘制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">GMT地形图绘制 学习笔记（1） -绘制底图</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/" class="archive-article-date">
-	
-  	<time datetime="2021-01-27T15:03:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
-<h3 id="绘制全球地图"><a href="#绘制全球地图" class="headerlink" title="绘制全球地图"></a>绘制全球地图</h3><h4 id="J-amp-R选项的基本用法"><a href="#J-amp-R选项的基本用法" class="headerlink" title="-J &amp; -R选项的基本用法"></a>-J &amp; -R选项的基本用法</h4><p>-J 选项指定地图投影参数以及地图的尺寸。 -R 选项指定要绘制的区域范围（即经纬度范围）。 如运行以下代码可以绘制全球地图（无边框版）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap1pdf </span><br><span class="line">    gmt coast -JH180&#x2F;12c -R0&#x2F;360&#x2F;-90&#x2F;90 -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9bohn"><img src="https://s3.ax1x.com/2021/01/28/y9bohn.jpg" alt="y9bohn.jpg"></a><br>其中，-JH180/12c指定地图投影参数,H表示使用<strong>Hammer投影</strong>，地图中心位于经度 180° 处，地图宽度为12厘米（12c）；-R0/360/-90/90 指定要绘制的区域范围，即经度0° 到360°，纬度-90° 到90°，四个数字之间用斜杠/分隔。</p>
-<h4 id="B选项的基本用法"><a href="#B选项的基本用法" class="headerlink" title="-B选项的基本用法"></a>-B选项的基本用法</h4><p>-B 选项可以为地理底图加上边框并绘制经纬线。运行以下代码，可绘制全球地图（有边框版）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap2 pdf</span><br><span class="line">    gmt coast -JH180&#x2F;12c -Rg -Bg -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9q4KK"><img src="https://s3.ax1x.com/2021/01/28/y9q4KK.jpg" alt="y9q4KK.jpg"></a><br>其中，-Rg与-R0/360/-90/90是完全等效的。由于绘制全球地图是很常见的需求，因而GMT 为其设计了一个更简单的写法。-Rg中g代表global；-Bg 选项中的-B用于给底图加上边框，其中的g则用于向底图中加入网格线（g代表grid）。</p>
-<h4 id="绘制区域地图"><a href="#绘制区域地图" class="headerlink" title="绘制区域地图"></a>绘制区域地图</h4><p>绘制区域地图与绘制全球地图没有本质区别，依然需要使用-J指定投影方式，使用-R指定绘图区域范围，使用-B指定底图边框。运行以下代码，可绘制新西兰地图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealand1 png &#x2F;&#x2F;此处为输出格式，这里测试后都改为png格式，便于Latex文本加入。</span><br><span class="line">    gmt coast -JM12c -RNZ -Ba -W0.5p -A10000</span><br><span class="line">gmt end show &#x2F;&#x2F;编译好后会直接输出</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9O5Ae"><img src="https://s3.ax1x.com/2021/01/28/y9O5Ae.md.png" alt="y9O5Ae.md.png"></a></p>
-<p>其中，-JM12c指定了使用墨卡托投影（绘制区域地图最常用的投影方式），地图宽度为12厘米；-RNZ指定了绘图区域范围，此处NZ是新西兰的国家代码，GMT会自动根据国家代码提取该国家的区域范围并用于绘图；-Ba用于给底图添加边框。对于某些地图投影GMT默认使用图中所示的黑白相间的底图边框。a用于添加标注（annotation，即图中的经纬度数字）。如果对于根据国家代码自动确定的区域范围不太满意，也可以使用-R选项最原始的方式来指定区域范围。通过上面的图，我们大概知道了新西兰的经纬度范围。运行以下代码重新绘制新西兰地图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap2 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Ba -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p>此代码同样可以生成类似上图新西兰区域图</p>
-<p>还可以对底图进行进一步的修改以使其更加美观</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap3 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Bxa4 -Bya3 -BWSen+t&quot;New Zealand&quot; -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9jkRA"><img src="https://s3.ax1x.com/2021/01/28/y9jkRA.md.png" alt="y9jkRA.md.png"></a><br>其中，-Bxa4 表示设置X轴（x）的标注间隔为4度一个（a4），-Bya3表示设置y轴的标注间隔为3度一个（a3），-BWSen中WSEN分别是西南东北四个方向的英文单词首字母，用于控制四条边的属性。大写的WS表示给西边和南边添加标注，而小写的en则表示对于东边和北边只绘制边框但不显示标注，-BWSen+t”New Zealand”中+t用于给整张图添加标题（title）。由于标题New Zealand中含有空格，我们需要使用单引号或双引号将其括起来。</p>
-<h3 id="绘制坐标轴"><a href="#绘制坐标轴" class="headerlink" title="绘制坐标轴"></a>绘制坐标轴</h3><h4 id="绘制线性坐标"><a href="#绘制线性坐标" class="headerlink" title="绘制线性坐标"></a>绘制线性坐标</h4><p>绘制线性坐标轴，需要使用-R指定坐标轴范围，使用-B绘制边框并指定边框和坐标轴属性，同时，还需要使用-JX指定线性坐标轴的宽度和高度。例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin linearxy png</span><br><span class="line">    gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8 -JX8c&#x2F;5c -Bxa10f5g10+l&quot;X Label&quot; -Bya4f2g2+l&quot;Y Label&quot; -BWSen+t&quot;Linear X-Y Plot&quot;</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9vdnP"><img src="https://s3.ax1x.com/2021/01/28/y9vdnP.md.png" alt="y9vdnP.md.png"></a><br>其中，-JX8c/5c表明线性坐标轴的宽度为8厘米，高度为5厘米，-R10/70/-4/8表明X轴范围为10到70，Y轴范围为-4到8，-Bxa10f5g10+l”X Label” 设置了X 轴的属性，a10f5g10 分别设置了标注（annotation）间隔为10，刻度（frame）间隔为5，网格线（grid ）间隔为10；+l”X Label”则为X轴添加了标签；对于Y 轴同理.</p>
-<h4 id="绘制三维坐标"><a href="#绘制三维坐标" class="headerlink" title="绘制三维坐标"></a>绘制三维坐标</h4><p>三维坐标轴只需要在二维坐标的基础上针对Z轴指定Z轴的范围、Z轴的高度以及三维视角即可。例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin 3dmap png</span><br><span class="line">gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8&#x2F;-10&#x2F;10 -JX8c5c -JZ5c -Bxa10+lX -Bya4+lY -Bzaf+lDepth -BSEwnZ+b+t&#39;3D Plot&#39; -p130&#x2F;30</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9xC3d"><img src="https://s3.ax1x.com/2021/01/28/y9xC3d.md.png" alt="y9xC3d.md.png"></a></p>
-<p>其中，-R 选项中有6个数字，后面两个数字表示Z轴最小值和最大值，-JZ5c指定了Z轴的高度为5厘米，-Bzaf指定了 轴的标注和刻度属性，-BSEwnZ+b中Z+b表示绘制一条Z轴，并绘制出整个长方体的所有边，-p130/30则指定了看这个长方体的视角130 和30分别为三维视角的方位角和高度角，方位角的取值范围为0 到360 度，高度角的取值范围为0 到90 度。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Tableau绘图-学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Tableau绘图 学习笔记</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-	
-  	<time datetime="2021-01-25T23:08:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1E4411B7ef">教学视频</a>参考</p>
-<h3 id="第一次课"><a href="#第一次课" class="headerlink" title="第一次课"></a>第一次课</h3><h4 id="1-绘制条形图"><a href="#1-绘制条形图" class="headerlink" title="1.绘制条形图"></a>1.绘制条形图</h4><h5 id="1-1-条形图1-各地区酒店数量"><a href="#1-1-条形图1-各地区酒店数量" class="headerlink" title="1.1 条形图1(各地区酒店数量)"></a>1.1 条形图1(各地区酒店数量)</h5><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVsenH"><img src="https://s3.ax1x.com/2021/02/01/yVsenH.md.png" alt="yVsenH.md.png"></a></p>
-<h5 id="1-2-条形图2-各地区酒店均价"><a href="#1-2-条形图2-各地区酒店均价" class="headerlink" title="1.2 条形图2(各地区酒店均价)"></a>1.2 条形图2(各地区酒店均价)</h5><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVsgb9"><img src="https://s3.ax1x.com/2021/02/01/yVsgb9.md.png" alt="yVsgb9.md.png"></a></p>
-<h5 id="1-3-堆积图-价格等级"><a href="#1-3-堆积图-价格等级" class="headerlink" title="1.3 堆积图(价格等级)"></a>1.3 堆积图(价格等级)</h5><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVyKr4"><img src="https://s3.ax1x.com/2021/02/01/yVyKr4.md.png" alt="yVyKr4.md.png"></a></p>
+<h3 id="1030-Travel-Plan"><a href="#1030-Travel-Plan" class="headerlink" title="1030 Travel Plan"></a>1030 Travel Plan</h3><p>思路:Dijkstra + DFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iterator&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, S, D;</span><br><span class="line">int G[MAXV][MAXV], C[MAXV][MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt;pre[MAXV];</span><br><span class="line">int d[MAXV];</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) return;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;int&gt;tempPath;</span><br><span class="line">vector&lt;int&gt;path;</span><br><span class="line">int optValue &#x3D; INF;</span><br><span class="line">&#x2F;&#x2F;v目的节点</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    &#x2F;&#x2F;递归边界</span><br><span class="line">    if (v &#x3D;&#x3D; S) &#123;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int value &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F;边权</span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt; 0; i--) &#123;</span><br><span class="line">            value +&#x3D; C[tempPath[i]][tempPath[i - 1]];</span><br><span class="line">        &#125;</span><br><span class="line">        if (value &lt; optValue) &#123;</span><br><span class="line">            optValue &#x3D; value;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d %d %d&quot;, &amp;n, &amp;m, &amp;S, &amp;D);</span><br><span class="line">    int c1, c2;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    fill(C[0], C[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d&quot;, &amp;c1, &amp;c2);</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;G[c1][c2], &amp;C[c1][c2]);</span><br><span class="line">        G[c2][c1] &#x3D; G[c1][c2];</span><br><span class="line">        C[c2][c1] &#x3D; C[c1][c2];</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(S);</span><br><span class="line">    DFS(D);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, path[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d %d\n&quot;, d[D], optValue);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>说明：不同颜色表示同一地区不同等级酒店的个数。</p>
+<p>注意点：无向图，建立邻接矩阵时，两个方向都有初始化。</p>
 </blockquote>
-<h4 id="2-直方图"><a href="#2-直方图" class="headerlink" title="2.直方图"></a>2.直方图</h4><p>与条形图的区别，用来看分布，而非实际大小。<br>首先要创建数据桶，才能创建直方图。<br>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVcaEd"><img src="https://s3.ax1x.com/2021/02/01/yVcaEd.md.png" alt="yVcaEd.md.png"></a></p>
-<blockquote>
-<p>说明：直方图即为横坐标为某一区间的条形图。</p>
-</blockquote>
-<h3 id="第二次课"><a href="#第二次课" class="headerlink" title="第二次课"></a>第二次课</h3><h4 id="1-折线图"><a href="#1-折线图" class="headerlink" title="1.折线图"></a>1.折线图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMNCQS"><img src="https://s3.ax1x.com/2021/02/03/yMNCQS.md.png" alt="yMNCQS.md.png"></a></p>
-<h4 id="2-饼图"><a href="#2-饼图" class="headerlink" title="2.饼图"></a>2.饼图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yM0nr8"><img src="https://s3.ax1x.com/2021/02/03/yM0nr8.md.png" alt="yM0nr8.md.png"></a></p>
-<h4 id="3-环形图"><a href="#3-环形图" class="headerlink" title="3.环形图"></a>3.环形图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMrqL6"><img src="https://s3.ax1x.com/2021/02/03/yMrqL6.md.png" alt="yMrqL6.md.png"></a></p>
-<h3 id="第三次课"><a href="#第三次课" class="headerlink" title="第三次课"></a>第三次课</h3><h4 id="1-凸显表"><a href="#1-凸显表" class="headerlink" title="1.凸显表"></a>1.凸显表</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMygET"><img src="https://s3.ax1x.com/2021/02/03/yMygET.md.png" alt="yMygET.md.png"></a></p>
-<h4 id="2-树形图"><a href="#2-树形图" class="headerlink" title="2.树形图"></a>2.树形图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yM6Ns1"><img src="https://s3.ax1x.com/2021/02/03/yM6Ns1.md.png" alt="yM6Ns1.md.png"></a></p>
-<blockquote>
-<p>树形图的大小和颜色分别可以代表不同的维度，即一张表包含两个信息。</p>
-</blockquote>
-<h4 id="3-气泡图"><a href="#3-气泡图" class="headerlink" title="3.气泡图"></a>3.气泡图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMg9N8"><img src="https://s3.ax1x.com/2021/02/03/yMg9N8.md.png" alt="yMg9N8.md.png"></a></p>
-<blockquote>
-<p>气泡大小表示电影数量多少，颜色深浅表示累计票房多少。</p>
-</blockquote>
-<h4 id="4-词云图"><a href="#4-词云图" class="headerlink" title="4.词云图"></a>4.词云图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMgoKs"><img src="https://s3.ax1x.com/2021/02/03/yMgoKs.md.png" alt="yMgoKs.md.png"></a></p>
-<h3 id="第四次课"><a href="#第四次课" class="headerlink" title="第四次课"></a>第四次课</h3><h4 id="1-标靶图"><a href="#1-标靶图" class="headerlink" title="1.标靶图"></a>1.标靶图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yQOXZV"><img src="https://s3.ax1x.com/2021/02/03/yQOXZV.md.png" alt="yQOXZV.md.png"></a></p>
-<h4 id="2-甘特图"><a href="#2-甘特图" class="headerlink" title="2.甘特图"></a>2.甘特图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylPO1K"><img src="https://s3.ax1x.com/2021/02/03/ylPO1K.md.png" alt="ylPO1K.md.png"></a></p>
-<h4 id="3-瀑布图"><a href="#3-瀑布图" class="headerlink" title="3.瀑布图"></a>3.瀑布图</h4><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylAYDS"><img src="https://s3.ax1x.com/2021/02/03/ylAYDS.md.png" alt="ylAYDS.md.png"></a></p>
-<h3 id="第五次课"><a href="#第五次课" class="headerlink" title="第五次课"></a>第五次课</h3><h4 id="1-国家销售地图"><a href="#1-国家销售地图" class="headerlink" title="1. 国家销售地图"></a>1. 国家销售地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylebQI"><img src="https://s3.ax1x.com/2021/02/03/ylebQI.md.png" alt="ylebQI.md.png"></a></p>
-<h4 id="2-仪表板的使用"><a href="#2-仪表板的使用" class="headerlink" title="2.仪表板的使用"></a>2.仪表板的使用</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylevTS"><img src="https://s3.ax1x.com/2021/02/03/ylevTS.md.png" alt="ylevTS.md.png"></a></p>
-<blockquote>
-<p>将多个图表合并成一个图使用。</p>
-</blockquote>
-<h3 id="第六次课"><a href="#第六次课" class="headerlink" title="第六次课"></a>第六次课</h3><h4 id="1-填充地图"><a href="#1-填充地图" class="headerlink" title="1.填充地图"></a>1.填充地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylKap4"><img src="https://s3.ax1x.com/2021/02/03/ylKap4.md.png" alt="ylKap4.md.png"></a></p>
-<h4 id="2-多维地图"><a href="#2-多维地图" class="headerlink" title="2.多维地图"></a>2.多维地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylMmHx"><img src="https://s3.ax1x.com/2021/02/03/ylMmHx.md.png" alt="ylMmHx.md.png"></a></p>
-<h4 id="3-混合地图"><a href="#3-混合地图" class="headerlink" title="3.混合地图"></a>3.混合地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylMOIK"><img src="https://s3.ax1x.com/2021/02/03/ylMOIK.md.png" alt="ylMOIK.md.png"></a></p>
-<h3 id="第七次课"><a href="#第七次课" class="headerlink" title="第七次课"></a>第七次课</h3><h4 id="1-多边形地图"><a href="#1-多边形地图" class="headerlink" title="1.多边形地图"></a>1.多边形地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylcb3F"><img src="https://s3.ax1x.com/2021/02/04/ylcb3F.md.png" alt="ylcb3F.md.png"></a></p>
-<h3 id="第八次课"><a href="#第八次课" class="headerlink" title="第八次课"></a>第八次课</h3><h4 id="1-划分地理区域"><a href="#1-划分地理区域" class="headerlink" title="1.划分地理区域"></a>1.划分地理区域</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yl4RPI"><img src="https://s3.ax1x.com/2021/02/04/yl4RPI.md.png" alt="yl4RPI.md.png"></a></p>
-<h3 id="第九次课"><a href="#第九次课" class="headerlink" title="第九次课"></a>第九次课</h3><p>计算字段与表计算：粒度、聚合与比率。</p>
-<h3 id="第十次课"><a href="#第十次课" class="headerlink" title="第十次课"></a>第十次课</h3><h4 id="1-人口金字塔"><a href="#1-人口金字塔" class="headerlink" title="1.人口金字塔"></a>1.人口金字塔</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1PZ4I"><img src="https://s3.ax1x.com/2021/02/04/y1PZ4I.md.png" alt="y1PZ4I.md.png"></a></p>
-<h4 id="2-漏斗图"><a href="#2-漏斗图" class="headerlink" title="2.漏斗图"></a>2.漏斗图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1PKv8"><img src="https://s3.ax1x.com/2021/02/04/y1PKv8.md.png" alt="y1PKv8.md.png"></a></p>
-<h4 id="3-箱线图"><a href="#3-箱线图" class="headerlink" title="3.箱线图"></a>3.箱线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1FSOO"><img src="https://s3.ax1x.com/2021/02/04/y1FSOO.md.png" alt="y1FSOO.md.png"></a></p>
-<h3 id="第十一次课"><a href="#第十一次课" class="headerlink" title="第十一次课"></a>第十一次课</h3><h4 id="1-范围-线图"><a href="#1-范围-线图" class="headerlink" title="1.范围-线图"></a>1.范围-线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1tdts"><img src="https://s3.ax1x.com/2021/02/04/y1tdts.md.png" alt="y1tdts.md.png"></a></p>
-<blockquote>
-<p>反映某个个体在群体中的情况</p>
-</blockquote>
-<h3 id="第十二次课"><a href="#第十二次课" class="headerlink" title="第十二次课"></a>第十二次课</h3><h4 id="1-网络图"><a href="#1-网络图" class="headerlink" title="1.网络图"></a>1.网络图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1akpn"><img src="https://s3.ax1x.com/2021/02/04/y1akpn.md.png" alt="y1akpn.md.png"></a></p>
-<h4 id="2-弧线图"><a href="#2-弧线图" class="headerlink" title="2.弧线图"></a>2.弧线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1rVXR"><img src="https://s3.ax1x.com/2021/02/04/y1rVXR.md.png" alt="y1rVXR.md.png"></a></p>
-<h3 id="第十三次课"><a href="#第十三次课" class="headerlink" title="第十三次课"></a>第十三次课</h3><h4 id="1-雷达图"><a href="#1-雷达图" class="headerlink" title="1.雷达图"></a>1.雷达图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y3GJqe"><img src="https://s3.ax1x.com/2021/02/04/y3GJqe.md.png" alt="y3GJqe.md.png"></a></p>
-<h4 id="2-凹凸图"><a href="#2-凹凸图" class="headerlink" title="2.凹凸图"></a>2.凹凸图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y3GQ8x"><img src="https://s3.ax1x.com/2021/02/04/y3GQ8x.png" alt="y3GQ8x.png"></a></p>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -712,7 +241,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -721,16 +250,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E4%B8%93%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/08/13/vim-%E4%BD%9C%E4%B8%BAmacOS-Finder%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vim拓展-作为macOS Finder的打开方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/09/%E5%89%8D%E7%BC%80%E4%B8%AD%E7%BC%80%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前缀中缀后缀表达式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -745,398 +342,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-R学习笔记（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/24/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/">R学习笔记（1）介绍+创建</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/24/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-01-24T13:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h4><p>111</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">R语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/24/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A1003-Emergency"><span class="toc-number">1.</span> <span class="toc-text">A1003 Emergency</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1030-Travel-Plan"><span class="toc-number">2.</span> <span class="toc-text">1030 Travel Plan</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-Java-学习笔记（4）-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Java 学习笔记（4）-异常处理</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
-	
-  	<time datetime="2020-12-25T01:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1.异常处理"></a>1.异常处理</h4><p>异常（Exception）是正常程序流程所不能处理或没有处理的异常情况或异常事件，它中断指令或程序的正常执行。</p>
-<h4 id="2-Java中的异常类"><a href="#2-Java中的异常类" class="headerlink" title="2.Java中的异常类"></a>2.Java中的异常类</h4><p>Java中的异常类包含在java.lang和java.io包中，其共同的父类是java.lang.Throwable。</p>
-<blockquote>
-<p>父类的优先级会比子类的高，因此，捕获子类异常的代码必须放在捕获父类异常的代码前面。</p>
-</blockquote>
-<h4 id="3-异常处理模式"><a href="#3-异常处理模式" class="headerlink" title="3.异常处理模式"></a>3.异常处理模式</h4><h5 id="try-catch-finally语句"><a href="#try-catch-finally语句" class="headerlink" title="try-catch-finally语句"></a>try-catch-finally语句</h5><ul>
-<li>try{}语句后面必须跟一个catch或finally语句块，有catch，finally语句可有可无；无catch，必须有finally语句。</li>
-<li>异常发生后，在try语句块中，异常位置的后续代码都不会执行,直到找到异常匹配才会执行try-catch-finally后面的语句。</li>
-<li>catch语句按编写顺序查找异常匹配，只要找到一个异常匹配，就不会去寻找其他异常。</li>
-<li>finally语句块无论是否发生异常都要执行。</li>
-</ul>
-<h5 id="异常类成员方法"><a href="#异常类成员方法" class="headerlink" title="异常类成员方法"></a>异常类成员方法</h5><p>从父类Throwable继承的方法主要包括：<code>getMessage（）</code>用来取得与异常和错误相关的错误信息；<code>printStackTrace（）</code>用来打印显示异常发生地方的堆栈状态；<code>toString（）</code>用来显示异常信息以及<code>getMessage（）</code>返回信息。</p>
-<h5 id="异常捕获与处理"><a href="#异常捕获与处理" class="headerlink" title="异常捕获与处理"></a>异常捕获与处理</h5><ul>
-<li>产生异常对象并中断当前正在执行的代码，抛出异常对象。</li>
-<li>自动按程序中的catch的编写顺序查找“最接近的”异常匹配。</li>
-<li>若有匹配则执行相应的处理代码，然后执行try-catch-finally之后的代码。若没有找到异常匹配，系统会报错，且终止程序。</li>
-</ul>
-<h4 id="4-重新抛出异常"><a href="#4-重新抛出异常" class="headerlink" title="4.重新抛出异常"></a>4.重新抛出异常</h4><h5 id="throws语句"><a href="#throws语句" class="headerlink" title="throws语句"></a><code>throws</code>语句</h5><ul>
-<li><code>throws</code>关键字通常被应用在声明方法时，用来指定可能抛出的异常。</li>
-<li>使用throws表明该方法本身不会对该异常进行处理，一旦发生该异常将由调用该方法的main方法进行执行处理（即该方法的上一级进行捕获）。</li>
-</ul>
-<h5 id="throw语句"><a href="#throw语句" class="headerlink" title="throw语句"></a><code>throw</code>语句</h5><p><code>throw</code>关键字通常用在方法体中，并且抛出一个异常对象。程序在执行到throw语句时立即停止，它后面的语句都不执行。如果要捕获throw抛出的异常，则必须使用try-catch语句。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-常见误区与混淆点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/">Java 常见误区与混淆点</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/" class="archive-article-date">
-	
-  	<time datetime="2020-12-25T01:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Integer和int的区别"><a href="#Integer和int的区别" class="headerlink" title="Integer和int的区别"></a>Integer和int的区别</h4><ol>
-<li>Integer是int的包装类，int是Java的一种基本数据类型。</li>
-<li>Integer变量必须实例化后才能使用，而int变量不需要。</li>
-<li>Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象，而int则是之际存储在栈中。</li>
-<li>Integer默认值是NULL，int的默认值是0。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-学习笔记（3）-数组、字符串和枚举" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/">Java 学习笔记（3）-数组、字符串和枚举</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/" class="archive-article-date">
-	
-  	<time datetime="2020-12-22T12:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组"></a>1.数组</h4><p>在Java中，数组本身就是一种引用数据类型，它是一组相同数据类型的数据的有序集合，该集合中的数据称为数组元素。</p>
-<ul>
-<li><p>对于一维数组，可以在声明的时候同时进行初始化，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> []c=&#123;<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>&#125;;     <span class="comment">//注意没有new</span></span><br></pre></td></tr></table></figure>
-<p>通过这种方法，也是在栈中存放一个地址，然后在堆中开辟4个2B大小的连续空间，用于存放A、B、C、D四个元素。</p>
-</li>
-<li><p>二维数组可以动态实例化，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][];   <span class="comment">//分配两行，即两个一维数组</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">0</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];      <span class="comment">//第一行数组，有3个元素</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];      <span class="comment">//第二行数组，有5个元素</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意，多维数组中维与维之间的内存空间的分配是不连续的。</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h4 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2.字符串"></a>2.字符串</h4><p>Java提供了String和StringBuffer两个字符串类，String字符串在初始化后不能在被修改，StringBuffer字符串内容可以动态修改。</p>
-<h5 id="不可变字符串：String"><a href="#不可变字符串：String" class="headerlink" title="不可变字符串：String"></a>不可变字符串：String</h5><ul>
-<li><p>String字符串的内存分配机制（可参考String直接赋值与new赋值区别那篇文章）<br>这里值得注意的是：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1=<span class="string">&quot;Hello&quot;</span>;     <span class="comment">//这个只会在栈中创建一个空间存储Hello</span></span><br><span class="line">s1=s1+<span class="string">&quot; world&quot;</span>;        <span class="comment">//使用这句话会使得s1指向一个栈中地址，地址指向堆中开辟的空间存放Hello</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字符串修改，String类提供了replace（），toLowerCase（），toUpperCase（），trim（）//将字符串前后的空格去掉。</p>
-<blockquote>
-<p>这里的修改，并不是在字符串原来的内存位置上进行，而是在新的内存空间上存放修改好的字符串，因此这里还是满足前面所说的String类是不可修改字符串的。</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="可变字符串：StringBuffer"><a href="#可变字符串：StringBuffer" class="headerlink" title="可变字符串：StringBuffer"></a>可变字符串：StringBuffer</h5><ul>
-<li>与String可以直接赋值不同，StringBuffer必须通过new来赋值。</li>
-<li>StringBuffer对字符串的修改主要包括追加，插入，删除，替换，翻转等操作，可以通过append（）、insert（）、delete（）、replace（）、reverse（）等方法实现。</li>
-</ul>
-<h5 id="String与StringBuffer在内存分配上的差异"><a href="#String与StringBuffer在内存分配上的差异" class="headerlink" title="String与StringBuffer在内存分配上的差异"></a>String与StringBuffer在内存分配上的差异</h5><p>String会修改对象地址，如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="keyword">new</span> String(<span class="string">&quot;I love football game&quot;</span>);</span><br><span class="line">s=<span class="string">&quot;I love NBA&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>变量s在栈中的地址随着在堆中的内容改变而发生改变。</p>
-<p>StringBuffer不会修改地址，如，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot; world&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>变量sb在栈中的地址不会随堆中的内容的改变而改变</p>
-<hr>
-<h4 id="3-字符串与其他数据类型转换"><a href="#3-字符串与其他数据类型转换" class="headerlink" title="3.字符串与其他数据类型转换"></a>3.字符串与其他数据类型转换</h4><h5 id="将其他数据转换为字符串"><a href="#将其他数据转换为字符串" class="headerlink" title="将其他数据转换为字符串"></a>将其他数据转换为字符串</h5><p>String类提供了静态的valueof（）方法，用于把不同类型的数据转换为字符串，方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=String.valueof(a);     <span class="comment">//为其他数据类类型的变量，返回值为一个String对象</span></span><br></pre></td></tr></table></figure>
-<p>另一方面，从java.lang.Object派生的所有类均提供了toString（）方法，即将该类转换成字符串，方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=Integer.toString(a);    <span class="comment">//a是一个int类型的对象。</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="将字符串转换成其他数据"><a href="#将字符串转换成其他数据" class="headerlink" title="将字符串转换成其他数据"></a>将字符串转换成其他数据</h5><p>也是运用对应包装类的方法，方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> b=Boolean.parseBoolean(<span class="string">&quot;True&quot;</span>);   <span class="comment">//将String类型转换为boolean类型</span></span><br><span class="line"><span class="keyword">int</span> i=Integer.parseInt(<span class="string">&quot;12345&quot;</span>);          <span class="comment">//将String类型转换为int类型</span></span><br><span class="line"><span class="keyword">float</span> f=Float.parseFloat(<span class="string">&quot;34.4352345343&quot;</span>) <span class="comment">//将String类型转换为float类型</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-枚举"><a href="#4-枚举" class="headerlink" title="4.枚举"></a>4.枚举</h4><p>创建枚举的目的是为了定义一组性质类似的常量，它在Java中是一个小功能，但给系统开发带来了很大的方便。</p>
-<h5 id="枚举定义"><a href="#枚举定义" class="headerlink" title="枚举定义"></a>枚举定义</h5><p>枚举定义格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[protected|private|abstract]enum 枚举类型标识符（名称）&#123;</span><br><span class="line">    枚举常量1，</span><br><span class="line">    枚举常量2，</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    枚举常量n     &#x2F;&#x2F;注意末尾没有“逗号“</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="枚举变量和常量"><a href="#枚举变量和常量" class="headerlink" title="枚举变量和常量"></a>枚举变量和常量</h5><ol>
-<li>不能通过new运算符创建实例对象，可直接通过枚举类型标识符访问枚举变量。</li>
-<li>可通过枚举变量访问枚举常量。</li>
-<li>可通过枚举常量调用其成员方法。</li>
-<li>可通过values（）方法获得该枚举类型的所有枚举常量。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1171,8 +402,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
