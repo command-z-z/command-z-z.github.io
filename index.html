@@ -164,6 +164,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-图算法笔记专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/19/%E5%9B%BE%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B8%93%E9%A2%98/">图算法笔记专题</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/19/%E5%9B%BE%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B8%93%E9%A2%98/" class="archive-article-date">
+	
+  	<time datetime="2022-08-19T13:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-19</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void DFS(int u)&#123;</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    for (int v &#x3D; 1; v &lt;&#x3D; n; v++) &#123;</span><br><span class="line">        if (vis[v] &#x3D;&#x3D;false &amp;&amp; G[u][v] !&#x3D; 0) &#123;</span><br><span class="line">            DFS(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void DFSTrave()&#123;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">        if(vis[i] &#x3D;&#x3D; false)&#123;</span><br><span class="line">            DFS(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/19/%E5%9B%BE%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B8%93%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-服务器终端编程环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -522,13 +600,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="A1003-Emergency"><a href="#A1003-Emergency" class="headerlink" title="A1003 Emergency"></a>A1003 Emergency</h3><p>思路：Dijkstra算法求最短路径。</p>
+        <h3 id="A1013-Battle-Over-Cities"><a href="#A1013-Battle-Over-Cities" class="headerlink" title="A1013 Battle Over Cities"></a>A1013 Battle Over Cities</h3><p>思路:通过DFS找连通分量的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e3+10;</span><br><span class="line"></span><br><span class="line">int n, m, k;</span><br><span class="line">int G[N][N] &#x3D; &#123;0&#125;;</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line"></span><br><span class="line">void DFS(int u)&#123;</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    for (int v &#x3D; 1; v &lt;&#x3D; n; v++) &#123;</span><br><span class="line">        if (vis[v] &#x3D;&#x3D;false &amp;&amp; G[u][v] !&#x3D; 0) &#123;</span><br><span class="line">            DFS(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k);</span><br><span class="line">    int id1, id2;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;id1, &amp;id2);</span><br><span class="line">        G[id1][id2] &#x3D; G[id2][id1] &#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">        int num &#x3D; 0;</span><br><span class="line">        fill(vis, vis + N, false);</span><br><span class="line">        int check;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;check);</span><br><span class="line">        vis[check] &#x3D; true;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            if (vis[i] &#x3D;&#x3D; false) &#123;</span><br><span class="line">                num++;</span><br><span class="line">                DFS(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;, num - 1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：每个节点都需要遍历</p>
+</blockquote>
+<h3 id="A1021-Deepest-Root"><a href="#A1021-Deepest-Root" class="headerlink" title="A1021 Deepest Root"></a>A1021 Deepest Root</h3><p>思路：并查集查找几个集合即为几个连通分量，从一个节点出发找到最深的节点，再从找到的节点出发找最深的节点，这两部分节点并集即为最深的集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e4 + 10;</span><br><span class="line"></span><br><span class="line">int n;&#x2F;&#x2F;node num</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt; G[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int father[N] &#x3D; &#123;0&#125;;</span><br><span class="line">int isRoot[N] &#x3D; &#123;0&#125;;</span><br><span class="line">int findFather(int x)&#123;</span><br><span class="line">    if (father[x] &#x3D;&#x3D; x) &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line">    int F &#x3D; findFather(father[x]);</span><br><span class="line">    father[x] &#x3D; F;</span><br><span class="line">    return F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Union(int a, int b)&#123;</span><br><span class="line">    int faA &#x3D; findFather(a);</span><br><span class="line">    int faB &#x3D; findFather(b);</span><br><span class="line">    if (faA !&#x3D; faB) &#123;</span><br><span class="line">        father[faA] &#x3D; faB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void init()&#123;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        father[i] &#x3D; i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int calBlock()&#123;</span><br><span class="line">    int block &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        isRoot[findFather(i)]++;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        if (isRoot[i] !&#x3D; 0) &#123;</span><br><span class="line">            block++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int maxH &#x3D; 0;</span><br><span class="line">vector&lt;int&gt; temp, ans;</span><br><span class="line"></span><br><span class="line">void DFS(int u, int Height)&#123;</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    if (Height &gt; maxH) &#123;</span><br><span class="line">        temp.clear();</span><br><span class="line">        temp.push_back(u);</span><br><span class="line">        maxH &#x3D; Height;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (Height &#x3D;&#x3D; maxH) &#123;</span><br><span class="line">        temp.push_back(u);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; G[u].size(); i++) &#123;</span><br><span class="line">        if (vis[G[u][i]] &#x3D;&#x3D; false) &#123;</span><br><span class="line">            DFS(G[u][i], Height + 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    int a, b;</span><br><span class="line">    init();</span><br><span class="line">    for (int i &#x3D; 1; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);</span><br><span class="line">        G[a].push_back(b);</span><br><span class="line">        G[b].push_back(a);</span><br><span class="line">        Union(a, b);</span><br><span class="line">    &#125;</span><br><span class="line">    int block &#x3D; calBlock();</span><br><span class="line">    if (block !&#x3D; 1) &#123;</span><br><span class="line">        printf(&quot;Error: %d components\n&quot;, block);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        DFS(1, 1);</span><br><span class="line">        ans &#x3D; temp;</span><br><span class="line">        fill(vis, vis + N, false);</span><br><span class="line">        temp.clear();</span><br><span class="line">        DFS(ans[0], 1);</span><br><span class="line">        for (int i &#x3D; 0; i &lt; temp.size(); i++) &#123;</span><br><span class="line">            ans.push_back(temp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(ans.begin(), ans.end());</span><br><span class="line">        printf(&quot;%d\n&quot;, ans[0]);</span><br><span class="line">        for (int i &#x3D; 1; i &lt; ans.size(); i++) &#123;</span><br><span class="line">            if (ans[i] !&#x3D; ans[i-1]) &#123;</span><br><span class="line">                printf(&quot;%d\n&quot;, ans[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：并查集初始化，isRoot数组的作用是确认根节点， 下标从1开始，每个节点不要搞错。</p>
+</blockquote>
+<h3 id="A1076-Forwards-on-Weibo"><a href="#A1076-Forwards-on-Weibo" class="headerlink" title="A1076 Forwards on Weibo"></a>A1076 Forwards on Weibo</h3><blockquote>
+<p>BFS查找小于层数的节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1010;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int v;</span><br><span class="line">    int layer;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;node&gt;G[N];</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line"></span><br><span class="line">int n, l;</span><br><span class="line"></span><br><span class="line">int BFS(int u)&#123;</span><br><span class="line">    int numForward &#x3D; 0;</span><br><span class="line">    node root;</span><br><span class="line">    root.v &#x3D; u;</span><br><span class="line">    root.layer &#x3D; 0;</span><br><span class="line">    queue&lt;node&gt; Q;</span><br><span class="line">    Q.push(root);</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    while (!Q.empty()) &#123;</span><br><span class="line">        node front &#x3D; Q.front();</span><br><span class="line">        Q.pop();</span><br><span class="line">        int id &#x3D; front.v;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; G[id].size(); i++) &#123;</span><br><span class="line">            node next &#x3D; G[id][i];</span><br><span class="line">            next.layer &#x3D; front.layer + 1;</span><br><span class="line">            if (vis[next.v] &#x3D;&#x3D; false &amp;&amp; next.layer &lt;&#x3D; l) &#123;</span><br><span class="line">                Q.push(next);</span><br><span class="line">                vis[next.v] &#x3D; true;</span><br><span class="line">                numForward++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return numForward;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;l);</span><br><span class="line">    int k;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;k);</span><br><span class="line">        int id;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; k; j++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;id);</span><br><span class="line">            node now;</span><br><span class="line">            now.v &#x3D; i;</span><br><span class="line">            now.layer &#x3D; 0;</span><br><span class="line">            G[id].push_back(now);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int numQuery;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;numQuery);</span><br><span class="line">    int id2;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; numQuery; i++) &#123;</span><br><span class="line">        fill(vis, vis + N, false);</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;id2);</span><br><span class="line">        int num &#x3D; BFS(id2);</span><br><span class="line">        printf(&quot;%d\n&quot;, num);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="A1003-Emergency"><a href="#A1003-Emergency" class="headerlink" title="A1003 Emergency"></a>A1003 Emergency</h3><p>思路：Dijkstra算法求最短路径。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, c1, c2;</span><br><span class="line">int G[MAXV][MAXV], weight[MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">int d[MAXV], w[MAXV], num[MAXV];</span><br><span class="line"></span><br><span class="line">void Difkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    memset(num, 0, sizeof(num));</span><br><span class="line">    memset(w, 0, sizeof(w));</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    w[s] &#x3D; weight[s];</span><br><span class="line">    num[s] &#x3D; 1;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    num[v] &#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    if (w[u] + weight[v] &gt; w[v]) &#123;</span><br><span class="line">                        w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    &#125;</span><br><span class="line">                    num[v] +&#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;c1, &amp;c2);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, weight + i);</span><br><span class="line">    &#125;</span><br><span class="line">    int u, v, we;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d %d&quot;, &amp;u, &amp;v, &amp;we);</span><br><span class="line">        G[u][v] &#x3D; we;</span><br><span class="line">        G[v][u] &#x3D; we;</span><br><span class="line">    &#125;</span><br><span class="line">    Difkstra(c1);</span><br><span class="line">    printf(&quot;%d %d\n&quot;, num[c2], w[c2]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="1030-Travel-Plan"><a href="#1030-Travel-Plan" class="headerlink" title="1030 Travel Plan"></a>1030 Travel Plan</h3><p>思路:Dijkstra + DFS</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iterator&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, S, D;</span><br><span class="line">int G[MAXV][MAXV], C[MAXV][MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt;pre[MAXV];</span><br><span class="line">int d[MAXV];</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) return;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;int&gt;tempPath;</span><br><span class="line">vector&lt;int&gt;path;</span><br><span class="line">int optValue &#x3D; INF;</span><br><span class="line">&#x2F;&#x2F;v目的节点</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    &#x2F;&#x2F;递归边界</span><br><span class="line">    if (v &#x3D;&#x3D; S) &#123;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int value &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F;边权</span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt; 0; i--) &#123;</span><br><span class="line">            value +&#x3D; C[tempPath[i]][tempPath[i - 1]];</span><br><span class="line">        &#125;</span><br><span class="line">        if (value &lt; optValue) &#123;</span><br><span class="line">            optValue &#x3D; value;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d %d %d&quot;, &amp;n, &amp;m, &amp;S, &amp;D);</span><br><span class="line">    int c1, c2;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    fill(C[0], C[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d&quot;, &amp;c1, &amp;c2);</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;G[c1][c2], &amp;C[c1][c2]);</span><br><span class="line">        G[c2][c1] &#x3D; G[c1][c2];</span><br><span class="line">        C[c2][c1] &#x3D; C[c1][c2];</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(S);</span><br><span class="line">    DFS(D);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, path[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d %d\n&quot;, d[D], optValue);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意点：无向图，建立邻接矩阵时，两个方向都有初始化。</p>
+</blockquote>
+<h3 id="A1018-Public-Bike-Management"><a href="#A1018-Public-Bike-Management" class="headerlink" title="A1018 Public Bike Management"></a>A1018 Public Bike Management</h3><p>思路：首先DFS找最短路径，DFS找第二和第三条件最小的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;sys&#x2F;wait.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1e9;</span><br><span class="line"></span><br><span class="line">int G[N][N] &#x3D; &#123;INF&#125;, carNum[N];</span><br><span class="line">int d[N] &#x3D; &#123;INF&#125;;</span><br><span class="line">vector&lt;int&gt; pre[N];</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line"></span><br><span class="line">int c, n, en, m;</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + N, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt;&#x3D; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; path, tempPath;</span><br><span class="line">int minNeed &#x3D; INF, minRemain &#x3D; INF;</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    if (v &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int need &#x3D; 0, remain &#x3D; 0;</span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">            int id &#x3D; tempPath[i];</span><br><span class="line">            if (carNum[id] &gt; 0) &#123;</span><br><span class="line">                remain +&#x3D; carNum[id];</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                if (remain &gt; abs(carNum[id])) &#123;</span><br><span class="line">                    remain -&#x3D; abs(carNum[id]);</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    need +&#x3D; abs(carNum[id])- remain;</span><br><span class="line">                    remain &#x3D; 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (need &lt; minNeed) &#123;</span><br><span class="line">            minNeed &#x3D; need;</span><br><span class="line">            minRemain &#x3D; remain;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (need &#x3D;&#x3D; minNeed &amp;&amp; remain &lt; minRemain) &#123;</span><br><span class="line">            minRemain &#x3D; remain;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    fill(G[0], G[0] + N * N, INF);</span><br><span class="line">    fill(vis, vis + N, false);</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;c, &amp;n, &amp;en, &amp;m);</span><br><span class="line">    int car;</span><br><span class="line">    carNum[0] &#x3D; 0;&#x2F;&#x2F;ÂºÄÂßãËΩ¶Á´ô</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;car);</span><br><span class="line">        car -&#x3D; c&#x2F;2;</span><br><span class="line">        carNum[i] &#x3D; car;</span><br><span class="line">    &#125;</span><br><span class="line">    int id1, id2, l;    </span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;, &amp;id1, &amp;id2, &amp;l);</span><br><span class="line">        G[id1][id2] &#x3D; G[id2][id1] &#x3D; l;</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(0);</span><br><span class="line">    DFS(en);</span><br><span class="line">    printf(&quot;%d &quot;, minNeed);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d&quot;, path[i]);</span><br><span class="line">        if (i &gt; 0) &#123;</span><br><span class="line">            printf(&quot;-&gt;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot; %d\n&quot;, minRemain);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，need和remain那块太难想到了</p>
 </blockquote>
 
       
@@ -1157,311 +1258,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/07/01/PaddleDetection%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PaddleClas图像分类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/01/PaddleClas%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">PaddleClas图像分类</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/07/01/PaddleClas%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="archive-article-date">
-	
-  	<time datetime="2022-07-01T13:01:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-01</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文将讲解利用PaddleCals实现对图像进行分类的任务，利用AI Studio平台训练，并通过猫十二分类例子讲解如何进行训练与预测。</p>
-<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><ul>
-<li>PaddlePaddle 2.1.2</li>
-<li>PaddleClas 2.3</li>
-</ul>
-<h2 id="下载PaddleClas"><a href="#下载PaddleClas" class="headerlink" title="下载PaddleClas"></a>下载PaddleClas</h2><p>此时可以将PaddleClas下载到项目中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!git clone https:&#x2F;&#x2F;gitee.com&#x2F;paddlepaddle&#x2F;PaddleClas&#x2F; --depth&#x3D;1</span><br></pre></td></tr></table></figure>
-
-<h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><h4 id="1-解压数据集"><a href="#1-解压数据集" class="headerlink" title="1.解压数据集"></a>1.解压数据集</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 解压缩数据集</span><br><span class="line">!unzip -qoa data&#x2F;data8136&#x2F;cat_data_sets_models.zip -d data&#x2F;</span><br></pre></td></tr></table></figure>
-<h4 id="2-划分数据集"><a href="#2-划分数据集" class="headerlink" title="2.划分数据集"></a>2.划分数据集</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">def break_data(target, rate&#x3D;0.2):</span><br><span class="line">    origin_dataset &#x3D; pd.read_csv(&quot;&#x2F;home&#x2F;aistudio&#x2F;data&#x2F;data_sets&#x2F;cat_12&#x2F;train_list.txt&quot;, delimiter&#x3D;&quot;\t&quot;, header&#x3D;None)  # 加入参数</span><br><span class="line">    # train_data, test_data &#x3D; train_test_split(origin_dataset, test_size&#x3D;rate)</span><br><span class="line">    train_data,eval_data&#x3D;train_test_split(origin_dataset, test_size&#x3D;rate)</span><br><span class="line">    train_filename &#x3D; os.path.join(target, &#39;train.txt&#39;)</span><br><span class="line">    # test_filename &#x3D; os.path.join(target, &#39;test.txt&#39;)</span><br><span class="line">    eval_filename &#x3D; os.path.join(target, &#39;eval.txt&#39;)</span><br><span class="line"></span><br><span class="line">    train_data.to_csv(train_filename, index&#x3D;False, sep&#x3D;&quot;\t&quot;, header&#x3D;None)</span><br><span class="line">    # test_data.to_csv(test_filename, index&#x3D;False, sep&#x3D;&quot;\t&quot;, header&#x3D;None)</span><br><span class="line">    eval_data.to_csv(eval_filename, index&#x3D;False, sep&#x3D;&quot;\t&quot;, header&#x3D;None)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    break_data(target&#x3D;&#39;data&#39;, rate&#x3D;0.2)</span><br></pre></td></tr></table></figure>
-<h4 id="3-通道转化"><a href="#3-通道转化" class="headerlink" title="3.通道转化"></a>3.通道转化</h4><p>由于图片中存在一些非RGB格式的图片，会影响训练，因此进行处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#导入需要的包</span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import json</span><br><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">from PIL import Image</span><br><span class="line">import paddle</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">## 转换4通道为3通道</span><br><span class="line">def proc_img(src):</span><br><span class="line">    for root, dirs, files in os.walk(src):</span><br><span class="line">        if &#39;__MACOSX&#39; in root:continue</span><br><span class="line">        for file in files:            </span><br><span class="line">            src&#x3D;os.path.join(root,file)</span><br><span class="line">            img&#x3D;Image.open(src)</span><br><span class="line">            ## 转换4通道为3通道</span><br><span class="line">            if img.mode !&#x3D; &#39;RGB&#39;: </span><br><span class="line">                    img &#x3D; img.convert(&#39;RGB&#39;) </span><br><span class="line">                    img.save(src)    </span><br><span class="line">                    print(src)        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    proc_img(&quot;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_train&quot;)</span><br><span class="line">    proc_img(&quot;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_test&quot;)</span><br></pre></td></tr></table></figure>
-<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><h4 id="1-修改bug"><a href="#1-修改bug" class="headerlink" title="1.修改bug"></a>1.修改bug</h4><p>由于PaddleClas2.3版本读数据存在bug，因此修改如下文件<br>目录：\ppcls\data\dataloader\imagenet_dataset.py<br>注释:</p>
-<ul>
-<li><code>assert os.path.exists(self._cls_path)</code></li>
-<li><code>assert os.path.exists(self._img_path)</code><br>添加：</li>
-<li><code>self._cls_path=os.path.join(self._img_root,self._cls_path)</code><br>同时修改with open（）as fd:中的内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class ImageNetDataset(CommonDataset):</span><br><span class="line">    def _load_anno(self, seed&#x3D;None):</span><br><span class="line">        # 会对目录进行检测，如果cls_path使用相对目录，就会报错，在此注释掉，并修改为self._cls_path&#x3D;os.path.join(self._img_root,self._cls_path)</span><br><span class="line"></span><br><span class="line">        self.images &#x3D; []</span><br><span class="line">        self.labels &#x3D; []</span><br><span class="line"></span><br><span class="line">        with open(self._cls_path) as fd:</span><br><span class="line">            lines &#x3D; fd.readlines()</span><br><span class="line">            if seed is not None:</span><br><span class="line">                np.random.RandomState(seed).shuffle(lines)</span><br><span class="line">            for l in lines:</span><br><span class="line">            	  # tab分割</span><br><span class="line">                # l &#x3D; l.strip().split(&quot; &quot;)</span><br><span class="line">                l &#x3D; l.strip().split(&quot;\t&quot;)</span><br><span class="line">                self.images.append(os.path.join(self._img_root, l[0]))</span><br><span class="line">                self.labels.append(int(l[1]))</span><br><span class="line">                # 不需要判断这个</span><br><span class="line">                # assert os.path.exists(self.images[-1])</span><br></pre></td></tr></table></figure>
-<h4 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2.修改配置文件"></a>2.修改配置文件</h4>选择PaddleClas/ppcls/configs/ImageNet/ 中的模型，这里以ResNet为例，选择其中的<code>ResNet50_vd.yaml</code>配置文件，主要修改参数如下：</li>
-<li>class_num: 12<br>Train和Eval下均需修改</li>
-<li>image_root: /home/aistudio/data/data_sets/cat_12/</li>
-<li>cls_label_path: /home/aistudio/data/eval.txt</li>
-</ul>
-<h4 id="3-配置说明"><a href="#3-配置说明" class="headerlink" title="3.配置说明"></a>3.配置说明</h4><h6 id="3-1-全局配置-Global"><a href="#3-1-全局配置-Global" class="headerlink" title="3.1 全局配置(Global)"></a>3.1 全局配置(Global)</h6><table>
-<thead>
-<tr>
-<th align="center">参数名字</th>
-<th align="center">具体含义</th>
-<th align="center">默认值</th>
-<th align="center">可选值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">checkpoints</td>
-<td align="center">断点模型路径，用于恢复训练</td>
-<td align="center">null</td>
-<td align="center">str</td>
-</tr>
-<tr>
-<td align="center">pretrained_model</td>
-<td align="center">预训练模型路径</td>
-<td align="center">null</td>
-<td align="center">str</td>
-</tr>
-<tr>
-<td align="center">output_dir</td>
-<td align="center">保存模型路径</td>
-<td align="center">“./output/“</td>
-<td align="center">str</td>
-</tr>
-<tr>
-<td align="center">save_interval</td>
-<td align="center">每隔多少个epoch保存模型</td>
-<td align="center">1</td>
-<td align="center">int</td>
-</tr>
-<tr>
-<td align="center">eval_during_train</td>
-<td align="center">是否在训练时进行评估</td>
-<td align="center">True</td>
-<td align="center">bool</td>
-</tr>
-<tr>
-<td align="center">eval_interval</td>
-<td align="center">每隔多少个epoch进行模型评估</td>
-<td align="center">1</td>
-<td align="center">int</td>
-</tr>
-<tr>
-<td align="center">epochs</td>
-<td align="center">训练总epoch数</td>
-<td align="center"></td>
-<td align="center">int</td>
-</tr>
-<tr>
-<td align="center">print_batch_step</td>
-<td align="center">每隔多少个mini-batch打印输出</td>
-<td align="center">10</td>
-<td align="center">int</td>
-</tr>
-<tr>
-<td align="center">use_visualdl</td>
-<td align="center">是否是用visualdl可视化训练过程</td>
-<td align="center">False</td>
-<td align="center">bool</td>
-</tr>
-<tr>
-<td align="center">image_shape</td>
-<td align="center">图片大小</td>
-<td align="center">[3，224，224]</td>
-<td align="center">list, shape: (3,)</td>
-</tr>
-<tr>
-<td align="center">save_inference_dir</td>
-<td align="center">inference模型的保存路径</td>
-<td align="center">“./inference”</td>
-<td align="center">str</td>
-</tr>
-<tr>
-<td align="center">eval_mode</td>
-<td align="center">eval的模式</td>
-<td align="center">“classification”</td>
-<td align="center">“retrieval”</td>
-</tr>
-</tbody></table>
-<h6 id="3-2-结构-Arch"><a href="#3-2-结构-Arch" class="headerlink" title="3.2 结构(Arch)"></a>3.2 结构(Arch)</h6><table>
-<thead>
-<tr>
-<th align="center">参数名字</th>
-<th align="center">具体含义</th>
-<th align="center">默认值</th>
-<th align="center">可选值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">name</td>
-<td align="center">模型结构名字</td>
-<td align="center">ResNet50</td>
-<td align="center">PaddleClas提供的模型结构</td>
-</tr>
-<tr>
-<td align="center">class_num</td>
-<td align="center">分类数</td>
-<td align="center">1000</td>
-<td align="center">int</td>
-</tr>
-<tr>
-<td align="center">pretrained</td>
-<td align="center">预训练模型</td>
-<td align="center">False</td>
-<td align="center">bool， str</td>
-</tr>
-</tbody></table>
-<h6 id="3-3-损失函数（Loss）"><a href="#3-3-损失函数（Loss）" class="headerlink" title="3.3 损失函数（Loss）"></a>3.3 损失函数（Loss）</h6><table>
-<thead>
-<tr>
-<th align="center">参数名字</th>
-<th align="center">具体含义</th>
-<th align="center">默认值</th>
-<th align="center">可选值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">CELoss</td>
-<td align="center">交叉熵损失函数</td>
-<td align="center">——</td>
-<td align="center">——</td>
-</tr>
-<tr>
-<td align="center">CELoss.weight</td>
-<td align="center">CELoss的在整个Loss中的权重</td>
-<td align="center">1.0</td>
-<td align="center">float</td>
-</tr>
-<tr>
-<td align="center">CELoss.epsilon</td>
-<td align="center">CELoss中label_smooth的epsilon值</td>
-<td align="center">0.1</td>
-<td align="center">float，0-1之间</td>
-</tr>
-</tbody></table>
-<h6 id="3-4-优化器-Optimizer"><a href="#3-4-优化器-Optimizer" class="headerlink" title="3.4 优化器(Optimizer)"></a>3.4 优化器(Optimizer)</h6><table>
-<thead>
-<tr>
-<th align="center">参数名字</th>
-<th align="center">具体含义</th>
-<th align="center">默认值</th>
-<th align="center">可选值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">name</td>
-<td align="center">优化器方法名</td>
-<td align="center">“Momentum”</td>
-<td align="center">“RmsProp”等其他优化器</td>
-</tr>
-<tr>
-<td align="center">momentum</td>
-<td align="center">momentum值</td>
-<td align="center">0.9</td>
-<td align="center">float</td>
-</tr>
-<tr>
-<td align="center">lr.name</td>
-<td align="center">学习率下降方式</td>
-<td align="center">“Cosine”</td>
-<td align="center">“Linear”、”Piecewise”等其他下降方式</td>
-</tr>
-<tr>
-<td align="center">lr.learning_rate</td>
-<td align="center">学习率初始值</td>
-<td align="center">0.1</td>
-<td align="center">float</td>
-</tr>
-<tr>
-<td align="center">lr.warmup_epoch</td>
-<td align="center">warmup轮数</td>
-<td align="center">0</td>
-<td align="center">int，如5</td>
-</tr>
-<tr>
-<td align="center">regularizer.name</td>
-<td align="center">正则化方法名</td>
-<td align="center">“L2”</td>
-<td align="center">[“L1”, “L2”]</td>
-</tr>
-<tr>
-<td align="center">regularizer.coeff</td>
-<td align="center">正则化系数</td>
-<td align="center">0.00007</td>
-<td align="center">float</td>
-</tr>
-</tbody></table>
-<h4 id="4-开始训练"><a href="#4-开始训练" class="headerlink" title="4.开始训练"></a>4.开始训练</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用以下命令进入项目目录</span><br><span class="line">%cd PaddleClas&#x2F;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># GPU设置</span><br><span class="line">!export CUDA_VISIBLE_DEVICES&#x3D;0</span><br><span class="line"></span><br><span class="line"># -o Arch.pretrained&#x3D;True 使用预训练模型，当选择为True时，预训练权重会自动下载到本地</span><br><span class="line">!python tools&#x2F;train.py -c &#x2F;home&#x2F;aistudio&#x2F;PaddleClas&#x2F;ppcls&#x2F;configs&#x2F;ImageNet&#x2F;ResNet&#x2F;ResNet50_vd.yaml -o Arch.pretrained&#x3D;True</span><br></pre></td></tr></table></figure>
-
-<p>使用多卡训练</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">!export CUDA_VISIBLE_DEVICES&#x3D;0,1,2,3</span><br><span class="line">!python3 -m paddle.distributed.launch \</span><br><span class="line">    --gpus&#x3D;&quot;0,1,2,3&quot; \</span><br><span class="line">    tools&#x2F;train.py \</span><br><span class="line">        -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Arch.pretrained&#x3D;True</span><br></pre></td></tr></table></figure>
-
-<h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><p>输入以下命令进行单张图片预测：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 预测</span><br><span class="line">!python3 tools&#x2F;infer.py -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Infer.infer_imgs&#x3D;&#x2F;home&#x2F;aistudio&#x2F;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_test&#x2F;ou9Ik17GtHSThRCDLZm3f6vB8ybQ4xsl.jpg  -o Global.pretrained_model&#x3D;output&#x2F;ResNet50_vd&#x2F;best_model</span><br></pre></td></tr></table></figure>
-<p>输入以下命令进行批量图片预测，并重定向到output.txt文件中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 预测</span><br><span class="line">!python3 tools&#x2F;infer.py -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Infer.infer_imgs&#x3D;&#x2F;home&#x2F;aistudio&#x2F;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_test&#x2F;  -o Global.pretrained_model&#x3D;output&#x2F;ResNet50_vd&#x2F;best_model &gt; output.txt</span><br></pre></td></tr></table></figure>
-<p>输入以下命令生成提交的csv文件格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import ast</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">with open(&quot;output.txt&quot;) as f:</span><br><span class="line">    ftxt &#x3D; f.read()</span><br><span class="line">    </span><br><span class="line">pattern &#x3D; r&quot;&#123;&#39;class_ids&#39;:.*?&#125;&quot;</span><br><span class="line">pre_results &#x3D; re.findall(pattern, ftxt)</span><br><span class="line">print(len(pre_results))</span><br><span class="line"></span><br><span class="line">pre_data &#x3D; []</span><br><span class="line">for pre_result in pre_results:</span><br><span class="line">    pre_dict &#x3D; ast.literal_eval(pre_result)  # [&quot;class_ids&quot;, &quot;scores&quot;, &quot;file_name&quot;, &quot;label_names&quot;]</span><br><span class="line">    pre_data.append([pre_dict[&quot;file_name&quot;].split(&quot;&#x2F;&quot;)[-1],\</span><br><span class="line">                            pre_dict[&quot;class_ids&quot;][0], pre_dict[&quot;scores&quot;][0]])</span><br><span class="line"></span><br><span class="line">columns &#x3D; [&quot;img_path&quot;, &quot;label&quot;, &quot;scores&quot;]</span><br><span class="line">pre_df &#x3D; pd.DataFrame(data&#x3D;pre_data,</span><br><span class="line">                       index&#x3D;range(len(pre_data)), </span><br><span class="line">                       columns&#x3D;columns)</span><br><span class="line"></span><br><span class="line">pre_df.drop(columns&#x3D;[&#39;scores&#39;],inplace&#x3D;True)  # 删除 scores 列</span><br><span class="line">pre_df.sort_values([&quot;img_path&quot;], inplace&#x3D;True)  # 排序</span><br><span class="line">pre_df.to_csv(&#39;submission.csv&#39;,index&#x3D;None,header&#x3D;None)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Paddle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/01/PaddleClas%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">展开全文 >></a>
         </p>
       
 
