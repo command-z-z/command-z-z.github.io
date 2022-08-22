@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.scanf输入字符数组使用%s读入的时候以空格跟换行为读入结束标志，如下代码所示： 1234567891011121314#include &lt;stdio.h&gt;int main()&amp;#123;    char str[10];    scanf(&quot;%s&quot;, str);    printf(&quot;%s&quot;, str);    return 0;&amp;#12">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-07-06T02:20:44.000Z">
-<meta property="article:modified_time" content="2022-07-10T05:36:28.984Z">
+<meta property="article:modified_time" content="2022-08-21T16:38:59.171Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
@@ -213,7 +213,7 @@
 <li>把一整行都读入char型数组str[100]中：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char str[100];</span><br><span class="line">cin.getline(str, 100);</span><br></pre></td></tr></table></figure></li>
 <li>如果是string容器，则需要用下面的方式输入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">getline(cin, str);</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>不会因为空格导致不能输入整行</p>
+<p>不会因为空格导致不能输入整行<br>注意：若之前用cin,scanf读入数据后要加getchar()读入回车，不然getline会先读回车符号。</p>
 </blockquote>
 </li>
 </ul>
