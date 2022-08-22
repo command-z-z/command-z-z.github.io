@@ -164,6 +164,178 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim练级手册（七）-telescope文件模糊搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/">vim练级手册（七） ---telescope文件模糊搜索</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/" class="archive-article-date">
+	
+  	<time datetime="2022-04-23T02:49:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-23</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;leader&gt;ff</td>
+<td>搜索当前目录下的文件</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;fg</td>
+<td>当前目录下文件中的内容查找</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;fb</td>
+<td>buffer切换</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;fo</td>
+<td>old file曾经打开过的文件</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;fh</td>
+<td>打开帮助文档</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;ma</td>
+<td>在当前文件中查找标记</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;mA</td>
+<td>在所有文件中查找标记</td>
+</tr>
+<tr>
+<td></td>
+<td>vim-bookmarks快捷键</td>
+</tr>
+<tr>
+<td>mm</td>
+<td>当前行做标记</td>
+</tr>
+<tr>
+<td>mi</td>
+<td>当前行做标记,并写上相应的注释</td>
+</tr>
+<tr>
+<td>mn</td>
+<td>跳到下一个标记</td>
+</tr>
+<tr>
+<td>mp</td>
+<td>跳到上一个标记</td>
+</tr>
+<tr>
+<td>ma</td>
+<td>show all bookmarks</td>
+</tr>
+<tr>
+<td>mc</td>
+<td>删除当前buffer的标记</td>
+</tr>
+<tr>
+<td>mx</td>
+<td>删除所有buffer的标记</td>
+</tr>
+</tbody></table>
+<h2 id="1-telescope"><a href="#1-telescope" class="headerlink" title="1.telescope"></a>1.telescope</h2><p><code>telescope</code>是一款神级模糊搜索工具，大大提高效率。</p>
+<h4 id="安装telescope"><a href="#安装telescope" class="headerlink" title="安装telescope"></a>安装telescope</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-- 文件搜索 预览 等</span><br><span class="line">use &#123;</span><br><span class="line">	&quot;nvim-telescope&#x2F;telescope.nvim&quot;,</span><br><span class="line">    requires &#x3D; &#123;</span><br><span class="line">      &quot;nvim-lua&#x2F;plenary.nvim&quot;,</span><br><span class="line">      &quot;kyazdani42&#x2F;nvim-web-devicons&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-- 加速文件搜索速度,如果安装失败需要到插件目录执行make命令手动编译</span><br><span class="line">-- 用了这个插件以后，貌似更快了(感觉输入更跟手了，可能是心理作用)。但是对于我的小项目感受不是很明显</span><br><span class="line">use &#123;&quot;nvim-telescope&#x2F;telescope-fzf-native.nvim&quot;, run &#x3D; &quot;make&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置telescope"><a href="#配置telescope" class="headerlink" title="配置telescope"></a>配置telescope</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;telescope.lua</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">local status, actions &#x3D; pcall(require, &quot;telescope.actions&quot;)</span><br><span class="line">if (not status) then</span><br><span class="line">  return</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">--local actions &#x3D; require(&#39;telescope.actions&#39;)</span><br><span class="line">-- Global remapping</span><br><span class="line">------------------------------</span><br><span class="line">require(&quot;telescope&quot;).setup &#123;</span><br><span class="line">  defaults &#x3D; &#123;</span><br><span class="line">    mappings &#x3D; &#123;</span><br><span class="line">      n &#x3D; &#123;</span><br><span class="line">        [&quot;q&quot;] &#x3D; actions.close,</span><br><span class="line">        [&quot;l&quot;] &#x3D; actions.file_edit</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    file_ignore_patterns &#x3D; &#123;&quot;.&#x2F;node_modules&quot;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  extensions &#x3D; &#123;</span><br><span class="line">    fzf &#x3D; &#123;</span><br><span class="line">      fuzzy &#x3D; true, -- false will only do exact matching</span><br><span class="line">      override_generic_sorter &#x3D; true, -- override the generic sorter</span><br><span class="line">      override_file_sorter &#x3D; true, -- override the file sorter</span><br><span class="line">      case_mode &#x3D; &quot;smart_case&quot; -- or &quot;ignore_case&quot; or &quot;respect_case&quot;</span><br><span class="line">      -- the default case_mode is &quot;smart_case&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- To get fzf loaed and working with telescope, you need to call</span><br><span class="line">-- load_extension, somewhere after setup function:</span><br><span class="line">require(&quot;telescope&quot;).load_extension(&quot;fzf&quot;)</span><br><span class="line">require(&#39;telescope&#39;).load_extension(&#39;vim_bookmarks&#39;)</span><br><span class="line"></span><br><span class="line">--按键设置</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;ff&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).find_files()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fg&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).live_grep()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fb&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).buffers()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fh&quot;, [[&lt;cmd&gt;lua require(&#39;telescope.builtin&#39;).help_tags()&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;ma&quot;, [[&lt;cmd&gt;Telescope vim_bookmarks current_file&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;mA&quot;, [[&lt;cmd&gt;Telescope vim_bookmarks all&lt;cr&gt;]], &#123;&#125;)</span><br><span class="line">vim.api.nvim_set_keymap(&quot;n&quot;, &quot;&lt;leader&gt;fo&quot;, [[&lt;cmd&gt;Telescope oldfiles theme&#x3D;dropdown previewer&#x3D;false&lt;cr&gt;]], &#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>vim-bookmarks报错需要安装如下插件。</p>
+</blockquote>
+<h4 id="文本搜索支持"><a href="#文本搜索支持" class="headerlink" title="文本搜索支持"></a>文本搜索支持</h4><p>MacOS安装如下:<br><code>brew install ripgrep</code></p>
+<p>其余查看:<a target="_blank" rel="noopener" href="https://github.com/chinanf-boy/ripgrep-zh">https://github.com/chinanf-boy/ripgrep-zh</a></p>
+<h2 id="2-vim-bookmarks插件安装"><a href="#2-vim-bookmarks插件安装" class="headerlink" title="2.vim-bookmarks插件安装"></a>2.vim-bookmarks插件安装</h2><p>作为一款标记插件，并支持telescope查找</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 打标签</span><br><span class="line">use &#39;MattesGroeger&#x2F;vim-bookmarks&#39;</span><br><span class="line">-- telescope查询标签支持</span><br><span class="line">use &quot;tom-anders&#x2F;telescope-vim-bookmarks.nvim&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置vim-bookmarks"><a href="#配置vim-bookmarks" class="headerlink" title="配置vim-bookmarks"></a>配置vim-bookmarks</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;bookmarks.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">highlight BookmarkSign ctermbg&#x3D;NONE ctermfg&#x3D;160</span><br><span class="line">highlight BookmarkLine ctermbg&#x3D;194 ctermfg&#x3D;NONE</span><br><span class="line">let g:bookmark_sign &#x3D; &#39;♥&#39;</span><br><span class="line">let g:bookmark_highlight_lines &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+<p>简单的进行配置即可，快捷键在最上方总结了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%83%EF%BC%89-telescope%E6%96%87%E4%BB%B6%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vim练级手册（六）-markdown预览插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1310,87 +1482,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github免费图床教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/21/github%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%E6%95%99%E7%A8%8B/">github免费图床教程</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/01/21/github%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%E6%95%99%E7%A8%8B/" class="archive-article-date">
-	
-  	<time datetime="2022-01-21T15:02:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近准备对自己博客的图片进行管理，如果全部存储在本地，数据一旦丢失，所有图片将消失，因此使用图床进行管理是一种比较好的方法。以前写博客一直使用的是<a target="_blank" rel="noopener" href="https://imgtu.com/">路过图床</a>工具进行管理,但是使用别人的图床，也会受限于人。因此，选择采用在GitHub仓库作为自己的图床的方法，本方法来源于<a target="_blank" rel="noopener" href="https://picx.xpoet.cn/#/config">picx</a>,参考教程配置出属于自己的图床。相应项目的GitHub仓库在此<a target="_blank" rel="noopener" href="https://github.com/XPoet/picx">https://github.com/XPoet/picx</a></p>
-<h4 id="1-准备一个GitHub账号"><a href="#1-准备一个GitHub账号" class="headerlink" title="1.准备一个GitHub账号"></a>1.准备一个GitHub账号</h4><p>只需登录<a target="_blank" rel="noopener" href="https://github.com/">github官网</a>进行注册即可，不再赘述。</p>
-<h4 id="2-创建一个用来存储图片的GitHub仓库"><a href="#2-创建一个用来存储图片的GitHub仓库" class="headerlink" title="2.创建一个用来存储图片的GitHub仓库"></a>2.创建一个用来存储图片的GitHub仓库</h4><p>创建GitHub仓库，如下图所示：<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-01-21-%E4%B8%8B%E5%8D%8811.4f2z7jzxu5k0.webp" alt="截屏2022-01-21-下午11"></p>
-<h4 id="3-创建一个有repo权限的GitHub-Token"><a href="#3-创建一个有repo权限的GitHub-Token" class="headerlink" title="3.创建一个有repo权限的GitHub Token"></a>3.创建一个有repo权限的GitHub Token</h4><p>前往github，点击头像-&gt;Settings-&gt;Developer setting-&gt;Personal access tokens,然后点击生成token。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8A%E5%8D%888.24gdp3xi529s.webp" alt="截屏2022-01-22-上午8"></p>
-<h4 id="4-登录picx进行图床配置"><a href="#4-登录picx进行图床配置" class="headerlink" title="4.登录picx进行图床配置"></a>4.登录<a target="_blank" rel="noopener" href="https://picx.xpoet.cn/#/config">picx</a>进行图床配置</h4><p>点击图床配置按钮，将上一步得到的token，输入到相应的框中，并填写相应的信息。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8A%E5%8D%888.21d7q5j5fcg0.webp" alt="截屏2022-01-22-上午8"></p>
-<h4 id="5-配置完成后即可上传照片"><a href="#5-配置完成后即可上传照片" class="headerlink" title="5.配置完成后即可上传照片"></a>5.配置完成后即可上传照片</h4><p>点击上传图片按钮，将需要上传的图片拖入其中，点击上传即可上传到仓库，上传成功后，点击<code>CDN</code>得到图片外链。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/21/github%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%E6%95%99%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
