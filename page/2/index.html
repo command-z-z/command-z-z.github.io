@@ -164,6 +164,588 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim-作为macOS-Finder的打开方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/13/vim-%E4%BD%9C%E4%B8%BAmacOS-Finder%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">vim拓展-作为macOS Finder的打开方式</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/13/vim-%E4%BD%9C%E4%B8%BAmacOS-Finder%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+	
+  	<time datetime="2022-08-13T12:58:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-13</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本人作为vim的忠实用户，喜欢折腾各种插件和配置，希望达到更高效的编码速度。但一直有个问题困扰我很久，“双击finder里的文件，默认打开的编辑器为VSC或Xcode等”。作为vim用户还是希望能一直把vim作为主编辑器，本文将解决如何将终端的vim作为默认文件启动器。</p>
+<h3 id="基于AppleScript的解决方案："><a href="#基于AppleScript的解决方案：" class="headerlink" title="基于AppleScript的解决方案："></a>基于AppleScript的解决方案：</h3><ol>
+<li>打开<code>Automator.app</code></li>
+<li>选择<code>New Document</code></li>
+<li>点击<code>Application</code></li>
+<li>找到<code>Run AppleScript</code></li>
+<li>编写AppleScript脚本来唤起终端与vim（脚本如下）</li>
+<li>保存为<code>Applications/iTermVim.app</code></li>
+<li>找到你想要以这种方式打开的文件，比如<code>xxx.cpp</code>,<code>command + i</code>获取信息然后修改<code>Open with</code>为上面的应用然后<code>Change All   ...</code></li>
+</ol>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">on</span> <span class="built_in">run</span> &#123;input, parameters&#125;</span><br><span class="line">  <span class="keyword">set</span> filename <span class="keyword">to</span> <span class="keyword">POSIX path</span> <span class="keyword">of</span> input</span><br><span class="line">  <span class="keyword">set</span> cmd <span class="keyword">to</span> <span class="string">&quot;clear; cd `dirname &quot;</span> &amp; filename &amp; <span class="string">&quot;`;vim &quot;</span> &amp; <span class="literal">quote</span> &amp; filename &amp; <span class="literal">quote</span></span><br><span class="line">  <span class="keyword">tell</span> <span class="built_in">application</span> <span class="string">&quot;iTerm&quot;</span></span><br><span class="line">    <span class="built_in">activate</span></span><br><span class="line">    <span class="keyword">tell</span> <span class="keyword">the</span> current window</span><br><span class="line">      create <span class="literal">tab</span> <span class="keyword">with</span> default profile</span><br><span class="line">      <span class="keyword">tell</span> <span class="keyword">the</span> current session</span><br><span class="line">        <span class="built_in">write</span> <span class="built_in">text</span> cmd</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">tell</span></span><br><span class="line"><span class="keyword">end</span> <span class="built_in">run</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此脚本要在iterm启动下才能执行,并建立新的Tab，当然你可以自己修改配置。</p>
+</blockquote>
+<p>我这里的代码是采取是用 iTerm 与唤起 vim、窗口置前、在新窗口中打开、同时 cd 到目录。你也可以改成用 macOS 自带的 Terminal.app、在新窗口而非新 tab 打开、应用不同的 profile、或是执行其他 executable 等……任你发挥啦。</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://huangxuan.me/2019/09/03/vim-from-finder/">把「终端下的 Vim」作为 macOS Finder 的打开方式</a></li>
+<li><a target="_blank" rel="noopener" href="https://bl.ocks.org/napcs/2d8376e941133ccfad63e33bf1b1b60c">Open file in Terminal Vim on OSX</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/charlietran/43639b0f4e0a01c7c20df8f1929b76f2">Open file in iTerm vim for MacOS Sierra</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/13/vim-%E4%BD%9C%E4%B8%BAmacOS-Finder%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-图算法刷题专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E4%B8%93%E9%A2%98/">图算法刷题专题</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E4%B8%93%E9%A2%98/" class="archive-article-date">
+	
+  	<time datetime="2022-08-12T03:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-12</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="A1013-Battle-Over-Cities"><a href="#A1013-Battle-Over-Cities" class="headerlink" title="A1013 Battle Over Cities"></a>A1013 Battle Over Cities</h3><p>思路:通过DFS找连通分量的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e3+10;</span><br><span class="line"></span><br><span class="line">int n, m, k;</span><br><span class="line">int G[N][N] &#x3D; &#123;0&#125;;</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line"></span><br><span class="line">void DFS(int u)&#123;</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    for (int v &#x3D; 1; v &lt;&#x3D; n; v++) &#123;</span><br><span class="line">        if (vis[v] &#x3D;&#x3D;false &amp;&amp; G[u][v] !&#x3D; 0) &#123;</span><br><span class="line">            DFS(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k);</span><br><span class="line">    int id1, id2;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;id1, &amp;id2);</span><br><span class="line">        G[id1][id2] &#x3D; G[id2][id1] &#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">        int num &#x3D; 0;</span><br><span class="line">        fill(vis, vis + N, false);</span><br><span class="line">        int check;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;check);</span><br><span class="line">        vis[check] &#x3D; true;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">            if (vis[i] &#x3D;&#x3D; false) &#123;</span><br><span class="line">                num++;</span><br><span class="line">                DFS(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;, num - 1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：每个节点都需要遍历</p>
+</blockquote>
+<h3 id="A1021-Deepest-Root"><a href="#A1021-Deepest-Root" class="headerlink" title="A1021 Deepest Root"></a>A1021 Deepest Root</h3><p>思路：并查集查找几个集合即为几个连通分量，从一个节点出发找到最深的节点，再从找到的节点出发找最深的节点，这两部分节点并集即为最深的集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e4 + 10;</span><br><span class="line"></span><br><span class="line">int n;&#x2F;&#x2F;node num</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt; G[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int father[N] &#x3D; &#123;0&#125;;</span><br><span class="line">int isRoot[N] &#x3D; &#123;0&#125;;</span><br><span class="line">int findFather(int x)&#123;</span><br><span class="line">    if (father[x] &#x3D;&#x3D; x) &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line">    int F &#x3D; findFather(father[x]);</span><br><span class="line">    father[x] &#x3D; F;</span><br><span class="line">    return F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Union(int a, int b)&#123;</span><br><span class="line">    int faA &#x3D; findFather(a);</span><br><span class="line">    int faB &#x3D; findFather(b);</span><br><span class="line">    if (faA !&#x3D; faB) &#123;</span><br><span class="line">        father[faA] &#x3D; faB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void init()&#123;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        father[i] &#x3D; i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int calBlock()&#123;</span><br><span class="line">    int block &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        isRoot[findFather(i)]++;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        if (isRoot[i] !&#x3D; 0) &#123;</span><br><span class="line">            block++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int maxH &#x3D; 0;</span><br><span class="line">vector&lt;int&gt; temp, ans;</span><br><span class="line"></span><br><span class="line">void DFS(int u, int Height)&#123;</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    if (Height &gt; maxH) &#123;</span><br><span class="line">        temp.clear();</span><br><span class="line">        temp.push_back(u);</span><br><span class="line">        maxH &#x3D; Height;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (Height &#x3D;&#x3D; maxH) &#123;</span><br><span class="line">        temp.push_back(u);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; G[u].size(); i++) &#123;</span><br><span class="line">        if (vis[G[u][i]] &#x3D;&#x3D; false) &#123;</span><br><span class="line">            DFS(G[u][i], Height + 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    int a, b;</span><br><span class="line">    init();</span><br><span class="line">    for (int i &#x3D; 1; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);</span><br><span class="line">        G[a].push_back(b);</span><br><span class="line">        G[b].push_back(a);</span><br><span class="line">        Union(a, b);</span><br><span class="line">    &#125;</span><br><span class="line">    int block &#x3D; calBlock();</span><br><span class="line">    if (block !&#x3D; 1) &#123;</span><br><span class="line">        printf(&quot;Error: %d components\n&quot;, block);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        DFS(1, 1);</span><br><span class="line">        ans &#x3D; temp;</span><br><span class="line">        fill(vis, vis + N, false);</span><br><span class="line">        temp.clear();</span><br><span class="line">        DFS(ans[0], 1);</span><br><span class="line">        for (int i &#x3D; 0; i &lt; temp.size(); i++) &#123;</span><br><span class="line">            ans.push_back(temp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(ans.begin(), ans.end());</span><br><span class="line">        printf(&quot;%d\n&quot;, ans[0]);</span><br><span class="line">        for (int i &#x3D; 1; i &lt; ans.size(); i++) &#123;</span><br><span class="line">            if (ans[i] !&#x3D; ans[i-1]) &#123;</span><br><span class="line">                printf(&quot;%d\n&quot;, ans[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：并查集初始化，isRoot数组的作用是确认根节点， 下标从1开始，每个节点不要搞错。</p>
+</blockquote>
+<h3 id="A1076-Forwards-on-Weibo"><a href="#A1076-Forwards-on-Weibo" class="headerlink" title="A1076 Forwards on Weibo"></a>A1076 Forwards on Weibo</h3><blockquote>
+<p>BFS查找小于层数的节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1010;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int v;</span><br><span class="line">    int layer;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;node&gt;G[N];</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line"></span><br><span class="line">int n, l;</span><br><span class="line"></span><br><span class="line">int BFS(int u)&#123;</span><br><span class="line">    int numForward &#x3D; 0;</span><br><span class="line">    node root;</span><br><span class="line">    root.v &#x3D; u;</span><br><span class="line">    root.layer &#x3D; 0;</span><br><span class="line">    queue&lt;node&gt; Q;</span><br><span class="line">    Q.push(root);</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    while (!Q.empty()) &#123;</span><br><span class="line">        node front &#x3D; Q.front();</span><br><span class="line">        Q.pop();</span><br><span class="line">        int id &#x3D; front.v;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; G[id].size(); i++) &#123;</span><br><span class="line">            node next &#x3D; G[id][i];</span><br><span class="line">            next.layer &#x3D; front.layer + 1;</span><br><span class="line">            if (vis[next.v] &#x3D;&#x3D; false &amp;&amp; next.layer &lt;&#x3D; l) &#123;</span><br><span class="line">                Q.push(next);</span><br><span class="line">                vis[next.v] &#x3D; true;</span><br><span class="line">                numForward++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return numForward;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;l);</span><br><span class="line">    int k;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;k);</span><br><span class="line">        int id;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; k; j++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;id);</span><br><span class="line">            node now;</span><br><span class="line">            now.v &#x3D; i;</span><br><span class="line">            now.layer &#x3D; 0;</span><br><span class="line">            G[id].push_back(now);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int numQuery;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;numQuery);</span><br><span class="line">    int id2;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; numQuery; i++) &#123;</span><br><span class="line">        fill(vis, vis + N, false);</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;id2);</span><br><span class="line">        int num &#x3D; BFS(id2);</span><br><span class="line">        printf(&quot;%d\n&quot;, num);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="A1003-Emergency"><a href="#A1003-Emergency" class="headerlink" title="A1003 Emergency"></a>A1003 Emergency</h3><p>思路：Dijkstra算法求最短路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, c1, c2;</span><br><span class="line">int G[MAXV][MAXV], weight[MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">int d[MAXV], w[MAXV], num[MAXV];</span><br><span class="line"></span><br><span class="line">void Difkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    memset(num, 0, sizeof(num));</span><br><span class="line">    memset(w, 0, sizeof(w));</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    w[s] &#x3D; weight[s];</span><br><span class="line">    num[s] &#x3D; 1;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    num[v] &#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    if (w[u] + weight[v] &gt; w[v]) &#123;</span><br><span class="line">                        w[v] &#x3D; w[u] + weight[v];</span><br><span class="line">                    &#125;</span><br><span class="line">                    num[v] +&#x3D; num[u];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;c1, &amp;c2);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, weight + i);</span><br><span class="line">    &#125;</span><br><span class="line">    int u, v, we;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d %d&quot;, &amp;u, &amp;v, &amp;we);</span><br><span class="line">        G[u][v] &#x3D; we;</span><br><span class="line">        G[v][u] &#x3D; we;</span><br><span class="line">    &#125;</span><br><span class="line">    Difkstra(c1);</span><br><span class="line">    printf(&quot;%d %d\n&quot;, num[c2], w[c2]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1030-Travel-Plan"><a href="#1030-Travel-Plan" class="headerlink" title="1030 Travel Plan"></a>1030 Travel Plan</h3><p>思路:Dijkstra + DFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iterator&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXV &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1000000000;</span><br><span class="line"></span><br><span class="line">int n, m, S, D;</span><br><span class="line">int G[MAXV][MAXV], C[MAXV][MAXV];</span><br><span class="line">bool vis[MAXV] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt;pre[MAXV];</span><br><span class="line">int d[MAXV];</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + MAXV, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) return;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;int&gt;tempPath;</span><br><span class="line">vector&lt;int&gt;path;</span><br><span class="line">int optValue &#x3D; INF;</span><br><span class="line">&#x2F;&#x2F;v目的节点</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    &#x2F;&#x2F;递归边界</span><br><span class="line">    if (v &#x3D;&#x3D; S) &#123;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int value &#x3D; 0;</span><br><span class="line">        &#x2F;&#x2F;边权</span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt; 0; i--) &#123;</span><br><span class="line">            value +&#x3D; C[tempPath[i]][tempPath[i - 1]];</span><br><span class="line">        &#125;</span><br><span class="line">        if (value &lt; optValue) &#123;</span><br><span class="line">            optValue &#x3D; value;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d %d %d&quot;, &amp;n, &amp;m, &amp;S, &amp;D);</span><br><span class="line">    int c1, c2;</span><br><span class="line">    fill(G[0], G[0] + MAXV * MAXV, INF);</span><br><span class="line">    fill(C[0], C[0] + MAXV * MAXV, INF);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d&quot;, &amp;c1, &amp;c2);</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;G[c1][c2], &amp;C[c1][c2]);</span><br><span class="line">        G[c2][c1] &#x3D; G[c1][c2];</span><br><span class="line">        C[c2][c1] &#x3D; C[c1][c2];</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(S);</span><br><span class="line">    DFS(D);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, path[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d %d\n&quot;, d[D], optValue);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意点：无向图，建立邻接矩阵时，两个方向都有初始化。一些细节处理。记得初始化fill，G[][],d[],vis[]</p>
+</blockquote>
+<h3 id="A1018-Public-Bike-Management"><a href="#A1018-Public-Bike-Management" class="headerlink" title="A1018 Public Bike Management"></a>A1018 Public Bike Management</h3><p>思路：首先DFS找最短路径，DFS找第二和第三条件最小的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;sys&#x2F;wait.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 510;</span><br><span class="line">const int INF &#x3D; 1e9;</span><br><span class="line"></span><br><span class="line">int G[N][N] &#x3D; &#123;INF&#125;, carNum[N];</span><br><span class="line">int d[N] &#x3D; &#123;INF&#125;;</span><br><span class="line">vector&lt;int&gt; pre[N];</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line"></span><br><span class="line">int c, n, en, m;</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + N, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt;&#x3D; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt; path, tempPath;</span><br><span class="line">int minNeed &#x3D; INF, minRemain &#x3D; INF;</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    if (v &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int need &#x3D; 0, remain &#x3D; 0;</span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">            int id &#x3D; tempPath[i];</span><br><span class="line">            if (carNum[id] &gt; 0) &#123;</span><br><span class="line">                remain +&#x3D; carNum[id];</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                if (remain &gt; abs(carNum[id])) &#123;</span><br><span class="line">                    remain -&#x3D; abs(carNum[id]);</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    need +&#x3D; abs(carNum[id])- remain;</span><br><span class="line">                    remain &#x3D; 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (need &lt; minNeed) &#123;</span><br><span class="line">            minNeed &#x3D; need;</span><br><span class="line">            minRemain &#x3D; remain;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (need &#x3D;&#x3D; minNeed &amp;&amp; remain &lt; minRemain) &#123;</span><br><span class="line">            minRemain &#x3D; remain;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    fill(G[0], G[0] + N * N, INF);</span><br><span class="line">    fill(vis, vis + N, false);</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;c, &amp;n, &amp;en, &amp;m);</span><br><span class="line">    int car;</span><br><span class="line">    carNum[0] &#x3D; 0;&#x2F;&#x2F;ÂºÄÂßãËΩ¶Á´ô</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;car);</span><br><span class="line">        car -&#x3D; c&#x2F;2;</span><br><span class="line">        carNum[i] &#x3D; car;</span><br><span class="line">    &#125;</span><br><span class="line">    int id1, id2, l;    </span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;, &amp;id1, &amp;id2, &amp;l);</span><br><span class="line">        G[id1][id2] &#x3D; G[id2][id1] &#x3D; l;</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(0);</span><br><span class="line">    DFS(en);</span><br><span class="line">    printf(&quot;%d &quot;, minNeed);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        printf(&quot;%d&quot;, path[i]);</span><br><span class="line">        if (i &gt; 0) &#123;</span><br><span class="line">            printf(&quot;-&gt;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot; %d\n&quot;, minRemain);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，need和remain那块太难想到了</p>
+</blockquote>
+<h3 id="A1072-Gas-Station"><a href="#A1072-Gas-Station" class="headerlink" title="A1072 Gas Station"></a>A1072 Gas Station</h3><blockquote>
+<p>思路：Dijkstra + DFS关键要把加油站也加进去，序号在住所后，无需管四舍五入.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1020;</span><br><span class="line">const int INF &#x3D; 1e9;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int n, m, k, Ds;</span><br><span class="line">int G[N][N] &#x3D; &#123;INF&#125;;</span><br><span class="line">int d[N] &#x3D; &#123;INF&#125;;</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line"></span><br><span class="line">int change(string str)&#123;</span><br><span class="line">    if (str[0] &#x3D;&#x3D; &#39;G&#39;) &#123;</span><br><span class="line">        str.erase(str.begin());</span><br><span class="line">        return atoi(str.c_str()) + n;</span><br><span class="line">    &#125;</span><br><span class="line">    else return atoi(str.c_str());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + N, INF);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n + m; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 1; j &lt;&#x3D; n + m; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 1; v &lt;&#x3D; n + m; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF &amp;&amp; d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    fill(G[0], G[0] + N * N, INF);</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;k, &amp;Ds);</span><br><span class="line">    string str1, str2;</span><br><span class="line">    int p1, p2, dist;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">        cin &gt;&gt; str1 &gt;&gt; str2 &gt;&gt; dist;</span><br><span class="line">        p1 &#x3D; change(str1);</span><br><span class="line">        p2 &#x3D; change(str2);</span><br><span class="line">        G[p1][p2] &#x3D; G[p2][p1] &#x3D; dist;</span><br><span class="line">    &#125;</span><br><span class="line">    int no &#x3D; 0;</span><br><span class="line">    int id &#x3D; -1;</span><br><span class="line">    double max &#x3D; -1;</span><br><span class="line">    double ave &#x3D; INF;</span><br><span class="line">    for (int i &#x3D; n + 1; i &lt;&#x3D; n + m; i++) &#123;</span><br><span class="line">        double minDis &#x3D; INF;</span><br><span class="line">        double sum &#x3D; 0;</span><br><span class="line">        fill(vis, vis + N, false);</span><br><span class="line">        Dijkstra(i);</span><br><span class="line">        for (int j &#x3D; 1; j &lt;&#x3D; n; j++) &#123;</span><br><span class="line">            if (d[j] &gt; Ds) &#123;</span><br><span class="line">                no++;</span><br><span class="line">                minDis &#x3D; -1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (d[j] &lt; minDis) &#123;</span><br><span class="line">                minDis &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">            sum +&#x3D; 1.0 * d[j];</span><br><span class="line">        &#125;</span><br><span class="line">        if (minDis &gt; max) &#123;</span><br><span class="line">            max &#x3D; minDis;</span><br><span class="line">            id &#x3D; i;</span><br><span class="line">            ave &#x3D; sum &#x2F; n;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (minDis &#x3D;&#x3D; max &amp;&amp; sum &#x2F; n &lt; ave) &#123;</span><br><span class="line">            max &#x3D; minDis;</span><br><span class="line">            id &#x3D; i;</span><br><span class="line">            ave &#x3D; sum &#x2F; n;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (no &#x3D;&#x3D; m) &#123;</span><br><span class="line">        printf(&quot;No Solution\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        printf(&quot;G%d\n&quot;, id - n);</span><br><span class="line">        printf(&quot;%.1f %.1f\n&quot;, max, ave);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，在d[j]&gt;minDis 之后要设定minDis = -1，不然max会被设为INF;</p>
+</blockquote>
+<h3 id="A1087-All-Roads-Lead-to-Rome"><a href="#A1087-All-Roads-Lead-to-Rome" class="headerlink" title="A1087 All Roads Lead to Rome"></a>A1087 All Roads Lead to Rome</h3><blockquote>
+<p>思路：Dijkstra + DFS,常规思路</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 210;</span><br><span class="line">const int INF &#x3D; 1e9;</span><br><span class="line"></span><br><span class="line">int n, k;</span><br><span class="line">string start;</span><br><span class="line">int st;</span><br><span class="line">int G[N][N] &#x3D; &#123;INF&#125;, happy[N];</span><br><span class="line">int d[N] &#x3D; &#123;INF&#125;;</span><br><span class="line">bool vis[N] &#x3D; &#123;false&#125;;</span><br><span class="line">vector&lt;int&gt; pre[N];</span><br><span class="line"></span><br><span class="line">int num &#x3D; 0;</span><br><span class="line">int ROMIndex &#x3D; 0;</span><br><span class="line">map&lt;string, int&gt; stringToInt;</span><br><span class="line">map&lt;int, string&gt; intToString;</span><br><span class="line">int change(string str)&#123;</span><br><span class="line">    if (stringToInt.find(str) !&#x3D;  stringToInt.end()) &#123;</span><br><span class="line">        return stringToInt[str];</span><br><span class="line">    &#125;</span><br><span class="line">    else if (str &#x3D;&#x3D; &quot;ROM&quot;) &#123;</span><br><span class="line">        ROMIndex &#x3D; num;</span><br><span class="line">        stringToInt[str] &#x3D; num;</span><br><span class="line">        intToString[num] &#x3D; str;</span><br><span class="line">        return num++;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        stringToInt[str] &#x3D; num;</span><br><span class="line">        intToString[num] &#x3D; str;</span><br><span class="line">        return num++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Dijkstra(int s)&#123;</span><br><span class="line">    fill(d, d + N, INF);</span><br><span class="line">    fill(vis, vis + N, false);</span><br><span class="line">    d[s] &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int u &#x3D; -1, MIN &#x3D; INF;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">            if (vis[j] &#x3D;&#x3D; false &amp;&amp; d[j] &lt; MIN) &#123;</span><br><span class="line">                u &#x3D; j;</span><br><span class="line">                MIN &#x3D; d[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (u &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[u] &#x3D; true;</span><br><span class="line">        for (int v &#x3D; 0; v &lt; n; v++) &#123;</span><br><span class="line">            if (vis[v] &#x3D;&#x3D; false &amp;&amp; G[u][v] !&#x3D; INF) &#123;</span><br><span class="line">                if (d[u] + G[u][v] &lt; d[v]) &#123;</span><br><span class="line">                    d[v] &#x3D; d[u] + G[u][v];</span><br><span class="line">                    pre[v].clear();</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">                else if (d[u] + G[u][v] &#x3D;&#x3D; d[v]) &#123;</span><br><span class="line">                    pre[v].push_back(u);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int roadNum &#x3D; 0;</span><br><span class="line">vector&lt;int&gt; tempPath, path;</span><br><span class="line">int maxHappy &#x3D; -1;</span><br><span class="line">int avgHappy &#x3D; -1;</span><br><span class="line">void DFS(int v)&#123;</span><br><span class="line">    if (v &#x3D;&#x3D; st) &#123;</span><br><span class="line">        roadNum ++;</span><br><span class="line">        tempPath.push_back(v);</span><br><span class="line">        int value &#x3D; 0;</span><br><span class="line">        int avg &#x3D; 0; </span><br><span class="line">        for (int i &#x3D; tempPath.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">            value +&#x3D; happy[tempPath[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        avg &#x3D; value &#x2F; (tempPath.size() - 1);</span><br><span class="line">        if (value &gt; maxHappy) &#123;</span><br><span class="line">            maxHappy &#x3D; value;</span><br><span class="line">            avgHappy &#x3D; avg;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (value &#x3D;&#x3D; maxHappy &amp;&amp; avg &gt; avgHappy) &#123;</span><br><span class="line">            avgHappy &#x3D; avg;</span><br><span class="line">            path &#x3D; tempPath;</span><br><span class="line">        &#125;</span><br><span class="line">        tempPath.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.push_back(v);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; pre[v].size(); i++) &#123;</span><br><span class="line">        DFS(pre[v][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    tempPath.pop_back();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    fill(G[0], G[0] + N * N, INF);</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;k);</span><br><span class="line">    cin &gt;&gt; start;</span><br><span class="line">    st &#x3D; change(start);</span><br><span class="line">    happy[st] &#x3D; 0;</span><br><span class="line">    string strId;</span><br><span class="line">    int happyValue;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">        cin &gt;&gt; strId &gt;&gt; happyValue;</span><br><span class="line">        happy[change(strId)] &#x3D; happyValue;</span><br><span class="line">    &#125;</span><br><span class="line">    string id1, id2;</span><br><span class="line">    int cost;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">        cin &gt;&gt; id1 &gt;&gt; id2 &gt;&gt; cost;</span><br><span class="line">        G[change(id1)][change(id2)] &#x3D; cost;</span><br><span class="line">        G[change(id2)][change(id1)] &#x3D; cost;</span><br><span class="line">    &#125;</span><br><span class="line">    Dijkstra(0);</span><br><span class="line">    DFS(ROMIndex);</span><br><span class="line">    printf(&quot;%d %d %d %d\n&quot;, roadNum, d[ROMIndex], maxHappy, avgHappy);</span><br><span class="line">    for (int i &#x3D; path.size() - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">        cout &lt;&lt; intToString[path[i]];</span><br><span class="line">        if (i !&#x3D; 0) &#123;</span><br><span class="line">            cout &lt;&lt;  &quot;-&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：下标啊，检查了半小时，总是搞错。happy[tempPath[i]] 写成happy[i]检查半天，不然一遍过了.</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/12/%E5%9B%BE%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E4%B8%93%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前缀中缀后缀表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/09/%E5%89%8D%E7%BC%80%E4%B8%AD%E7%BC%80%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/">前缀中缀后缀表达式</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/07/09/%E5%89%8D%E7%BC%80%E4%B8%AD%E7%BC%80%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+	
+  	<time datetime="2022-07-09T08:16:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-09</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-前缀表达式"><a href="#1-前缀表达式" class="headerlink" title="1.前缀表达式"></a>1.前缀表达式</h2><ul>
+<li>称波兰式，前缀表达式的运算符位于操作数之前。</li>
+<li>举例 <code>(3+4)x5-6</code> 对应的前缀表达式是: <code>-x+3456</code></li>
+<li>计算求值过程，从右至左扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算（栈顶元素 和 次顶元素），并将结果入栈；重复上述过程直到表达式最左端，最后运算得出的值即为表达式的结果。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例如: (3+4)×5-6 对应的前缀表达式就是 - × + 3 4 5 6 , 针对前缀表达式求值步骤如下:</span><br><span class="line"></span><br><span class="line">第一步：从右至左扫描，将6、5、4、3压入堆栈</span><br><span class="line"></span><br><span class="line">第二步：遇到+运算符，因此弹出3和4（3为栈顶元素，4为次顶元素），计算出3+4的值，得7，再将7入栈。</span><br><span class="line"></span><br><span class="line">第三步：接下来是×运算符，因此弹出7和5，计算出7×5&#x3D;35，将35入栈。</span><br><span class="line"></span><br><span class="line">第四步：最后是-运算符，计算出35-6的值，即29，由此得出最终结果。</span><br></pre></td></tr></table></figure>
+<h2 id="2-中缀表达式"><a href="#2-中缀表达式" class="headerlink" title="2.中缀表达式"></a>2.中缀表达式</h2></li>
+<li>就是常见的运算表达式，如<code>(3+4)×5-6</code></li>
+<li>中缀表达式的求值是我们人最熟悉的，但是对计算机来说却不好操作，因此，计算结果时，往往会将中缀表达式转成其他表达式来操作（一般转成后缀表达式）</li>
+</ul>
+<h2 id="3-后缀表达式"><a href="#3-后缀表达式" class="headerlink" title="3.后缀表达式"></a>3.后缀表达式</h2><ul>
+<li>后缀表达式又称逆波兰表达式,与前缀表达式相似，只是运算符位于操作数之后。</li>
+<li>举例<code>(3+4)×5-6</code>对应的后缀表达式就是 <code>34+5×6–</code></li>
+<li>计算求值过程，从左至右扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算（次顶元素 和 栈顶元素），并将结果入栈；重复上述过程直到表达式最右端，最后运算得出的值即为表达式的结果。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">例如: (3+4)×5-6 对应的后缀表达式就是 3 4 + 5 × 6 - , 针对后缀表达式求值步骤如下。</span><br><span class="line"></span><br><span class="line">第一步：从左至右扫描，将3和4压入堆栈。</span><br><span class="line"></span><br><span class="line">第二步：遇到+运算符，弹出4和3（4为栈顶元素，3为次顶元素），计算出3+4的值，得7，再将7入栈。</span><br><span class="line"></span><br><span class="line">第三步：将5入栈。</span><br><span class="line"></span><br><span class="line">第四步：接下来是×运算符，弹出5和7，计算出7×5&#x3D;35，将35入栈。</span><br><span class="line"></span><br><span class="line">第五步：将6入栈。</span><br><span class="line"></span><br><span class="line">第六步：最后是-运算符，计算出35-6的值，即29，由此得出最终结果。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="4-中缀表达式转后缀表达式"><a href="#4-中缀表达式转后缀表达式" class="headerlink" title="4. 中缀表达式转后缀表达式"></a>4. 中缀表达式转后缀表达式</h2><p>后缀表达式适合计算机进行运算，但是人却不太容易写出来，尤其是表达式很长的情况下，因此在开发中，我们需要将中缀表达式转成后缀表达式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">中缀表达式转后缀表达式具体步骤如下:</span><br><span class="line"></span><br><span class="line">1 初始化两个栈：运算符栈s1和储存中间结果的栈s2。</span><br><span class="line"></span><br><span class="line">2 从左至右扫描中缀表达式。</span><br><span class="line"></span><br><span class="line">3 遇到操作数时，将其压s2；</span><br><span class="line"></span><br><span class="line">4 遇到运算符时，比较其与s1栈顶运算符的优先级：</span><br><span class="line"></span><br><span class="line">4.1 如果s1为空，或栈顶运算符为左括号“(”，则直接将此运算符入栈。</span><br><span class="line"></span><br><span class="line">4.2 否则，若优先级比栈顶运算符的高，也将运算符压入s1。</span><br><span class="line"></span><br><span class="line">4.3 否则，将s1栈顶的运算符弹出并压入到s2中，再次转到4.1与s1中新的栈顶运算符相比较。</span><br><span class="line"></span><br><span class="line">5 遇到括号时，分下面两种情况进行处理。</span><br><span class="line"></span><br><span class="line">5.1 如果是左括号“(”，则直接压入s1。</span><br><span class="line"></span><br><span class="line">5.2 如果是右括号“)”，则依次弹出s1栈顶的运算符，并压入s2，直到遇到左括号为止，此时将这一对括号丢弃。</span><br><span class="line"></span><br><span class="line">6 重复步骤2至5，直到表达式的最右边。</span><br><span class="line"></span><br><span class="line">7 将s1中剩余的运算符依次弹出并压入s2。</span><br><span class="line"></span><br><span class="line">8 依次弹出s2中的元素并输出，结果的逆序即为中缀表达式对应的后缀表达式。</span><br></pre></td></tr></table></figure>
+<p>举例说明：<br>将中缀表达式<code>1+((2+3)×4)-5</code>转换为后缀表达式的过程如下:</p>
+<table>
+<thead>
+<tr>
+<th>扫描到的元素</th>
+<th>s2（栈底-&gt; 栈顶）</th>
+<th>s1（栈底-&gt; 栈顶）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>空</td>
+<td>数字，直接入栈</td>
+</tr>
+<tr>
+<td>+</td>
+<td>1</td>
+<td>+</td>
+<td>s1为空，运算符直接入栈</td>
+</tr>
+<tr>
+<td>(</td>
+<td>1</td>
+<td>+(</td>
+<td>左括号，直接入栈</td>
+</tr>
+<tr>
+<td>(</td>
+<td>1</td>
+<td>+((</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1 2</td>
+<td>+((</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>+</td>
+<td>1 2</td>
+<td>+((+</td>
+<td>s1栈顶为左括号，运算符直接入栈</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1 2 3</td>
+<td>+((+</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>)</td>
+<td>1 2 3 +</td>
+<td>+(</td>
+<td>右括号，弹出运算符直至遇到左括号</td>
+</tr>
+<tr>
+<td>x</td>
+<td>1 2 3 +</td>
+<td>+(x</td>
+<td>s1栈顶为左括号，运算符直接入栈</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1 2 3 + 4</td>
+<td>+(x</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>)</td>
+<td>1 2 3 + 4 x</td>
+<td>+</td>
+<td>右括号，弹出运算符直至遇到左括号</td>
+</tr>
+<tr>
+<td>-</td>
+<td>1 2 3 + 4 x +</td>
+<td>-</td>
+<td>-与+优先级相同，因此弹出+，再压入-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1 2 3 + 4 x + 5</td>
+<td>-</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>达到最右端</td>
+<td>1 2 3 + 4 x + 5 -</td>
+<td>空</td>
+<td>s1中剩余运算符</td>
+</tr>
+</tbody></table>
+<p>结果为<code>1 2 3 + 4 x + 5 -</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/09/%E5%89%8D%E7%BC%80%E4%B8%AD%E7%BC%80%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-numpy函数总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/08/numpy%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/">numpy函数总结</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/07/08/numpy%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" class="archive-article-date">
+	
+  	<time datetime="2022-07-08T03:11:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-08</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-argsort-函数"><a href="#1-argsort-函数" class="headerlink" title="1.argsort()函数"></a>1.argsort()函数</h2><p>作用是将数组按照从小到大的顺序排序，并按照对应的索引值输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [3, 5, 1]</span><br><span class="line">b &#x3D; argsort(a)</span><br><span class="line">print(&quot;a排序为：&quot;, end&#x3D;&#39;&#39;)</span><br><span class="line">print(b)</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">a排序为：[2 0 1]</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/08/numpy%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c-字符输入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/06/c-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5/">c++字符输入</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/07/06/c-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5/" class="archive-article-date">
+	
+  	<time datetime="2022-07-06T02:20:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-06</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-scanf输入"><a href="#1-scanf输入" class="headerlink" title="1.scanf输入"></a>1.scanf输入</h3><p>字符数组使用%s读入的时候以空格跟换行为读入结束标志，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    char str[10];</span><br><span class="line">    scanf(&quot;%s&quot;, str);</span><br><span class="line">    printf(&quot;%s&quot;, str);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输入数据：</span><br><span class="line">abcd efg</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">abcd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>scanf的%c格式是可以读入空格和换行的。</p>
+</blockquote>
+<h3 id="2-getchar-和putchar-输入-输出字符"><a href="#2-getchar-和putchar-输入-输出字符" class="headerlink" title="2.getchar()和putchar()输入/输出字符"></a>2.getchar()和putchar()输入/输出字符</h3><p>getchar()用来输入单个字符，putchar()用来输出单个字符，在某些scanf函数使用不便的 场合可以使用getchar()来输入字符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">    char c1, c2, c3;</span><br><span class="line">    c1 &#x3D; getchar();</span><br><span class="line">    getchar();</span><br><span class="line">    c2 &#x3D; getchar();</span><br><span class="line">    c3 &#x3D; getchar();</span><br><span class="line">    putchar(c1);</span><br><span class="line">    putchar(c2);</span><br><span class="line">    putchar(c3);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输入数据:</span><br><span class="line">abcd</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">acd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>getchar可以识别换行符。<br>getchar做输入无法自动添加\0结尾，因此若用puts和printf输出字符串会因为无法识别字符串末尾而输出一大堆乱码。</p>
+</blockquote>
+<h3 id="3-gets输入，puts输出"><a href="#3-gets输入，puts输出" class="headerlink" title="3.gets输入，puts输出"></a>3.gets输入，puts输出</h3><p>gets用来输入一行字符串，并将其存放于一维数组中，puts用来输出一行字符串，并紧跟一个换行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">    char str1[20];</span><br><span class="line">    char str2[5][10];</span><br><span class="line">    gets(str1);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; 3; i++)&#123;</span><br><span class="line">        gets(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    puts(srt1);</span><br><span class="line">    for(int i &#x3D; 0; i &lt; 3; i++)&#123;</span><br><span class="line">        puts(str2[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line">WoAiDeRenBuAiWo</span><br><span class="line">QAQ</span><br><span class="line">T_T</span><br><span class="line">WoAiNi</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>gets用\n作为结束标志。</p>
+</blockquote>
+<h3 id="4-getline函数"><a href="#4-getline函数" class="headerlink" title="4.getline函数"></a>4.getline函数</h3><ul>
+<li>把一整行都读入char型数组str[100]中：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char str[100];</span><br><span class="line">cin.getline(str, 100);</span><br></pre></td></tr></table></figure></li>
+<li>如果是string容器，则需要用下面的方式输入:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">getline(cin, str);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不会因为空格导致不能输入整行<br>注意：若之前用cin,scanf读入数据后要加getchar()读入回车，不然getline会先读回车符号。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-cin"><a href="#5-cin" class="headerlink" title="5.cin"></a>5.cin</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">cin &gt;&gt; str;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>cin会因为有空格无法读入整行</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/06/c-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-c-常用开发工具（Unix版）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -844,477 +1426,9 @@
 
 
   
-    <article id="post-vim练级手册（八）-symbols-outline大纲视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/">vim练级手册（八） ---symbols_outline大纲视图</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-	
-  	<time datetime="2022-06-20T14:46:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-20</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&lt;leader&gt; o</td>
-<td>打开大纲视图</td>
-</tr>
-<tr>
-<td>q</td>
-<td>退出</td>
-</tr>
-<tr>
-<td>o</td>
-<td>定位symbol对应的位置</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>跳到symbol对应的位置</td>
-</tr>
-<tr>
-<td>K</td>
-<td>悬浮看symbol内容</td>
-</tr>
-<tr>
-<td>a</td>
-<td>重新命名symbol</td>
-</tr>
-</tbody></table>
-<h2 id="1-symbols-outline-安装"><a href="#1-symbols-outline-安装" class="headerlink" title="1.symbols_outline 安装"></a>1.symbols_outline 安装</h2><h4 id="安装symbols-outline"><a href="#安装symbols-outline" class="headerlink" title="安装symbols-outline"></a>安装symbols-outline</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 文件大纲	</span><br><span class="line">use	&#39;simrat39&#x2F;symbols-outline.nvim&#39;</span><br></pre></td></tr></table></figure>
-<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
-<h4 id="配置symbols-outline插件"><a href="#配置symbols-outline插件" class="headerlink" title="配置symbols_outline插件"></a>配置symbols_outline插件</h4><p>创建以下文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;symbols_outline.lua</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
-</blockquote>
-<p>在文件中添加以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">-- init.lua</span><br><span class="line">vim.g.symbols_outline &#x3D; &#123;</span><br><span class="line">    highlight_hovered_item &#x3D; true,</span><br><span class="line">    show_guides &#x3D; true,</span><br><span class="line">    auto_preview &#x3D; true,</span><br><span class="line">    position &#x3D; &#39;right&#39;,</span><br><span class="line">    relative_width &#x3D; true,</span><br><span class="line">    width &#x3D; 25,</span><br><span class="line">    auto_close &#x3D; false,</span><br><span class="line">    show_numbers &#x3D; false,</span><br><span class="line">    show_relative_numbers &#x3D; false,</span><br><span class="line">    show_symbol_details &#x3D; true,</span><br><span class="line">    preview_bg_highlight &#x3D; &#39;Pmenu&#39;,</span><br><span class="line">    keymaps &#x3D; &#123; -- These keymaps can be a string or a table for multiple keys</span><br><span class="line">        close &#x3D; &#123;&quot;&lt;Esc&gt;&quot;, &quot;q&quot;&#125;,</span><br><span class="line">        goto_location &#x3D; &quot;&lt;Cr&gt;&quot;,</span><br><span class="line">        focus_location &#x3D; &quot;o&quot;,</span><br><span class="line">        hover_symbol &#x3D; &quot;&lt;C-space&gt;&quot;,</span><br><span class="line">        toggle_preview &#x3D; &quot;K&quot;,</span><br><span class="line">        rename_symbol &#x3D; &quot;r&quot;,</span><br><span class="line">        code_actions &#x3D; &quot;a&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    lsp_blacklist &#x3D; &#123;&#125;,</span><br><span class="line">    symbol_blacklist &#x3D; &#123;&#125;,</span><br><span class="line">    symbols &#x3D; &#123;</span><br><span class="line">        File &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSURI&quot;&#125;,</span><br><span class="line">        Module &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Namespace &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Package &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Class &#x3D; &#123;icon &#x3D; &quot;𝓒&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Method &#x3D; &#123;icon &#x3D; &quot;ƒ&quot;, hl &#x3D; &quot;TSMethod&quot;&#125;,</span><br><span class="line">        Property &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSMethod&quot;&#125;,</span><br><span class="line">        Field &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSField&quot;&#125;,</span><br><span class="line">        Constructor &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstructor&quot;&#125;,</span><br><span class="line">        Enum &#x3D; &#123;icon &#x3D; &quot;ℰ&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Interface &#x3D; &#123;icon &#x3D; &quot;ﰮ&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Function &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSFunction&quot;&#125;,</span><br><span class="line">        Variable &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        Constant &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        String &#x3D; &#123;icon &#x3D; &quot;𝓐&quot;, hl &#x3D; &quot;TSString&quot;&#125;,</span><br><span class="line">        Number &#x3D; &#123;icon &#x3D; &quot;#&quot;, hl &#x3D; &quot;TSNumber&quot;&#125;,</span><br><span class="line">        Boolean &#x3D; &#123;icon &#x3D; &quot;⊨&quot;, hl &#x3D; &quot;TSBoolean&quot;&#125;,</span><br><span class="line">        Array &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        Object &#x3D; &#123;icon &#x3D; &quot;⦿&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Key &#x3D; &#123;icon &#x3D; &quot;🔐&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Null &#x3D; &#123;icon &#x3D; &quot;NULL&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        EnumMember &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSField&quot;&#125;,</span><br><span class="line">        Struct &#x3D; &#123;icon &#x3D; &quot;𝓢&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Event &#x3D; &#123;icon &#x3D; &quot;🗲&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Operator &#x3D; &#123;icon &#x3D; &quot;+&quot;, hl &#x3D; &quot;TSOperator&quot;&#125;,</span><br><span class="line">        TypeParameter &#x3D; &#123;icon &#x3D; &quot;𝙏&quot;, hl &#x3D; &quot;TSParameter&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-my-zsh配置与插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">oh my zsh配置与插件</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/" class="archive-article-date">
-	
-  	<time datetime="2022-06-16T16:00:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-17</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>上次写了一篇zsh的配置文章<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">item2-oh-my-zsh最全配置教程.md</a>,详细的写了环境的配置，以及一些插件的推荐，过了这么长时间我的配置又有了新的提升，新增如下特性。</p>
-<ul>
-<li>快捷键的绑定</li>
-<li>取别名</li>
-<li>插件的增加</li>
-</ul>
-<h3 id="1-快捷键的绑定"><a href="#1-快捷键的绑定" class="headerlink" title="1.快捷键的绑定"></a>1.快捷键的绑定</h3><p>作为一名期望全键盘操作的工作者，将所有常使用的键绑定在主工作区是十分重要的，键盘上下左右键的分布，使得手每次都要进行移动，十分麻烦，因此想办法进行快捷键的绑定。修改<code>~/.zshrc</code>文件，添加如下内容。</p>
-<ul>
-<li>绑定补全键<br>补全命令需要每次按右键才能补全完成，因此使用以下语句，将补全快捷键绑定在 <code>,</code>上，使得操作更加快速便捷。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用,补全历史记录</span><br><span class="line">bindkey &#39;,&#39; autosuggest-accept</span><br></pre></td></tr></table></figure></li>
-<li>绑定上下左右键<br>参考vim的案件模式，将上下左右进行映射，使用control+hjkl进行代替。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bindkey &#39;^h&#39;  backward-char         #control+h:向左移动一个单词</span><br><span class="line">bindkey &#39;^l&#39;  forward-char          #control+l：向右移动一个单词</span><br><span class="line">bindkey &#39;^k&#39;  up-line-or-history    #control+k：向上翻看历史记录</span><br><span class="line">bindkey &#39;^j&#39;  down-line-or-history  #control+j：向下翻看历史记录</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="2-取别名"><a href="#2-取别名" class="headerlink" title="2.取别名"></a>2.取别名</h3><p>使用<code>alias</code>关键字，可以给一些较长语句取别名，按键更加的快速，修改<code>~/.zshrc</code>文件,我的一些配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alias mysql&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysql</span><br><span class="line">alias ls&#x3D;&#39;lsd&#39;</span><br><span class="line">alias vim&#x3D;&#39;nvim&#39;</span><br><span class="line">alias ra&#x3D;&#39;ranger&#39;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-插件的增加"><a href="#3-插件的增加" class="headerlink" title="3.插件的增加"></a>3.插件的增加</h3><p>在上一篇文章中已经写了一些插件推荐，这里在增加一些插件。</p>
-<h5 id="1-dash"><a href="#1-dash" class="headerlink" title="1.dash"></a>1.dash</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dash">dash链接</a></p>
-<p>在<code>~/.zshrc</code>插件中增加<code>plugins=(... dash)</code></p>
-<p>在终端输入dash即可快速打开dash软件，查找相应的API。</p>
-<h5 id="2-vi-mode"><a href="#2-vi-mode" class="headerlink" title="2.vi-mode"></a>2.vi-mode</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode">vi-mode链接</a><br>在<code>~/.zshrc</code>插件中增加<code>plugins=(... vi-mode)</code></p>
-<p>在终端输入时，按<code>ESC</code>键可以快速进入终端vim模式,按<code>vv</code>进入vim中修改语句。<br>如下语句将nvim作为vi-mode的默认启动vim器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># vi-mode 使用nvim作为默认打开工具</span><br><span class="line">EDITOR&#x3D;nvim </span><br><span class="line">export EDITOR</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-vscode"><a href="#3-vscode" class="headerlink" title="3.vscode"></a>3.vscode</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode">vscode链接</a><br>由于实际应用中有时也会用到vscode，如下可在终端快速打开vscode</p>
-<p>1.Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)<br><code>git clone https://github.com/valentinocossar/vscode.git $ZSH_CUSTOM/plugins/vscode</code><br>2.Add the plugin to the list of plugins for Oh My Zsh to load:<br><code>plugins=(vscode)</code></p>
-<p>使用<code>vs</code>即可打开vscode</p>
-<h5 id="4-sublime"><a href="#4-sublime" class="headerlink" title="4.sublime"></a>4.sublime</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sublime">sublime链接</a><br>由于实际应用中有时也会用到sublime，如下可在终端快速打开sublime</p>
-<p>在<code>~/.zshrc</code>插件中增加<code>plugins=(... vi-mode)</code></p>
-<p>使用<code>st</code>即可打开sublime.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zsh</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vim拓展-zsh插件（vi-mode）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/16/vim%E6%8B%93%E5%B1%95-zsh%E6%8F%92%E4%BB%B6%EF%BC%88vi-mode%EF%BC%89/">vim拓展---zsh插件（vi-mode）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/06/16/vim%E6%8B%93%E5%B1%95-zsh%E6%8F%92%E4%BB%B6%EF%BC%88vi-mode%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2022-06-16T14:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-16</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>esc/&lt;C-[&gt;</td>
-<td>进入vi-mode模式</td>
-</tr>
-<tr>
-<td>vv</td>
-<td>进入nvim编辑器</td>
-</tr>
-</tbody></table>
-<p>更多快捷键查看<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode">vi-mode</a>仓库。</p>
-<h2 id="安装vi-mode"><a href="#安装vi-mode" class="headerlink" title="安装vi-mode"></a>安装vi-mode</h2><p>在你的配置文件/.zshrc追加<br><code>plugins(vi-mode)</code></p>
-<p>然后在终端执行<br><code>source ~/.zshrc</code></p>
-<p>要想使用nvim作为vv触发的编辑器，在你的<code>/.zshrc</code>中追加以下语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># vi-mode 使用nvim作为默认打开工具</span><br><span class="line">EDITOR&#x3D;nvim </span><br><span class="line">export EDITOR</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/16/vim%E6%8B%93%E5%B1%95-zsh%E6%8F%92%E4%BB%B6%EF%BC%88vi-mode%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2021服务外包之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/">2021服务外包之旅</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/" class="archive-article-date">
-	
-  	<time datetime="2022-05-30T07:22:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-30</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2021中国机器人大赛线上之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/">2021中国机器人大赛线上之旅</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/" class="archive-article-date">
-	
-  	<time datetime="2022-04-25T07:22:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
