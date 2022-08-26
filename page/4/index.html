@@ -164,6 +164,417 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim练级手册（五）-defx文件管理与vim-choosewin窗口选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/">vim练级手册（五） ---defx文件管理与vim-choosewin窗口选择</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/" class="archive-article-date">
+	
+  	<time datetime="2022-04-22T03:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-22</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sf</td>
+<td>启动文件管理defx</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为defx中的快捷键</td>
+</tr>
+<tr>
+<td>l/Enter/Right</td>
+<td>悬浮ranger中打开文件</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>pp</td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td>dD</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>YY</td>
+<td>复制路径</td>
+</tr>
+<tr>
+<td>i</td>
+<td>选择窗口,defx成为侧边栏</td>
+</tr>
+<tr>
+<td>o</td>
+<td>打开树结构</td>
+</tr>
+<tr>
+<td>N</td>
+<td>新建单个文件</td>
+</tr>
+<tr>
+<td>M</td>
+<td>同时新建多个文件</td>
+</tr>
+<tr>
+<td>K</td>
+<td>新建目录</td>
+</tr>
+<tr>
+<td>a</td>
+<td>文件重命名</td>
+</tr>
+<tr>
+<td>m/<space></td>
+<td>标记文件</td>
+</tr>
+</tbody></table>
+<h2 id="1-defx"><a href="#1-defx" class="headerlink" title="1.defx"></a>1.defx</h2><p>上一节介绍了一款悬浮的文件管理插件，为了符合大部分IDE习惯，将侧边栏作为文件管理，defx提供了这样的功能。</p>
+<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 文件管理插件，类似与ranger。小孩子才做选择，我都要</span><br><span class="line">use &#123;</span><br><span class="line">	&quot;Shougo&#x2F;defx.nvim&quot;,</span><br><span class="line">	requires &#x3D; &#123;</span><br><span class="line">		&quot;kristijanhusak&#x2F;defx-icons&quot;, -- defx文件管理图标支持</span><br><span class="line">		&quot;t9md&#x2F;vim-choosewin&quot; -- 窗口选择器,可以让defx使用i打开文件</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置defx"><a href="#配置defx" class="headerlink" title="配置defx"></a>配置defx</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;defx.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">if !exists(&#39;g:loaded_defx&#39;) | finish | endif</span><br><span class="line">&quot; Define mappings</span><br><span class="line">&quot;cnoreabbrev sf Defx -listed -new</span><br><span class="line">&quot;      \ -columns&#x3D;indent:mark:icon:icons:filename:git:size</span><br><span class="line">&quot;      \ -buffer-name&#x3D;tab&#96;tabpagenr()&#96;&lt;CR&gt;</span><br><span class="line">nnoremap &lt;silent&gt;sf :&lt;C-u&gt;Defx -listed -resume</span><br><span class="line">      \ -columns&#x3D;indent:mark:icon:icons:filename:git:size</span><br><span class="line">      \ -buffer-name&#x3D;tab&#96;tabpagenr()&#96;</span><br><span class="line">      \ &#96;expand(&#39;%:p:h&#39;)&#96; -search&#x3D;&#96;expand(&#39;%:p&#39;)&#96;&lt;CR&gt;</span><br><span class="line">&quot;nnoremap &lt;silent&gt;fi :&lt;C-u&gt;Defx -new &#96;expand(&#39;%:p:h&#39;)&#96; -search&#x3D;&#96;expand(&#39;%:p&#39;)&#96;&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">autocmd FileType defx call s:defx_my_settings()</span><br><span class="line">	function! s:defx_my_settings() abort</span><br><span class="line">	  &quot; Define mappings</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;CR&gt;</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; yy</span><br><span class="line">	  \ defx#do_action(&#39;copy&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; dd</span><br><span class="line">	  \ defx#do_action(&#39;move&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; pp</span><br><span class="line">	  \ defx#do_action(&#39;paste&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; l</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Right&gt;</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; E</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;, &#39;vsplit&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; n</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;, &#39;pedit&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; i</span><br><span class="line">	  \ defx#do_action(&#39;open&#39;, &#39;choose&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; o</span><br><span class="line">	  \ defx#do_action(&#39;open_or_close_tree&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; K</span><br><span class="line">	  \ defx#do_action(&#39;new_directory&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; N</span><br><span class="line">	  \ defx#do_action(&#39;new_file&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; M</span><br><span class="line">	  \ defx#do_action(&#39;new_multiple_files&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; C</span><br><span class="line">	  \ defx#do_action(&#39;toggle_columns&#39;,</span><br><span class="line">	  \                &#39;mark:indent:icon:filename:type:size:time&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; S</span><br><span class="line">	  \ defx#do_action(&#39;toggle_sort&#39;, &#39;time&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; dD</span><br><span class="line">	  \ defx#do_action(&#39;remove&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; a</span><br><span class="line">	  \ defx#do_action(&#39;rename&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; !</span><br><span class="line">	  \ defx#do_action(&#39;execute_command&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; x</span><br><span class="line">	  \ defx#do_action(&#39;execute_system&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; YY</span><br><span class="line">	  \ defx#do_action(&#39;yank_path&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; .</span><br><span class="line">	  \ defx#do_action(&#39;toggle_ignored_files&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;BS&gt;</span><br><span class="line">	  \ defx#do_action(&#39;toggle_ignored_files&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; ;</span><br><span class="line">	  \ defx#do_action(&#39;repeat&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; h</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;, [&#39;..&#39;])</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Left&gt;</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;, [&#39;..&#39;])</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; ~</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; gh</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; gn</span><br><span class="line">	  \ defx#do_action(&#39;cd&#39;,[&#39;~&#x2F;.config&#x2F;nvim&#39;])</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; q</span><br><span class="line">	  \ defx#do_action(&#39;quit&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Space&gt;</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select&#39;) . &#39;j&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; m</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select&#39;) . &#39;j&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; vv</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select_all&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; *</span><br><span class="line">	  \ defx#do_action(&#39;toggle_select_all&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; j</span><br><span class="line">	  \ line(&#39;.&#39;) &#x3D;&#x3D; line(&#39;$&#39;) ? &#39;gg&#39; : &#39;j&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; k</span><br><span class="line">	  \ line(&#39;.&#39;) &#x3D;&#x3D; 1 ? &#39;G&#39; : &#39;k&#39;</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;C-l&gt;</span><br><span class="line">	  \ defx#do_action(&#39;redraw&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;C-g&gt;</span><br><span class="line">	  \ defx#do_action(&#39;print&#39;)</span><br><span class="line">	  nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; cd</span><br><span class="line">	  \ defx#do_action(&#39;change_vim_cwd&#39;)</span><br><span class="line">	endfunction</span><br><span class="line"></span><br><span class="line">call defx#custom#column(&#39;icon&#39;, &#123;</span><br><span class="line">      \ &#39;directory_icon&#39;: &#39;▸&#39;,</span><br><span class="line">      \ &#39;opened_icon&#39;: &#39;▾&#39;,</span><br><span class="line">      \ &#39;root_icon&#39;: &#39; &#39;,</span><br><span class="line">      \ &#125;)</span><br><span class="line">call defx#custom#column(&#39;git&#39;, &#39;indicators&#39;, &#123;</span><br><span class="line">  \ &#39;Modified&#39;  : &#39;M&#39;,</span><br><span class="line">  \ &#39;Staged&#39;    : &#39;✚&#39;,</span><br><span class="line">  \ &#39;Untracked&#39; : &#39;✭&#39;,</span><br><span class="line">  \ &#39;Renamed&#39;   : &#39;➜&#39;,</span><br><span class="line">  \ &#39;Unmerged&#39;  : &#39;═&#39;,</span><br><span class="line">  \ &#39;Ignored&#39;   : &#39;☒&#39;,</span><br><span class="line">  \ &#39;Deleted&#39;   : &#39;✖&#39;,</span><br><span class="line">  \ &#39;Unknown&#39;   : &#39;?&#39;</span><br><span class="line">  \ &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后使用<code>sf</code>即可唤起defx文件管理插件，并使用相应的快捷键进行文件操作。</p>
+<h4 id="defx-icons配置"><a href="#defx-icons配置" class="headerlink" title="defx-icons配置"></a>defx-icons配置</h4><p>为了使得我们的文件管理插件defx更加的美观，我们加入了defx-icons插件，使得各个文件可以显示图标，更加美观。</p>
+<p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;defx-icons.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot; 增加图标的宽度，来解决图标 与文件名重叠的问题</span><br><span class="line">let g:defx_icons_column_length &#x3D; 2</span><br></pre></td></tr></table></figure>
+
+<p>因为图标配置需要优先级比较高，所以要在init.vim中增加如下一行：<br><code>source ~/.config/nvim/after/plugin/defx-icons.rc.vim</code></p>
+<h4 id="vim-choosewin配置"><a href="#vim-choosewin配置" class="headerlink" title="vim-choosewin配置"></a>vim-choosewin配置</h4><p>这是一个窗口选择插件。<br>新增如下配置文件<br><code>~/.config/nvim/after/plugin/defx-icons.rc.vim</code></p>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;window选择器</span><br><span class="line">&quot; if you want to use overlay feature</span><br><span class="line">let g:choosewin_overlay_enable &#x3D; 1</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120629374">05_[nvim0.5+从0单排]_vim文件管理插件defx与窗口选择工具 vim-choosewin</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vim练级手册（四）-ranger文件管理插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/">vim练级手册（四） ---ranger文件管理插件</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/" class="archive-article-date">
+	
+  	<time datetime="2022-04-04T02:57:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-04</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sr</td>
+<td>在nvim中打开悬浮ranger</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为悬浮ranger中的快捷键</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>悬浮ranger中打开文件</td>
+</tr>
+<tr>
+<td>ctrl-t</td>
+<td>将文件以新的Tab页打开</td>
+</tr>
+<tr>
+<td>ctrl-x</td>
+<td>上下分屏打开</td>
+</tr>
+<tr>
+<td>ctrl-v</td>
+<td>左右分屏打开</td>
+</tr>
+</tbody></table>
+<h2 id="1-先导安装"><a href="#1-先导安装" class="headerlink" title="1.先导安装"></a>1.先导安装</h2><p>在macOS中使用<code>brew install ranger</code>安装的<code>Ranger</code>默认使用python2运行的，不符合<code>rnvimr</code>的要求。<br>macOS用户请通过<code>pip3 install Ranger-fm</code>而不是<code>brew install ranger</code>安装<code>Ranger</code>。<br>否则，悬浮的ranger容易卡死</p>
+<h4 id="安装ranger"><a href="#安装ranger" class="headerlink" title="安装ranger"></a>安装ranger</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install Ranger-fm</span><br></pre></td></tr></table></figure>
+<h4 id="安装pynvim"><a href="#安装pynvim" class="headerlink" title="安装pynvim"></a>安装pynvim</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pynvim </span><br></pre></td></tr></table></figure>
+
+<h2 id="2-安装rnvimr插件"><a href="#2-安装rnvimr插件" class="headerlink" title="2.安装rnvimr插件"></a>2.安装rnvimr插件</h2><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--内嵌浮动ranger插件</span><br><span class="line">use &quot;kevinhwang91&#x2F;rnvimr&quot;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置rnvimr插件"><a href="#配置rnvimr插件" class="headerlink" title="配置rnvimr插件"></a>配置rnvimr插件</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;rnvimr.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot; 让Ranger取代Netrw并成为文件浏览器</span><br><span class="line">let g:rnvimr_enable_ex &#x3D; 1</span><br><span class="line">&quot; 选择文件后隐藏游侠</span><br><span class="line">let g:rnvimr_enable_picker &#x3D; 1</span><br><span class="line">&quot; 使用multipane模式启动(单列)可以按~手动切换</span><br><span class="line">let g:rnvimr_ranger_cmd &#x3D; &#39;ranger --cmd&#x3D;&quot;set viewmode multipane&quot;&#39;</span><br><span class="line">&quot; 设置&lt;F3&gt; 启动文件管理器</span><br><span class="line">nnoremap &lt;F3&gt; :RnvimrToggle&lt;CR&gt;</span><br><span class="line">nnoremap sr :RnvimrToggle&lt;CR&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120618832">04_[nvim0.5+从0单排]_vim文件管理插件—ranger</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vim练级手册（三）-界面美化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">vim练级手册（三） ---界面美化</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" class="archive-article-date">
+	
+  	<time datetime="2022-03-25T01:25:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;leader&gt;+数字</td>
+<td>切换buffer(不同文件)</td>
+</tr>
+</tbody></table>
+<h2 id="1-vim-airline"><a href="#1-vim-airline" class="headerlink" title="1.vim-airline"></a>1.vim-airline</h2><p><code>vim-airline</code>是一款导航栏插件，可以看到文件信息等情况，可以更方便切换文件。</p>
+<h4 id="安装vim-airline"><a href="#安装vim-airline" class="headerlink" title="安装vim-airline"></a>安装vim-airline</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use &#123;</span><br><span class="line">        &quot;vim-airline&#x2F;vim-airline&quot;,</span><br><span class="line">        requires &#x3D; &#123;</span><br><span class="line">          &quot;vim-airline&#x2F;vim-airline-themes&quot;,</span><br><span class="line">          --综合图标支持such vim-airline lightline, vim-startify</span><br><span class="line">          &quot;ryanoasis&#x2F;vim-devicons&quot;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置vim-airline"><a href="#配置vim-airline" class="headerlink" title="配置vim-airline"></a>配置vim-airline</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;airline.rc.vim</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot; vim-airline</span><br><span class="line">let g:airline#extensions#tabline#enabled &#x3D; 1</span><br><span class="line">&quot; 使用字体</span><br><span class="line">let g:airline_powerline_fonts &#x3D; 1</span><br><span class="line">let g:airline#extensions#tabline#buffer_idx_mode &#x3D; 1</span><br><span class="line">nmap &lt;leader&gt;1 &lt;Plug&gt;AirlineSelectTab1</span><br><span class="line">nmap &lt;leader&gt;2 &lt;Plug&gt;AirlineSelectTab2</span><br><span class="line">nmap &lt;leader&gt;3 &lt;Plug&gt;AirlineSelectTab3</span><br><span class="line">nmap &lt;leader&gt;4 &lt;Plug&gt;AirlineSelectTab4</span><br><span class="line">nmap &lt;leader&gt;5 &lt;Plug&gt;AirlineSelectTab5</span><br><span class="line">nmap &lt;leader&gt;6 &lt;Plug&gt;AirlineSelectTab6</span><br><span class="line">nmap &lt;leader&gt;7 &lt;Plug&gt;AirlineSelectTab7</span><br><span class="line">nmap &lt;leader&gt;8 &lt;Plug&gt;AirlineSelectTab8</span><br><span class="line">nmap &lt;leader&gt;9 &lt;Plug&gt;AirlineSelectTab9</span><br></pre></td></tr></table></figure>
+
+<p>虽然<code>~/.config/nvim/after/plugin/</code>目录的配置文件会自动加载，但是airline的配置需要更高的加载优先级。所以要在init.vim中手动引用一下。<br>编辑<code>~/.config/nvim/init.vim</code>并增加下面一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;airline.rc.vim</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后就可以看到下方会出现一条bar，可以看到文件、模式等信息，同时上方出现buffer栏为当前打开的文件。</p>
+<h2 id="2-gruvbox-material"><a href="#2-gruvbox-material" class="headerlink" title="2.gruvbox-material"></a>2.gruvbox-material</h2><h4 id="安装gruvbox-material"><a href="#安装gruvbox-material" class="headerlink" title="安装gruvbox-material"></a>安装gruvbox-material</h4><p>使用packer包进行插件安装:<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim</code>增加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;sainnhe&#x2F;gruvbox_material&quot;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code></p>
+<h4 id="配置gruvbox-material"><a href="#配置gruvbox-material" class="headerlink" title="配置gruvbox-material"></a>配置gruvbox-material</h4><blockquote>
+<p>把主题相关的内容放到<code>~/.config/nvim/colors/</code>目录管理。</p>
+</blockquote>
+<p>创建<code>~/.config/nvim/colors/gruvbox_material.rc.vim</code>,内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot; Important!!</span><br><span class="line">if has(&#39;termguicolors&#39;)</span><br><span class="line">	set termguicolors</span><br><span class="line">endif</span><br><span class="line">&quot; For dark version.</span><br><span class="line">set background&#x3D;dark</span><br><span class="line">&quot; For light version.</span><br><span class="line">&quot;set background&#x3D;light</span><br><span class="line">&quot; Set contrast.</span><br><span class="line">&quot; This configuration option should be placed before &#96;colorscheme gruvbox-material&#96;.</span><br><span class="line">&quot; Available values: &#39;hard&#39;, &#39;medium&#39;(default), &#39;soft&#39;</span><br><span class="line">let g:gruvbox_material_background &#x3D; &#39;hard&#39;</span><br><span class="line">&quot; 使用try，如果配色方案不存在，也不会报错</span><br><span class="line">try</span><br><span class="line">	colorscheme gruvbox-material</span><br><span class="line">catch &#x2F;^Vim\%((\a\+)\)\&#x3D;:E185&#x2F;</span><br><span class="line">    &quot; deal with it</span><br><span class="line">endtry</span><br></pre></td></tr></table></figure>
+
+<p>编辑<code>~/.config/nvim/init.vim</code>并增加下面一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.config&#x2F;nvim&#x2F;colors&#x2F;gruvbox_material.rc.vim</span><br></pre></td></tr></table></figure>
+<p>做完这些配置，重启就可以看到效果了。</p>
+<h2 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120544801">03_[nvim0.5+从0单排]_界面美化与主题</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vim练级手册（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -964,264 +1375,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/21/docsify%E7%9F%A5%E8%AF%86%E5%BA%93%E5%BB%BA%E7%AB%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vim练级手册-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/">vim练级手册(零)  --- nvim安装(先导篇)</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/" class="archive-article-date">
-	
-  	<time datetime="2021-12-04T16:01:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-05</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>笔者作为计算机专业的学生，在服务器上编写代码是时有发生的,最为常见的终端编辑器非vim莫属。vim玩的六的可以打字飞起，快捷键记得滚瓜烂熟，但是不会的连如何退出vim都成问题。笔者作为一名爱探索的程序员，决定将vim作为自己以后的常用编辑器，于是乎，首先狠下心来，逼自己使用vim，熟话说熟能生巧，不经常使用，如何能把vim玩的飞起。本片作为vim的先导片，主要讲解一些vim的安装，和要熟练使用vim的准备工作。</p>
-<h2 id="1-盲打练习"><a href="#1-盲打练习" class="headerlink" title="1.盲打练习"></a>1.盲打练习</h2><p>熟练使用vim的基本条件就是你可以快速的打字，如果你打字速度较慢，可能鼠标的直接定位会更加适合这类人。vim的基本操作逻辑就是使手指移动都是在主键盘区，减少手指的移动，加快编码效率。因此，熟练的打字技巧与手势是十分重要的。笔者以前的指法也是错误的，对于一些键位的点按十分的别扭。于是，也进行了打字练习，不仅修正了打字的习惯，而且使得打字速度也得到了大幅提升。下面推荐下笔者使用的打字网页。</p>
-<p><a target="_blank" rel="noopener" href="https://www.typingclub.com/">typingClub</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/IMG_0185.3znu63v2voc0.webp" alt="IMG_0185"></p>
-<h2 id="2-vim的安装"><a href="#2-vim的安装" class="headerlink" title="2.vim的安装"></a>2.vim的安装</h2><p>笔者使用的是nvim，nvim与vim类似，只是在原先vim的基础上，由一些爱好者开发并加入了一些新的特性，这也使得vim社区更加的活跃。因此，本教程的所有配置均以nvim为编辑器。</p>
-<h4 id="1-配置环境介绍"><a href="#1-配置环境介绍" class="headerlink" title="1.配置环境介绍"></a>1.配置环境介绍</h4><ul>
-<li>一台MBP（windows下也有相应的教程）</li>
-<li>终端item2</li>
-<li>ctrlc,ctrlv大法   </li>
-<li>利用brew安装相应的依赖，<code>brew install git</code> <code>brew install unzip</code></li>
-</ul>
-<h4 id="2-安装nvim"><a href="#2-安装nvim" class="headerlink" title="2.安装nvim"></a>2.安装nvim</h4><p>前往<a target="_blank" rel="noopener" href="https://github.com/neovim/neovim/releases">github地址</a>,选择相应的版本进行安装。笔者使用的是nvim0.6.0 Mac版。在终端执行以下代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#解压到~&#x2F;.soft&#x2F;nvim-osx64&#x2F;</span><br><span class="line">mkdir ~&#x2F;.soft</span><br><span class="line">mv ~&#x2F;Downloads&#x2F;nvim-osx64 ~&#x2F;.soft&#x2F;</span><br><span class="line"># 创建软链接</span><br><span class="line">ln -s ~&#x2F;.soft&#x2F;nvim-osx64&#x2F;bin&#x2F;nvim &#x2F;usr&#x2F;local&#x2F;bin&#x2F;nvim</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-安装支持python3的nvim"><a href="#3-安装支持python3的nvim" class="headerlink" title="3. 安装支持python3的nvim"></a>3. 安装支持python3的nvim</h4><p>插件安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install python3</span><br><span class="line">pip3 install neovim --upgrade</span><br></pre></td></tr></table></figure>
-
-<p>最后在终端输入nvim，看到以下图所示说明nvim已经安装成功了<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-09.6j5y8w5ao2k0.webp" alt="截屏2022-03-21-09"></p>
-<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h2><p>nvim作为一款强大的终端编辑器，深受部分程序员喜爱，但由于其繁琐的操作使得很多人畏惧他，但真正的天才都是天赋加上刻意训练之后的结果，nvim也一样，如果你经过长时间的刻意练习，我相信他会在你手上成为神器。</p>
-<p>纯nvim并不能带来良好的体验，后续每一章节我都会介绍一款插件，使你的nvim如虎添翼。</p>
-<h2 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120466390">01_[nvim0.5+从0单排]_neovim安装与Pynvim安装</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/12/05/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-问题解决-mac启动mysql闪一下就退出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-mac%E5%90%AF%E5%8A%A8mysql%E9%97%AA%E4%B8%80%E4%B8%8B%E5%B0%B1%E9%80%80%E5%87%BA/">问题解决:mac启动mysql闪一下就退出</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/11/30/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-mac%E5%90%AF%E5%8A%A8mysql%E9%97%AA%E4%B8%80%E4%B8%8B%E5%B0%B1%E9%80%80%E5%87%BA/" class="archive-article-date">
-	
-  	<time datetime="2021-11-30T01:10:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>mac下安装了mysql很久了，但一直没怎么使用，最近做一个前后端项目需要使用mysql，但在设置里点Start mysql server，启动绿点闪了一下就变红了，无法启动，以前启动都是正常的.<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3Tzsx"><img src="https://z3.ax1x.com/2021/11/30/o3Tzsx.md.png" alt="o3Tzsx.md.png"></a></p>
-<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><ul>
-<li>基于网上方案，首先去configuration下找到Error Log目录。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o37Kw8"><img src="https://z3.ax1x.com/2021/11/30/o37Kw8.md.png" alt="o37Kw8.md.png"></a></p>
-<ul>
-<li>输入以下语句查看目录信息</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;mysqld.local.err</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3HSpj"><img src="https://z3.ax1x.com/2021/11/30/o3HSpj.md.png" alt="o3HSpj.md.png"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 关键错误信息</span><br><span class="line">2021-11-25T04:39:22.078870Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user &lt;via user signal&gt;. Shutting down mysqld (Version: 8.0.22).</span><br><span class="line">2021-11-25T04:39:22.648369Z 0 [ERROR] [MY-011945] [InnoDB] Cannot open &#39;&#x2F;usr&#x2F;local&#x2F;mysql-8.0.22-macos10.15-x86_64&#x2F;data&#x2F;ib_buffer_pool.incomplete&#39; for writing: Permission denied</span><br><span class="line">2021-11-25T04:39:22.789645Z 0 [ERROR] [MY-012595] [InnoDB] The error means mysqld does not have the access rights to the directory.</span><br><span class="line">2021-11-25T04:39:22.789703Z 0 [ERROR] [MY-012592] [InnoDB] Operating system error number 13 in a file operation.</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>猜测可能是进入文件夹的权限不够。</p>
-</blockquote>
-<ul>
-<li><p>输入以下命令给文件夹增加权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod -R 777 &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再次启动mysql，成功启动</p>
-</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/o3bsqx"><img src="https://z3.ax1x.com/2021/11/30/o3bsqx.md.png" alt="o3bsqx.md.png"></a></p>
-<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cbf87ce6fa62">1.Mac命令行启动MySQL</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-mac%E5%90%AF%E5%8A%A8mysql%E9%97%AA%E4%B8%80%E4%B8%8B%E5%B0%B1%E9%80%80%E5%87%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac软件推荐-效率篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E6%95%88%E7%8E%87%E7%AF%87/">mac软件推荐--效率篇</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E6%95%88%E7%8E%87%E7%AF%87/" class="archive-article-date">
-	
-  	<time datetime="2021-11-29T12:39:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-29</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/29/mac%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90-%E6%95%88%E7%8E%87%E7%AF%87/">展开全文 >></a>
         </p>
       
 
