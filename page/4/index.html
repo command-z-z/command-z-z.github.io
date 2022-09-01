@@ -164,6 +164,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim练级手册（六）-markdown预览插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/">vim练级手册（六） ---markdown预览插件</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/" class="archive-article-date">
+	
+  	<time datetime="2022-04-23T02:20:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-23</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作为一个经常使用markdown写博客的人来说，markdown预览功能是十分必要的，将主流编辑器转为vim之后，markdown的编写也转为用vim写，因此找到了这款markdown预览工具。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:MarkdownPreview</td>
+<td>在浏览器中打开markdown-preview</td>
+</tr>
+</tbody></table>
+<h2 id="1-markdown-preview"><a href="#1-markdown-preview" class="headerlink" title="1.markdown-preview"></a>1.markdown-preview</h2><h4 id="安装markdown-preview"><a href="#安装markdown-preview" class="headerlink" title="安装markdown-preview"></a>安装markdown-preview</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--markdown预览插件</span><br><span class="line">use &quot;iamcco&#x2F;markdown-preview.nvim&quot;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<p>安装完成以后，执行以下命令:<br><code>:call mkdp#util#install()</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/23/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AD%EF%BC%89-markdown%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vim练级手册（五）-defx文件管理与vim-choosewin窗口选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1299,82 +1391,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/21/github%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-docsify知识库建立" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/21/docsify%E7%9F%A5%E8%AF%86%E5%BA%93%E5%BB%BA%E7%AB%8B/">docsify知识库建立</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/01/21/docsify%E7%9F%A5%E8%AF%86%E5%BA%93%E5%BB%BA%E7%AB%8B/" class="archive-article-date">
-	
-  	<time datetime="2022-01-21T05:36:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大三学期较为空闲，打算通过自己的已有知识，制作一个网站，用于自己日常的学习，由于自己已经有一个<a target="_blank" rel="noopener" href="https://command-z-z.github.io/">博客</a>,所以打算开发一个网站，专门记录自己学习机器学习，深度学习等知识的知识库，方便自己查找，也方便他人学习,<a target="_blank" rel="noopener" href="http://www.command-z-z.com/">网站</a>将上线，供大家方便取阅资料，下面介绍一下网站搭建流程。</p>
-<h2 id="知识库建立"><a href="#知识库建立" class="headerlink" title="知识库建立"></a>知识库建立</h2><h2 id="网站部署"><a href="#网站部署" class="headerlink" title="网站部署"></a>网站部署</h2><h2 id="网站上线"><a href="#网站上线" class="headerlink" title="网站上线"></a>网站上线</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/21/docsify%E7%9F%A5%E8%AF%86%E5%BA%93%E5%BB%BA%E7%AB%8B/">展开全文 >></a>
         </p>
       
 
