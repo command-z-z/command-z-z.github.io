@@ -164,620 +164,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Java-学习笔记（4）-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Java 学习笔记（4）-异常处理</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
-	
-  	<time datetime="2020-12-25T01:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1.异常处理"></a>1.异常处理</h4><p>异常（Exception）是正常程序流程所不能处理或没有处理的异常情况或异常事件，它中断指令或程序的正常执行。</p>
-<h4 id="2-Java中的异常类"><a href="#2-Java中的异常类" class="headerlink" title="2.Java中的异常类"></a>2.Java中的异常类</h4><p>Java中的异常类包含在java.lang和java.io包中，其共同的父类是java.lang.Throwable。</p>
-<blockquote>
-<p>父类的优先级会比子类的高，因此，捕获子类异常的代码必须放在捕获父类异常的代码前面。</p>
-</blockquote>
-<h4 id="3-异常处理模式"><a href="#3-异常处理模式" class="headerlink" title="3.异常处理模式"></a>3.异常处理模式</h4><h5 id="try-catch-finally语句"><a href="#try-catch-finally语句" class="headerlink" title="try-catch-finally语句"></a>try-catch-finally语句</h5><ul>
-<li>try{}语句后面必须跟一个catch或finally语句块，有catch，finally语句可有可无；无catch，必须有finally语句。</li>
-<li>异常发生后，在try语句块中，异常位置的后续代码都不会执行,直到找到异常匹配才会执行try-catch-finally后面的语句。</li>
-<li>catch语句按编写顺序查找异常匹配，只要找到一个异常匹配，就不会去寻找其他异常。</li>
-<li>finally语句块无论是否发生异常都要执行。</li>
-</ul>
-<h5 id="异常类成员方法"><a href="#异常类成员方法" class="headerlink" title="异常类成员方法"></a>异常类成员方法</h5><p>从父类Throwable继承的方法主要包括：<code>getMessage（）</code>用来取得与异常和错误相关的错误信息；<code>printStackTrace（）</code>用来打印显示异常发生地方的堆栈状态；<code>toString（）</code>用来显示异常信息以及<code>getMessage（）</code>返回信息。</p>
-<h5 id="异常捕获与处理"><a href="#异常捕获与处理" class="headerlink" title="异常捕获与处理"></a>异常捕获与处理</h5><ul>
-<li>产生异常对象并中断当前正在执行的代码，抛出异常对象。</li>
-<li>自动按程序中的catch的编写顺序查找“最接近的”异常匹配。</li>
-<li>若有匹配则执行相应的处理代码，然后执行try-catch-finally之后的代码。若没有找到异常匹配，系统会报错，且终止程序。</li>
-</ul>
-<h4 id="4-重新抛出异常"><a href="#4-重新抛出异常" class="headerlink" title="4.重新抛出异常"></a>4.重新抛出异常</h4><h5 id="throws语句"><a href="#throws语句" class="headerlink" title="throws语句"></a><code>throws</code>语句</h5><ul>
-<li><code>throws</code>关键字通常被应用在声明方法时，用来指定可能抛出的异常。</li>
-<li>使用throws表明该方法本身不会对该异常进行处理，一旦发生该异常将由调用该方法的main方法进行执行处理（即该方法的上一级进行捕获）。</li>
-</ul>
-<h5 id="throw语句"><a href="#throw语句" class="headerlink" title="throw语句"></a><code>throw</code>语句</h5><p><code>throw</code>关键字通常用在方法体中，并且抛出一个异常对象。程序在执行到throw语句时立即停止，它后面的语句都不执行。如果要捕获throw抛出的异常，则必须使用try-catch语句。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-常见误区与混淆点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/">Java 常见误区与混淆点</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/" class="archive-article-date">
-	
-  	<time datetime="2020-12-25T01:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Integer和int的区别"><a href="#Integer和int的区别" class="headerlink" title="Integer和int的区别"></a>Integer和int的区别</h4><ol>
-<li>Integer是int的包装类，int是Java的一种基本数据类型。</li>
-<li>Integer变量必须实例化后才能使用，而int变量不需要。</li>
-<li>Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象，而int则是之际存储在栈中。</li>
-<li>Integer默认值是NULL，int的默认值是0。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-学习笔记（3）-数组、字符串和枚举" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/">Java 学习笔记（3）-数组、字符串和枚举</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/" class="archive-article-date">
-	
-  	<time datetime="2020-12-22T12:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组"></a>1.数组</h4><p>在Java中，数组本身就是一种引用数据类型，它是一组相同数据类型的数据的有序集合，该集合中的数据称为数组元素。</p>
-<ul>
-<li><p>对于一维数组，可以在声明的时候同时进行初始化，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> []c=&#123;<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>&#125;;     <span class="comment">//注意没有new</span></span><br></pre></td></tr></table></figure>
-<p>通过这种方法，也是在栈中存放一个地址，然后在堆中开辟4个2B大小的连续空间，用于存放A、B、C、D四个元素。</p>
-</li>
-<li><p>二维数组可以动态实例化，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][];   <span class="comment">//分配两行，即两个一维数组</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">0</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];      <span class="comment">//第一行数组，有3个元素</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];      <span class="comment">//第二行数组，有5个元素</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意，多维数组中维与维之间的内存空间的分配是不连续的。</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h4 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2.字符串"></a>2.字符串</h4><p>Java提供了String和StringBuffer两个字符串类，String字符串在初始化后不能在被修改，StringBuffer字符串内容可以动态修改。</p>
-<h5 id="不可变字符串：String"><a href="#不可变字符串：String" class="headerlink" title="不可变字符串：String"></a>不可变字符串：String</h5><ul>
-<li><p>String字符串的内存分配机制（可参考String直接赋值与new赋值区别那篇文章）<br>这里值得注意的是：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1=<span class="string">&quot;Hello&quot;</span>;     <span class="comment">//这个只会在栈中创建一个空间存储Hello</span></span><br><span class="line">s1=s1+<span class="string">&quot; world&quot;</span>;        <span class="comment">//使用这句话会使得s1指向一个栈中地址，地址指向堆中开辟的空间存放Hello</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字符串修改，String类提供了replace（），toLowerCase（），toUpperCase（），trim（）//将字符串前后的空格去掉。</p>
-<blockquote>
-<p>这里的修改，并不是在字符串原来的内存位置上进行，而是在新的内存空间上存放修改好的字符串，因此这里还是满足前面所说的String类是不可修改字符串的。</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="可变字符串：StringBuffer"><a href="#可变字符串：StringBuffer" class="headerlink" title="可变字符串：StringBuffer"></a>可变字符串：StringBuffer</h5><ul>
-<li>与String可以直接赋值不同，StringBuffer必须通过new来赋值。</li>
-<li>StringBuffer对字符串的修改主要包括追加，插入，删除，替换，翻转等操作，可以通过append（）、insert（）、delete（）、replace（）、reverse（）等方法实现。</li>
-</ul>
-<h5 id="String与StringBuffer在内存分配上的差异"><a href="#String与StringBuffer在内存分配上的差异" class="headerlink" title="String与StringBuffer在内存分配上的差异"></a>String与StringBuffer在内存分配上的差异</h5><p>String会修改对象地址，如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="keyword">new</span> String(<span class="string">&quot;I love football game&quot;</span>);</span><br><span class="line">s=<span class="string">&quot;I love NBA&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>变量s在栈中的地址随着在堆中的内容改变而发生改变。</p>
-<p>StringBuffer不会修改地址，如，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot; world&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>变量sb在栈中的地址不会随堆中的内容的改变而改变</p>
-<hr>
-<h4 id="3-字符串与其他数据类型转换"><a href="#3-字符串与其他数据类型转换" class="headerlink" title="3.字符串与其他数据类型转换"></a>3.字符串与其他数据类型转换</h4><h5 id="将其他数据转换为字符串"><a href="#将其他数据转换为字符串" class="headerlink" title="将其他数据转换为字符串"></a>将其他数据转换为字符串</h5><p>String类提供了静态的valueof（）方法，用于把不同类型的数据转换为字符串，方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=String.valueof(a);     <span class="comment">//为其他数据类类型的变量，返回值为一个String对象</span></span><br></pre></td></tr></table></figure>
-<p>另一方面，从java.lang.Object派生的所有类均提供了toString（）方法，即将该类转换成字符串，方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=Integer.toString(a);    <span class="comment">//a是一个int类型的对象。</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="将字符串转换成其他数据"><a href="#将字符串转换成其他数据" class="headerlink" title="将字符串转换成其他数据"></a>将字符串转换成其他数据</h5><p>也是运用对应包装类的方法，方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> b=Boolean.parseBoolean(<span class="string">&quot;True&quot;</span>);   <span class="comment">//将String类型转换为boolean类型</span></span><br><span class="line"><span class="keyword">int</span> i=Integer.parseInt(<span class="string">&quot;12345&quot;</span>);          <span class="comment">//将String类型转换为int类型</span></span><br><span class="line"><span class="keyword">float</span> f=Float.parseFloat(<span class="string">&quot;34.4352345343&quot;</span>) <span class="comment">//将String类型转换为float类型</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-枚举"><a href="#4-枚举" class="headerlink" title="4.枚举"></a>4.枚举</h4><p>创建枚举的目的是为了定义一组性质类似的常量，它在Java中是一个小功能，但给系统开发带来了很大的方便。</p>
-<h5 id="枚举定义"><a href="#枚举定义" class="headerlink" title="枚举定义"></a>枚举定义</h5><p>枚举定义格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[protected|private|abstract]enum 枚举类型标识符（名称）&#123;</span><br><span class="line">    枚举常量1，</span><br><span class="line">    枚举常量2，</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    枚举常量n     &#x2F;&#x2F;注意末尾没有“逗号“</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="枚举变量和常量"><a href="#枚举变量和常量" class="headerlink" title="枚举变量和常量"></a>枚举变量和常量</h5><ol>
-<li>不能通过new运算符创建实例对象，可直接通过枚举类型标识符访问枚举变量。</li>
-<li>可通过枚举变量访问枚举常量。</li>
-<li>可通过枚举常量调用其成员方法。</li>
-<li>可通过values（）方法获得该枚举类型的所有枚举常量。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-学习笔记（2）-类的封装性、继承性、多态性及接口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/19/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85%E6%80%A7%E3%80%81%E7%BB%A7%E6%89%BF%E6%80%A7%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E5%8F%8A%E6%8E%A5%E5%8F%A3/">Java 学习笔记（2）-类的封装性、继承性、多态性及接口</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/19/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85%E6%80%A7%E3%80%81%E7%BB%A7%E6%89%BF%E6%80%A7%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E5%8F%8A%E6%8E%A5%E5%8F%A3/" class="archive-article-date">
-	
-  	<time datetime="2020-12-19T07:12:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-19</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-封装性"><a href="#1-封装性" class="headerlink" title="1.封装性"></a>1.封装性</h4><ul>
-<li>Java通过访问控制来实现封装性，访问控制通过4个访问修饰符实现，分别是<code>public</code>（公共）,<code>protected</code>（保护）,<code>default</code>（默认）,<code>private</code>(私有)。</li>
-<li>Java对类和类成员有不同的访问控制方式，对于类来讲，类能使用的访问修饰符为<code>public</code>和<code>default</code>，<code>public</code>可以使所有软件包使用，即可被任何类进行调用，而<code>default</code>（默认不写），仅能使在同一个包下的类使用，别的包无法访问。</li>
-<li>需要注意，一个Java文件中可以有多个类，但只能有一个<code>public</code>类（主类），这个类的名字与文件名相同，且main函数也应该在这个类下。</li>
-</ul>
-<h5 id="类成员的访问控制方式-如下表"><a href="#类成员的访问控制方式-如下表" class="headerlink" title="类成员的访问控制方式(如下表):"></a>类成员的访问控制方式(如下表):</h5><table>
-<thead>
-<tr>
-<th align="left">可见度</th>
-<th align="left">private</th>
-<th align="left">default</th>
-<th align="left">protected</th>
-<th align="left">public</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">同一个类下</td>
-<td align="left">允许访问</td>
-<td align="left">允许访问</td>
-<td align="left">允许访问</td>
-<td align="left">允许访问</td>
-</tr>
-<tr>
-<td align="left">同一个包下</td>
-<td align="left"></td>
-<td align="left">允许访问</td>
-<td align="left">允许访问</td>
-<td align="left">允许访问</td>
-</tr>
-<tr>
-<td align="left">不同包的子类</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">允许访问</td>
-<td align="left">允许访问</td>
-</tr>
-<tr>
-<td align="left">不同包的非子类</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">允许访问</td>
-</tr>
-</tbody></table>
-        
-          <a class="article-more-a" href="/2020/12/19/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85%E6%80%A7%E3%80%81%E7%BB%A7%E6%89%BF%E6%80%A7%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E5%8F%8A%E6%8E%A5%E5%8F%A3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/19/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85%E6%80%A7%E3%80%81%E7%BB%A7%E6%89%BF%E6%80%A7%E3%80%81%E5%A4%9A%E6%80%81%E6%80%A7%E5%8F%8A%E6%8E%A5%E5%8F%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-String-new与String直接赋值的区别-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/19/String-new%E4%B8%8EString%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB-Java/">String new与String直接赋值的区别 -Java</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/19/String-new%E4%B8%8EString%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB-Java/" class="archive-article-date">
-	
-  	<time datetime="2020-12-19T03:57:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-19</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Java字符串池（String-Pool）"><a href="#Java字符串池（String-Pool）" class="headerlink" title="Java字符串池（String Pool）"></a>Java字符串池（String Pool）</h4><p>在工作中，String类是我们使用频率非常高的一种对象类型。JVM为了提升性能和减少内存开销，避免字符串的重复创建，其维护了一块特殊的内存空间，这就是我们今天要讨论的核心，即字符串池（String Pool）。字符串池由String类私有的维护。</p>
-<h4 id="new与直接赋值的区别"><a href="#new与直接赋值的区别" class="headerlink" title="new与直接赋值的区别"></a>new与直接赋值的区别</h4><p>我们知道，在Java中有两种创建字符串对象的方式：1）采用字面值的方式赋值  2）采用new关键字新建一个字符串对象。这两种方式在性能和内存占用方面存在着差别。</p>
-<p>方式一：采用字面值的方式赋值，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String str =<span class="string">&quot;aaa&quot;</span>;</span><br><span class="line">        String str2=<span class="string">&quot;aaa&quot;</span>;</span><br><span class="line">        System.out.println(str==str2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>采用字面值的方式创建一个字符串时，JVM首先会去字符串池中查找是否存在”aaa”这个对象，如果不存在，则在字符串池中创建”aaa”这个对象，然后将池中”aaa”这个对象的引用地址返回给字符串常量str，这样str会指向池中”aaa”这个字符串对象；如果存在，则不创建任何对象，直接将池中”aaa”这个对象的地址返回，赋给字符串常量。</p>
-<p>在本例中，执行：str == str2 ，会得到以下结果：<code>true</code></p>
-<p>这是因为，创建字符串对象str2时，字符串池中已经存在”aaa”这个对象，直接把对象”aaa”的引用地址返回给str2，这样str2指向了池中”aaa”这个对象，也就是说str和str2指向了同一个对象，因此语句System.out.println(str == str2)输出：true。</p>
-<p>方式二：采用new关键字新建一个字符串对象，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringTest2</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        String str3 = <span class="keyword">new</span> String(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        String str4 = <span class="keyword">new</span> String(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        System.out.println(str3==str4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>采用new关键字新建一个字符串对象时，JVM首先在字符串池中查找有没有”aaa”这个字符串对象，如果有，则不在池中再去创建”aaa”这个对象了，直接在堆中创建一个”aaa”字符串对象，然后将堆中的这个”aaa”对象的地址返回赋给引用str3，这样，str3就指向了堆中创建的这个”aaa”字符串对象；如果没有，则首先在字符串池中创建一个”aaa”字符串对象，然后再在堆中创建一个”aaa”字符串对象，然后将堆中这个”aaa”字符串对象的地址返回赋给str3引用，这样，str3指向了堆中创建的这个”aaa”字符串对象。</p>
-<p>在这个例子中，执行：str3 == str4，得到以下结果：<code>false</code>.</p>
-<p> 因为，采用new关键字创建对象时，每次new出来的都是一个新的对象，也即是说引用str3和str4指向的是两个不同的对象，因此语句System.out.println(str3 == str4)输出：false。</p>
-<p>转载自  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/fangfuhai/p/5500065.html">博客园</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/19/String-new%E4%B8%8EString%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E7%9A%84%E5%8C%BA%E5%88%AB-Java/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-学习笔记（1）-类和对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">Java 学习笔记（1）-类和对象</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-	
-  	<time datetime="2020-12-18T01:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-18</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-面向对象的基本概念"><a href="#1-面向对象的基本概念" class="headerlink" title="1.面向对象的基本概念"></a>1.面向对象的基本概念</h4><ul>
-<li><strong>类是同种对象的集合与抽象</strong>，类是一种抽象的数据类型，它是具有一定共性的对象的抽象，二属于累的某一对象则被称为是类的一个实例，是类的一次实例化结果。</li>
-</ul>
-<blockquote>
-<p>注意，无论类写得多么庞大，系统都不会给类分配内存空间，因为类的抽象的概述，系统不可能给抽象的东西分配空间，而对象是具体的，实际存在的。</p>
-</blockquote>
-<ul>
-<li>属性是对象的特征，属性可以是数据，也可以是另一种对象。</li>
-</ul>
-<h4 id="2-面向对象的基本特征"><a href="#2-面向对象的基本特征" class="headerlink" title="2.面向对象的基本特征"></a>2.面向对象的基本特征</h4><ul>
-<li>抽象性</li>
-<li>封装性</li>
-<li>继承性</li>
-<li>多态性</li>
-</ul>
-<p>以上将在学习笔记（2）中具体介绍。</p>
-<h4 id="3-类的使用"><a href="#3-类的使用" class="headerlink" title="3.类的使用"></a>3.类的使用</h4><blockquote>
-<p>包含main方法的类叫主类</p>
-</blockquote>
-<p><strong>Java语言的命名规则是什么？</strong></p>
-<blockquote>
-<p>修饰符public代表该类能被所有类访问，修饰符public表明所定义的类为公共类，注意一个Java文件可以包含多个类，但最多包含一个公共类。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/18/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Java-GUI-设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1145,6 +531,607 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/11/21/%E5%91%BD%E8%BF%90%E8%AF%BB%E5%90%8E%E6%84%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据结构上机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8A%E6%9C%BA/">数据结构上机作业</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/11/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8A%E6%9C%BA/" class="archive-article-date">
+	
+  	<time datetime="2020-11-20T14:37:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-20</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-STL的栈基础（后缀计算）"><a href="#1-STL的栈基础（后缀计算）" class="headerlink" title="1.STL的栈基础（后缀计算）"></a>1.STL的栈基础（后缀计算）</h3><ul>
+<li>题目内容:<br>请采用STL中的stack对象完成如下后缀表达式的计算，输入采用字符串表示，假设输出<br>是整数。 例如输入:”213*+” 输出5</li>
+</ul>
+<p>stack 声明例子<br>#include &lt;stack&gt;<br>using namespace std;<br>stack<int> operStack;</p>
+<ul>
+<li>C++代码：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> <span class="comment">//判断是不是操作数:</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isOperands</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> &amp;c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(c&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;c&lt;=<span class="string">&#x27;9&#x27;</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断是否为操作符:</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isOperator</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> &amp;c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(c==<span class="string">&#x27;+&#x27;</span>||c==<span class="string">&#x27;-&#x27;</span>||c==<span class="string">&#x27;*&#x27;</span>||c==<span class="string">&#x27;/&#x27;</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//从栈中取两个操作数:</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get2Operands</span><span class="params">(<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; &amp;st,<span class="keyword">int</span>&amp; right,<span class="keyword">int</span>&amp; left)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    right=st.top();</span><br><span class="line">    st.pop();</span><br><span class="line">    left=st.top();</span><br><span class="line">    st.pop();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//计算两操作数的值: </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compute</span><span class="params">(<span class="keyword">int</span>&amp; right,<span class="keyword">int</span>&amp; left,<span class="keyword">char</span> op)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">switch</span>(op)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">            res=left+right;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">            res=left-right;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">            res=left*right;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            res=left/right;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;operStack;</span><br><span class="line">    <span class="built_in">string</span> expr;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;expr;</span><br><span class="line">    <span class="keyword">int</span> right=<span class="number">0</span>,left=<span class="number">0</span>,res=<span class="number">0</span>; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;expr.size();i++) <span class="comment">//从左到右扫描后缀表达式的每一项 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(isOperands(expr[i])) <span class="comment">//如果是运算数将其推入栈</span></span><br><span class="line">        &#123;</span><br><span class="line">            operStack.push(expr[i]-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(isOperator(expr[i])) <span class="comment">//如果是二元运算符，则出栈两运算数,并计算结果，再把结果压人栈中</span></span><br><span class="line">        &#123;                                            </span><br><span class="line">            get2Operands(operStack,right,left);</span><br><span class="line">            operStack.push(compute(right,left,expr[i])); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res=operStack.top();</span><br><span class="line">    operStack.pop();</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;res&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+        
+          <a class="article-more-a" href="/2020/11/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8A%E6%9C%BA/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8A%E6%9C%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java上机作业" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/20/Java%E4%B8%8A%E6%9C%BA%E4%BD%9C%E4%B8%9A/">Java上机作业</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/11/20/Java%E4%B8%8A%E6%9C%BA%E4%BD%9C%E4%B8%9A/" class="archive-article-date">
+	
+  	<time datetime="2020-11-20T12:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-20</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一次上机（01编写素数判断函数）"><a href="#第一次上机（01编写素数判断函数）" class="headerlink" title="第一次上机（01编写素数判断函数）"></a>第一次上机（01编写素数判断函数）</h2><ul>
+<li><p>题目内容：<br>编写一个程序，打印100～200之间的素数，要求每行按10个数(数与数之间有一个空格间隔)的形式对其输出。</p>
+</li>
+<li><p>Java代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Prime</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j, s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">100</span>; i &lt;= <span class="number">200</span>; i++) &#123;<span class="comment">//找到100～200中的所有素数</span></span><br><span class="line">            j = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">while</span> (i % j != <span class="number">0</span>) &#123;</span><br><span class="line">                j++;</span><br><span class="line">                <span class="keyword">if</span> (j == i) &#123;</span><br><span class="line">                        System.out.print(i + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                        s++;</span><br><span class="line">                    <span class="keyword">if</span>(s%<span class="number">10</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                        System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+        
+          <a class="article-more-a" href="/2020/11/20/Java%E4%B8%8A%E6%9C%BA%E4%BD%9C%E4%B8%9A/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/20/Java%E4%B8%8A%E6%9C%BA%E4%BD%9C%E4%B8%9A/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Markdown语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/19/Markdown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/11/19/Markdown%E8%AF%AD%E6%B3%95/" class="archive-article-date">
+	
+  	<time datetime="2020-11-19T13:54:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。"><a href="#Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。" class="headerlink" title="Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。"></a>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。</h2><h1 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h1><p>在想要设置为标题的文字前面加#来表示<br>一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。<br>(注：标准语法一般在#后跟个空格再写文字。)</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br><span class="line">#### 这是四级标题</span><br><span class="line">##### 这是五级标题</span><br><span class="line">###### 这是六级标题</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="2-字体"><a href="#2-字体" class="headerlink" title="2.字体"></a>2.字体</h1><ul>
+<li>加粗<br>要加粗的文字左右分别用两个*号包起来</li>
+<li>斜体<br>要倾斜的文字左右分别用一个*号包起来</li>
+<li>斜体加粗<br>要倾斜和加粗的文字左右分别用三个*号包起来</li>
+<li>删除线<br>要加删除线的文字左右分别用两个~~号包起来</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*&#96;</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="3-引用"><a href="#3-引用" class="headerlink" title="3.引用"></a>3.引用</h1><p>在引用的文字前加&gt;即可。引用也可以嵌套，如加两个&gt;&gt;三个&gt;&gt;&gt;n个…</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
+<hr>
+        
+          <a class="article-more-a" href="/2020/11/19/Markdown%E8%AF%AD%E6%B3%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/19/Markdown%E8%AF%AD%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数学建模方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">数学建模方法</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/" class="archive-article-date">
+	
+  	<time datetime="2020-11-19T13:08:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="层次分析法"><a href="#层次分析法" class="headerlink" title="层次分析法"></a>层次分析法</h2><p>摘自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38207837">知乎网友</a>，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KE411q7Wh">教学视频</a>参考。</p>
+<ul>
+<li>层次分析法，简称AHP，是指将与决策总是有关的元素分解成目标、准则、方案等层次，在此基础之上进行定性和定量分析的决策方法。</li>
+<li>对于求解不同的放案进行权值打分问题</li>
+</ul>
+<h4 id="基本步骤："><a href="#基本步骤：" class="headerlink" title="基本步骤："></a>基本步骤：</h4><h5 id="3-1-建立层次结构模型"><a href="#3-1-建立层次结构模型" class="headerlink" title="3.1 建立层次结构模型"></a>3.1 建立层次结构模型</h5><p>将决策的目标、考虑的因素(决策准则)和决策对象按他们之间的相互关系分成最高层、中间层和最低层，绘制层次结构图。</p>
+<ol>
+<li>最高层(目标层)：决策的目的、要解决的问题；</li>
+<li>中间层(准则层或指标层)：考虑的因素、决策的准则；</li>
+<li>最低层(方案层)：决策时的备选方案；</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-08ab75dabd1234a80b74cb1bd1105df7_1440w.jpg" alt="图片"></p>
+<h5 id="3-2构造判断-成对比较-矩阵"><a href="#3-2构造判断-成对比较-矩阵" class="headerlink" title="3.2构造判断(成对比较)矩阵"></a>3.2构造判断(成对比较)矩阵</h5><p>那在确定各层次各因素之间的权重时，如果只是定性的结果(就是我认为景色占80%，费用10%等等)，则常常不容易被别人接受，因此Santy等人提出：一致矩阵法，即：</p>
+<ol>
+<li>不把所有因素放在一起比较，而是两两比较；</li>
+<li>对此时采用相对尺度，以尽可能减少性质不同的诸因素相互比较的困难，以提高准去性；</li>
+</ol>
+<p>成对比较矩阵是表示本层所有因素针对上一层某一个因素(准侧或目标)的相对重要性的比较。成对比较矩阵的元素 [公式] 表示的是第 [公式] 个因素相对于第 [公式] 个因素的比较结果，这个值使用的是Santy的1-9标度方法给出。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-bd09282ba98fb9d6650157fc760587ad_1440w.jpg" alt="图片"><br>那比如，举上面的旅游的例子，在旅游问题中第二层A的各个因素对目标层Z的影响两两比较的结果如下图：<br><img src="https://pic1.zhimg.com/80/v2-6f8f15bb07fe988eaa46d0cd78b9367c_1440w.jpg" alt="图片"></p>
+<blockquote>
+<p>以上判断矩阵的给出由专家打分和查阅网上资料可以得到，而在实际操作中，多采用自己打分的形式[doge]</p>
+</blockquote>
+<h5 id="3-3层次单排序及一致性检验"><a href="#3-3层次单排序及一致性检验" class="headerlink" title="3.3层次单排序及一致性检验"></a>3.3层次单排序及一致性检验</h5><h5 id="3-4层次总排序及其一致性检验"><a href="#3-4层次总排序及其一致性检验" class="headerlink" title="3.4层次总排序及其一致性检验"></a>3.4层次总排序及其一致性检验</h5><p>由于以上两步操作可直接由代码得到，因此不在这里详细叙述。</p>
+<p>下面贴出层次分析法的权重求解Matlab代码，此代码只需要输入判断矩阵即可得出相应的权重值，其中包含一次性检验，如一次性检验不通过，不会输出权重值。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">clc;</span><br><span class="line">clear;</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">&#x27;请输入判断矩阵A&#x27;</span>);     <span class="comment">%111111111</span></span><br><span class="line">A=input(<span class="string">&#x27;A=&#x27;</span>);</span><br><span class="line">[m,n]=<span class="built_in">size</span>(A);                     <span class="comment">%获取指标个数</span></span><br><span class="line">RI=[<span class="number">0</span> <span class="number">0</span> <span class="number">0.58</span> <span class="number">0.90</span> <span class="number">1.12</span> <span class="number">1.24</span> <span class="number">1.32</span> <span class="number">1.41</span> <span class="number">1.45</span> <span class="number">1.49</span> <span class="number">1.51</span>];</span><br><span class="line">R=rank(A);                         <span class="comment">%求判断矩阵的秩</span></span><br><span class="line">[V,D]=eig(A);                      <span class="comment">%求判断矩阵的特征值和特征向量，V特征值，D特征向量；</span></span><br><span class="line">tz=<span class="built_in">max</span>(D);</span><br><span class="line">B=<span class="built_in">max</span>(tz);                         <span class="comment">%最大特征值</span></span><br><span class="line">B</span><br><span class="line">[row, col]=<span class="built_in">find</span>(D==B);             <span class="comment">%最大特征值所在位置</span></span><br><span class="line">C=V(:,col);                        <span class="comment">%对应特征向量</span></span><br><span class="line">CI=(B-n)/(n<span class="number">-1</span>);                    <span class="comment">%计算一致性检验指标CI</span></span><br><span class="line">CR=CI/RI(<span class="number">1</span>,n);</span><br><span class="line"><span class="keyword">if</span> CR&lt;<span class="number">0.10</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;CI=&#x27;</span>);<span class="built_in">disp</span>(CI);</span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;CR=&#x27;</span>);<span class="built_in">disp</span>(CR);</span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;对比矩阵A通过一致性检验，各向量权重向量W为：&#x27;</span>);</span><br><span class="line">    W=<span class="built_in">zeros</span>(n,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">        W(<span class="built_in">i</span>,<span class="number">1</span>)=C(<span class="built_in">i</span>,<span class="number">1</span>)/sum(C(:,<span class="number">1</span>)); <span class="comment">%特征向量标准化</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    W                              <span class="comment">%输出权重向量</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;对比矩阵A未通过一致性检验，需对对比矩阵A重新构造&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>例输入格式(为三阶判断矩阵):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A&#x3D;[1 1&#x2F;5 1&#x2F;7;5 1 1&#x2F;3;7 3 1]</span><br></pre></td></tr></table></figure>
+<p>输出形式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">B&#x3D;3.064       %最大特征值</span><br><span class="line">CI&#x3D;0.0324     %计算一致性检验指标CI</span><br><span class="line">CR&#x3D;0.0559</span><br><span class="line">对比矩阵A通过一致性检验，各向量权重向量W为：</span><br><span class="line">W&#x3D;  0.0719  </span><br><span class="line">    0.2790</span><br><span class="line">    0.6491</span><br></pre></td></tr></table></figure>
+<h2 id="因子分析"><a href="#因子分析" class="headerlink" title="因子分析"></a>因子分析</h2><p>此处使用spss软件进行因子分析，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Df4y1m7rX">教学视频</a>和<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12e411p7U8">教学视频</a>两集参考。</p>
+<p>定义：因子分析是指研究从变量群中提取共性因子的统计技术。最早由英国心理学家C.E.斯皮尔曼提出。他发现学生的各科成绩之间存在着一定的相关性，一科成绩好的学生，往往其他各科成绩也比较好，从而推想是否存在某些潜在的共性因子，或称某些一般智力条件影响着学生的学习成绩。因子分析可在许多变量中找出隐藏的具有代表性的因子。将相同本质的变量归入一个因子，可减少变量的数目，还可检验变量间关系的假设。</p>
+<p>概括:将影响一个目标的多个因素进行降维成少数几个因子，这些因子是一些共性因子。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-："><a href="#具体操作步骤-这里均不介绍具体原理-：" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li><strong>检验是否适合因子分析</strong>， 点击分析-&gt;降维-&gt;因子， 将需要降维的变量导入，点击描述勾选相关性矩阵中的系数，和KMO和巴特利特球形度检验，来检验各变量之间是否有相关性。</li>
+<li><strong>提取公因子</strong>， 点击提取，选择主成分法，勾选碎石图，因子的固定数量，自己预估公共因子的数目。</li>
+<li>点击旋转，旋转最大方差法</li>
+<li>点击选项，勾选按大小排序，方便第6步看出每个变量属于那些公因子。</li>
+<li><strong>因子命名</strong> ，看旋转后的成分矩阵表，几列代表几个公共因子，再看每一行，每一行中最大的数，即属于那一列，最后可以分配，之前导入的变量分别属于哪个公因子，在通过这些变量之间的关系进行因子命名。</li>
+<li><strong>因子得分</strong>，点击得分，勾选保存为变量，点击确定，即可在数据表中找到生成两行公因子的得分列。</li>
+<li><strong>总得分</strong>， 点击左上角转换-&gt;计算变量 ,总得分=公因子1的方差百分比*公因子1的得分+公因子2的方差百分比*公因子2的得分+···</li>
+<li>通过因子总得分即可进行排序。<h2 id="主成分分析法"><a href="#主成分分析法" class="headerlink" title="主成分分析法"></a>主成分分析法</h2>此处使用spss软件进行主成分分析，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wa4y1i7Ui">教学视频</a>参考。</li>
+</ol>
+<p>定义:主成分分析（Principal Component Analysis，PCA）， 是一种统计方法。通过正交变换将一组可能存在相关性的变量转换为一组线性不相关的变量，转换后的这组变量叫主成分。在实际课题中，为了全面分析问题，往往提出很多与此有关的变量（或因素），因为每个变量都在不同程度上反映这个课题的某些信息。主成分分析首先是由K.皮尔森（Karl Pearson）对非随机变量引入的，尔后H.霍特林将此方法推广到随机向量的情形。信息的大小通常用离差平方和或方差来衡量。</p>
+<p>概括：通过正交变换将一组可能存在相关性的变量转换为一组线性不相关的变量，转换后的这组变量叫主成分，与因子分析类似。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-1"><a href="#具体操作步骤-这里均不介绍具体原理-：-1" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>击分析-&gt;降维-&gt;因子， 将需要降维的变量导入，点击描述勾选相关性矩阵中的系数，和KMO和巴特利特球形度检验，来检验各变量之间是否有相关性。</li>
+<li>点击提取，选择主成分法，勾选碎石图</li>
+<li>点击旋转，方法为无，勾选载荷图。</li>
+<li>点击选项，勾选按大小排序。</li>
+<li>即可得到主成分。</li>
+<li><strong>总得分</strong>：这里直接选择得分，保存为变量即可得到主成分的得分，与视频中的方法殊途同归，二者得分上均相差一个倍数，求解总得分=主成分1的方差百分比*主成分1的得分+主成分2的方差百分比*主成分2的得分+···<blockquote>
+<p>这里注意一个技巧，在要进行数据归一化时，可以点击左上角的分析-&gt;描述统计-&gt;描述，将所需归一化的数据导入，勾选将标准化值另存为变量，即可在数据表中查看归一化后的数据。</p>
+</blockquote>
+<h2 id="一元线性回归"><a href="#一元线性回归" class="headerlink" title="一元线性回归"></a>一元线性回归</h2>此处使用spss软件进行一元线性回归，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ft411M7t8">教学视频</a>参考。</li>
+</ol>
+<p>定义:一元线性回归是分析只有一个自变量（自变量x和因变量y）线性相关关系的方法。一个经济指标的数值往往受许多因素影响，若其中只有一个因素是主要的，起决定性作用，则可用一元线性回归进行预测分析。</p>
+<p>概括:一个自变量去描述一个因变量。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-2"><a href="#具体操作步骤-这里均不介绍具体原理-：-2" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;回归-&gt;线性。</li>
+<li>将所需要的变量进行自变量（1个），因变量（1个）。</li>
+<li>看模型摘要中的调整后到R方，越接近1，拟合程度越高，且ANOVA中显著性低于0.05，说明回归显著。</li>
+<li>主要看系数表格，B那一列所代表的即为一次线性方程。</li>
+</ol>
+<h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><p>此处使用spss软件进行多元线性回归，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YK4y147Vm">教学视频</a>和b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1QQ4y1K7Sd">教学视频</a>参考。</p>
+<p>定义:在回归分析中，如果有两个或两个以上的自变量，就称为多元回归。事实上，一种现象常常是与多个因素相联系的，由多个自变量的最优组合共同来预测或估计因变量，比只用一个自变量进行预测或估计更有效，更符合实际。因此多元线性回归比一元线性回归的实用意义更大。</p>
+<p>概括:多个自变量去描述一个因变量。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-3"><a href="#具体操作步骤-这里均不介绍具体原理-：-3" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;回归-&gt;线性。</li>
+<li>点击统计，勾选共线性诊断和德宾·沃森。 </li>
+<li>点击图，将ZPRED导入到x，将ZRESID导入到y，勾选直方图，正态概率图，点击确定即可。</li>
+<li>看模型摘要中的调整后到R方，越接近1，拟合程度越高，其实0.1以上就可以接受。（R方表示自变量能解释因变量的百分之几）   </li>
+<li>看德宾·沃森约为2即可，VIF在30以下即可。</li>
+<li>看残差分布理想为处于正态分布。</li>
+<li>主要看系数表格，B那一列所代表的即为多元线性方程。</li>
+</ol>
+<h2 id="k-means聚类"><a href="#k-means聚类" class="headerlink" title="k-means聚类"></a>k-means聚类</h2><p>此处使用spss软件进行k-means聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Q54y1i7HH?from=search&seid=7060863454990800652">教学视频</a>和<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pC4y1x7sU/?spm_id_from=333.788.videocard.0">教学视频</a><br>定义:k均值聚类算法（k-means clustering algorithm）是一种迭代求解的聚类分析算法，其步骤是，预将数据分为K组，则随机选取K个对象作为初始的聚类中心，然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，误差平方和局部最小。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-4"><a href="#具体操作步骤-这里均不介绍具体原理-：-4" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;分类-&gt;k-means聚类。</li>
+<li>将所需考虑的指标导入到变量中， 要先将数据进行标准化，不然会影响到距离计算，如果数据没有标准化，也可以点击方法，将标准化选为Z分数。</li>
+<li>自己确定聚类数，方法选择迭代与分类。</li>
+<li>点击迭代次数，保持默认。</li>
+<li>点击保存，勾选聚类成员，勾选与聚类中心的距离，点击确定。</li>
+<li>直接看最终聚类中心表和每个聚类中的个案数量，即可看出聚类信息。<h2 id="系统聚类"><a href="#系统聚类" class="headerlink" title="系统聚类"></a>系统聚类</h2>此处使用spss软件进行系统聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Q54y1i7HH?from=search&seid=7060863454990800652">教学视频</a>和b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pC4y1x7sU/?spm_id_from=333.788.b_7265636f5f6c697374.2">教学视频</a>参考。</li>
+</ol>
+<p>定义:系统聚类法（hierarchical cluster method）一译“分层聚类法”。聚类分析的一种方法。其做法是开始时把每个样品作为一类，然后把最靠近的样品（即距离最小的群品）首先聚为小类，再将已聚合的小类按其类间距离再合并，不断继续下去，最后把一切子类都聚合到一个大类。</p>
+<h4 id="具体操作步骤-这里均不介绍具体原理-：-5"><a href="#具体操作步骤-这里均不介绍具体原理-：-5" class="headerlink" title="具体操作步骤(这里均不介绍具体原理)："></a>具体操作步骤(这里均不介绍具体原理)：</h4><ol>
+<li>将数据导入SPSS中。</li>
+<li>点击分析-&gt;分类-&gt;系统聚类。</li>
+<li>将所需考虑的指标导入到变量中， 要先将数据进行标准化，不然会影响到距离计算，如果数据没有标准化，也可以点击方法，将标准化选为Z分数。</li>
+<li>点击绘图，勾选谱系图，点击确定。</li>
+<li>直接看谱系图，自己判断要分为几类。<h2 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h2>此处使用spss软件进行系统聚类，b站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1qt4y1276a?from=search&seid=9776428284346921437">教学视频</a>参考。</li>
+</ol>
+<p>定义:按照信息论基本原理的解释，信息是系统有序程度的一个度量，熵是系统无序程度的一个度量；根据信息熵的定义，对于某项指标，可以用熵值来判断某个指标的离散程度，其信息熵值越小，指标的离散程度越大， 该指标对综合评价的影响（即权重）就越大，如果某项指标的值全部相等，则该指标在综合评价中不起作用。因此，可利用信息熵这个工具，计算出各个指标的权重，为多指标综合评价提供依据。</p>
+<p>概括:也是通过一定的数据，给各个指标赋予权重。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/19/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数学建模国赛感悟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/">数学建模国赛感悟</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/" class="archive-article-date">
+	
+  	<time datetime="2020-10-27T09:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;时间过了这么久，依然想写写自己对于这次国赛的一些感悟，毕竟也是第一次参加这种有点含金量的比赛。全国大学生数学建模官网上写着“一次参赛，终生受益！”这么一句标语，确实写了有快大半年的数模论文，作为半个建模人，在比赛的历练中也学到了很多，像Latex排版，因子分析，大数据处理等看起来高深的方法，也略有掌握。但身为大二的萌新，三个计算机学院的愣头青，就凭着一股满腔的热情，连数学建模这本书页没看过的人，在大佬林立的大三学长面前，不免感到有点捉襟见肘，面对浩瀚的数模知识库，感到自己是如此渺小。面对暑期培训一题一题题目的狂轰乱炸，不断的上知网查文献，与队友不定期的集中讨论，思考，分析，本着走一步再走一步的原则，靠着我们才大二本来就不如大三的心态，坚持着将题目做完，也很感谢我的队友陪我一起坚持下来。</p>
+<h2 id="数模培训阶段"><a href="#数模培训阶段" class="headerlink" title="数模培训阶段"></a>数模培训阶段</h2><p>&emsp;&emsp;当初报名暑期培训的时候，也是想暑假反正在家也没什么事，还不如来学校学点自己感兴趣的知识，就找了两个队友一起报名组队。培训分为两个阶段，第一阶段为7月15日～8月4日，每7天一题共3题，我们安排的地点是自己在家里做，安排的方式基本是题目出来那一晚晚上连麦对题目进行讨论，之后开始上网查找相关资料，第二天晚上继续讨论，由于我们队全都是计算机学院的，对于数学建模这方面的知识比较薄弱，且不在一起写的局限性，对于题目上下关联不大的，我们更多的是安排分题写，这样虽然质量不太高，但每个人基本能了解自己的思路，多线程推进，也加快了完成论文的速率。由于是在家里写的，这期间还要忙着学车，并没有对数模下太大的功夫，基本只是把自己写的这问写完，更别说达到写出色的水平，也还是怪自己太菜，遇到概率论的知识就不会了，好在网上有知识可以现学现抄。分开写时，我们多采用的是WPS多人协同编辑，排版很难统一，且数学公式的复杂，在Word中也很难美观的展示出来。这也使得我们前几篇的论文只有2分，1分（共5分），格式是一个很大的问题，这个在第二阶段有所改进。由于缺乏所需的知识，论文水平只能停留在初级阶段的水平，前期连数学建模，这个建模是什么意思都没搞懂（不知道萌新是否都是这种想法），真是废物啊。好在最后通过互相协作，将第一阶段的论文都提交成功。</p>
+        
+          <a class="article-more-a" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/27/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E8%B5%9B%E6%84%9F%E6%82%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-链表相关操作集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/">链表相关操作集</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/" class="archive-article-date">
+	
+  	<time datetime="2020-10-09T05:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="循环双向链表"><a href="#循环双向链表" class="headerlink" title="循环双向链表"></a>循环双向链表</h3><ul>
+<li>本次数据结构进行了双向链表的学习，并在链表中增加了哑元节点，哑元节点的加入使得链表的插入和删除得到了简化，不用再去判断删除或插入的是否在链首。</li>
+<li>并在问题中，运用了双向循环列表解决约瑟夫问题，N个人围成一圈，从第一个开始报数，第3个将被杀掉，最后剩下一个，其余人都将被杀掉,直到找到最后一个。</li>
+<li>push函数实现了链表的循环，每增加一个元素，将其的prev与前元素相连，next与first相连，实现循环。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">dnode</span>//结点的定义</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> nodeValue;</span><br><span class="line">    dnode* prev;</span><br><span class="line">    dnode* next;</span><br><span class="line">    dnode() &#123;</span><br><span class="line">        next = <span class="keyword">this</span>;</span><br><span class="line">        prev = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dnode(<span class="keyword">const</span> <span class="keyword">int</span>&amp; value) : nodeValue(value) &#123;</span><br><span class="line">        next = <span class="keyword">this</span>;</span><br><span class="line">        prev = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">list</span> &#123;</span><span class="comment">//双向链表的定义</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    dnode* first = <span class="keyword">new</span> dnode();</span><br><span class="line">    <span class="built_in">list</span>() ;</span><br><span class="line">    ~<span class="built_in">list</span>();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(dnode* p)</span></span>;<span class="comment">//删除一个结点</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> i)</span></span>;<span class="comment">//将元素添加到链表</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> x)</span></span>;<span class="comment">//插入操作</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> i)</span></span>;<span class="comment">//删除操作</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">list</span>::<span class="built_in">list</span>() &#123;</span><br><span class="line">    first-&gt;next = first;</span><br><span class="line">    first-&gt;prev = first;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::clear</span><span class="params">(dnode* p)</span> </span>&#123;<span class="comment">//删除节点</span></span><br><span class="line">    dnode* t = p-&gt;prev;</span><br><span class="line">    t-&gt;next = p-&gt;next;</span><br><span class="line">    p-&gt;next-&gt;prev = t;<span class="comment">//将两个结点前后相连</span></span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">list</span>::~<span class="built_in">list</span>() &#123;</span><br><span class="line">dnode* p = first;</span><br><span class="line"><span class="keyword">while</span> (p-&gt;next != p)</span><br><span class="line">&#123;</span><br><span class="line">    p = p-&gt;next;</span><br><span class="line">    dnode* f = p-&gt;prev;</span><br><span class="line">    clear(f);<span class="comment">//删除节点</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::push</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    dnode* n = <span class="keyword">new</span> dnode(i);</span><br><span class="line">    dnode* p = first-&gt;prev;</span><br><span class="line">    n-&gt;prev = p;</span><br><span class="line">    n-&gt;next = first;</span><br><span class="line">    p-&gt;next = n;</span><br><span class="line">    first-&gt;prev = n;</span><br><span class="line">&#125;<span class="comment">//双向循环链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::insert</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="function">dnode <span class="title">n</span><span class="params">(x)</span></span>;</span><br><span class="line">    dnode* p = first;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;<span class="comment">//找到第i个元素</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;next == first)p = p-&gt;next;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    dnode* t = p-&gt;prev;</span><br><span class="line">    n.next = p;</span><br><span class="line">    n.prev = t;</span><br><span class="line">    t-&gt;next = &amp;n;</span><br><span class="line">    p-&gt;prev = &amp;n;<span class="comment">//前后链接</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">list::erase</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    dnode* p = first;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;<span class="comment">//找到第i个元素</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;next == first)p = p-&gt;next;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    dnode* t = p-&gt;prev;</span><br><span class="line">    t-&gt;next = p-&gt;next;</span><br><span class="line">    p-&gt;next-&gt;prev = t;<span class="comment">//将第i个元素前后的元素链接</span></span><br><span class="line">    <span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">list</span> l;</span><br><span class="line">    dnode* p = l.first;</span><br><span class="line">    l.push(<span class="number">12</span>);</span><br><span class="line">    l.push(<span class="number">38</span>);</span><br><span class="line">    l.push(<span class="number">42</span>);</span><br><span class="line">    l.push(<span class="number">21</span>);</span><br><span class="line">    l.erase(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p-&gt;nodeValue &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;约瑟夫环问题求解：&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">list</span> l1;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">41</span>; i++) &#123;</span><br><span class="line">        l1.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    dnode* d = l1.first-&gt;next;<span class="comment">//从链表有元素的位置开始</span></span><br><span class="line">    <span class="keyword">while</span> (l1.first-&gt;next-&gt;next!=l1.first) &#123;<span class="comment">//只剩下一个元素的时候停止循环</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (d-&gt;next == l1.first)d = d-&gt;next;<span class="comment">//循环回去之后要走两格</span></span><br><span class="line">            d = d-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        dnode* n = d-&gt;prev;</span><br><span class="line">        <span class="keyword">if</span> (n == l1.first) &#123;</span><br><span class="line">            n = n-&gt;prev;</span><br><span class="line">        &#125;<span class="comment">//转达最末尾的元素</span></span><br><span class="line">        dnode* p1 = n-&gt;prev;</span><br><span class="line">        dnode* p2 = n-&gt;next;</span><br><span class="line">        p2-&gt;prev = p1;</span><br><span class="line">        p1-&gt;next = p2;</span><br><span class="line">        <span class="keyword">delete</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;the last one is:&quot;</span> &lt;&lt; d-&gt;nodeValue &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/09/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E9%9B%86/">展开全文 >></a>
         </p>
       
 
