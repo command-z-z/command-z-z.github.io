@@ -164,730 +164,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-数字图像处理-学习笔记（4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">数字图像处理-学习笔记（4）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-27T08:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-27</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-集合的平移"><a href="#1-集合的平移" class="headerlink" title="1.集合的平移"></a>1.集合的平移</h3><p>由集合A中所有元素平移后组成的元素集合称为集合A的平移，记为$(A)_z$</p>
-<p>$$(A)_z={w|w=a+z,a\in A}$$<br>其中，w表示集合A中的元素a平移z后形成的元素。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCnX0U"><img src="https://z3.ax1x.com/2021/04/27/gCnX0U.md.png" alt="gCnX0U.md.png"></a></p>
-<hr>
-<h3 id="2-膨胀与腐蚀–腐蚀"><a href="#2-膨胀与腐蚀–腐蚀" class="headerlink" title="2.膨胀与腐蚀–腐蚀"></a>2.膨胀与腐蚀–腐蚀</h3><p>腐蚀：A被B腐蚀的定义为:<br>$$A \ominus B= {z|(B)_z \subseteq A}$$<br>该式表明腐蚀的结果为所有使B中包含于A中的点z的集合用z平移。集合B在被称为结构元素。<br>等价形式：<br>$$A \ominus B={z|(B)_z \cap A^c = \varnothing}$$</p>
-<p><strong>腐蚀运算的含义是</strong>：每当在目标图像A中找到一个结构元素B相同的子图像时，就把该子图像中与B的原点位置对应的那个像素位置标注为1，图像A上标注出的所有这样的像素组成的集合，即为腐蚀运算的结果。</p>
-<p>简而言之，腐蚀运算的实质就是在目标图像中标出那些与结构元素相同的子图像的原点位置的像素。</p>
-<p>注意，结构元素中的原点位置可以不为1。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gC8FGF"><img src="https://z3.ax1x.com/2021/04/27/gC8FGF.md.png" alt="gC8FGF.md.png"></a></p>
-<blockquote>
-<p>将目标图像进行缩小</p>
-</blockquote>
-<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>腐蚀运算的结果不仅与结构元素的形状（矩形、圆形、菱形等）选取有关，而且还与原点位置的选取有关。</p>
-<p><strong>腐蚀运算的应用</strong><br>利用腐蚀算法消除物体之间的粘连示例</p>
-<hr>
-<h3 id="3-膨胀与腐蚀–膨胀"><a href="#3-膨胀与腐蚀–膨胀" class="headerlink" title="3.膨胀与腐蚀–膨胀"></a>3.膨胀与腐蚀–膨胀</h3><p>膨胀：A被B膨胀的定义为：<br>$$A \oplus B = {z | (B)_z  \cap A \neq \varnothing }$$<br>该式表明膨胀过程是B首先做关于原点的映像，然后平移z。A被B膨胀是所有位移z的集合，这样B和A至少有一个元素是重叠的。</p>
-<p>腐蚀是一种收缩或细化操作，而膨胀则会“增长”或“粗化”<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCGtl4"><img src="https://z3.ax1x.com/2021/04/27/gCGtl4.md.png" alt="gCGtl4.md.png"></a></p>
-<blockquote>
-<p>将目标图像进行扩展1</p>
-</blockquote>
-<p><strong>结构元素形状对腐蚀运算结果的影响</strong><br>当目标图像不变，但所给的结构元素的形状改变时；或结构元素的形状不变，而其原点位置改变时，膨胀运算的结果会发生改变。</p>
-<p><strong>膨胀运算的应用</strong><br>利用膨胀运算将相邻的物体连接起来</p>
-<h4 id="腐蚀运算与膨胀运算的对偶性-示例"><a href="#腐蚀运算与膨胀运算的对偶性-示例" class="headerlink" title="腐蚀运算与膨胀运算的对偶性-示例"></a>腐蚀运算与膨胀运算的对偶性-示例</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJ8HI"><img src="https://z3.ax1x.com/2021/04/27/gCJ8HI.md.png" alt="gCJ8HI.md.png"></a></p>
-<blockquote>
-<p>原目标图像A进行膨胀(腐蚀)与目标图像的补的腐蚀(膨胀)相同。</p>
-</blockquote>
-<h3 id="4-开闭运算–开操作"><a href="#4-开闭运算–开操作" class="headerlink" title="4.开闭运算–开操作"></a>4.开闭运算–开操作</h3><p>定义：使用同一个结构元素对目标图像先进行<strong>腐蚀</strong>运算，然后再进行<strong>膨胀</strong>运算称为开操作。</p>
-<p>开操作一般使对象的轮廓变得光滑，断开狭窄的间断和消除细的突出物。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCJC3F"><img src="https://z3.ax1x.com/2021/04/27/gCJC3F.md.png" alt="gCJC3F.md.png"></a></p>
-<h3 id="5-闭操作"><a href="#5-闭操作" class="headerlink" title="5.闭操作"></a>5.闭操作</h3><p>定义：使用同一个结构元素对目标图像先进行膨胀运算，然后再进行腐蚀运算称为闭操作。</p>
-<p>闭操作同样使轮廓线更光滑，但它通常消弭狭窄的间断和长细的鸿沟，消除小的孔洞，并填补轮廓线中的断裂。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gCYkRS"><img src="https://z3.ax1x.com/2021/04/27/gCYkRS.md.png" alt="gCYkRS.md.png"></a></p>
-<blockquote>
-<p>上图腐蚀有点问题</p>
-</blockquote>
-<h3 id="6-击中或击不中变换"><a href="#6-击中或击不中变换" class="headerlink" title="6.击中或击不中变换"></a>6.击中或击不中变换</h3><p>击中或击不中变换是形状检测的基本工具。</p>
-<blockquote>
-<p>在某些应用中，我们可能对检测某个集合内由1和0组成的某些模式感兴趣，在这种情况下不需要背景。因此，击中或击不中就简化为简单的腐蚀。</p>
-</blockquote>
-<p>可以参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/horseinch/article/details/50127955">文章</a></p>
-<h3 id="7-形态学应用"><a href="#7-形态学应用" class="headerlink" title="7.形态学应用"></a>7.形态学应用</h3><ol>
-<li>边界提取</li>
-<li>孔洞填充</li>
-<li>连通分量的提取</li>
-<li>凸壳</li>
-<li>细化</li>
-<li>粗化</li>
-<li>骨架</li>
-<li>裁剪</li>
-</ol>
-<h3 id="8-灰度级形态学"><a href="#8-灰度级形态学" class="headerlink" title="8.灰度级形态学"></a>8.灰度级形态学</h3><ol>
-<li>腐蚀膨胀</li>
-<li>开闭操作</li>
-<li>顶帽变换、底帽变换</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/27/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数字图像处理-学习笔记（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">数字图像处理-学习笔记（3）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-23T00:32:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图像分割"><a href="#图像分割" class="headerlink" title="图像分割"></a>图像分割</h2><p>内容大致：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOtJu8"><img src="https://z3.ax1x.com/2021/04/23/cOtJu8.md.png" alt="cOtJu8.md.png"></a></p>
-<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
-<li>图像分割就是根据某些特性把图片中的像素分成不同的部分（加不同的标签）</li>
-<li>特性可以是灰度、颜色、纹理等，目标可以对应单个区域，也可以对应多个区域。</li>
-<li>图像分割算法是基于亮度值的不连续性和相似性。</li>
-</ul>
-<p><strong>图像分析主要包括一下几部分内容：</strong></p>
-<ol>
-<li>把图像分割成不同区域，或把不同的目标分开（分割）。即把图像分成互不重叠的区域并提取出感兴趣目标</li>
-<li>找出各个区域的特征（特征提取）。</li>
-<li>识别图像中的内容，或对图像进行分类（识别与分类）。</li>
-<li>给出结论（描述、分类或其他的结论）</li>
-</ol>
-<h3 id="分类–分割依据"><a href="#分类–分割依据" class="headerlink" title="分类–分割依据"></a>分类–分割依据</h3><ul>
-<li><strong>相似性分割</strong>：将相似灰度级的像素聚集在一起，形成图像中的不同区域。这种基于相似性原理的方法也称为基于区域相关的分割技术。</li>
-<li><strong>非连续性分割</strong>：首先检测局部不连续性，然后将它们连接起来形成边界，这些边界把图像分以不同的区域。这种基于不连续性原理检出物体边缘的方法称为基于点相关的分割技术。</li>
-<li>两种方法是互补的。有时将它们结合起来，以求得到更好的分割效果。</li>
-</ul>
-<h3 id="基于边缘的图像分割"><a href="#基于边缘的图像分割" class="headerlink" title="基于边缘的图像分割"></a>基于边缘的图像分割</h3><h4 id="间断检测"><a href="#间断检测" class="headerlink" title="间断检测"></a>间断检测</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cX249P"><img src="https://z3.ax1x.com/2021/04/23/cX249P.md.png" alt="cX249P.md.png"></a></p>
-<h4 id="1-点检测"><a href="#1-点检测" class="headerlink" title="1.点检测"></a>1.点检测</h4><p><img src="https://raw.githubusercontent.com/command-z-z/My-image-library/master/20210423/1.1uha5ii2ddi8.png" alt="1"></p>
-<h4 id="2-线检测"><a href="#2-线检测" class="headerlink" title="2.线检测"></a>2.线检测</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9YNBn"><img src="https://z3.ax1x.com/2021/04/27/g9YNBn.md.png" alt="g9YNBn.md.png"></a></p>
-<h4 id="3-边缘检测"><a href="#3-边缘检测" class="headerlink" title="3.边缘检测"></a>3.边缘检测</h4><ul>
-<li>边缘点：边缘点是指其周围像素的灰度有阶跃变化或屋顶状变化的像素、常存在于目标与背景之间、目标与目标之间、目标与其影子之间。</li>
-<li>分析手段：因为灰度的变化，可以反映为导数；因此，根据边缘的形状，可以通过求导的方法来寻求边缘。</li>
-<li>边缘的参数：包括边缘强度和边缘方向或者说边缘的幅值和边缘的方向。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9dQSK"><img src="https://z3.ax1x.com/2021/04/27/g9dQSK.md.png" alt="g9dQSK.md.png"></a></p>
-<p><strong>边缘分割示例</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9wfUA"><img src="https://z3.ax1x.com/2021/04/27/g9wfUA.md.png" alt="g9wfUA.md.png"></a></p>
-<p><strong>阈值处理</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9wz80"><img src="https://z3.ax1x.com/2021/04/27/g9wz80.md.png" alt="g9wz80.md.png"></a></p>
-<h3 id="Canny边缘检测算法"><a href="#Canny边缘检测算法" class="headerlink" title="Canny边缘检测算法"></a>Canny边缘检测算法</h3><p>边缘检测的一般标准包括：</p>
-<ol>
-<li>低错误率：既要少将真正的边缘丢失也要少将非边缘判为边缘。</li>
-<li>边缘点应被很好地定位。检测出的边缘应在真正的边界上。</li>
-<li>单一的边缘响应。得到的边界为单像素宽。</li>
-</ol>
-<ul>
-<li>为了满足这些要求，Canny使用了变分法。Canny检测器中的最优函数使用四个指数项的和来描述，它可以由高斯函数的一阶导数来近似。</li>
-<li>在目前常用的边缘检测方法中，Canny边缘检测算法是具有严格定义的，可以提供良好可靠检测的方法之一。由于它具有满足边缘检测的三个标准和实现过程简单的优势，成为边缘检测最流行的算法之一。</li>
-</ul>
-<h5 id="Canny边缘检测算法的步骤"><a href="#Canny边缘检测算法的步骤" class="headerlink" title="Canny边缘检测算法的步骤"></a>Canny边缘检测算法的步骤</h5><ol>
-<li>灰度化<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9DQNd"><img src="https://z3.ax1x.com/2021/04/27/g9DQNd.md.png" alt="g9DQNd.md.png"></a></li>
-<li>使用高斯滤波器平滑图像、滤除噪声<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9raM6"><img src="https://z3.ax1x.com/2021/04/27/g9raM6.md.png" alt="g9raM6.md.png"></a></li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9rrIH"><img src="https://z3.ax1x.com/2021/04/27/g9rrIH.md.png" alt="g9rrIH.md.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9rIoQ"><img src="https://z3.ax1x.com/2021/04/27/g9rIoQ.md.png" alt="g9rIoQ.md.png"></a><br>3. 计算图像中每个像素点的梯度强度和方向。注：在opencv中，选取3x3的Sobel算子。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9sQSI"><img src="https://z3.ax1x.com/2021/04/27/g9sQSI.md.png" alt="g9sQSI.md.png"></a><br>4. 非极大值抑制<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9sRh9"><img src="https://z3.ax1x.com/2021/04/27/g9sRh9.md.png" alt="g9sRh9.md.png"></a><br>5. 双阈值检测<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9yHK0"><img src="https://z3.ax1x.com/2021/04/27/g9yHK0.md.png" alt="g9yHK0.md.png"></a><br>6. 抑制孤立低阈值点<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g96kVO"><img src="https://z3.ax1x.com/2021/04/27/g96kVO.md.png" alt="g96kVO.md.png"></a></p>
-<p><strong>Canny算法小结</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9cNkD"><img src="https://z3.ax1x.com/2021/04/27/g9cNkD.md.png" alt="g9cNkD.md.png"></a></p>
-<h4 id="边缘连接与边界检测"><a href="#边缘连接与边界检测" class="headerlink" title="边缘连接与边界检测"></a>边缘连接与边界检测</h4><ul>
-<li>理想情况下，边缘检测应该仅产生位于边缘上的像素集合。实际上，由于噪声、不均匀照明引起的边缘间断，以及其他引入灰度值虚假的不连续的影响，这些像素并不能完全描述边缘特性。</li>
-<li>因此，一般是在边缘检测后紧跟连接算法，将边缘像素组成有意义的边缘或区域边界。</li>
-<li>三种基本的边缘连接方法；<ul>
-<li>第一种方法需要有关局部区域中的边缘点（如一个3x3邻域）的知识</li>
-<li>第二种方法要求区域边界上的点已知</li>
-<li>第三种方法是处理整个边缘图像的全局方法。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Hough变换"><a href="#Hough变换" class="headerlink" title="Hough变换"></a>Hough变换</h3><p><strong>基于Hough变换的全局处理</strong></p>
-<ul>
-<li>Hough变换是基于表决原理的参数估计方法</li>
-<li>在图像处理领域，是一种重要的形状检测技术</li>
-<li>基本思想：图像中每一点对参数组合进行表决，赢得多数票的参数组合为胜者。</li>
-</ul>
-<p><strong>直线Hough变换的（k，b）空间方法：</strong><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9H3P1"><img src="https://z3.ax1x.com/2021/04/27/g9H3P1.md.png" alt="g9H3P1.md.png"></a></p>
-<h3 id="基于阈值的图像分割"><a href="#基于阈值的图像分割" class="headerlink" title="基于阈值的图像分割"></a>基于阈值的图像分割</h3><ul>
-<li>基于全局阈值</li>
-<li>Otsu方法的最佳全局阈值（大津算法）</li>
-<li>图像平滑改善全局阈值</li>
-<li>基本自适应阈值</li>
-<li>通过边界特性选择阈值</li>
-</ul>
-<h3 id="边界表示与描述–边界追踪"><a href="#边界表示与描述–边界追踪" class="headerlink" title="边界表示与描述–边界追踪"></a>边界表示与描述–边界追踪</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9HG26"><img src="https://z3.ax1x.com/2021/04/27/g9HG26.md.png" alt="g9HG26.md.png"></a></p>
-<h3 id="边界表示与描述–链码"><a href="#边界表示与描述–链码" class="headerlink" title="边界表示与描述–链码"></a>边界表示与描述–链码</h3><ul>
-<li>链码由于表示由顺序连接的具有指定长度和方向的直线段组成的边界线</li>
-<li>这种表示方法基于线段的4或8连接</li>
-<li>每一段的方向使用数字编号方法进行编码<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9bQOS"><img src="https://z3.ax1x.com/2021/04/27/g9bQOS.md.png" alt="g9bQOS.md.png"></a></li>
-</ul>
-<h4 id="循环差分链码：用相邻链码的差代替链码"><a href="#循环差分链码：用相邻链码的差代替链码" class="headerlink" title="循环差分链码：用相邻链码的差代替链码"></a>循环差分链码：用相邻链码的差代替链码</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/g9bXX8"><img src="https://z3.ax1x.com/2021/04/27/g9bXX8.md.png" alt="g9bXX8.md.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/23/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数字图像处理-学习笔记（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">数字图像处理-学习笔记（2）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2021-04-20T08:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="空间域图像增强"><a href="#空间域图像增强" class="headerlink" title="空间域图像增强"></a>空间域图像增强</h2><p>内容大致：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7qn4s"><img src="https://z3.ax1x.com/2021/04/20/c7qn4s.md.png" alt="c7qn4s.md.png"></a></p>
-<h4 id="4-空间滤波"><a href="#4-空间滤波" class="headerlink" title="4.空间滤波"></a>4.空间滤波</h4><p>空间滤波：使用空间模板进行的图像处理。<br>空间滤波器：模板本身。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/c7LAR1"><img src="https://z3.ax1x.com/2021/04/20/c7LAR1.md.png" alt="c7LAR1.md.png"></a></p>
-<p><strong>分类</strong></p>
-<ul>
-<li>平滑滤波器、低通滤波器，作用：边缘平滑、去噪。</li>
-<li>锐化滤波器、高通滤波器，作用：边缘提取与增强。<blockquote>
-<p>低通滤波去除了图像的高频部分，即细节信息，留下的低频信息代表了概貌。常用例子，比如美图秀秀的磨皮，去掉了脸部细节信息（痘坑，痘印，暗斑等）。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="1-平滑滤波器"><a href="#1-平滑滤波器" class="headerlink" title="1.平滑滤波器"></a>1.平滑滤波器</h3><p>平滑空间滤波器的分类</p>
-<ul>
-<li>线性滤波器：均值滤波器、高斯滤波。</li>
-<li>非线性滤波器：中值滤波器、最大值滤波器、最小值滤波器。<br>平滑空间滤波器的作用：</li>
-</ul>
-<ol>
-<li>模糊处理：去除图像中一些不重要的细节。</li>
-<li>减少噪声</li>
-</ol>
-<p><strong>图像噪声：定义和描述方式</strong><br>噪声是妨碍人们感觉器官对所接收信源信息理解的因素。噪声在理论上可定义为“不可预测，只能用概率统计方法来认识的随机误差”。噪声可用随机过程及其概率分布函数和概率密度函数，通常用其数字特征，即均值方差、相关函数等进行处理。</p>
-<p><strong>图像噪声的特点</strong></p>
-<ol>
-<li>噪声在图像中的分布和大小不规则，即随机性。</li>
-<li>噪声与图像之间具有相关性。</li>
-<li>噪声具有叠加性。</li>
-</ol>
-<p><strong>图像噪声分类</strong></p>
-<ul>
-<li>按其产生的原因：外部噪声和内部噪声。</li>
-<li>按统计特性：平稳噪声和非平稳噪声。</li>
-<li>按噪声和信号之间的关系：加性噪声和乘性噪声。</li>
-</ul>
-<h5 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h5><p>对于一个滑动窗口内的各像素灰度级求平均值、用该均值来代替窗口中心像素的灰度值。比如：<br>$$g(x,y)=\frac{f(x-1,y)+f(x,y)+f(x+1,y)}{3}$$</p>
-<blockquote>
-<p>均值滤波的关键是设计合理的滤波器，包括形状和大小。</p>
-</blockquote>
-<p>作用：</p>
-<ol>
-<li>减小图像灰度的“尖锐”变化，减小噪声。</li>
-<li>由于图像边缘是由图像灰度尖锐变化引起的，所以也存在边缘模糊的问题（局限性）。</li>
-</ol>
-<p>常用滤波器：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLWIL4"><img src="https://z3.ax1x.com/2021/04/22/cLWIL4.md.png" alt="cLWIL4.md.png"></a></p>
-<blockquote>
-<p>运用滤波器，滤波器窗口（3x3，5x5）越大，平滑的越厉害，模糊也越严重。</p>
-</blockquote>
-<p>均值滤波的一个重要应用是为了对感兴趣的物体得到一个粗略的描述，模糊一幅图像。</p>
-<h5 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h5><p>一种特殊的线性滤波，其使用高斯函数作为权函数。<br>$$p(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{\frac{-x^2}{2\sigma^2}}$$</p>
-<p><strong>$\sigma$值的意义及选取</strong><br>高斯滤波器模板的生成最重要的参数就是高斯分布的标准差$\sigma$。标准差代表着数据的离散程度，如果$\sigma$较小，那么生成的模板的中心系数较大,而周围的系数较小，这样对图像的平滑效果就部署很明显；反之，$\sigma$较大,则生成的模板的各个系数相差就不是很大，比较类似均值模板，对图像的平滑效果比较明显。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLhV41"><img src="https://z3.ax1x.com/2021/04/22/cLhV41.md.png" alt="cLhV41.md.png"></a></p>
-<p><strong>均值滤波和高斯滤波特点</strong></p>
-<ul>
-<li>系数之和等于1。</li>
-<li>系数都是非负。</li>
-<li>执行速度快。</li>
-<li>容易造成图像模糊。实质上在求平均过程中，噪声的灰度值也加入了均值当中，从而向周围扩散，导致图像模糊，边缘不清晰。</li>
-<li>滤波前后图像亮度不变。</li>
-</ul>
-<h4 id="统计排序滤波器"><a href="#统计排序滤波器" class="headerlink" title="统计排序滤波器"></a>统计排序滤波器</h4><p>定义：是一种非线性滤波器，基于滤波器所在图像区域中像素的排序，由排序结果决定的值代替中心像素的值。<br>分类：</p>
-<ul>
-<li>中值滤波器：用像素邻域内的中间值代替该像素。</li>
-<li>最大值滤波器：用像素邻域内的最大值代替该像素。</li>
-<li>最小值滤波器：用像素邻域内的最小值代替该像素。</li>
-</ul>
-<h5 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h5><p>定义：对于一个滑动窗口内nm个像素按灰度值进行排序，用中值来替代窗口中心像素原来的灰度。<br>$$g(x,y)=median f(s,t)$$</p>
-<blockquote>
-<p>作用：强迫突出的亮点（暗点）更像它周围的值，以消除孤立的亮点（暗点）。</p>
-</blockquote>
-<p> 思考：为什么中值滤波更好地保持了边缘？其边缘没有模糊？<br> 解释：在目标和背景边界处的像素，当其邻域中大多数为目标点时，他就取目标的灰度值，当其邻域中大多数为背景点时，它就取背景的灰度值，因此不模糊。</p>
-<p> <strong>中值滤波特点</strong></p>
-<ul>
-<li>计算复杂度高（排序），执行速度慢。</li>
-<li>滤波前后图像亮度发生改变（但非常接近）</li>
-<li>不容易造成图像模糊，具有非常好的抗噪性能。中值滤波能够在抑制随机噪声的同时不使边缘模糊。</li>
-</ul>
-<h5 id="极值滤波"><a href="#极值滤波" class="headerlink" title="极值滤波"></a>极值滤波</h5><h6 id="最大值滤波"><a href="#最大值滤波" class="headerlink" title="最大值滤波"></a>最大值滤波</h6><p>对于一个滑动窗口mn内的各像素求灰度值最大值，用该最大值来替代窗口中心像素原来的灰度值。<br>$$g(x,y)=max f(s,t)$$</p>
-<h6 id="最小值滤波"><a href="#最小值滤波" class="headerlink" title="最小值滤波"></a>最小值滤波</h6><p>对于一个滑动窗口mn内的各像素求灰度值最小值，用该最小值来替代窗口中心像素原来的灰度值。<br>$$g(x,y)=min f(s,t)$$</p>
-<h3 id="2-锐化滤波器"><a href="#2-锐化滤波器" class="headerlink" title="2.锐化滤波器"></a>2.锐化滤波器</h3><p>定义：使模糊图像变清晰，增强图像的边缘等细节。一般先去除噪声，再进行锐化处理。</p>
-<p>微分滤波器的原理：<br>均值产生钝化的效果，而均值与积分相似，由此而联想到，微分能不能产生相反的效果，即锐化的效果？</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLozOf"><img src="https://z3.ax1x.com/2021/04/22/cLozOf.md.png" alt="cLozOf.md.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTZ60"><img src="https://z3.ax1x.com/2021/04/22/cLTZ60.md.png" alt="cLTZ60.md.png"></a></p>
-<h4 id="1-Roberts交叉梯度算子"><a href="#1-Roberts交叉梯度算子" class="headerlink" title="1.Roberts交叉梯度算子"></a>1.Roberts交叉梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTa7D"><img src="https://z3.ax1x.com/2021/04/22/cLTa7D.md.png" alt="cLTa7D.md.png"></a></p>
-<h4 id="2-Sobel梯度算子"><a href="#2-Sobel梯度算子" class="headerlink" title="2.Sobel梯度算子"></a>2.Sobel梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cLTbuV"><img src="https://z3.ax1x.com/2021/04/22/cLTbuV.md.png" alt="cLTbuV.md.png"></a></p>
-<blockquote>
-<p>这里有个错误，上图中应改为（$z_1+2z_2+z_3$）</p>
-</blockquote>
-<p>Sobel梯度算子的计算方法具体参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/libocao/article/details/88958239">文章</a></p>
-<h4 id="3-Prewitt梯度算子"><a href="#3-Prewitt梯度算子" class="headerlink" title="3.Prewitt梯度算子"></a>3.Prewitt梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOAIjP"><img src="https://z3.ax1x.com/2021/04/22/cOAIjP.md.png" alt="cOAIjP.md.png"></a></p>
-<h4 id="4-常用梯度算子"><a href="#4-常用梯度算子" class="headerlink" title="4.常用梯度算子"></a>4.常用梯度算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOAv3n"><img src="https://z3.ax1x.com/2021/04/22/cOAv3n.md.png" alt="cOAv3n.md.png"></a></p>
-<h4 id="5-拉普拉斯算子"><a href="#5-拉普拉斯算子" class="headerlink" title="5.拉普拉斯算子"></a>5.拉普拉斯算子</h4><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cO1xgO"><img src="https://z3.ax1x.com/2021/04/23/cO1xgO.md.png" alt="cO1xgO.md.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cO1zvD"><img src="https://z3.ax1x.com/2021/04/23/cO1zvD.md.png" alt="cO1zvD.md.png"></a></p>
-<h2 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cOVpRA"><img src="https://z3.ax1x.com/2021/04/22/cOVpRA.md.png" alt="cOVpRA.md.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/20/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数字图像处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理-学习笔记（1）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="archive-article-date">
-	
-  	<time datetime="2021-04-13T07:24:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-13</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="1-图像如何产生"><a href="#1-图像如何产生" class="headerlink" title="1.图像如何产生"></a>1.图像如何产生</h4><p>图像数字化：将模拟图像经过离散化后，得到用数字表示的图像。图像的数字化包括两个过程：采样和量化。</p>
-<ul>
-<li><p>采样：将在空间上连续的图像转换成离散的采样点的操作，即空间坐标的离散化。</p>
-</li>
-<li><p>量化：把取样后所得的个像素的灰度值从模拟量到离散量的转换操作，即灰度的离散化。</p>
-</li>
-<li><p>灰度级：表示像素明暗程度的整数量。例如：像素的取值范围为0-255，就称该图像为256个灰度级的图像。</p>
-</li>
-<li><p>层次：表示图像实际拥有的灰度级的数量。例如：具有32种不同取值的图像，可称该图像具有32个层次。（图像数据的实际层次越多，视觉效果就越好）</p>
-</li>
-<li><p>对比度：一幅图像中灰度反差的大小。</p>
-</li>
-<li><p>清晰度：与之有关因素，亮度，对比度，尺寸大小，细微层次，颜色饱和度。</p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-旧社会与无奈" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/06/%E6%97%A7%E7%A4%BE%E4%BC%9A%E4%B8%8E%E6%97%A0%E5%A5%88/">暴雪将至（旧社会与无奈）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/04/06/%E6%97%A7%E7%A4%BE%E4%BC%9A%E4%B8%8E%E6%97%A0%E5%A5%88/" class="archive-article-date">
-	
-  	<time datetime="2021-04-06T15:14:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-06</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;我姓余，多余的余。</p>
-<p>&emsp;&emsp;影片开头似乎就奠定了整部影片的基调，一个小人物，怀揣着梦想，希望通过自己的努力，挣脱体制的束缚，进入事业编制。然而因为时代的羁绊，自己的固执，导致两个至亲人的死去，最后自己的梦想也破灭了，忙碌了半生，到头来还是个多余的人。本片并不是真正意义上的犯罪片，对案件的着墨并不多，案件像是一条线，推动整个故事情节的发展，制造种种冲突与矛盾，向我们展示了97年时代，体制，阶级的残酷，本片更像是一部披着犯罪外衣的历史片，揭示了那个时代的烙印。</p>
-<p>&emsp;&emsp;&emsp;&emsp;<a target="_blank" rel="noopener" href="https://imgtu.com/i/c25BJ1"><img src="https://z3.ax1x.com/2021/04/15/c25BJ1.jpg" alt="c25BJ1.jpg"></a></p>
-<p>&emsp;&emsp;故事发生在1997年，主人公余国伟，外号“余神探”，是工厂保卫科科长。在那个年代，人人都想进入事业编制，身为科长的余国伟也是，他不甘于自己的职位，想通过自己的努力进入公安局。然而阶级的对立一次次的阻挡他前进的脚步。又是一个阴雨绵绵的雨天，小村庄里第三起杀人案发生，余国伟热情的赶到前线，擅自对犯罪现场进行拍照，比编制内的警察还认真，希望被警察局的人看到，增加对自己的好感，可体制的对立一次次的向他浇冷水，警察看不起这个小人物，当车子陷入泥潭使，也被指使着去推车，也可以看出当时阶级的对立关系。于是，余国伟暗下决心，想通过自己的努力破案，得到认可，从而破格进入警察局。他带着自己的徒弟小刘，模拟案发现场，希望找到其中残留的线索，和遗漏的细节，刻画了了人物不服输的性格，也为后文自己的固执破案埋下了伏笔。</p>
-<p>&emsp;&emsp;收音机里不时会传出最强冷空气未来几天将大举南下，整部影片的叙述不是在下雨就是阴天，添上了一层昏暗的冷色调，与当时的工业时代背景相映衬。工厂举行了表彰大会，余国伟被选为劳模上台发言，舞台上方机子出现故障，漫天棉絮飘下，宛如雪花般落下，这是余国伟人生巅峰的时刻。然而十年后他从狱中出来，再次来到表彰大会的礼堂，听到的却是老大爷说得“厂子效益不好，评劳模也不会给保卫科的”。两者形成了鲜明的对比，对于余国伟来说，这可能是他最辉煌的时刻，而在其他人眼中，这仅仅他是个小人物，并不会为大家所铭记。</p>
-<p>&emsp;&emsp;又是在阴雨绵绵的下雨天，余国伟粘贴告示，布下陷阱，引出嫌疑人的出现，他们在厂区中追逐，余国伟一次次欲逼近嫌疑人，却一次次被嫌疑人挣脱，雨越下越大，冲刷着地上的痕迹。命运像注定了一般，嫌疑人逃走了，只留下了一双鞋。徒弟小刘在追逐中，不幸触电身亡，一次次的失利打击着余国伟的内心，他觉得自己已经离梦想越来越近，却又十分遥远。</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a target="_blank" rel="noopener" href="https://imgtu.com/i/c257y8"><img src="https://z3.ax1x.com/2021/04/15/c257y8.jpg" alt="c257y8.jpg"></a></p>
-<p>&emsp;&emsp;97年经济体制改革，资本主义市场对集体主义与计划经济的冲击，看似朴实温饱的生活正经历着分崩离析，余国伟在此时也被迫下岗。现在留给余国伟的只剩一双鞋，这是他唯一进入体制内的希望，他决定放手一搏。他把燕子作为诱饵，想引出嫌疑人，他为燕子盘下一个理发店，这让燕子第一次觉得有了依靠的人。可当她发现余国伟只是在利用自己的时候，她绝望了，一个翻身倒入铁轨自尽了。余国伟太想证明自己了，可命运就像给他开了玩笑，先后搭上了两个亲人的命。</p>
-<p>&emsp;&emsp;亲人的离去让他近乎疯狂，他绝望了，他抓着他认为的嫌疑人宋军，拖到草地上，绝望的用电筒敲打着他，他已经不管眼前的是不是真的凶手了，这是时代的束缚，这是命运的隔阂，一个小人物终究不能凭借自己的努力，突破体制。在去狱中的车上，刑警老张问他，“你这样做究竟是为什么啊”，可能到最后连余国伟也不知道他这样做究竟是为什么了，他的眼里没有了期望。</p>
-<p>&emsp;&emsp;片中几处细节描写的很好，更能反映那个时代的印记。燕子的梦想是去香港开一家里理发店，那时候的香港刚刚回归，资本主义经济发展繁茂，与大陆人心涣散的社会形成鲜明的对比，让人们觉的只有在那里才可以生活的安稳。片中也很好的描述了当时社会的下岗现状，一道铁门，阻拦着两类人，一类人继续过着工厂的工作，拿着安稳的工资。而另一类人，他们被迫下岗，在那个年代，可以说下岗就等于没有了经济来源，一个家庭可能因此土崩瓦解。片中筒子楼里的男人杀掉了自己心爱的妻子，那都是下岗后生活的压抑与绝望所致，很符合当时那个时代压抑灰暗的气息。</p>
-<p>&emsp;&emsp;结尾很戏剧性的向我们展示了嫌疑人早上当年那次追逐中，被卡车给撞死。而余国伟一直寻找的嫌疑人早已死亡，这样的安排多么的戏谑，自己苦苦追寻的，进入体制内的唯一希望，早就已经破灭了，而就是他的固执，导致自己失去亲人，又一无所得。</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a target="_blank" rel="noopener" href="https://imgtu.com/i/c2ISS0"><img src="https://z3.ax1x.com/2021/04/15/c2ISS0.jpg" alt="c2ISS0.jpg"></a></p>
-<p>&emsp;&emsp;片名虽然叫暴雪将至，可全片仅出现两次下雪。一次是他在表彰大会上，漫天飘散的棉絮，宛如雪花一般洒落，那是他人生最高光的时刻；而第二次是他十年后出狱，坐在车上，望着窗外，那一早已预警的大雪，等了十年，终于落下，也算是为他的安慰与感慨，他拿着新办的身份证，要开启新的人生。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/06/%E6%97%A7%E7%A4%BE%E4%BC%9A%E4%B8%8E%E6%97%A0%E5%A5%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Notion模版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/24/Notion%E6%A8%A1%E7%89%88/">Notion模版分享</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/03/24/Notion%E6%A8%A1%E7%89%88/" class="archive-article-date">
-	
-  	<time datetime="2021-03-24T00:35:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;今天发现一款好看而又实用的软件，不仅可以用来整理学习笔记，还可以用来做一些事情规划，将笔记、任务管理及知识库相结合，Notion 打造出了一款「瑞士军刀」般的协作工具。对我来说，所有整洁而又井然有序的事情，都会让人舒心。不仅可以督促自己按时完成任务，还可以记录生活，回首过往，看到自己曾经的付出，会更有前进的动力，下面分享一下自己的几个notion板块。</p>
-<h4 id="1-Bullet-Journal（子弹笔记）"><a href="#1-Bullet-Journal（子弹笔记）" class="headerlink" title="1.Bullet Journal（子弹笔记）"></a>1.Bullet Journal（子弹笔记）</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Bullet-Journal-ecc59d07a73d4b8db1ab071b138d839b">模版</a></p>
-<p>主要对日常的一些事情，未来要做的事情进行一些记录，不同颜色表示事情急迫程度，可以填入相应的时间点，以及不同的符号也代表不同的意思，🚀代表Doing，🌕代表Done，🌍表示To-Do。</p>
-<p>此模版包含一年四季的季目标，以及12个月的月目标，Empty Week Template为周计划的模版，把日计划可以放入此page。合理安排一年的计划并细化到季度，月份，使所有事情调理清晰。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/c99IZd"><img src="https://z3.ax1x.com/2021/03/28/c99IZd.png" alt="c99IZd.png"></a></p>
-<h4 id="2-Reading-List"><a href="#2-Reading-List" class="headerlink" title="2.Reading List"></a>2.Reading List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Reading-List-34ff7ffbc99b4e1f9b457cf9852002b1">模版</a></p>
-<p>读书列表主要存放我所看过的书📖，正在看的书，以及准备看的书。每个元组包含，Type（书的类型），Name（书名），State（读书状态），Score（书本打分），Author（书籍作者），Reading data（读书开始日期），Finish data（读书结束日期），Link（书评）,Summary(简短评价)。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cmoMxf"><img src="https://z3.ax1x.com/2021/04/02/cmoMxf.md.png" alt="cmoMxf.md.png"></a></p>
-<h4 id="3-Movie-List"><a href="#3-Movie-List" class="headerlink" title="3.Movie List"></a>3.Movie List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Movie-List-8a712d8efbfe471b817cb475b038178d">模版</a></p>
-<p>电影列表主要存放我看过的电影以及想要看的电影，每个电影都是从IMDB上复制来的链接，以图片的形式进行展示更加直观。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cmo4sO"><img src="https://z3.ax1x.com/2021/04/02/cmo4sO.md.png" alt="cmo4sO.md.png"></a></p>
-<h4 id="4-TV-series-List"><a href="#4-TV-series-List" class="headerlink" title="4.TV series List"></a>4.TV series List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-TV-series-List-6129acc2ce3b4e7a9d611fdfa399b20b">模版</a></p>
-<p>电视剧列表主要存放我看过的电视剧，正在看的电视剧，想要看的电视剧，每个电视剧都是从IMDB上复制来的链接，以图片的形式进行展示更加直观。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7Sc6"><img src="https://z3.ax1x.com/2021/04/02/cm7Sc6.md.png" alt="cm7Sc6.md.png"></a></p>
-<h4 id="5-Computer-books-List"><a href="#5-Computer-books-List" class="headerlink" title="5.Computer books List"></a>5.Computer books List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/Copy-of-Computer-books-List-111cc188e5f343e2809dd4e20d07254c">模版</a></p>
-<p>计算机书籍列表主要存放我所看过的书📖，正在看的书，以及准备看的书。每个元组包含，Type（书的类型），Name（书名），State（读书状态），Score（书本打分），Author（书籍作者），Reading data（读书开始日期），Finish data（读书结束日期），Link（书评）,Summary(简短评价)。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7CnO"><img src="https://z3.ax1x.com/2021/04/02/cm7CnO.md.png" alt="cm7CnO.md.png"></a></p>
-<h4 id="6-Homework-List"><a href="#6-Homework-List" class="headerlink" title="6.Homework List"></a>6.Homework List</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/68bd189fa25d42369fe8e799fa98256c?v=fd3ecaea2722472c8900e1770c23e8f4">模版</a></p>
-<p>家庭作业列表，记录我的所有作业信息，作业截止时间，共分为To Do作业，Doing作业，Done作业，罗列相关的作业，避免作业的遗漏，以及明确ddl很关键。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm73Nj"><img src="https://z3.ax1x.com/2021/04/02/cm73Nj.md.png" alt="cm73Nj.md.png"></a></p>
-<h4 id="7-Journal"><a href="#7-Journal" class="headerlink" title="7.Journal"></a>7.Journal</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/a2c51179a3ee49c0bd8252f9c47539ef?v=6ce8b6d948a742da86a48cb904427ffd">模版</a></p>
-<p>这里会记录一些我的日记，周记以及一些反思内容。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7BE4"><img src="https://z3.ax1x.com/2021/04/02/cm7BE4.md.png" alt="cm7BE4.md.png"></a></p>
-<h4 id="8-Blog-Plan"><a href="#8-Blog-Plan" class="headerlink" title="8.Blog Plan"></a>8.Blog Plan</h4><p>点击复制<a target="_blank" rel="noopener" href="https://www.notion.so/016e439d99e8407da0cd212ca28ec68a?v=b316f877845e4e15b12b2870cb0ca28b">模版</a></p>
-<p>这里主要是安排一些<a target="_blank" rel="noopener" href="https://command-z-z.github.io/">我的博客</a>所要写的内容，我的想法,避免自己因为拖延症，而经常性的拖着不完成。</p>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/cm7yCR"><img src="https://z3.ax1x.com/2021/04/02/cm7yCR.md.png" alt="cm7yCR.md.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/24/Notion%E6%A8%A1%E7%89%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Robocup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1168,29 +444,52 @@
 
 
   
-    <article id="post-Git指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-GMT地形图绘制-学习笔记（2）-绘制海岸线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/">Git从入门到入土</a>
+      <a class="article-title" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">GMT地形图绘制 学习笔记（2） -绘制海岸线</a>
     </h1>
   
 
         
         
-<a href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+<a href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/" class="archive-article-date">
 	
-  	<time datetime="2021-02-12T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-12</time>
+  	<time datetime="2021-01-28T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-28</time>
 </a>
         
             </header>      
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
+<h3 id="绘制海岸线"><a href="#绘制海岸线" class="headerlink" title="绘制海岸线"></a>绘制海岸线</h3><p>GMT 中使用coast模块绘制海岸线、湖岸线等。该模块不仅可以绘制这些岸线，还可以绘制比例尺和行政边界等。</p>
+<h4 id="绘制海岸线、湖岸线-W"><a href="#绘制海岸线、湖岸线-W" class="headerlink" title="绘制海岸线、湖岸线(-W)"></a>绘制海岸线、湖岸线(-W)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline png,pdf &#x2F;&#x2F;同时生成两个后缀文件</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/yCS8tU"><img src="https://z3.ax1x.com/2021/01/28/yCS8tU.md.png" alt="yCS8tU.md.png"></a></p>
+<p>默认情况下-W选项会绘制所有水体与陆地的界限，包括海岸线、湖岸线、湖中岛的边界等。根据水体或陆地的不同，coast模块将岸线分为从1到4的四个级别，依次指海岸线、湖岸线、湖中岛，以及湖中岛内的湖边界，因而，可以在使用-W选项时指定要绘制哪一个等级的岸线。如下面的代码,-W1/0.5p,black表示用0.5p宽的黑色线条绘制1级海岸线。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline2 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCpW24"><img src="https://z3.ax1x.com/2021/01/28/yCpW24.md.png" alt="yCpW24.md.png"></a><br>也可以在一个命令中多次使用-W选项，分别用不同的线条绘制不同等级的岸线。如，绘制0.5p黑色的海岸线后，同时使用-W2/1p,lightred绘制1p宽的浅红色湖岸线。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline3 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred   &#x2F;&#x2F;0.5p 1p 区别是线的粗细</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9VMj"><img src="https://z3.ax1x.com/2021/01/28/yC9VMj.md.png" alt="yC9VMj.md.png"></a></p>
+<h4 id="设置绘制对象的最小面积-A"><a href="#设置绘制对象的最小面积-A" class="headerlink" title="设置绘制对象的最小面积(-A)"></a>设置绘制对象的最小面积(-A)</h4><p>因为美国的岛屿和湖泊很多，上图看上去依然很乱。我们可以通过-A选项设置要绘制的对象的最小面积（单位为平方千米）。-A5000表示只绘制面积大于5000平方千米的湖泊或岛屿</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline4 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred -A5000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9wFK"><img src="https://z3.ax1x.com/2021/01/28/yC9wFK.md.png" alt="yC9wFK.md.png"></a></p>
+<h4 id="填充陆地与水体"><a href="#填充陆地与水体" class="headerlink" title="填充陆地与水体"></a>填充陆地与水体</h4><p>在绘制时，还可以为陆地和水体设置不同的填充色。使用-G选项设置陆地区域的填充色，-S设置水体的颜色，-C则设置湖泊的颜色（若不指定-C，则湖泊颜色由-S控制）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline5 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9geI"><img src="https://z3.ax1x.com/2021/01/28/yC9geI.md.png" alt="yC9geI.md.png"></a><br>也可以同时使用-W 选项和-G 选项，即绘制岸线并填充颜色。</p>
+<h4 id="绘制国界-州界"><a href="#绘制国界-州界" class="headerlink" title="绘制国界/州界"></a>绘制国界/州界</h4><p>使用-N选项可以绘制国界/州界等行政边界。-N1表示绘制国界线，-N2表示绘制州界/省界线（目前只有美洲各国以及澳大利亚的洲界的数据）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline6 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -N1&#x2F;1p -N2&#x2F;0.25p</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCdns"><img src="https://z3.ax1x.com/2021/01/28/yCCdns.md.png" alt="yCCdns.md.png"></a><br>除了-N选项之外，-E选项也可以用于绘制州界、国界和省界。</p>
+<h4 id="添加比例尺"><a href="#添加比例尺" class="headerlink" title="添加比例尺"></a>添加比例尺</h4><p>绘制比例尺需要如下参数：要绘制哪个纬度的比例尺、比例尺在图中的位置、比例尺的长度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline7 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -Lg-60&#x2F;25+c25+w1000k+f+u</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCH3D"><img src="https://z3.ax1x.com/2021/01/28/yCCH3D.md.png" alt="yCCH3D.md.png"></a></p>
+<p>以上代码使用了-Lg-60/25+c25+w1000k+f+u增加比例尺，其中+w1000k表示比例尺长度为1000千米，+c25表示绘制纬度为北纬25°处的比例尺，g-60/25则表示将比例尺画在北纬25°西经60° 处，+f表示比例尺的风格为图中所示黑白相间的铁轨形式，+u表示显示比例尺对应的单位。</p>
+
       
 
       
@@ -1203,7 +502,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
         		</li>
       		
 		</ul>
@@ -1213,7 +512,611 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/12/Git%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-GMT地形图绘制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">GMT地形图绘制 学习笔记（1） -绘制底图</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/" class="archive-article-date">
+	
+  	<time datetime="2021-01-27T15:03:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
+<h3 id="绘制全球地图"><a href="#绘制全球地图" class="headerlink" title="绘制全球地图"></a>绘制全球地图</h3><h4 id="J-amp-R选项的基本用法"><a href="#J-amp-R选项的基本用法" class="headerlink" title="-J &amp; -R选项的基本用法"></a>-J &amp; -R选项的基本用法</h4><p>-J 选项指定地图投影参数以及地图的尺寸。 -R 选项指定要绘制的区域范围（即经纬度范围）。 如运行以下代码可以绘制全球地图（无边框版）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap1pdf </span><br><span class="line">    gmt coast -JH180&#x2F;12c -R0&#x2F;360&#x2F;-90&#x2F;90 -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9bohn"><img src="https://s3.ax1x.com/2021/01/28/y9bohn.jpg" alt="y9bohn.jpg"></a><br>其中，-JH180/12c指定地图投影参数,H表示使用<strong>Hammer投影</strong>，地图中心位于经度 180° 处，地图宽度为12厘米（12c）；-R0/360/-90/90 指定要绘制的区域范围，即经度0° 到360°，纬度-90° 到90°，四个数字之间用斜杠/分隔。</p>
+<h4 id="B选项的基本用法"><a href="#B选项的基本用法" class="headerlink" title="-B选项的基本用法"></a>-B选项的基本用法</h4><p>-B 选项可以为地理底图加上边框并绘制经纬线。运行以下代码，可绘制全球地图（有边框版）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin GlobalMap2 pdf</span><br><span class="line">    gmt coast -JH180&#x2F;12c -Rg -Bg -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9q4KK"><img src="https://s3.ax1x.com/2021/01/28/y9q4KK.jpg" alt="y9q4KK.jpg"></a><br>其中，-Rg与-R0/360/-90/90是完全等效的。由于绘制全球地图是很常见的需求，因而GMT 为其设计了一个更简单的写法。-Rg中g代表global；-Bg 选项中的-B用于给底图加上边框，其中的g则用于向底图中加入网格线（g代表grid）。</p>
+<h4 id="绘制区域地图"><a href="#绘制区域地图" class="headerlink" title="绘制区域地图"></a>绘制区域地图</h4><p>绘制区域地图与绘制全球地图没有本质区别，依然需要使用-J指定投影方式，使用-R指定绘图区域范围，使用-B指定底图边框。运行以下代码，可绘制新西兰地图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealand1 png &#x2F;&#x2F;此处为输出格式，这里测试后都改为png格式，便于Latex文本加入。</span><br><span class="line">    gmt coast -JM12c -RNZ -Ba -W0.5p -A10000</span><br><span class="line">gmt end show &#x2F;&#x2F;编译好后会直接输出</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9O5Ae"><img src="https://s3.ax1x.com/2021/01/28/y9O5Ae.md.png" alt="y9O5Ae.md.png"></a></p>
+<p>其中，-JM12c指定了使用墨卡托投影（绘制区域地图最常用的投影方式），地图宽度为12厘米；-RNZ指定了绘图区域范围，此处NZ是新西兰的国家代码，GMT会自动根据国家代码提取该国家的区域范围并用于绘图；-Ba用于给底图添加边框。对于某些地图投影GMT默认使用图中所示的黑白相间的底图边框。a用于添加标注（annotation，即图中的经纬度数字）。如果对于根据国家代码自动确定的区域范围不太满意，也可以使用-R选项最原始的方式来指定区域范围。通过上面的图，我们大概知道了新西兰的经纬度范围。运行以下代码重新绘制新西兰地图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap2 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Ba -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p>此代码同样可以生成类似上图新西兰区域图</p>
+<p>还可以对底图进行进一步的修改以使其更加美观</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin newzealandmap3 png</span><br><span class="line">    gmt coast -JM12c -R165&#x2F;180&#x2F;-48&#x2F;-32 -Bxa4 -Bya3 -BWSen+t&quot;New Zealand&quot; -W0.5p -A10000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9jkRA"><img src="https://s3.ax1x.com/2021/01/28/y9jkRA.md.png" alt="y9jkRA.md.png"></a><br>其中，-Bxa4 表示设置X轴（x）的标注间隔为4度一个（a4），-Bya3表示设置y轴的标注间隔为3度一个（a3），-BWSen中WSEN分别是西南东北四个方向的英文单词首字母，用于控制四条边的属性。大写的WS表示给西边和南边添加标注，而小写的en则表示对于东边和北边只绘制边框但不显示标注，-BWSen+t”New Zealand”中+t用于给整张图添加标题（title）。由于标题New Zealand中含有空格，我们需要使用单引号或双引号将其括起来。</p>
+<h3 id="绘制坐标轴"><a href="#绘制坐标轴" class="headerlink" title="绘制坐标轴"></a>绘制坐标轴</h3><h4 id="绘制线性坐标"><a href="#绘制线性坐标" class="headerlink" title="绘制线性坐标"></a>绘制线性坐标</h4><p>绘制线性坐标轴，需要使用-R指定坐标轴范围，使用-B绘制边框并指定边框和坐标轴属性，同时，还需要使用-JX指定线性坐标轴的宽度和高度。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin linearxy png</span><br><span class="line">    gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8 -JX8c&#x2F;5c -Bxa10f5g10+l&quot;X Label&quot; -Bya4f2g2+l&quot;Y Label&quot; -BWSen+t&quot;Linear X-Y Plot&quot;</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9vdnP"><img src="https://s3.ax1x.com/2021/01/28/y9vdnP.md.png" alt="y9vdnP.md.png"></a><br>其中，-JX8c/5c表明线性坐标轴的宽度为8厘米，高度为5厘米，-R10/70/-4/8表明X轴范围为10到70，Y轴范围为-4到8，-Bxa10f5g10+l”X Label” 设置了X 轴的属性，a10f5g10 分别设置了标注（annotation）间隔为10，刻度（frame）间隔为5，网格线（grid ）间隔为10；+l”X Label”则为X轴添加了标签；对于Y 轴同理.</p>
+<h4 id="绘制三维坐标"><a href="#绘制三维坐标" class="headerlink" title="绘制三维坐标"></a>绘制三维坐标</h4><p>三维坐标轴只需要在二维坐标的基础上针对Z轴指定Z轴的范围、Z轴的高度以及三维视角即可。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin 3dmap png</span><br><span class="line">gmt basemap -R10&#x2F;70&#x2F;-4&#x2F;8&#x2F;-10&#x2F;10 -JX8c5c -JZ5c -Bxa10+lX -Bya4+lY -Bzaf+lDepth -BSEwnZ+b+t&#39;3D Plot&#39; -p130&#x2F;30</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/y9xC3d"><img src="https://s3.ax1x.com/2021/01/28/y9xC3d.md.png" alt="y9xC3d.md.png"></a></p>
+<p>其中，-R 选项中有6个数字，后面两个数字表示Z轴最小值和最大值，-JZ5c指定了Z轴的高度为5厘米，-Bzaf指定了 轴的标注和刻度属性，-BSEwnZ+b中Z+b表示绘制一条Z轴，并绘制出整个长方体的所有边，-p130/30则指定了看这个长方体的视角130 和30分别为三维视角的方位角和高度角，方位角的取值范围为0 到360 度，高度角的取值范围为0 到90 度。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/27/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Tableau绘图-学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Tableau绘图 学习笔记</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+	
+  	<time datetime="2021-01-25T23:08:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>B站<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1E4411B7ef">教学视频</a>参考</p>
+<h3 id="第一次课"><a href="#第一次课" class="headerlink" title="第一次课"></a>第一次课</h3><h4 id="1-绘制条形图"><a href="#1-绘制条形图" class="headerlink" title="1.绘制条形图"></a>1.绘制条形图</h4><h5 id="1-1-条形图1-各地区酒店数量"><a href="#1-1-条形图1-各地区酒店数量" class="headerlink" title="1.1 条形图1(各地区酒店数量)"></a>1.1 条形图1(各地区酒店数量)</h5><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVsenH"><img src="https://s3.ax1x.com/2021/02/01/yVsenH.md.png" alt="yVsenH.md.png"></a></p>
+<h5 id="1-2-条形图2-各地区酒店均价"><a href="#1-2-条形图2-各地区酒店均价" class="headerlink" title="1.2 条形图2(各地区酒店均价)"></a>1.2 条形图2(各地区酒店均价)</h5><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVsgb9"><img src="https://s3.ax1x.com/2021/02/01/yVsgb9.md.png" alt="yVsgb9.md.png"></a></p>
+<h5 id="1-3-堆积图-价格等级"><a href="#1-3-堆积图-价格等级" class="headerlink" title="1.3 堆积图(价格等级)"></a>1.3 堆积图(价格等级)</h5><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVyKr4"><img src="https://s3.ax1x.com/2021/02/01/yVyKr4.md.png" alt="yVyKr4.md.png"></a></p>
+<blockquote>
+<p>说明：不同颜色表示同一地区不同等级酒店的个数。</p>
+</blockquote>
+<h4 id="2-直方图"><a href="#2-直方图" class="headerlink" title="2.直方图"></a>2.直方图</h4><p>与条形图的区别，用来看分布，而非实际大小。<br>首先要创建数据桶，才能创建直方图。<br>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yVcaEd"><img src="https://s3.ax1x.com/2021/02/01/yVcaEd.md.png" alt="yVcaEd.md.png"></a></p>
+<blockquote>
+<p>说明：直方图即为横坐标为某一区间的条形图。</p>
+</blockquote>
+<h3 id="第二次课"><a href="#第二次课" class="headerlink" title="第二次课"></a>第二次课</h3><h4 id="1-折线图"><a href="#1-折线图" class="headerlink" title="1.折线图"></a>1.折线图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMNCQS"><img src="https://s3.ax1x.com/2021/02/03/yMNCQS.md.png" alt="yMNCQS.md.png"></a></p>
+<h4 id="2-饼图"><a href="#2-饼图" class="headerlink" title="2.饼图"></a>2.饼图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yM0nr8"><img src="https://s3.ax1x.com/2021/02/03/yM0nr8.md.png" alt="yM0nr8.md.png"></a></p>
+<h4 id="3-环形图"><a href="#3-环形图" class="headerlink" title="3.环形图"></a>3.环形图</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMrqL6"><img src="https://s3.ax1x.com/2021/02/03/yMrqL6.md.png" alt="yMrqL6.md.png"></a></p>
+<h3 id="第三次课"><a href="#第三次课" class="headerlink" title="第三次课"></a>第三次课</h3><h4 id="1-凸显表"><a href="#1-凸显表" class="headerlink" title="1.凸显表"></a>1.凸显表</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMygET"><img src="https://s3.ax1x.com/2021/02/03/yMygET.md.png" alt="yMygET.md.png"></a></p>
+<h4 id="2-树形图"><a href="#2-树形图" class="headerlink" title="2.树形图"></a>2.树形图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yM6Ns1"><img src="https://s3.ax1x.com/2021/02/03/yM6Ns1.md.png" alt="yM6Ns1.md.png"></a></p>
+<blockquote>
+<p>树形图的大小和颜色分别可以代表不同的维度，即一张表包含两个信息。</p>
+</blockquote>
+<h4 id="3-气泡图"><a href="#3-气泡图" class="headerlink" title="3.气泡图"></a>3.气泡图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMg9N8"><img src="https://s3.ax1x.com/2021/02/03/yMg9N8.md.png" alt="yMg9N8.md.png"></a></p>
+<blockquote>
+<p>气泡大小表示电影数量多少，颜色深浅表示累计票房多少。</p>
+</blockquote>
+<h4 id="4-词云图"><a href="#4-词云图" class="headerlink" title="4.词云图"></a>4.词云图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yMgoKs"><img src="https://s3.ax1x.com/2021/02/03/yMgoKs.md.png" alt="yMgoKs.md.png"></a></p>
+<h3 id="第四次课"><a href="#第四次课" class="headerlink" title="第四次课"></a>第四次课</h3><h4 id="1-标靶图"><a href="#1-标靶图" class="headerlink" title="1.标靶图"></a>1.标靶图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yQOXZV"><img src="https://s3.ax1x.com/2021/02/03/yQOXZV.md.png" alt="yQOXZV.md.png"></a></p>
+<h4 id="2-甘特图"><a href="#2-甘特图" class="headerlink" title="2.甘特图"></a>2.甘特图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylPO1K"><img src="https://s3.ax1x.com/2021/02/03/ylPO1K.md.png" alt="ylPO1K.md.png"></a></p>
+<h4 id="3-瀑布图"><a href="#3-瀑布图" class="headerlink" title="3.瀑布图"></a>3.瀑布图</h4><p><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylAYDS"><img src="https://s3.ax1x.com/2021/02/03/ylAYDS.md.png" alt="ylAYDS.md.png"></a></p>
+<h3 id="第五次课"><a href="#第五次课" class="headerlink" title="第五次课"></a>第五次课</h3><h4 id="1-国家销售地图"><a href="#1-国家销售地图" class="headerlink" title="1. 国家销售地图"></a>1. 国家销售地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylebQI"><img src="https://s3.ax1x.com/2021/02/03/ylebQI.md.png" alt="ylebQI.md.png"></a></p>
+<h4 id="2-仪表板的使用"><a href="#2-仪表板的使用" class="headerlink" title="2.仪表板的使用"></a>2.仪表板的使用</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylevTS"><img src="https://s3.ax1x.com/2021/02/03/ylevTS.md.png" alt="ylevTS.md.png"></a></p>
+<blockquote>
+<p>将多个图表合并成一个图使用。</p>
+</blockquote>
+<h3 id="第六次课"><a href="#第六次课" class="headerlink" title="第六次课"></a>第六次课</h3><h4 id="1-填充地图"><a href="#1-填充地图" class="headerlink" title="1.填充地图"></a>1.填充地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylKap4"><img src="https://s3.ax1x.com/2021/02/03/ylKap4.md.png" alt="ylKap4.md.png"></a></p>
+<h4 id="2-多维地图"><a href="#2-多维地图" class="headerlink" title="2.多维地图"></a>2.多维地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylMmHx"><img src="https://s3.ax1x.com/2021/02/03/ylMmHx.md.png" alt="ylMmHx.md.png"></a></p>
+<h4 id="3-混合地图"><a href="#3-混合地图" class="headerlink" title="3.混合地图"></a>3.混合地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylMOIK"><img src="https://s3.ax1x.com/2021/02/03/ylMOIK.md.png" alt="ylMOIK.md.png"></a></p>
+<h3 id="第七次课"><a href="#第七次课" class="headerlink" title="第七次课"></a>第七次课</h3><h4 id="1-多边形地图"><a href="#1-多边形地图" class="headerlink" title="1.多边形地图"></a>1.多边形地图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/ylcb3F"><img src="https://s3.ax1x.com/2021/02/04/ylcb3F.md.png" alt="ylcb3F.md.png"></a></p>
+<h3 id="第八次课"><a href="#第八次课" class="headerlink" title="第八次课"></a>第八次课</h3><h4 id="1-划分地理区域"><a href="#1-划分地理区域" class="headerlink" title="1.划分地理区域"></a>1.划分地理区域</h4><p>参考图如下：<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/yl4RPI"><img src="https://s3.ax1x.com/2021/02/04/yl4RPI.md.png" alt="yl4RPI.md.png"></a></p>
+<h3 id="第九次课"><a href="#第九次课" class="headerlink" title="第九次课"></a>第九次课</h3><p>计算字段与表计算：粒度、聚合与比率。</p>
+<h3 id="第十次课"><a href="#第十次课" class="headerlink" title="第十次课"></a>第十次课</h3><h4 id="1-人口金字塔"><a href="#1-人口金字塔" class="headerlink" title="1.人口金字塔"></a>1.人口金字塔</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1PZ4I"><img src="https://s3.ax1x.com/2021/02/04/y1PZ4I.md.png" alt="y1PZ4I.md.png"></a></p>
+<h4 id="2-漏斗图"><a href="#2-漏斗图" class="headerlink" title="2.漏斗图"></a>2.漏斗图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1PKv8"><img src="https://s3.ax1x.com/2021/02/04/y1PKv8.md.png" alt="y1PKv8.md.png"></a></p>
+<h4 id="3-箱线图"><a href="#3-箱线图" class="headerlink" title="3.箱线图"></a>3.箱线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1FSOO"><img src="https://s3.ax1x.com/2021/02/04/y1FSOO.md.png" alt="y1FSOO.md.png"></a></p>
+<h3 id="第十一次课"><a href="#第十一次课" class="headerlink" title="第十一次课"></a>第十一次课</h3><h4 id="1-范围-线图"><a href="#1-范围-线图" class="headerlink" title="1.范围-线图"></a>1.范围-线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1tdts"><img src="https://s3.ax1x.com/2021/02/04/y1tdts.md.png" alt="y1tdts.md.png"></a></p>
+<blockquote>
+<p>反映某个个体在群体中的情况</p>
+</blockquote>
+<h3 id="第十二次课"><a href="#第十二次课" class="headerlink" title="第十二次课"></a>第十二次课</h3><h4 id="1-网络图"><a href="#1-网络图" class="headerlink" title="1.网络图"></a>1.网络图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1akpn"><img src="https://s3.ax1x.com/2021/02/04/y1akpn.md.png" alt="y1akpn.md.png"></a></p>
+<h4 id="2-弧线图"><a href="#2-弧线图" class="headerlink" title="2.弧线图"></a>2.弧线图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y1rVXR"><img src="https://s3.ax1x.com/2021/02/04/y1rVXR.md.png" alt="y1rVXR.md.png"></a></p>
+<h3 id="第十三次课"><a href="#第十三次课" class="headerlink" title="第十三次课"></a>第十三次课</h3><h4 id="1-雷达图"><a href="#1-雷达图" class="headerlink" title="1.雷达图"></a>1.雷达图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y3GJqe"><img src="https://s3.ax1x.com/2021/02/04/y3GJqe.md.png" alt="y3GJqe.md.png"></a></p>
+<h4 id="2-凹凸图"><a href="#2-凹凸图" class="headerlink" title="2.凹凸图"></a>2.凹凸图</h4><p>参考图如下:<br><a target="_blank" rel="noopener" href="https://imgchr.com/i/y3GQ8x"><img src="https://s3.ax1x.com/2021/02/04/y3GQ8x.png" alt="y3GQ8x.png"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/26/Tableau%E7%BB%98%E5%9B%BE-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-R学习笔记（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/24/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/">R学习笔记（1）介绍+创建</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/01/24/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/" class="archive-article-date">
+	
+  	<time datetime="2021-01-24T13:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h4><p>111</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">R语言</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/24/R%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-学习笔记（4）-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Java 学习笔记（4）-异常处理</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
+	
+  	<time datetime="2020-12-25T01:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-25</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1.异常处理"></a>1.异常处理</h4><p>异常（Exception）是正常程序流程所不能处理或没有处理的异常情况或异常事件，它中断指令或程序的正常执行。</p>
+<h4 id="2-Java中的异常类"><a href="#2-Java中的异常类" class="headerlink" title="2.Java中的异常类"></a>2.Java中的异常类</h4><p>Java中的异常类包含在java.lang和java.io包中，其共同的父类是java.lang.Throwable。</p>
+<blockquote>
+<p>父类的优先级会比子类的高，因此，捕获子类异常的代码必须放在捕获父类异常的代码前面。</p>
+</blockquote>
+<h4 id="3-异常处理模式"><a href="#3-异常处理模式" class="headerlink" title="3.异常处理模式"></a>3.异常处理模式</h4><h5 id="try-catch-finally语句"><a href="#try-catch-finally语句" class="headerlink" title="try-catch-finally语句"></a>try-catch-finally语句</h5><ul>
+<li>try{}语句后面必须跟一个catch或finally语句块，有catch，finally语句可有可无；无catch，必须有finally语句。</li>
+<li>异常发生后，在try语句块中，异常位置的后续代码都不会执行,直到找到异常匹配才会执行try-catch-finally后面的语句。</li>
+<li>catch语句按编写顺序查找异常匹配，只要找到一个异常匹配，就不会去寻找其他异常。</li>
+<li>finally语句块无论是否发生异常都要执行。</li>
+</ul>
+<h5 id="异常类成员方法"><a href="#异常类成员方法" class="headerlink" title="异常类成员方法"></a>异常类成员方法</h5><p>从父类Throwable继承的方法主要包括：<code>getMessage（）</code>用来取得与异常和错误相关的错误信息；<code>printStackTrace（）</code>用来打印显示异常发生地方的堆栈状态；<code>toString（）</code>用来显示异常信息以及<code>getMessage（）</code>返回信息。</p>
+<h5 id="异常捕获与处理"><a href="#异常捕获与处理" class="headerlink" title="异常捕获与处理"></a>异常捕获与处理</h5><ul>
+<li>产生异常对象并中断当前正在执行的代码，抛出异常对象。</li>
+<li>自动按程序中的catch的编写顺序查找“最接近的”异常匹配。</li>
+<li>若有匹配则执行相应的处理代码，然后执行try-catch-finally之后的代码。若没有找到异常匹配，系统会报错，且终止程序。</li>
+</ul>
+<h4 id="4-重新抛出异常"><a href="#4-重新抛出异常" class="headerlink" title="4.重新抛出异常"></a>4.重新抛出异常</h4><h5 id="throws语句"><a href="#throws语句" class="headerlink" title="throws语句"></a><code>throws</code>语句</h5><ul>
+<li><code>throws</code>关键字通常被应用在声明方法时，用来指定可能抛出的异常。</li>
+<li>使用throws表明该方法本身不会对该异常进行处理，一旦发生该异常将由调用该方法的main方法进行执行处理（即该方法的上一级进行捕获）。</li>
+</ul>
+<h5 id="throw语句"><a href="#throw语句" class="headerlink" title="throw语句"></a><code>throw</code>语句</h5><p><code>throw</code>关键字通常用在方法体中，并且抛出一个异常对象。程序在执行到throw语句时立即停止，它后面的语句都不执行。如果要捕获throw抛出的异常，则必须使用try-catch语句。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-常见误区与混淆点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/">Java 常见误区与混淆点</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/" class="archive-article-date">
+	
+  	<time datetime="2020-12-25T01:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-25</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Integer和int的区别"><a href="#Integer和int的区别" class="headerlink" title="Integer和int的区别"></a>Integer和int的区别</h4><ol>
+<li>Integer是int的包装类，int是Java的一种基本数据类型。</li>
+<li>Integer变量必须实例化后才能使用，而int变量不需要。</li>
+<li>Integer实际是对象的引用，当new一个Integer时，实际上是生成一个指针指向此对象，而int则是之际存储在栈中。</li>
+<li>Integer默认值是NULL，int的默认值是0。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/25/Java-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-学习笔记（3）-数组、字符串和枚举" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/">Java 学习笔记（3）-数组、字符串和枚举</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/" class="archive-article-date">
+	
+  	<time datetime="2020-12-22T12:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组"></a>1.数组</h4><p>在Java中，数组本身就是一种引用数据类型，它是一组相同数据类型的数据的有序集合，该集合中的数据称为数组元素。</p>
+<ul>
+<li><p>对于一维数组，可以在声明的时候同时进行初始化，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> []c=&#123;<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;D&#x27;</span>&#125;;     <span class="comment">//注意没有new</span></span><br></pre></td></tr></table></figure>
+<p>通过这种方法，也是在栈中存放一个地址，然后在堆中开辟4个2B大小的连续空间，用于存放A、B、C、D四个元素。</p>
+</li>
+<li><p>二维数组可以动态实例化，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>][];   <span class="comment">//分配两行，即两个一维数组</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">0</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];      <span class="comment">//第一行数组，有3个元素</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];      <span class="comment">//第二行数组，有5个元素</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，多维数组中维与维之间的内存空间的分配是不连续的。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h4 id="2-字符串"><a href="#2-字符串" class="headerlink" title="2.字符串"></a>2.字符串</h4><p>Java提供了String和StringBuffer两个字符串类，String字符串在初始化后不能在被修改，StringBuffer字符串内容可以动态修改。</p>
+<h5 id="不可变字符串：String"><a href="#不可变字符串：String" class="headerlink" title="不可变字符串：String"></a>不可变字符串：String</h5><ul>
+<li><p>String字符串的内存分配机制（可参考String直接赋值与new赋值区别那篇文章）<br>这里值得注意的是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1=<span class="string">&quot;Hello&quot;</span>;     <span class="comment">//这个只会在栈中创建一个空间存储Hello</span></span><br><span class="line">s1=s1+<span class="string">&quot; world&quot;</span>;        <span class="comment">//使用这句话会使得s1指向一个栈中地址，地址指向堆中开辟的空间存放Hello</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串修改，String类提供了replace（），toLowerCase（），toUpperCase（），trim（）//将字符串前后的空格去掉。</p>
+<blockquote>
+<p>这里的修改，并不是在字符串原来的内存位置上进行，而是在新的内存空间上存放修改好的字符串，因此这里还是满足前面所说的String类是不可修改字符串的。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="可变字符串：StringBuffer"><a href="#可变字符串：StringBuffer" class="headerlink" title="可变字符串：StringBuffer"></a>可变字符串：StringBuffer</h5><ul>
+<li>与String可以直接赋值不同，StringBuffer必须通过new来赋值。</li>
+<li>StringBuffer对字符串的修改主要包括追加，插入，删除，替换，翻转等操作，可以通过append（）、insert（）、delete（）、replace（）、reverse（）等方法实现。</li>
+</ul>
+<h5 id="String与StringBuffer在内存分配上的差异"><a href="#String与StringBuffer在内存分配上的差异" class="headerlink" title="String与StringBuffer在内存分配上的差异"></a>String与StringBuffer在内存分配上的差异</h5><p>String会修改对象地址，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="keyword">new</span> String(<span class="string">&quot;I love football game&quot;</span>);</span><br><span class="line">s=<span class="string">&quot;I love NBA&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>变量s在栈中的地址随着在堆中的内容改变而发生改变。</p>
+<p>StringBuffer不会修改地址，如，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb=<span class="keyword">new</span> StringBuffer(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot; world&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>变量sb在栈中的地址不会随堆中的内容的改变而改变</p>
+<hr>
+<h4 id="3-字符串与其他数据类型转换"><a href="#3-字符串与其他数据类型转换" class="headerlink" title="3.字符串与其他数据类型转换"></a>3.字符串与其他数据类型转换</h4><h5 id="将其他数据转换为字符串"><a href="#将其他数据转换为字符串" class="headerlink" title="将其他数据转换为字符串"></a>将其他数据转换为字符串</h5><p>String类提供了静态的valueof（）方法，用于把不同类型的数据转换为字符串，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=String.valueof(a);     <span class="comment">//为其他数据类类型的变量，返回值为一个String对象</span></span><br></pre></td></tr></table></figure>
+<p>另一方面，从java.lang.Object派生的所有类均提供了toString（）方法，即将该类转换成字符串，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s=Integer.toString(a);    <span class="comment">//a是一个int类型的对象。</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="将字符串转换成其他数据"><a href="#将字符串转换成其他数据" class="headerlink" title="将字符串转换成其他数据"></a>将字符串转换成其他数据</h5><p>也是运用对应包装类的方法，方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> b=Boolean.parseBoolean(<span class="string">&quot;True&quot;</span>);   <span class="comment">//将String类型转换为boolean类型</span></span><br><span class="line"><span class="keyword">int</span> i=Integer.parseInt(<span class="string">&quot;12345&quot;</span>);          <span class="comment">//将String类型转换为int类型</span></span><br><span class="line"><span class="keyword">float</span> f=Float.parseFloat(<span class="string">&quot;34.4352345343&quot;</span>) <span class="comment">//将String类型转换为float类型</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-枚举"><a href="#4-枚举" class="headerlink" title="4.枚举"></a>4.枚举</h4><p>创建枚举的目的是为了定义一组性质类似的常量，它在Java中是一个小功能，但给系统开发带来了很大的方便。</p>
+<h5 id="枚举定义"><a href="#枚举定义" class="headerlink" title="枚举定义"></a>枚举定义</h5><p>枚举定义格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[protected|private|abstract]enum 枚举类型标识符（名称）&#123;</span><br><span class="line">    枚举常量1，</span><br><span class="line">    枚举常量2，</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">    枚举常量n     &#x2F;&#x2F;注意末尾没有“逗号“</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="枚举变量和常量"><a href="#枚举变量和常量" class="headerlink" title="枚举变量和常量"></a>枚举变量和常量</h5><ol>
+<li>不能通过new运算符创建实例对象，可直接通过枚举类型标识符访问枚举变量。</li>
+<li>可通过枚举变量访问枚举常量。</li>
+<li>可通过枚举常量调用其成员方法。</li>
+<li>可通过values（）方法获得该枚举类型的所有枚举常量。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/22/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9E%9A%E4%B8%BE/">展开全文 >></a>
         </p>
       
 
@@ -1245,7 +1148,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1397,15 +1300,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">R语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1421,23 +1324,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">

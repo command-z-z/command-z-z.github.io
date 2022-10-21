@@ -164,370 +164,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-my-zsh配置与插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">oh my zsh配置与插件</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/" class="archive-article-date">
-	
-  	<time datetime="2022-06-16T16:00:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-17</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>上次写了一篇zsh的配置文章<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">item2-oh-my-zsh最全配置教程.md</a>,详细的写了环境的配置，以及一些插件的推荐，过了这么长时间我的配置又有了新的提升，新增如下特性。</p>
-<ul>
-<li>快捷键的绑定</li>
-<li>取别名</li>
-<li>插件的增加</li>
-</ul>
-<h3 id="1-快捷键的绑定"><a href="#1-快捷键的绑定" class="headerlink" title="1.快捷键的绑定"></a>1.快捷键的绑定</h3><p>作为一名期望全键盘操作的工作者，将所有常使用的键绑定在主工作区是十分重要的，键盘上下左右键的分布，使得手每次都要进行移动，十分麻烦，因此想办法进行快捷键的绑定。修改<code>~/.zshrc</code>文件，添加如下内容。</p>
-<ul>
-<li>绑定补全键<br>补全命令需要每次按右键才能补全完成，因此使用以下语句，将补全快捷键绑定在 <code>,</code>上，使得操作更加快速便捷。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用,补全历史记录</span><br><span class="line">bindkey &#39;,&#39; autosuggest-accept</span><br></pre></td></tr></table></figure></li>
-<li>绑定上下左右键<br>参考vim的案件模式，将上下左右进行映射，使用control+hjkl进行代替。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bindkey &#39;^h&#39;  backward-char         #control+h:向左移动一个单词</span><br><span class="line">bindkey &#39;^l&#39;  forward-char          #control+l：向右移动一个单词</span><br><span class="line">bindkey &#39;^k&#39;  up-line-or-history    #control+k：向上翻看历史记录</span><br><span class="line">bindkey &#39;^j&#39;  down-line-or-history  #control+j：向下翻看历史记录</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="2-取别名"><a href="#2-取别名" class="headerlink" title="2.取别名"></a>2.取别名</h3><p>使用<code>alias</code>关键字，可以给一些较长语句取别名，按键更加的快速，修改<code>~/.zshrc</code>文件,我的一些配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alias mysql&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysql</span><br><span class="line">alias ls&#x3D;&#39;lsd&#39;</span><br><span class="line">alias vim&#x3D;&#39;nvim&#39;</span><br><span class="line">alias ra&#x3D;&#39;ranger&#39;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-插件的增加"><a href="#3-插件的增加" class="headerlink" title="3.插件的增加"></a>3.插件的增加</h3><p>在上一篇文章中已经写了一些插件推荐，这里在增加一些插件。</p>
-<h5 id="1-dash"><a href="#1-dash" class="headerlink" title="1.dash"></a>1.dash</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dash">dash链接</a></p>
-<p>在<code>~/.zshrc</code>插件中增加<code>plugins=(... dash)</code></p>
-<p>在终端输入dash即可快速打开dash软件，查找相应的API。</p>
-<h5 id="2-vi-mode"><a href="#2-vi-mode" class="headerlink" title="2.vi-mode"></a>2.vi-mode</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode">vi-mode链接</a><br>在<code>~/.zshrc</code>插件中增加<code>plugins=(... vi-mode)</code></p>
-<p>在终端输入时，按<code>ESC</code>键可以快速进入终端vim模式,按<code>vv</code>进入vim中修改语句。<br>如下语句将nvim作为vi-mode的默认启动vim器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># vi-mode 使用nvim作为默认打开工具</span><br><span class="line">EDITOR&#x3D;nvim </span><br><span class="line">export EDITOR</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-vscode"><a href="#3-vscode" class="headerlink" title="3.vscode"></a>3.vscode</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode">vscode链接</a><br>由于实际应用中有时也会用到vscode，如下可在终端快速打开vscode</p>
-<p>1.Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)<br><code>git clone https://github.com/valentinocossar/vscode.git $ZSH_CUSTOM/plugins/vscode</code><br>2.Add the plugin to the list of plugins for Oh My Zsh to load:<br><code>plugins=(vscode)</code></p>
-<p>使用<code>vs</code>即可打开vscode</p>
-<h5 id="4-sublime"><a href="#4-sublime" class="headerlink" title="4.sublime"></a>4.sublime</h5><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sublime">sublime链接</a><br>由于实际应用中有时也会用到sublime，如下可在终端快速打开sublime</p>
-<p>在<code>~/.zshrc</code>插件中增加<code>plugins=(... vi-mode)</code></p>
-<p>使用<code>st</code>即可打开sublime.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zsh</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vim拓展-zsh插件（vi-mode）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/16/vim%E6%8B%93%E5%B1%95-zsh%E6%8F%92%E4%BB%B6%EF%BC%88vi-mode%EF%BC%89/">vim拓展---zsh插件（vi-mode）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/06/16/vim%E6%8B%93%E5%B1%95-zsh%E6%8F%92%E4%BB%B6%EF%BC%88vi-mode%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2022-06-16T14:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-16</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>esc/&lt;C-[&gt;</td>
-<td>进入vi-mode模式</td>
-</tr>
-<tr>
-<td>vv</td>
-<td>进入nvim编辑器</td>
-</tr>
-</tbody></table>
-<p>更多快捷键查看<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vi-mode">vi-mode</a>仓库。</p>
-<h2 id="安装vi-mode"><a href="#安装vi-mode" class="headerlink" title="安装vi-mode"></a>安装vi-mode</h2><p>在你的配置文件/.zshrc追加<br><code>plugins(vi-mode)</code></p>
-<p>然后在终端执行<br><code>source ~/.zshrc</code></p>
-<p>要想使用nvim作为vv触发的编辑器，在你的<code>/.zshrc</code>中追加以下语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># vi-mode 使用nvim作为默认打开工具</span><br><span class="line">EDITOR&#x3D;nvim </span><br><span class="line">export EDITOR</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/06/16/vim%E6%8B%93%E5%B1%95-zsh%E6%8F%92%E4%BB%B6%EF%BC%88vi-mode%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2021服务外包之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/">2021服务外包之旅</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/" class="archive-article-date">
-	
-  	<time datetime="2022-05-30T07:22:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-30</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/30/2021%E6%9C%8D%E5%8A%A1%E5%A4%96%E5%8C%85%E4%B9%8B%E6%97%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2021中国机器人大赛线上之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/">2021中国机器人大赛线上之旅</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/" class="archive-article-date">
-	
-  	<time datetime="2022-04-25T07:22:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>写这篇文章其实比赛已经过了很久了，就连保研都已经结束了，还是舍不得这段回忆，趁着还有点记忆先记录下来，以后也是个美好的回忆吧。我的机器人之旅起源于<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/05/25/2021RoboCup%E4%B9%8B%E6%97%85/">robocup之旅</a>,当时那个比赛结束了，我也还是选择留了下来，找了新队友组参与了计算机视觉的项目，这个项目在我们学校是传统优势项目，前两年都获得了全国第一的成绩，排位前三的人还可以获得保研名额，为了避免麻烦团队就三个人，一起努力备战机器人大赛。</p>
-<h3 id="工业测量"><a href="#工业测量" class="headerlink" title="工业测量"></a>工业测量</h3><p>中国机器人大赛先进视觉赛项共有两个子项目分别为3D识别和工业测量两个项目，我们团队最终选择的是工业测量赛项，赛题要求我们利用RGBD摄像头测量桌面上的螺栓长度和直径，以及垫片的内外径，误差越小得分越高。测量场景图如下。相比于上一届的项目，这届项目规则改动巨大，甚至把计算设备换成了Jetson Nano。基本相当于一个全新的项目，对我们带来了巨大的挑战。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6cLTS"><img src="https://s1.ax1x.com/2022/10/21/x6cLTS.png" alt="x6cLTS.png"></a></p>
-<h3 id="备战"><a href="#备战" class="headerlink" title="备战"></a>备战</h3><p>项目刚拿到手，对像我们这个机器视觉小白来说可谓是不知从何下手。虽然说比赛是有指导教师的，老师基本不管，就只能靠我们自己和上一届学长的指导。第一步就是先把上一届的代码拿来，看看需要哪些技能，哪些代码是可以复用的。项目所需的技能包括：3D点云，目标识别，openCV等，除了对openCV有些了解外，其余一概不知，项目前半个月就靠自己摸索，以及对知识的学习。找桌子的算法直接沿袭了上一届的想法，通过3D点云拟合桌面并进行桌角标定。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x621uq"><img src="https://s1.ax1x.com/2022/10/21/x621uq.png" alt="x621uq.png"></a><br>模型训练这块直接交给韬哥负责，上一届用的是cascade系列的模型，但是为two stage模型，当我们放在Nano上的时候速度实在是太慢了，后面换成了yolo系列的。首先尝试了yoloV4，自己拍照片打标签做数据集，进行训练，因为是二分类的任务，大概打了900张左右的图片，训练之后的效果还不错，就一直先用着了。但是后面发现螺栓垫片之间存在遮挡的时候，由于yolo无法区分两个物体，导致我们的测量精度很低。后面换了yoloct系列的模型，实例分割模型可以很好的对物体进行区别，可以较好的提取物体轮廓，缓解遮挡叠放问题。但是后面我们尝试就模型部署到Nano上时，速度实在是太慢了，权衡利弊考虑，最终还是选择了yoloV4。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x62vMn"><img src="https://s1.ax1x.com/2022/10/21/x62vMn.png" alt="x62vMn.png"></a><br>我们的大致思路是，先利用3D点云拟合桌面并进行桌角标定，然后利用透视变换将桌子点映射到一个1000*1000的正方形上，得出像素长度与实际长度之间的转化比例。然后利用yolov4对物体进行识别，然后提取每一个bbox利用测量算法找到要计算的两个点，利用像素长度与实际长度的转换<br>得出测量真值。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6RNeP"><img src="https://s1.ax1x.com/2022/10/21/x6RNeP.png" alt="x6RNeP.png"></a></p>
-<p>接着就是具体测量部分了，我们是利用二值化和找轮廓算法对图像进行处理，对于垫片最大外轮廓得到他的外接矩形两个顶点距离为外经长度，同理对最大内轮廓进行相同操作也可得到内径长度。对于螺栓，由于螺栓比较不规则，测量难度较大，我们对螺栓的轮廓进行凸包的处理，得到靠近桌子的两个点，这两个点透视变换之后影响较小，直径是利用法向量直线找到两个点，螺栓这块一直有误差，最后也没有很好的解决。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6fa8g"><img src="https://s1.ax1x.com/2022/10/21/x6fa8g.md.png" alt="x6fa8g.md.png"></a><br>项目的大体思路就是这样，具体实现过程还是一步步慢慢迭代算法，也是一蹴而就，经过大量实验分析，不断修改算法，最终在9月底的时候算法基本完成了，就差细节调优了。原定11月的比赛，却被突如其来的疫情无休止的打断了，比赛时间也拖到了来年春季，这样我们的项目进度也告一段落，后续大家各忙各的学业，打算等赛前再继续。</p>
-<h3 id="线上测试"><a href="#线上测试" class="headerlink" title="线上测试"></a>线上测试</h3><p>很快时间来到春季，距离原定的比赛时间也越来越近。我们团队也开始准备起来，对原来项目慢慢熟悉起来。然而那时上海爆发疫情，每日成百上千的增长，线下指日无望，很快线上比赛的通知也来了。线上比赛为了追求公平，最终觉得把设备寄到比赛地，参赛者只要提供可执行脚本和软件运行指南即可。无法到现场实地测试，加大了我们比赛的难度，因为我们的摄像头是需要调参的，这更要求了我们算法的鲁棒性。</p>
-<p>当时项目还没有完全部署到Nano上，所以先完成了部署，为了控制算法的是时间，我们减少了找桌子的次数，因为比赛时时间分很重要，对一些该处理的地方加了try expect防止报错。</p>
-<p>比赛允许我们提前进行一次测试，所以提前将一个Nano和一张SD卡寄了过去，线上调试也是挺搞的，我们队伍顺序在最后几个，轮到我们的时候都到晚上10点多了。是进入一个腾讯会议，主办方会显示nano界面，我们指挥如何操作，还看了看相机参数设置。运行代码后遇到了bug，我们跑了四次程序，其中有两次程序报错了，虽然这个bug我们平时也有遇到（极少），但是重新运行后又不会出现，不太好定位问题，所以没怎么管。成功运行的两次，测量结果也不太好大概4分左右（满分6分）。测试，结束我们马不停蹄开始找bug，记得当时和韬哥、根行哥在计算机3楼教室待到凌晨2点多。通过不断摆放物品，和改变现场环境，最终发现是场外物品干扰，导致我们扩充像素的时候，比原像素还大了，我们赶紧修改代码，加了补救措施。对于测量精度不高的问题，我们发现提供的测试物体整体尺寸偏大，后续我也将我买的物品中打得加入我们平时测试中，我买的物体实际整体偏小，螺栓8cm以上的很少（这里也为我们后来失利埋下伏笔）。</p>
-<p>线上测试结束后，我们就小修代码，然后不断测试，在我们自己的数据集上有了很好的结果，最终把一些细节处理了下，把SD卡烧好了，寄到主办方，等待正式比赛了。</p>
-<h3 id="线上比赛"><a href="#线上比赛" class="headerlink" title="线上比赛"></a>线上比赛</h3><p>比赛日也就在测试后三天，我们的项目放到了周日比，早上第一轮，下午第二轮，我们队伍顺序在中间。虽然说是比赛，其实就是看直播，代码什么的都已经没法修改了。也是腾讯会议，主办方按照顺序一支队伍一支队伍的跑代码，当看到测试物品的时候，被吓了一跳，螺栓都很多超过5cm的，很多甚至10cm～20cm之间，这在我们平时是很少测试的，而且摆放的复杂程度大大超过了预期，叠放、遮挡、竖放很严重，默默为我们算法担心。线上比赛也没有办法，只能默默祈祷，最终第一轮还好拿了4.2分，暂时排在第二。</p>
-<p>下午是第二轮，动态物品测量，难度更大。轮到我们大概3、4点了，这次测量环境更难，物体摆放的离谱,下面是摆放时拍的图，最终比时，比这还复杂多了。最终拿了3.3分（感觉这是保底测量分了），两轮排位第三。对结果还是挺失望的，毕竟准备了这么久，本来是冲着冠军去的。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x67Uwd"><img src="https://s1.ax1x.com/2022/10/21/x67Uwd.md.jpg" alt="x67Uwd.md.jpg"></a></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本来以为国一无望了，官网当时只有每只队伍的排名，没有具体几等奖，都开始准备考研了，考研一周左右的时候。去申请奖状，给我们发了国一，哈哈，当时知道的时候还是很激动的吧。毕竟国一保研了，本来早就期待保研生活了，后来失利了那就考研去，突然又保研了，挺高兴的。</p>
-<p>对这个项目，毕竟是自己一手带大的也是忙活了大半年，期间学到了很多，还有和队友一起努力，分析，解决问题的一路，很美好的回忆哦～</p>
-<p>线上比赛，体验感很差，放张结果图吧。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6He9P"><img src="https://s1.ax1x.com/2022/10/21/x6He9P.md.png" alt="x6He9P.md.png"></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-vim练级手册（七）-telescope文件模糊搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1380,9 +1016,504 @@
 
 
   
+    <article id="post-问题解决-Mac处理-DS-Store文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/23/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-Mac%E5%A4%84%E7%90%86-DS-Store%E6%96%87%E4%BB%B6/">问题解决:Mac处理.DS_Store文件</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/03/23/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-Mac%E5%A4%84%E7%90%86-DS-Store%E6%96%87%E4%BB%B6/" class="archive-article-date">
+	
+  	<time datetime="2022-03-23T05:29:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-23</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Mac上经常会遇到.DS_Store文件，.DS_Store是Mac OS保存文件夹的自定义属性的隐藏文件，如文件的图标位置或背景色，相当于Windows的desktop.ini.那么在使用os.listdir(path)等函数对文件进行操作的时候就会报文件不匹配等错误。这是因为.DS_Store文件也会包含进去。网上也有写教程，可以直接使得.DS_Store文件不出现的方法，但是我试着尝试发现还是有.DS_Store文件存在,没有什么好方法。于是，直接在python中改写os.listdir(path)这个函数，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def listdirInMac(path):</span><br><span class="line">    os_list &#x3D; os.listdir(path)</span><br><span class="line">    for item in os_list:</span><br><span class="line">        if item.startswith(‘.‘) and os.path.isfile(os.path.join(path, item)):</span><br><span class="line">            os_list.remove(item)</span><br><span class="line">    return os_list</span><br></pre></td></tr></table></figure>
+<p>通过重写list函数，使得搜索的文件不包括<code>.</code>等隐藏文件了。</p>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012119316/article/details/80223042">如何判断和处理.DS_Store文件</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Mac</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/23/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3-Mac%E5%A4%84%E7%90%86-DS-Store%E6%96%87%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vim练级手册-一-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/">vim练级手册(一)  ---基本配置</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/" class="archive-article-date">
+	
+  	<time datetime="2022-03-21T07:45:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-21</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u</td>
+<td>撤销</td>
+</tr>
+<tr>
+<td>&lt;C-r&gt;</td>
+<td>重做</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>上下分屏</td>
+</tr>
+<tr>
+<td>sv</td>
+<td>左右分屏</td>
+</tr>
+<tr>
+<td>sh</td>
+<td>向左切屏</td>
+</tr>
+<tr>
+<td>sj</td>
+<td>向下切屏</td>
+</tr>
+<tr>
+<td>sk</td>
+<td>向上切屏</td>
+</tr>
+<tr>
+<td>sl</td>
+<td>向右切屏</td>
+</tr>
+<tr>
+<td>option+上下左右</td>
+<td>改变切屏之后的屏幕大小</td>
+</tr>
+<tr>
+<td>&lt;C-h&gt;</td>
+<td>插入模式下左移光标</td>
+</tr>
+<tr>
+<td>&lt;C-j&gt;</td>
+<td>插入模式下下移光标</td>
+</tr>
+<tr>
+<td>&lt;C-k&gt;</td>
+<td>插入模式下上移光标</td>
+</tr>
+<tr>
+<td>&lt;C-l&gt;</td>
+<td>插入模式下左移光标</td>
+</tr>
+<tr>
+<td>jk</td>
+<td><Esc>从插入模式退出到普通模式</td>
+</tr>
+<tr>
+<td>&lt;C-j&gt;</td>
+<td><code>5j</code>向下5行</td>
+</tr>
+<tr>
+<td>&lt;C-k&gt;</td>
+<td><code>5k</code>向上5行</td>
+</tr>
+<tr>
+<td>L</td>
+<td>行尾</td>
+</tr>
+<tr>
+<td>H</td>
+<td>行首</td>
+</tr>
+<tr>
+<td>S</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>&lt;C-a&gt;</td>
+<td>全选</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;文件tree</span><br><span class="line">--.config</span><br><span class="line">----nivm</span><br><span class="line">------init.vim</span><br><span class="line">------vimrc.vim</span><br><span class="line">------maps.vim</span><br><span class="line">------lua</span><br><span class="line">--------plugins.lua</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="1-配置init-vim"><a href="#1-配置init-vim" class="headerlink" title="1.配置init.vim"></a>1.配置init.vim</h2><p>inti.vim文件vim配置文件的一个初始化文件，里面加载了其他配置的文件，便于管理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.config/nvim</span><br><span class="line">nvim ~/.config/nvim/init.vim</span><br></pre></td></tr></table></figure>
+<p>在init.vim中输入以下配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot; 配置文件导入 &quot;&#123;&#123;&#123;</span><br><span class="line">&quot; ---------------------------------------------------------------------</span><br><span class="line">&quot; 基础使用习惯配置</span><br><span class="line">runtime .&#x2F;vimrc.vim</span><br><span class="line">&quot; 插件管理</span><br><span class="line">&quot;.&#x2F;lua&#x2F;plugins.lua</span><br><span class="line">lua require(&#39;plugins&#39;)</span><br><span class="line">&quot; 按键映射</span><br><span class="line">runtime .&#x2F;maps.vim</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-配置vimrc-vim"><a href="#2-配置vimrc-vim" class="headerlink" title="2.配置vimrc.vim"></a>2.配置vimrc.vim</h2><p>这里是一些vim的基础配置，便于更加方便的使用vim</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&quot;----vim 个人使用习惯配置start------</span><br><span class="line">set encoding&#x3D;UTF-8</span><br><span class="line">&quot; leader设置成空格</span><br><span class="line">let mapleader&#x3D;&quot; &quot;</span><br><span class="line">&quot; 使用鼠标</span><br><span class="line">set mouse&#x3D;c</span><br><span class="line">&quot; 显示行号</span><br><span class="line">set nu</span><br><span class="line">&quot; 相对行号</span><br><span class="line">set relativenumber</span><br><span class="line">&quot; tab&#x3D;4个空格</span><br><span class="line">set tabstop&#x3D;4</span><br><span class="line">set shiftwidth&#x3D;4</span><br><span class="line">&quot; 改变 vim中光标的形状</span><br><span class="line">let g:db_ui_use_nerd_fonts&#x3D;1</span><br><span class="line">let &amp;t_SI.&#x3D;&quot;\e[5 q&quot; &quot;SI &#x3D; INSERT mode</span><br><span class="line">let &amp;t_SR.&#x3D;&quot;\e[4 q&quot; &quot;SR &#x3D; REPLACE mode</span><br><span class="line">let &amp;t_EI.&#x3D;&quot;\e[1 q&quot; &quot;EI &#x3D; NORMAL mode (ELSE)</span><br><span class="line">&quot; 高度光标所在行</span><br><span class="line">&quot;set cursorline</span><br><span class="line">&quot; 设置不换行</span><br><span class="line">&quot;set nowrap</span><br><span class="line">set wrap</span><br><span class="line">&quot; 显示按下的按键</span><br><span class="line">set showcmd</span><br><span class="line">&quot; 按tab显示菜单</span><br><span class="line">set wildmenu</span><br><span class="line">&quot; 不需要备份文件</span><br><span class="line">set nobackup</span><br><span class="line">&quot;----vim 个人使用习惯配置end------</span><br><span class="line">&quot;ssh 远程粘贴板</span><br><span class="line">if executable(&#39;clipboard-provider&#39;)</span><br><span class="line">    let g:clipboard &#x3D; &#123;</span><br><span class="line">          \ &#39;name&#39;: &#39;myClipboard&#39;,</span><br><span class="line">          \     &#39;copy&#39;: &#123;</span><br><span class="line">          \         &#39;+&#39;: &#39;clipboard-provider copy&#39;,</span><br><span class="line">          \         &#39;*&#39;: &#39;env COPY_PROVIDERS&#x3D;tmux clipboard-provider copy&#39;,</span><br><span class="line">          \     &#125;,</span><br><span class="line">          \     &#39;paste&#39;: &#123;</span><br><span class="line">          \         &#39;+&#39;: &#39;clipboard-provider paste&#39;,</span><br><span class="line">          \         &#39;*&#39;: &#39;env COPY_PROVIDERS&#x3D;tmux clipboard-provider paste&#39;,</span><br><span class="line">          \     &#125;,</span><br><span class="line">          \ &#125;</span><br><span class="line">endif</span><br><span class="line">&quot;随机选一个颜色风格</span><br><span class="line">function RandomColorScheme()</span><br><span class="line">  let mycolors &#x3D; split(globpath(&amp;rtp,&quot;**&#x2F;colors&#x2F;*.vim&quot;),&quot;\n&quot;) </span><br><span class="line">  exe &#39;so &#39; . mycolors[localtime() % len(mycolors)]</span><br><span class="line">  unlet mycolors</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">&quot;call RandomColorScheme()</span><br><span class="line"></span><br><span class="line">:command NewColor call RandomColorScheme()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 文件类型设置 &quot;&#123;&#123;&#123;</span><br><span class="line">&quot; ---------------------------------------------------------------------</span><br><span class="line">&quot; JSX 语法高亮</span><br><span class="line">&quot; set filetypes as typescriptreact</span><br><span class="line">autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype&#x3D;typescriptreact</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-配置maps-vim"><a href="#3-配置maps-vim" class="headerlink" title="3.配置maps.vim"></a>3.配置maps.vim</h2><p>这里是一些按键的映射，一些快捷键的操作，其余可以自己添加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; window</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Split window</span><br><span class="line">nmap ss :split&lt;Return&gt;&lt;C-w&gt;w</span><br><span class="line">nmap sv :vsplit&lt;Return&gt;&lt;C-w&gt;w</span><br><span class="line">&quot; Move window</span><br><span class="line">&quot;nmap &lt;Space&gt; &lt;C-w&gt;w</span><br><span class="line">&quot;map s&lt;left&gt; &lt;C-w&gt;h</span><br><span class="line">&quot;map s&lt;up&gt; &lt;C-w&gt;k</span><br><span class="line">&quot;map s&lt;down&gt; &lt;C-w&gt;j</span><br><span class="line">&quot;map s&lt;right&gt; &lt;C-w&gt;l</span><br><span class="line">map sh &lt;C-w&gt;h</span><br><span class="line">map sk &lt;C-w&gt;k</span><br><span class="line">map sj &lt;C-w&gt;j</span><br><span class="line">map sl &lt;C-w&gt;l</span><br><span class="line"></span><br><span class="line">&quot; Resize window</span><br><span class="line">&quot; 在mac&#x2F;linux中使用Alt键，在webssh</span><br><span class="line">&quot; 中alt没用，就使用Ctrl,WEBSSH主要的WINDOWS中使用</span><br><span class="line">nmap &lt;M-left&gt; &lt;C-w&gt;&lt;</span><br><span class="line">nmap &lt;C-left&gt; &lt;C-w&gt;&lt;</span><br><span class="line">nmap s&lt;left&gt; &lt;C-w&gt;&lt;</span><br><span class="line"></span><br><span class="line">nmap &lt;M-right&gt; &lt;C-w&gt;&gt;</span><br><span class="line">nmap &lt;C-right&gt; &lt;C-w&gt;&gt;</span><br><span class="line">nmap s&lt;right&gt; &lt;C-w&gt;&gt;</span><br><span class="line"></span><br><span class="line">nmap &lt;M-up&gt; &lt;C-w&gt;+</span><br><span class="line">nmap &lt;C-up&gt; &lt;C-w&gt;+</span><br><span class="line">nmap s&lt;up&gt; &lt;C-w&gt;+</span><br><span class="line"></span><br><span class="line">nmap &lt;M-down&gt; &lt;C-w&gt;-</span><br><span class="line">nmap &lt;C-down&gt; &lt;C-w&gt;-</span><br><span class="line">nmap s&lt;down&gt; &lt;C-w&gt;-</span><br><span class="line"></span><br><span class="line">&quot; 插入模式移动光标</span><br><span class="line">inoremap &lt;C-h&gt; &lt;Left&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-l&gt; &lt;Right&gt;</span><br><span class="line">inoremap &lt;C-d&gt; &lt;Delete&gt;</span><br><span class="line">&quot; hh在我用的单词里出现的频率极低，其实感觉home用的没有end多，统一风格都用大写的吧</span><br><span class="line">&quot;inoremap HH &lt;Home&gt;</span><br><span class="line">&quot; 单词中包含ll的太多了，所以用大写LL</span><br><span class="line">&quot;inoremap LL &lt;End&gt;</span><br><span class="line">&quot; jk &lt;Esc&gt;</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br><span class="line">&quot; 插入模式鼠标滚轮抵消,不然会出现滚动鼠标录入了一堆5j5k</span><br><span class="line">inoremap 5k &lt;Esc&gt;</span><br><span class="line">inoremap 5j &lt;Esc&gt;</span><br><span class="line">inoremap 9&lt;CR&gt; &lt;Esc&gt;a</span><br><span class="line">&quot; 快速跳转行首与行尾  </span><br><span class="line">nnoremap L $</span><br><span class="line">nnoremap H ^</span><br><span class="line">&quot; 向下5行</span><br><span class="line">noremap &lt;C-j&gt; 5j</span><br><span class="line">&quot; 向上5行</span><br><span class="line">noremap &lt;C-k&gt; 5k</span><br><span class="line">&quot; 保 存</span><br><span class="line">noremap &lt;C-s&gt; :w&lt;CR&gt;</span><br><span class="line">noremap s :w&lt;CR&gt;</span><br><span class="line">&quot; Coc智能处理，使用IDEA Alt+Enter 同样按键</span><br><span class="line">&quot;noremap &lt;M-Enter&gt; :CocAction&lt;CR&gt;</span><br><span class="line">inoremap &lt;C-s&gt; &lt;ESC&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; 代码格式化</span><br><span class="line">noremap &lt;leader&gt;f :Format&lt;CR&gt; </span><br><span class="line">noremap &lt;leader&gt;r :luafile ~&#x2F;.wp&#x2F;lua&#x2F;run.lua&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; 强制退出</span><br><span class="line">map Q :q&lt;CR&gt;</span><br><span class="line">&quot;map qq :q&lt;CR&gt;</span><br><span class="line">&quot; 重新加载设置</span><br><span class="line">map R :source $MYVIMRC&lt;CR&gt;</span><br><span class="line">&quot;自动关闭标签</span><br><span class="line">inoremap &lt;buffer&gt; &lt;C-v&gt; &lt;esc&gt;yiwi&lt;lt&gt;&lt;esc&gt;ea&gt;&lt;&#x2F;&gt;&lt;esc&gt;hpF&gt;i</span><br><span class="line">set iskeyword+&#x3D;&lt;,&gt;</span><br><span class="line">iab &lt;h1&gt; &lt;lt&gt;&#x2F;h1&gt; &lt;lt&gt;&#x2F;h1&gt;&lt;esc&gt;5ha</span><br><span class="line"></span><br><span class="line">&quot; 全选</span><br><span class="line">nmap &lt;C-a&gt; gg&lt;S-v&gt;G</span><br><span class="line">&quot; 加&#x2F;减数字1</span><br><span class="line">nnoremap + &lt;C-a&gt;</span><br><span class="line">nnoremap - &lt;C-x&gt;</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Buffers</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Open current directory</span><br><span class="line">&quot; 插入模式移动光标</span><br><span class="line">inoremap &lt;C-h&gt; &lt;Left&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-l&gt; &lt;Right&gt;</span><br><span class="line">inoremap &lt;C-d&gt; &lt;Delete&gt;</span><br><span class="line">&quot; hh在我用的单词里出现的频率极低，其实感觉home用的没有end多，统一风格都用大写的吧</span><br><span class="line">&quot;inoremap HH &lt;Home&gt;</span><br><span class="line">&quot; 单词中包含ll的太多了，所以用大写LL</span><br><span class="line">&quot;inoremap LL &lt;End&gt;</span><br><span class="line">&quot; jk &lt;Esc&gt;</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br><span class="line">&quot; 插入模式鼠标滚轮抵消,不然会出现滚动鼠标录入了一堆5j5k</span><br><span class="line">inoremap 5k &lt;Esc&gt;</span><br><span class="line">inoremap 5j &lt;Esc&gt;</span><br><span class="line">inoremap 9&lt;CR&gt; &lt;Esc&gt;a</span><br><span class="line">&quot; 快速跳转行首与行尾  </span><br><span class="line">nnoremap L $</span><br><span class="line">nnoremap H ^</span><br><span class="line">&quot; 向下5行</span><br><span class="line">noremap &lt;C-j&gt; 5j</span><br><span class="line">&quot; 向上5行</span><br><span class="line">noremap &lt;C-k&gt; 5k</span><br><span class="line">&quot; 保存</span><br><span class="line">noremap &lt;C-s&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; Coc智能处理，使用IDEA Alt+Enter 同样按键</span><br><span class="line">noremap &lt;M-Enter&gt; :CocAction&lt;CR&gt;</span><br><span class="line">inoremap &lt;C-s&gt; &lt;ESC&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; 代码格式化</span><br><span class="line">&quot;noremap &lt;leader&gt;f :Format&lt;CR&gt; </span><br><span class="line"></span><br><span class="line">&quot; 强制退出</span><br><span class="line">map Q :q&lt;CR&gt;</span><br><span class="line">&quot; 重新加载设置</span><br><span class="line">map R :source $MYVIMRC&lt;CR&gt;</span><br><span class="line">&quot;自动关闭标签</span><br><span class="line">inoremap &lt;buffer&gt; &lt;C-v&gt; &lt;esc&gt;yiwi&lt;lt&gt;&lt;esc&gt;ea&gt;&lt;&#x2F;&gt;&lt;esc&gt;hpF&gt;i</span><br><span class="line">set iskeyword+&#x3D;&lt;,&gt;</span><br><span class="line">iab &lt;h1&gt; &lt;lt&gt;h1&gt; &lt;lt&gt;&#x2F;h1&gt;&lt;esc&gt;5ha</span><br><span class="line"></span><br><span class="line">&quot; 全选</span><br><span class="line">nmap &lt;C-a&gt; gg&lt;S-v&gt;G</span><br><span class="line">&quot; 加&#x2F;减数字1</span><br><span class="line">nnoremap + &lt;C-a&gt;</span><br><span class="line">nnoremap - &lt;C-x&gt;</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Buffers</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Open current directory</span><br><span class="line">&quot;nmap te :tabedit</span><br><span class="line">&quot;nmap &lt;S-Tab&gt; :tabprev&lt;Return&gt;</span><br><span class="line">nmap &lt;S-Tab&gt; :bprev&lt;Return&gt;</span><br><span class="line">&quot;nmap &lt;Tab&gt; :tabnext&lt;Return&gt;</span><br><span class="line">nmap &lt;Tab&gt; :bnext&lt;Return&gt;</span><br><span class="line">&quot; 窗口管理器</span><br><span class="line">&quot; invoke with &#39;-&#39;</span><br><span class="line">nmap  -  &lt;Plug&gt;(choosewin)</span><br><span class="line">&quot;nmap  sw  &lt;Plug&gt;(choosewin)</span><br><span class="line">&quot;nmap  &lt;leader&gt;w  &lt;Plug&gt;(choosewin)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-配置lua-pugins-lua"><a href="#4-配置lua-pugins-lua" class="headerlink" title="4.配置lua/pugins.lua"></a>4.配置lua/pugins.lua</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">---@diagnostic disable: undefined-global</span><br><span class="line">--在没有安装packer的电脑上，自动安装packer插件</span><br><span class="line">local fn &#x3D; vim.fn</span><br><span class="line">local install_path &#x3D; fn.stdpath(&#39;data&#39;)..&#39;&#x2F;site&#x2F;pack&#x2F;packer&#x2F;start&#x2F;packer.nvim&#39;</span><br><span class="line">if fn.empty(fn.glob(install_path)) &gt; 0 then</span><br><span class="line">	 --fn.system(&#123;&#39;git&#39;, &#39;clone&#39;, &#39;--depth&#39;, &#39;1&#39;, &#39;https:&#x2F;&#x2F;github.com&#x2F;wbthomason&#x2F;packer.nvim&#39;, install_path&#125;)	--默认地址</span><br><span class="line">	fn.system(&#123;&#39;git&#39;, &#39;clone&#39;, &#39;--depth&#39;, &#39;1&#39;, &#39;https:&#x2F;&#x2F;codechina.csdn.net&#x2F;mirrors&#x2F;wbthomason&#x2F;packer.nvim.git&#39;, install_path&#125;)	--csdn加速镜像</span><br><span class="line">	vim.cmd &#39;packadd packer.nvim&#39;</span><br><span class="line">end</span><br><span class="line">-- Only required if you have packer configured as &#96;opt&#96;</span><br><span class="line">vim.cmd [[packadd packer.nvim]]</span><br><span class="line">return require(&#39;packer&#39;).startup(&#123;</span><br><span class="line">	function()</span><br><span class="line">		use &#39;wbthomason&#x2F;packer.nvim&#39;-- Packer can manage itself</span><br><span class="line">	end,</span><br><span class="line">	config &#x3D; &#123;</span><br><span class="line">		max_jobs &#x3D; 16,</span><br><span class="line">		git &#x3D; &#123;</span><br><span class="line">			default_url_format &#x3D; &#39;https:&#x2F;&#x2F;github.91chi.fun&#x2F;https:&#x2F;&#x2F;github.com&#x2F;%s&#39;</span><br><span class="line">		&#125;,</span><br><span class="line">		display &#x3D; &#123;</span><br><span class="line">			open_fn &#x3D; function()</span><br><span class="line">				return require(&#39;packer.util&#39;).float(&#123; border &#x3D; &#39;single&#39; &#125;)</span><br><span class="line">			end</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Yolov1-详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/16/Yolov1-%E8%AF%A6%E8%A7%A3/">Yolov1 详解</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/03/16/Yolov1-%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+	
+  	<time datetime="2022-03-16T14:09:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-16</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文开始，笔者会对计算机视觉中的目标检测模块进行详细的学习与讲解，因为为本人自身理解，如有不足或错误，批评指出。yolov1作为yolo系列的开山之作，也作为one-stage系列的先河，我们需要了解他的检测原理。很多人觉得yolo都已经出到v4了，没必要再去了解前面几代的，但事实上yolo系列都是在yolov1的基础上改进提升的，从头开始学习有助于我们更加了解yolo的原理。下图展示了目标检测初期的算法，笔者后续也会补上相应R-CNN的系列。本系列主要讲解yolo以及one-stage算法系列。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/3BE75DBB6A39FEA3DC5D4645B1ABC2EA.619ssj04f8w0.webp" alt="3BE75DBB6A39FEA3DC5D4645B1ABC2EA"></p>
+<ul>
+<li>论文地址:<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1506.02640">You Only Look Once: Unified, Real-Time Object Detection</a></li>
+<li>代码地址:<a target="_blank" rel="noopener" href="https://github.com/pjreddie/darknet">darknet版</a></li>
+</ul>
+<h2 id="1-算法概述"><a href="#1-算法概述" class="headerlink" title="1.算法概述"></a>1.算法概述</h2><p>传统的two-stage算法，由于要经过两步检测，速度较慢，而yolo作为one-stage算法相比与之前的R-CNN系列有以下优点。</p>
+<blockquote>
+<p>First, YOLO is extremely fast. Since we frame detection as a regression problem we don’t need a complex pipeline.</p>
+</blockquote>
+<blockquote>
+<p>Second, YOLO reasons globally about the image when making predictions. Unlike sliding window and region proposal-based techniques, YOLO sees the entire image.</p>
+</blockquote>
+<blockquote>
+<p>Third, YOLO learns generalizable representations of objects. When trained on natural images and tested on art- work, YOLO outperforms top detection methods like DPM and R-CNN by a wide margin.</p>
+</blockquote>
+<ol>
+<li>总结的来讲，yolo速度极快，直接将目标检测做了一个回归任务。</li>
+<li>yolo利用图像全局的信息进行推理，可以看到整张图片。</li>
+<li>yolo学习可归纳的物体特征表达，因此在一些漫画照上也能有较好的识别效果。<h2 id="2-算法原理"><a href="#2-算法原理" class="headerlink" title="2.算法原理"></a>2.算法原理</h2><h4 id="1-设计理念"><a href="#1-设计理念" class="headerlink" title="1.设计理念"></a>1.设计理念</h4>整体来看，Yolo算法采用一个单独的CNN模型实现end-to-end的目标检测，整个系统如下图所示：首先将输入图片resize到448x448，然后送入CNN网络，最后处理网络预测结果得到检测的目标。相比R-CNN算法，其是一个统一的框架，其速度更快，而且Yolo的训练过程也是end-to-end的。</li>
+</ol>
+<p>首先将输入图片resize以下，通过一个卷积神经网络提取特征，最后将输出的框进行非极大值抑制，滤除重复的框，最后输出结果。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/CDA8D77A15CE66864E54000CDD1FA347.q1hpn53ydy8.webp" alt="CDA8D77A15CE66864E54000CDD1FA347"></p>
+<p>具体来说，Yolo的CNN网络将输入的图片分割成 <code>S*S</code> 网格，然后每个单元格负责去检测那些中心点落在该格子内的目标，如下图所示，可以看到狗这个目标的中心落在左下角一个单元格内，那么该单元格负责预测这个狗。每个单元格会预测<code>B</code>个边界框（bounding box）以及边界框的置信度（confidence score）。</p>
+<p>所谓置信度其实包含两个方面，一是这个边界框含有目标的可能性大小，二是这个边界框的准确度。前者记为<code>Pr(object)</code>，当该边界框是背景时（即不包含目标），此时其值为0 。而当该边界框包含目标时,其值为1 。边界框的准确度可以用预测框与实际框（ground truth）的IOU（intersection over union，交并比）来表征，记为$IOU_{pred}^{truth}$ 。因此置信度可以定义为$IOU_{pred}^{truth}*Pr(object)$ 。</p>
+<p>很多人可能将Yolo的置信度看成边界框是否含有目标的概率，但是其实它是两个因子的乘积，预测框的准确度也反映在里面。边界框的大小与位置可以用4个值来表征：<code>(x,y,w,h)</code>，其中<code>(x,y)</code> 是边界框的中心坐标，而w和h是边界框的宽与高。还有一点要注意，中心坐标的预测值<code>(x,y)</code>是相对于每个单元格左上角坐标点的偏移值，并且单位是相对于单元格大小的，单元格的坐标定义如下图所示。而边界框的w和h预测值是相对于整个图片的宽与高的比例，这样理论上4个元素的大小应该在0到1范围。这样，每个边界框的预测值实际上包含5个元素<code>(x,y,w,h,c)</code>，其中前4个表征边界框的大小与位置，而最后一个值是置信度。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/631D60B257344EB758511D13765783D8.7jpj1er7cmw0.webp" alt="631D60B257344EB758511D13765783D8"></p>
+<p>还有分类问题，对于每一个单元格其还要给出预测出C个类别概率值，其表征的是由该单元格负责预测的边界框其目标属于各个类别的概率。但是这些概率值其实是在各个边界框置信度下的条件概率，即<code>Pr(class|object)</code>。值得注意的是，不管一个单元格预测多少个边界框，其只预测一组类别概率值，这是Yolo算法的一个缺点，在后来的改进版本中，Yolo9000是把类别概率预测值与边界框是绑定在一起的。同时，我们可以计算出各个边界框类别置信度（class-specific confidence scores）:$Pr(class|object)*Pr(object)*IOU_{pred}^{truth}$ 。</p>
+<h4 id="2-网络设计"><a href="#2-网络设计" class="headerlink" title="2.网络设计"></a>2.网络设计</h4><p>对于一篇论文重要的之一是看他的网络架构，yolov1中的网络为后续v2，v3的网络奠定了基础，这里我直接贴上论文中的网络架构。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.7bdibq1bar40.webp" alt="截屏2022-03-21-11"></p>
+<p>输入图像大小为 <code>448*x448</code>，经过若干个卷积层与池化层，变为<code>7*7*1024</code>张量（图一中倒数第三个立方体），最后经过两层全连接层，输出张量维度为<code>7*7*30</code>，这就是Yolo v1的整个神经网络结构，和一般的卷积物体分类网络没有太多区别，最大的不同就是：分类网络最后的全连接层，一般连接于一个一维向量，向量的不同位代表不同类别，而这里的输出向量是一个三维的张量<code>（7*7*30）</code>。上图中Yolo的backbone网络结构，受启发于GoogLeNet，也是v2、v3中Darknet的先锋。本质上来说没有什么特别，没有使用BN层，用了一层Dropout。除了最后一层的输出使用了线性激活函数，其他层全部使用Leaky Relu激活函数。网络结构没有特别的东西，不再赘述。</p>
+<p>这里讲解下输出层大小的含义，<code>7*7</code>表示将最后的输出图片等分为49个小格子，由于每个格子会预测B个框，论文中B取2，每个bounfbox将预测四个值以及一个是否为物体的置信度，最后20维输出指的是预测20个类别，每个类别对应的概率，因此这深度值的30即为<br> <code>(4+1)*2+20</code>,具体图如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-14.iiprxlc19y8.webp" alt="截屏2022-03-21-14"></p>
+<h4 id="3-损失函数"><a href="#3-损失函数" class="headerlink" title="3.损失函数"></a>3.损失函数</h4><p>论文中第二重要的就是看他的网络损失函数的设计，在yolov1论文中也给出了详细的关于损失函数的介绍，下面我直接截取了论文中的损失函数。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-11.5jz7mm1ryr80.webp" alt="截屏2022-03-21-11"></p>
+<p>看到这里读者或许会有疑问，Yolo里的每个格点，是怎么知道该预测哪个物体的？这就是神经网络算法的能力。首先拿到一批标注好的图片数据集，按照规则打好标签，之后让神经网络去拟合训练数据集。训练数据集中的标签是通过人工标注获得，当神经网络对数据集拟合的足够好时，那么就相当于神经网络具备了一定的和人一样的识别能力。</p>
+<p>神经网络结构确定之后，训练效果好坏，由Loss函数和优化器决定。Yolo v1使用普通的梯度下降法作为优化器。这里重点解读一下Yolo v1使用的Loss函数：</p>
+<p>论文中Loss函数，密密麻麻的公式初看可能比较难懂。其实论文中给出了比较详细的解释。所有的损失都是使用平方和误差公式，暂时先不看公式中的landa，输出的预测数值以及所造成的损失有:</p>
+<ul>
+<li><p>预测框的中心点(x,y) 。造成的损失是图五中的第一行。其中$1_{ij}^{obj}$为控制函数，在标签中包含物体的那些格点处，该值为 1 ；若格点不含有物体，该值为 0。也就是只对那些有真实物体所属的格点进行损失计算，若该格点不包含物体，那么预测数值不对损失函数造成影响。(x,y) 数值与标签用简单的平方和误差。</p>
+</li>
+<li><p>预测框的宽高(w,h) 。造成的损失是图五的第二行.$1_{ij}^{obj}$的含义一样，也是使得只有真实物体所属的格点才会造成损失。这里对(w,h)在损失函数中的处理分别取了根号，原因在于，如果不取根号，损失函数往往更倾向于调整尺寸比较大的预测框。例如，20个像素点的偏差，对于<code>800*600</code>的预测框几乎没有影响，此时的IOU数值还是很大，但是对于<code>30*40</code>的预测框影响就很大。取根号是为了尽可能的消除大尺寸框与小尺寸框之间的差异。</p>
+</li>
+<li><p>第三行与第四行，都是预测框的置信度C。当该格点不含有物体时，该置信度的标签为0；若含有物体时，该置信度的标签为预测框与真实物体框的IOU数值（IOU计算公式为：两个框交集的面积除以并集的面积）。</p>
+</li>
+<li><p>第五行为物体类别概率P，对应的类别位置，该标签数值为1，其余位置为0，与分类网络相同。</p>
+</li>
+</ul>
+<p>此时再来看$\lambda_{coord}$ 与 $\lambda_{noobj}$，Yolo面临的物体检测问题，是一个典型的类别数目不均衡的问题。其中49个格点，含有物体的格点往往只有3、4个，其余全是不含有物体的格点。此时如果不采取点措施，那么物体检测的mAP不会太高，因为模型更倾向于不含有物体的格点。$\lambda_{coord}$与 $\lambda_{noobj}$的作用，就是让含有物体的格点，在损失函数中的权重更大，让模型更加“重视”含有物体的格点所造成的损失。在论文中， $\lambda_{coord}$与$\lambda_{noobj}$的取值分别为5与0.5。</p>
+<h2 id="3-算法比较"><a href="#3-算法比较" class="headerlink" title="3.算法比较"></a>3.算法比较</h2><p>相比于其他的实时检测系统比如DPM，yolo有更高的准确率，在速度上也有优势。对于state of the art模型faster-rcnn，尽管在精度上低四五个点，但是在速度上大幅度提升，具体对比如下：<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.3crozup5yie0.webp" alt="截屏2022-03-21-15"></p>
+<p>与fast-rcnn进行比较发现，yolo在背景识别上的错误率小于fast-rcnn。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/cv_knowledge/%E6%88%AA%E5%B1%8F2022-03-21-15.73oq5ubdy4w0.webp" alt="截屏2022-03-21-15"></p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>Yolo v1整体思路简单清晰，但是透彻的理解还是需要花点功夫。从上次自以为全部看懂了Yolo v1，到写完这篇文章，这期间又明白了不少细节。v1中埋了不少伏笔，都成为了v2和v3的突破口。虽然版本演进，Yolo算法在不断完善，但是v1版本才是用回归做物体检测的开山之作。</p>
+<p>yolov1在性能上还有欠缺因此在后续yolo上有所改进，后续会写yolov2的讲解。</p>
+<h2 id="5-参考文章"><a href="#5-参考文章" class="headerlink" title="5.参考文章"></a>5.参考文章</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32525231">1.目标检测|YOLO原理与实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/70387154">2.【论文解读】Yolo三部曲解读——Yolov1</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机视觉论文</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/16/Yolov1-%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ubuntu实现内网穿透" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">旧电脑配置成服务器教程</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="archive-article-date">
+	
+  	<time datetime="2022-01-22T11:38:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>笔者使用的主力机是macbook,但由于学业需要，还有一台老式的thinkpad，基本处于废弃状态，因此为了最大程度的使用资源，准备将其作为服务器使用。为了使用ssh可以远程连接上电脑，我们首先需要将电脑连入公网，以获得一个公网IP，本教程将手把手教大家，将旧电脑配置成服务器。</p>
+<h3 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h3><ul>
+<li>一台Thinkpad T440P</li>
+<li>SAKURA FRP（实现内网穿透的app）</li>
+<li>一台常用机（笔者为MBP）</li>
+<li>SSH连接工具（笔者使用SecureCRT）</li>
+<li>SFTP工具（笔者使用transmit）</li>
+</ul>
+<h3 id="1-安装linux操作系统"><a href="#1-安装linux操作系统" class="headerlink" title="1.安装linux操作系统"></a>1.安装linux操作系统</h3><p>基本上的服务器所选的操作系统都是Linux操作系统，因为其安全，方便，效率高。笔者选用的为ubuntu18.04，linux的安装过程不再赘述，网上教程一堆，不同电脑有不同的安装方法，读者可以选择相应电脑品牌安装方法。</p>
+<h3 id="2-内网穿透"><a href="#2-内网穿透" class="headerlink" title="2.内网穿透"></a>2.内网穿透</h3><ol>
+<li>在常用电脑中打开<a target="_blank" rel="noopener" href="https://www.natfrp.com/">SAKURA FRP</a>官网，注册账号，注册成功后，点击<code>穿透</code>-&gt;<code>隧道列表</code>-&gt;<code>新建隧道</code><br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8B%E5%8D%8811.72h7eg24ek40.webp" alt="截屏2022-01-22-下午11"></li>
+<li>选择穿透节点，隧道类型选择TCP，本地端口选择SSH（22），其余默认即可。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8B%E5%8D%8811.1rfsg7r9klmo.webp" alt="截屏2022-01-22-下午11"></li>
+<li>部署服务器，在服务器电脑上登入<a target="_blank" rel="noopener" href="https://www.natfrp.com/">SAKURA FRP</a>官网，选择<code>穿透</code>-&gt;<code>软件下载</code>-&gt;<code>Linux</code>-&gt;<code>arm64</code>,点击下载到服务器列表。<br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-22-%E4%B8%8B%E5%8D%8811.31c7obfxnjc0.webp" alt="截屏2022-01-22-下午11"></li>
+<li>下载完成后，我将应用移到桌面，在终端输入以下命令执行。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 frpc_linux_amd64 <span class="comment"># 添加运行权限</span></span><br><span class="line">./frpc_linux_amd64 <span class="comment">#运行该软件</span></span><br></pre></td></tr></table></figure>
+运行之后即可得到一个交互式 UI ，选择需要使用的隧道，按Tab键切换到 Token 输入框后输入 Token（访问密钥），然后切换到 Login 按钮并回车（终端支持的话，也可使用鼠标操作）。访问密钥在<a target="_blank" rel="noopener" href="https://www.natfrp.com/">SAKURA FRP</a>官网用户信息中查找。</li>
+</ol>
+<p><strong>出现如下信息说明内网穿透成功，会出现以下会出现<code>iP地址</code>与<code>端口号</code>,使用这两个信息即可进行SSH连接。</strong><br><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-23-%E4%B8%8A%E5%8D%889.5cax6pqnoyw0.webp" alt="截屏2022-01-23-上午9"></p>
+<ol start="5">
+<li>在常用机中使用SSH连接工具，笔者使用SecrueCRT，<strong>输入第四步骤中得到的IP地址与端口号</strong>，输入用户名和密码,这两个即为你Linux的登录名和登录密码。出现以下信息即为连接成功。<blockquote>
+<p>切记端口号不是22，而是第四步骤IP地址后的几位数字。</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/young2think/my-image@master/blog/%E6%88%AA%E5%B1%8F2022-01-23-%E4%B8%8A%E5%8D%889.qweqx0475cg.webp" alt="截屏2022-01-23-上午9"></p>
+<h3 id="3-服务器常开"><a href="#3-服务器常开" class="headerlink" title="3.服务器常开"></a>3.服务器常开</h3><p>作为一台服务器，需要24h常开，因此需要配置Linux合盖不休眠，在终端输入以下信息即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;system&#x2F;logind.conf</span><br><span class="line"># 在打开的文件中输入</span><br><span class="line">HandleLidSwitch&#x3D;lock</span><br></pre></td></tr></table></figure>
+<p>然后保存退出，重启电脑即可。</p>
+<hr>
+<p>至此一台旧电脑配置成服务器就已经完成了，小伙伴们还不赶紧尝试下。</p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/267900091">1. 内网穿透，远程连接办公室的Linux系统</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Cherry-Linux/p/10490285.html">2. Linux合上笔记本不进入休眠模式</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/22/ubuntu%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1534,15 +1665,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">R语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,23 +1689,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zsh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
