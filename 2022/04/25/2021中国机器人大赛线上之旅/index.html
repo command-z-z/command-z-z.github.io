@@ -8,16 +8,26 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>2021中国机器人大赛线上之旅 | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="写这篇文章其实比赛已经过了很久了，就连保研都已经结束了，还是舍不得这段回忆，趁着还有点记忆先记录下来，以后也是个美好的回忆吧。我的机器人之旅起源于robocup之旅,当时那个比赛结束了，我也还是选择留了下来，找了新队友组参与了计算机视觉的项目，这个项目在我们学校是传统优势项目，前两年都获得了全国第一的成绩，排位前三的人还可以获得保研名额，为了避免麻烦团队就三个人，一起努力备战机器人大赛。 工业测量">
+<meta property="og:type" content="article">
 <meta property="og:title" content="2021中国机器人大赛线上之旅">
 <meta property="og:url" content="http://example.com/2022/04/25/2021%E4%B8%AD%E5%9B%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%A4%A7%E8%B5%9B%E7%BA%BF%E4%B8%8A%E4%B9%8B%E6%97%85/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
+<meta property="og:description" content="写这篇文章其实比赛已经过了很久了，就连保研都已经结束了，还是舍不得这段回忆，趁着还有点记忆先记录下来，以后也是个美好的回忆吧。我的机器人之旅起源于robocup之旅,当时那个比赛结束了，我也还是选择留了下来，找了新队友组参与了计算机视觉的项目，这个项目在我们学校是传统优势项目，前两年都获得了全国第一的成绩，排位前三的人还可以获得保研名额，为了避免麻烦团队就三个人，一起努力备战机器人大赛。 工业测量">
 <meta property="og:locale">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/21/x6cLTS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/21/x621uq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/21/x62vMn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/21/x6RNeP.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/21/x6fa8g.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/21/x67Uwd.md.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/21/x6He9P.md.png">
 <meta property="article:published_time" content="2022-04-25T07:22:19.000Z">
-<meta property="article:modified_time" content="2022-07-03T07:23:46.382Z">
+<meta property="article:modified_time" content="2022-10-21T05:53:55.486Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/21/x6cLTS.png">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
   
@@ -192,7 +202,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>写这篇文章其实比赛已经过了很久了，就连保研都已经结束了，还是舍不得这段回忆，趁着还有点记忆先记录下来，以后也是个美好的回忆吧。我的机器人之旅起源于<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/05/25/2021RoboCup%E4%B9%8B%E6%97%85/">robocup之旅</a>,当时那个比赛结束了，我也还是选择留了下来，找了新队友组参与了计算机视觉的项目，这个项目在我们学校是传统优势项目，前两年都获得了全国第一的成绩，排位前三的人还可以获得保研名额，为了避免麻烦团队就三个人，一起努力备战机器人大赛。</p>
+<h3 id="工业测量"><a href="#工业测量" class="headerlink" title="工业测量"></a>工业测量</h3><p>中国机器人大赛先进视觉赛项共有两个子项目分别为3D识别和工业测量两个项目，我们团队最终选择的是工业测量赛项，赛题要求我们利用RGBD摄像头测量桌面上的螺栓长度和直径，以及垫片的内外径，误差越小得分越高。测量场景图如下。相比于上一届的项目，这届项目规则改动巨大，甚至把计算设备换成了Jetson Nano。基本相当于一个全新的项目，对我们带来了巨大的挑战。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6cLTS"><img src="https://s1.ax1x.com/2022/10/21/x6cLTS.png" alt="x6cLTS.png"></a></p>
+<h3 id="备战"><a href="#备战" class="headerlink" title="备战"></a>备战</h3><p>项目刚拿到手，对像我们这个机器视觉小白来说可谓是不知从何下手。虽然说比赛是有指导教师的，老师基本不管，就只能靠我们自己和上一届学长的指导。第一步就是先把上一届的代码拿来，看看需要哪些技能，哪些代码是可以复用的。项目所需的技能包括：3D点云，目标识别，openCV等，除了对openCV有些了解外，其余一概不知，项目前半个月就靠自己摸索，以及对知识的学习。找桌子的算法直接沿袭了上一届的想法，通过3D点云拟合桌面并进行桌角标定。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x621uq"><img src="https://s1.ax1x.com/2022/10/21/x621uq.png" alt="x621uq.png"></a><br>模型训练这块直接交给韬哥负责，上一届用的是cascade系列的模型，但是为two stage模型，当我们放在Nano上的时候速度实在是太慢了，后面换成了yolo系列的。首先尝试了yoloV4，自己拍照片打标签做数据集，进行训练，因为是二分类的任务，大概打了900张左右的图片，训练之后的效果还不错，就一直先用着了。但是后面发现螺栓垫片之间存在遮挡的时候，由于yolo无法区分两个物体，导致我们的测量精度很低。后面换了yoloct系列的模型，实例分割模型可以很好的对物体进行区别，可以较好的提取物体轮廓，缓解遮挡叠放问题。但是后面我们尝试就模型部署到Nano上时，速度实在是太慢了，权衡利弊考虑，最终还是选择了yoloV4。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x62vMn"><img src="https://s1.ax1x.com/2022/10/21/x62vMn.png" alt="x62vMn.png"></a><br>我们的大致思路是，先利用3D点云拟合桌面并进行桌角标定，然后利用透视变换将桌子点映射到一个1000*1000的正方形上，得出像素长度与实际长度之间的转化比例。然后利用yolov4对物体进行识别，然后提取每一个bbox利用测量算法找到要计算的两个点，利用像素长度与实际长度的转换<br>得出测量真值。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6RNeP"><img src="https://s1.ax1x.com/2022/10/21/x6RNeP.png" alt="x6RNeP.png"></a></p>
+<p>接着就是具体测量部分了，我们是利用二值化和找轮廓算法对图像进行处理，对于垫片最大外轮廓得到他的外接矩形两个顶点距离为外经长度，同理对最大内轮廓进行相同操作也可得到内径长度。对于螺栓，由于螺栓比较不规则，测量难度较大，我们对螺栓的轮廓进行凸包的处理，得到靠近桌子的两个点，这两个点透视变换之后影响较小，直径是利用法向量直线找到两个点，螺栓这块一直有误差，最后也没有很好的解决。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6fa8g"><img src="https://s1.ax1x.com/2022/10/21/x6fa8g.md.png" alt="x6fa8g.md.png"></a><br>项目的大体思路就是这样，具体实现过程还是一步步慢慢迭代算法，也是一蹴而就，经过大量实验分析，不断修改算法，最终在9月底的时候算法基本完成了，就差细节调优了。原定11月的比赛，却被突如其来的疫情无休止的打断了，比赛时间也拖到了来年春季，这样我们的项目进度也告一段落，后续大家各忙各的学业，打算等赛前再继续。</p>
+<h3 id="线上测试"><a href="#线上测试" class="headerlink" title="线上测试"></a>线上测试</h3><p>很快时间来到春季，距离原定的比赛时间也越来越近。我们团队也开始准备起来，对原来项目慢慢熟悉起来。然而那时上海爆发疫情，每日成百上千的增长，线下指日无望，很快线上比赛的通知也来了。线上比赛为了追求公平，最终觉得把设备寄到比赛地，参赛者只要提供可执行脚本和软件运行指南即可。无法到现场实地测试，加大了我们比赛的难度，因为我们的摄像头是需要调参的，这更要求了我们算法的鲁棒性。</p>
+<p>当时项目还没有完全部署到Nano上，所以先完成了部署，为了控制算法的是时间，我们减少了找桌子的次数，因为比赛时时间分很重要，对一些该处理的地方加了try expect防止报错。</p>
+<p>比赛允许我们提前进行一次测试，所以提前将一个Nano和一张SD卡寄了过去，线上调试也是挺搞的，我们队伍顺序在最后几个，轮到我们的时候都到晚上10点多了。是进入一个腾讯会议，主办方会显示nano界面，我们指挥如何操作，还看了看相机参数设置。运行代码后遇到了bug，我们跑了四次程序，其中有两次程序报错了，虽然这个bug我们平时也有遇到（极少），但是重新运行后又不会出现，不太好定位问题，所以没怎么管。成功运行的两次，测量结果也不太好大概4分左右（满分6分）。测试，结束我们马不停蹄开始找bug，记得当时和韬哥、根行哥在计算机3楼教室待到凌晨2点多。通过不断摆放物品，和改变现场环境，最终发现是场外物品干扰，导致我们扩充像素的时候，比原像素还大了，我们赶紧修改代码，加了补救措施。对于测量精度不高的问题，我们发现提供的测试物体整体尺寸偏大，后续我也将我买的物品中打得加入我们平时测试中，我买的物体实际整体偏小，螺栓8cm以上的很少（这里也为我们后来失利埋下伏笔）。</p>
+<p>线上测试结束后，我们就小修代码，然后不断测试，在我们自己的数据集上有了很好的结果，最终把一些细节处理了下，把SD卡烧好了，寄到主办方，等待正式比赛了。</p>
+<h3 id="线上比赛"><a href="#线上比赛" class="headerlink" title="线上比赛"></a>线上比赛</h3><p>比赛日也就在测试后三天，我们的项目放到了周日比，早上第一轮，下午第二轮，我们队伍顺序在中间。虽然说是比赛，其实就是看直播，代码什么的都已经没法修改了。也是腾讯会议，主办方按照顺序一支队伍一支队伍的跑代码，当看到测试物品的时候，被吓了一跳，螺栓都很多超过5cm的，很多甚至10cm～20cm之间，这在我们平时是很少测试的，而且摆放的复杂程度大大超过了预期，叠放、遮挡、竖放很严重，默默为我们算法担心。线上比赛也没有办法，只能默默祈祷，最终第一轮还好拿了4.2分，暂时排在第二。</p>
+<p>下午是第二轮，动态物品测量，难度更大。轮到我们大概3、4点了，这次测量环境更难，物体摆放的离谱,下面是摆放时拍的图，最终比时，比这还复杂多了。最终拿了3.3分（感觉这是保底测量分了），两轮排位第三。对结果还是挺失望的，毕竟准备了这么久，本来是冲着冠军去的。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x67Uwd"><img src="https://s1.ax1x.com/2022/10/21/x67Uwd.md.jpg" alt="x67Uwd.md.jpg"></a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本来以为国一无望了，官网当时只有每只队伍的排名，没有具体几等奖，都开始准备考研了，考研一周左右的时候。去申请奖状，给我们发了国一，哈哈，当时知道的时候还是很激动的吧。毕竟国一保研了，本来早就期待保研生活了，后来失利了那就考研去，突然又保研了，挺高兴的。</p>
+<p>对这个项目，毕竟是自己一手带大的也是忙活了大半年，期间学到了很多，还有和队友一起努力，分析，解决问题的一路，很美好的回忆哦～</p>
+<p>线上比赛，体验感很差，放张结果图吧。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x6He9P"><img src="https://s1.ax1x.com/2022/10/21/x6He9P.md.png" alt="x6He9P.md.png"></a></p>
+
       
 
       
@@ -339,7 +362,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%B8%9A%E6%B5%8B%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">工业测量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E6%88%98"><span class="toc-number">2.</span> <span class="toc-text">备战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E4%B8%8A%E6%B5%8B%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text">线上测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E4%B8%8A%E6%AF%94%E8%B5%9B"><span class="toc-number">4.</span> <span class="toc-text">线上比赛</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -496,11 +519,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,7 +531,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">robot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,7 +539,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">robot</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,11 +555,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+                <a href="javascript:void(0)" class="js-tag color5">环境配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,10 +583,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -572,11 +595,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
