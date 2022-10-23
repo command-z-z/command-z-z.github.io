@@ -164,6 +164,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数字图像处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理-学习笔记（1）</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="archive-article-date">
+	
+  	<time datetime="2021-04-13T07:24:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-13</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="1-图像如何产生"><a href="#1-图像如何产生" class="headerlink" title="1.图像如何产生"></a>1.图像如何产生</h4><p>图像数字化：将模拟图像经过离散化后，得到用数字表示的图像。图像的数字化包括两个过程：采样和量化。</p>
+<ul>
+<li><p>采样：将在空间上连续的图像转换成离散的采样点的操作，即空间坐标的离散化。</p>
+</li>
+<li><p>量化：把取样后所得的个像素的灰度值从模拟量到离散量的转换操作，即灰度的离散化。</p>
+</li>
+<li><p>灰度级：表示像素明暗程度的整数量。例如：像素的取值范围为0-255，就称该图像为256个灰度级的图像。</p>
+</li>
+<li><p>层次：表示图像实际拥有的灰度级的数量。例如：具有32种不同取值的图像，可称该图像具有32个层次。（图像数据的实际层次越多，视觉效果就越好）</p>
+</li>
+<li><p>对比度：一幅图像中灰度反差的大小。</p>
+</li>
+<li><p>清晰度：与之有关因素，亮度，对比度，尺寸大小，细微层次，颜色饱和度。</p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/13/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-旧社会与无奈" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1028,103 +1120,6 @@
 
 
   
-    <article id="post-Java-学习笔记（4）-异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">Java 学习笔记（4）-异常处理</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="archive-article-date">
-	
-  	<time datetime="2020-12-25T01:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1.异常处理"></a>1.异常处理</h4><p>异常（Exception）是正常程序流程所不能处理或没有处理的异常情况或异常事件，它中断指令或程序的正常执行。</p>
-<h4 id="2-Java中的异常类"><a href="#2-Java中的异常类" class="headerlink" title="2.Java中的异常类"></a>2.Java中的异常类</h4><p>Java中的异常类包含在java.lang和java.io包中，其共同的父类是java.lang.Throwable。</p>
-<blockquote>
-<p>父类的优先级会比子类的高，因此，捕获子类异常的代码必须放在捕获父类异常的代码前面。</p>
-</blockquote>
-<h4 id="3-异常处理模式"><a href="#3-异常处理模式" class="headerlink" title="3.异常处理模式"></a>3.异常处理模式</h4><h5 id="try-catch-finally语句"><a href="#try-catch-finally语句" class="headerlink" title="try-catch-finally语句"></a>try-catch-finally语句</h5><ul>
-<li>try{}语句后面必须跟一个catch或finally语句块，有catch，finally语句可有可无；无catch，必须有finally语句。</li>
-<li>异常发生后，在try语句块中，异常位置的后续代码都不会执行,直到找到异常匹配才会执行try-catch-finally后面的语句。</li>
-<li>catch语句按编写顺序查找异常匹配，只要找到一个异常匹配，就不会去寻找其他异常。</li>
-<li>finally语句块无论是否发生异常都要执行。</li>
-</ul>
-<h5 id="异常类成员方法"><a href="#异常类成员方法" class="headerlink" title="异常类成员方法"></a>异常类成员方法</h5><p>从父类Throwable继承的方法主要包括：<code>getMessage（）</code>用来取得与异常和错误相关的错误信息；<code>printStackTrace（）</code>用来打印显示异常发生地方的堆栈状态；<code>toString（）</code>用来显示异常信息以及<code>getMessage（）</code>返回信息。</p>
-<h5 id="异常捕获与处理"><a href="#异常捕获与处理" class="headerlink" title="异常捕获与处理"></a>异常捕获与处理</h5><ul>
-<li>产生异常对象并中断当前正在执行的代码，抛出异常对象。</li>
-<li>自动按程序中的catch的编写顺序查找“最接近的”异常匹配。</li>
-<li>若有匹配则执行相应的处理代码，然后执行try-catch-finally之后的代码。若没有找到异常匹配，系统会报错，且终止程序。</li>
-</ul>
-<h4 id="4-重新抛出异常"><a href="#4-重新抛出异常" class="headerlink" title="4.重新抛出异常"></a>4.重新抛出异常</h4><h5 id="throws语句"><a href="#throws语句" class="headerlink" title="throws语句"></a><code>throws</code>语句</h5><ul>
-<li><code>throws</code>关键字通常被应用在声明方法时，用来指定可能抛出的异常。</li>
-<li>使用throws表明该方法本身不会对该异常进行处理，一旦发生该异常将由调用该方法的main方法进行执行处理（即该方法的上一级进行捕获）。</li>
-</ul>
-<h5 id="throw语句"><a href="#throw语句" class="headerlink" title="throw语句"></a><code>throw</code>语句</h5><p><code>throw</code>关键字通常用在方法体中，并且抛出一个异常对象。程序在执行到throw语句时立即停止，它后面的语句都不执行。如果要捕获throw抛出的异常，则必须使用try-catch语句。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/25/Java-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1340,6 +1335,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">终端</a>
               </li>
             
             <div class="clearfix"></div>

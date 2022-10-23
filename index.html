@@ -853,6 +853,242 @@
 
 
   
+    <article id="post-终端文件管理工具ranger" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/23/%E7%BB%88%E7%AB%AF%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7ranger/">终端文件管理工具ranger</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/23/%E7%BB%88%E7%AB%AF%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7ranger/" class="archive-article-date">
+	
+  	<time datetime="2022-08-23T09:12:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我终端配置文件教程的第一章，我将详细的讲解ranger安装，以及我的个人配置,快捷键等信息。</p>
+<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置, welcome to star🌟。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ra</td>
+<td>终端启动文件管理ranger</td>
+</tr>
+<tr>
+<td></td>
+<td>以下为ranger中的快捷键</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出ranger</td>
+</tr>
+<tr>
+<td>l/Enter/Right</td>
+<td>用相应编辑器打开文件</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>pp</td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td>dD</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>zh/&lt;backspace&gt;</td>
+<td>显示隐藏或关闭隐藏文件</td>
+</tr>
+<tr>
+<td>i</td>
+<td>放大预览内容</td>
+</tr>
+<tr>
+<td>&lt;space&gt;/v</td>
+<td>选择文件</td>
+</tr>
+<tr>
+<td>a</td>
+<td>rename不改拓展名</td>
+</tr>
+<tr>
+<td>A</td>
+<td>rename改拓展名</td>
+</tr>
+<tr>
+<td>m+任何字符</td>
+<td>用此字符标记当前目录</td>
+</tr>
+<tr>
+<td>‘+相应标记字符</td>
+<td>快速跳转到被标记目录</td>
+</tr>
+<tr>
+<td>A</td>
+<td>rename改拓展名</td>
+</tr>
+<tr>
+<td>T</td>
+<td>新建单个文件(touch)</td>
+</tr>
+<tr>
+<td>V</td>
+<td>新建单个文件(nvim)</td>
+</tr>
+<tr>
+<td>K</td>
+<td>新建目录并进入目录</td>
+</tr>
+<tr>
+<td>C</td>
+<td>用v先选择要压缩文件，按C输入压缩包名即可压缩</td>
+</tr>
+<tr>
+<td>X</td>
+<td>按yy复制需解压文件，按X回车即可解压</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>选择相应markdown文件，按cp即可转为pdf</td>
+</tr>
+<tr>
+<td>cw</td>
+<td>用v选择多个文件，可用cw调用nvim批处理文件名</td>
+</tr>
+<tr>
+<td>f</td>
+<td>查找过滤文件</td>
+</tr>
+<tr>
+<td>&lt;C-f&gt;</td>
+<td>调用fzf查找文件</td>
+</tr>
+</tbody></table>
+<h2 id="ranger介绍"><a href="#ranger介绍" class="headerlink" title="ranger介绍"></a>ranger介绍</h2><p><a target="_blank" rel="noopener" href="https://github.com/ranger/ranger">ranger官网地址</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
+<p>ranger是一款在终端上的文件管理工具，有着VIM的哲学，可以很方便的用键盘对文件进行操作。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xgzOq1"><img src="https://s1.ax1x.com/2022/10/23/xgzOq1.md.png" alt="xgzOq1.md.png"></a></p>
+<h2 id="ranger安装"><a href="#ranger安装" class="headerlink" title="ranger安装"></a>ranger安装</h2><h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>安装ranger，即可使用基本功能</p>
+<p><code>brew install ranger</code></p>
+<p>安装依赖，这样可以使用一些扩展的功能,主要是预览相关的</p>
+<p><code>brew install libcaca highlight atool lynx w3m elinks poppler transmission mediainfo exiftool </code></p>
+<h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><p>输入以下语句生成配置文件，或者直接复制我的ranger文件夹。</p>
+<p><code>ranger --copy-config=all</code></p>
+<p>现在，您可以转到<code>~/.config/ranger</code>生成的文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.config&#x2F;ranger</span><br><span class="line">➜  ranger ls -la</span><br><span class="line">总用量 132</span><br><span class="line">drwxr-xr-x 2 itkey users  4096  4月 13 16:25 .</span><br><span class="line">drwxr-xr-x 6 itkey users  4096  4月 13 16:07 ..</span><br><span class="line">-rw-r--r-- 1 itkey users 62106  4月 13 16:25 commands_full.py</span><br><span class="line">-rw-r--r-- 1 itkey users  2763  4月 13 16:25 commands.py</span><br><span class="line">-rw-r--r-- 1 itkey users 24193  4月 13 16:25 rc.conf</span><br><span class="line">-rw-r--r-- 1 itkey users 14071  4月 13 16:25 rifle.conf</span><br><span class="line">-rwxr-xr-x 1 itkey users 13758  4月 13 16:25 scope.sh</span><br></pre></td></tr></table></figure>
+<p>让我们快速浏览它们:</p>
+<ul>
+<li>commands.py:可以编写自己的脚本命令，Wiki上有很多可借鉴</li>
+<li>commands_full.py:全套命令，基本不动</li>
+<li>rc.conf：配置与绑定</li>
+<li>rifle.conf：文件关联（用于打开文件的程序）</li>
+<li>scope.sh:负责各种文件预览</li>
+</ul>
+<h3 id="1-预览图片功能"><a href="#1-预览图片功能" class="headerlink" title="1.预览图片功能"></a>1.预览图片功能</h3><p>首先需要修改rc.conf文件内容：</p>
+<p>将<code>set preview_images false</code>修改为<code>set preview_images true</code></p>
+<p>将<code>set preview_images_method w3m</code>修改为<code>set preview_images_method iterm2</code></p>
+<p>在<code>vim ~/.zshrc</code>环境变量中增加下面一行<br><code>export RANGER_LOAD_DEFAULT_RC=FALSE</code></p>
+<p>需要再写一个在终端可预览图片的命令<code>vim imgcat</code>,写入以下内容：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tmux requires unrecognized OSC sequences to be wrapped with DCS tmux;</span></span><br><span class="line"><span class="comment"># &lt;sequence&gt; ST, and for all ESCs in &lt;sequence&gt; to be replaced with ESC ESC. It</span></span><br><span class="line"><span class="comment"># only accepts ESC backslash for ST. We use TERM instead of TMUX because TERM</span></span><br><span class="line"><span class="comment"># gets passed through ssh.</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">print_osc</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$TERM</span> == screen* ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;\033Ptmux;\033\033]&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;\033]&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># More of the tmux workaround described above.</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">print_st</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$TERM</span> == screen* ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;\a\033\\&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;\a&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">load_version</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> [ -z <span class="variable">$&#123;IMGCAT_BASE64_VERSION+x&#125;</span> ]; <span class="keyword">then</span></span><br><span class="line">        IMGCAT_BASE64_VERSION=$(base64 --version 2&gt;&amp;1)</span><br><span class="line">        <span class="built_in">export</span> IMGCAT_BASE64_VERSION</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">b64_encode</span></span>() &#123;</span><br><span class="line">    load_version</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$IMGCAT_BASE64_VERSION</span> =~ GNU ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="comment"># Disable line wrap</span></span><br><span class="line">        base64 -w0</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        base64</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">b64_decode</span></span>() &#123;</span><br><span class="line">    load_version</span><br><span class="line">    <span class="keyword">if</span> [[ <span class="variable">$IMGCAT_BASE64_VERSION</span> =~ fourmilab ]]; <span class="keyword">then</span></span><br><span class="line">        BASE64ARG=-d</span><br><span class="line">    <span class="keyword">elif</span> [[ <span class="variable">$IMGCAT_BASE64_VERSION</span> =~ GNU ]]; <span class="keyword">then</span></span><br><span class="line">        BASE64ARG=-di</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        BASE64ARG=-D</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    base64 <span class="variable">$BASE64ARG</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># print_image filename inline base64contents print_filename</span></span><br><span class="line"><span class="comment">#   filename: Filename to convey to client</span></span><br><span class="line"><span class="comment">#   inline: 0 or 1</span></span><br><span class="line"><span class="comment">#   base64contents: Base64-encoded contents</span></span><br><span class="line"><span class="comment">#   print_filename: If non-empty, print the filename</span></span><br><span class="line"><span class="comment">#                   before outputting the image</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">print_image</span></span>() &#123;</span><br><span class="line">    print_osc</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">&#x27;1337;File=&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> [[ -n <span class="variable">$1</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">printf</span> <span class="string">&quot;name=%s;&quot;</span> <span class="string">&quot;<span class="subst">$(printf <span class="string">&quot;%s&quot;</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> | b64_encode)</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">&quot;%s&quot;</span> <span class="string">&quot;<span class="variable">$3</span>&quot;</span> | b64_decode | wc -c | awk <span class="string">&#x27;&#123;printf &quot;size=%d&quot;,$1&#125;&#x27;</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">&quot;;inline=%s&quot;</span> <span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">&quot;:&quot;</span></span><br><span class="line">    <span class="built_in">printf</span> <span class="string">&quot;%s&quot;</span> <span class="string">&quot;<span class="variable">$3</span>&quot;</span></span><br><span class="line">    print_st</span><br><span class="line">    <span class="built_in">printf</span> <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> [[ -n <span class="variable">$4</span> ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">error</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;ERROR: $*&quot;</span> 1&gt;&amp;2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">show_help</span></span>() &#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Usage: imgcat [-p] filename ...&quot;</span> 1&gt;&amp;2</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;   or: cat filename | imgcat&quot;</span> 1&gt;&amp;2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">check_dependency</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> ! (<span class="built_in">builtin</span> <span class="built_in">command</span> -V <span class="string">&quot;<span class="variable">$1</span>&quot;</span> &gt;/dev/null 2&gt;&amp;1); <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;imgcat: missing dependency: can&#x27;t find <span class="variable">$1</span>&quot;</span> 1&gt;&amp;2</span><br><span class="line">        <span class="built_in">exit</span> 1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">## Main</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -t 0 ]; <span class="keyword">then</span></span><br><span class="line">    has_stdin=f</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    has_stdin=t</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Show help if no arguments and no stdin.</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$has_stdin</span> = f ] &amp;&amp; [ <span class="variable">$#</span> -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">    show_help</span><br><span class="line">    <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">check_dependency awk</span><br><span class="line">check_dependency base64</span><br><span class="line">check_dependency wc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Look for command line flags.</span></span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$#</span> -gt 0 ]; <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    -h | --h | --<span class="built_in">help</span>)</span><br><span class="line">        show_help</span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line">        ;;</span><br><span class="line">    -p | --p | --<span class="built_in">print</span>)</span><br><span class="line">        print_filename=1</span><br><span class="line">        ;;</span><br><span class="line">    -u | --u | --url)</span><br><span class="line">        check_dependency curl</span><br><span class="line">        encoded_image=$(curl -s <span class="string">&quot;<span class="variable">$2</span>&quot;</span> | b64_encode) || (</span><br><span class="line">            error <span class="string">&quot;No such file or url <span class="variable">$2</span>&quot;</span></span><br><span class="line">            <span class="built_in">exit</span> 2</span><br><span class="line">        )</span><br><span class="line">        has_stdin=f</span><br><span class="line">        print_image <span class="string">&quot;<span class="variable">$2</span>&quot;</span> 1 <span class="string">&quot;<span class="variable">$encoded_image</span>&quot;</span> <span class="string">&quot;<span class="variable">$print_filename</span>&quot;</span></span><br><span class="line">        <span class="built_in">set</span> -- <span class="string">&quot;<span class="variable">$&#123;@:1:1&#125;</span>&quot;</span> <span class="string">&quot;-u&quot;</span> <span class="string">&quot;<span class="variable">$&#123;@:3&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$#</span>&quot;</span> -eq 2 ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">exit</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        ;;</span><br><span class="line">    -*)</span><br><span class="line">        error <span class="string">&quot;Unknown option flag: <span class="variable">$1</span>&quot;</span></span><br><span class="line">        show_help</span><br><span class="line">        <span class="built_in">exit</span> 1</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="keyword">if</span> [ -r <span class="string">&quot;<span class="variable">$1</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">            has_stdin=f</span><br><span class="line">            print_image <span class="string">&quot;<span class="variable">$1</span>&quot;</span> 1 <span class="string">&quot;<span class="subst">$(b64_encode &lt;<span class="string">&quot;<span class="variable">$1</span>&quot;</span>)</span>&quot;</span> <span class="string">&quot;<span class="variable">$print_filename</span>&quot;</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            error <span class="string">&quot;imgcat: <span class="variable">$1</span>: No such file or directory&quot;</span></span><br><span class="line">            <span class="built_in">exit</span> 2</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line">    <span class="built_in">shift</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Read and print stdin</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$has_stdin</span> = t ]; <span class="keyword">then</span></span><br><span class="line">    print_image <span class="string">&quot;&quot;</span> 1 <span class="string">&quot;<span class="subst">$(cat | b64_encode)</span>&quot;</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<p>把imgcat放到path中方便调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 设置可执行权限</span><br><span class="line">chmod +x imgcat</span><br><span class="line"># 复制到path之中</span><br><span class="line">cp imgcat &#x2F;usr&#x2F;local&#x2F;bin&#x2F;</span><br></pre></td></tr></table></figure>
+<p>现在你的ranger就可以预览图片咯<br><a target="_blank" rel="noopener" href="https://imgse.com/i/x2prcQ"><img src="https://s1.ax1x.com/2022/10/23/x2prcQ.md.png" alt="x2prcQ.md.png"></a></p>
+<h3 id="2-文件图标"><a href="#2-文件图标" class="headerlink" title="2.文件图标"></a>2.文件图标</h3><p><a target="_blank" rel="noopener" href="https://github.com/alexanderjeurissen/ranger_devicons">图标插件地址</a></p>
+<p>从github下载代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;alexanderjeurissen&#x2F;ranger_devicons ~&#x2F;.config&#x2F;ranger&#x2F;plugins&#x2F;ranger_devicons</span><br><span class="line">echo &quot;default_linemode devicons&quot; &gt;&gt; $HOME&#x2F;.config&#x2F;ranger&#x2F;rc.conf</span><br></pre></td></tr></table></figure>
+<p>重新进入ranger即可显示图标，当然你首先需要安装nerd font字体，我将另开篇文章讲解我的字体。</p>
+<h3 id="3-ranger调用fzf功能"><a href="#3-ranger调用fzf功能" class="headerlink" title="3.ranger调用fzf功能"></a>3.ranger调用fzf功能</h3><p>首先你需要在<code>commands.py</code>文件中，加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">class fzf_select(Command):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    :fzf_select</span><br><span class="line">    Find a file using fzf.</span><br><span class="line">    With a prefix argument to select only directories.</span><br><span class="line"></span><br><span class="line">    See: https:&#x2F;&#x2F;github.com&#x2F;junegunn&#x2F;fzf</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def execute(self):</span><br><span class="line">        import subprocess</span><br><span class="line">        import os</span><br><span class="line">        from ranger.ext.get_executables import get_executables</span><br><span class="line"></span><br><span class="line">        if &#39;fzf&#39; not in get_executables():</span><br><span class="line">            self.fm.notify(&#39;Could not find fzf in the PATH.&#39;, bad&#x3D;True)</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        fd &#x3D; None</span><br><span class="line">        if &#39;fdfind&#39; in get_executables():</span><br><span class="line">            fd &#x3D; &#39;fdfind&#39;</span><br><span class="line">        elif &#39;fd&#39; in get_executables():</span><br><span class="line">            fd &#x3D; &#39;fd&#39;</span><br><span class="line"></span><br><span class="line">        if fd is not None:</span><br><span class="line">            hidden &#x3D; (&#39;--hidden&#39; if self.fm.settings.show_hidden else &#39;&#39;)</span><br><span class="line">            exclude &#x3D; &quot;--no-ignore-vcs --exclude &#39;.git&#39; --exclude &#39;*.py[co]&#39; --exclude &#39;__pycache__&#39;&quot;</span><br><span class="line">            only_directories &#x3D; (&#39;--type directory&#39; if self.quantifier else &#39;&#39;)</span><br><span class="line">            fzf_default_command &#x3D; &#39;&#123;&#125; --follow &#123;&#125; &#123;&#125; &#123;&#125; --color&#x3D;always&#39;.format(</span><br><span class="line">                fd, hidden, exclude, only_directories</span><br><span class="line">            )</span><br><span class="line">        else:</span><br><span class="line">            hidden &#x3D; (&#39;-false&#39; if self.fm.settings.show_hidden else r&quot;-path &#39;*&#x2F;\.*&#39; -prune&quot;)</span><br><span class="line">            exclude &#x3D; r&quot;\( -name &#39;\.git&#39; -o -iname &#39;\.*py[co]&#39; -o -fstype &#39;dev&#39; -o -fstype &#39;proc&#39; \) -prune&quot;</span><br><span class="line">            only_directories &#x3D; (&#39;-type d&#39; if self.quantifier else &#39;&#39;)</span><br><span class="line">            fzf_default_command &#x3D; &#39;find -L . -mindepth 1 &#123;&#125; -o &#123;&#125; -o &#123;&#125; -print | cut -b3-&#39;.format(</span><br><span class="line">                hidden, exclude, only_directories</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">        env &#x3D; os.environ.copy()</span><br><span class="line">        env[&#39;FZF_DEFAULT_COMMAND&#39;] &#x3D; fzf_default_command</span><br><span class="line">        env[&#39;FZF_DEFAULT_OPTS&#39;] &#x3D; &#39;--height&#x3D;40% --layout&#x3D;reverse --ansi --preview&#x3D;&quot;&#123;&#125;&quot;&#39;.format(&#39;&#39;&#39;</span><br><span class="line">            (</span><br><span class="line">                batcat --color&#x3D;always &#123;&#125; ||</span><br><span class="line">                bat --color&#x3D;always &#123;&#125; ||</span><br><span class="line">                cat &#123;&#125; ||</span><br><span class="line">                tree -ahpCL 3 -I &#39;.git&#39; -I &#39;*.py[co]&#39; -I &#39;__pycache__&#39; &#123;&#125;</span><br><span class="line">            ) 2&gt;&#x2F;dev&#x2F;null | head -n 100</span><br><span class="line">        &#39;&#39;&#39;)</span><br><span class="line"></span><br><span class="line">        fzf &#x3D; self.fm.execute_command(&#39;fzf --no-multi&#39;, env&#x3D;env,</span><br><span class="line">                                      universal_newlines&#x3D;True, stdout&#x3D;subprocess.PIPE)</span><br><span class="line">        stdout, _ &#x3D; fzf.communicate()</span><br><span class="line">        if fzf.returncode &#x3D;&#x3D; 0:</span><br><span class="line">            selected &#x3D; os.path.abspath(stdout.strip())</span><br><span class="line">            if os.path.isdir(selected):</span><br><span class="line">                self.fm.cd(selected)</span><br><span class="line">            else:</span><br><span class="line">                self.fm.select_file(selected)</span><br></pre></td></tr></table></figure>
+<p>然后在<code>rc.conf</code>中配置以下快捷键即可，前提是你已经安装了fzf，我也将额外写一篇文章讲解。</p>
+<p><code>map &lt;C-f&gt; fzf_select #use fzf</code></p>
+<h3 id="4-创建并进入文件夹功能"><a href="#4-创建并进入文件夹功能" class="headerlink" title="4.创建并进入文件夹功能"></a>4.创建并进入文件夹功能</h3><p>首先你需要在<code>commands.py</code>文件中，加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class mkcd(Command):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    :mkcd &lt;dirname&gt;</span><br><span class="line"></span><br><span class="line">    Creates a directory with the name &lt;dirname&gt; and enters it.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def execute(self):</span><br><span class="line">        from os.path import join, expanduser, lexists</span><br><span class="line">        from os import makedirs</span><br><span class="line">        import re</span><br><span class="line"></span><br><span class="line">        dirname &#x3D; join(self.fm.thisdir.path, expanduser(self.rest(1)))</span><br><span class="line">        if not lexists(dirname):</span><br><span class="line">            makedirs(dirname)</span><br><span class="line"></span><br><span class="line">            match &#x3D; re.search(&#39;^&#x2F;|^~[^&#x2F;]*&#x2F;&#39;, dirname)</span><br><span class="line">            if match:</span><br><span class="line">                self.fm.cd(match.group(0))</span><br><span class="line">                dirname &#x3D; dirname[match.end(0):]</span><br><span class="line"></span><br><span class="line">            for m in re.finditer(&#39;[^&#x2F;]+&#39;, dirname):</span><br><span class="line">                s &#x3D; m.group(0)</span><br><span class="line">                if s &#x3D;&#x3D; &#39;..&#39; or (s.startswith(&#39;.&#39;) and not self.fm.settings[&#39;show_hidden&#39;]):</span><br><span class="line">                    self.fm.cd(s)</span><br><span class="line">                else:</span><br><span class="line">                    ## We force ranger to load content before calling &#96;scout&#96;.</span><br><span class="line">                    self.fm.thisdir.load_content(schedule&#x3D;False)</span><br><span class="line">                    self.fm.execute_console(&#39;scout -ae ^&#123;&#125;$&#39;.format(s))</span><br><span class="line">        else:</span><br><span class="line">            self.fm.notify(&quot;file&#x2F;directory exists!&quot;, bad&#x3D;True)</span><br></pre></td></tr></table></figure>
+<p>同样在<code>rc.conf</code>中配置快捷键：</p>
+<p><code>map K console mkcd%space</code></p>
+<h3 id="5-压缩与解压缩功能"><a href="#5-压缩与解压缩功能" class="headerlink" title="5.压缩与解压缩功能"></a>5.压缩与解压缩功能</h3><p>首先你需要在<code>commands.py</code>文件中，加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">class compress(Command):</span><br><span class="line">    def execute(self):</span><br><span class="line">        &quot;&quot;&quot; Compress marked files to current directory &quot;&quot;&quot;</span><br><span class="line">        cwd &#x3D; self.fm.thisdir</span><br><span class="line">        marked_files &#x3D; cwd.get_selection()</span><br><span class="line"></span><br><span class="line">        if not marked_files:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        def refresh(_):</span><br><span class="line">            cwd &#x3D; self.fm.get_directory(original_path)</span><br><span class="line">            cwd.load_content()</span><br><span class="line"></span><br><span class="line">        original_path &#x3D; cwd.path</span><br><span class="line">        parts &#x3D; self.line.split()</span><br><span class="line">        au_flags &#x3D; parts[1:]</span><br><span class="line"></span><br><span class="line">        descr &#x3D; &quot;compressing files in: &quot; + os.path.basename(parts[1])</span><br><span class="line">        obj &#x3D; CommandLoader(args&#x3D;[&#39;apack&#39;] + au_flags + \</span><br><span class="line">                [os.path.relpath(f.path, cwd.path) for f in marked_files], descr&#x3D;descr, read&#x3D;True)</span><br><span class="line"></span><br><span class="line">        obj.signal_bind(&#39;after&#39;, refresh)</span><br><span class="line">        self.fm.loader.add(obj)</span><br><span class="line"></span><br><span class="line">    def tab(self, tabnum):</span><br><span class="line">        &quot;&quot;&quot; Complete with current folder name &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        extension &#x3D; [&#39;.zip&#39;, &#39;.tar.gz&#39;, &#39;.rar&#39;, &#39;.7z&#39;]</span><br><span class="line">        return [</span><br><span class="line">            &#39;compress &#39; + os.path.basename(self.fm.thisdir.path) + ext</span><br><span class="line">            for ext in extension</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class extracthere(Command):</span><br><span class="line">    def execute(self):</span><br><span class="line">        &quot;&quot;&quot; Extract copied files to current directory &quot;&quot;&quot;</span><br><span class="line">        copied_files &#x3D; tuple(self.fm.copy_buffer)</span><br><span class="line"></span><br><span class="line">        if not copied_files:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        def refresh(_):</span><br><span class="line">            cwd &#x3D; self.fm.get_directory(original_path)</span><br><span class="line">            cwd.load_content()</span><br><span class="line"></span><br><span class="line">        one_file &#x3D; copied_files[0]</span><br><span class="line">        cwd &#x3D; self.fm.thisdir</span><br><span class="line">        original_path &#x3D; cwd.path</span><br><span class="line">        au_flags &#x3D; [&#39;-X&#39;, cwd.path]</span><br><span class="line">        au_flags +&#x3D; self.line.split()[1:]</span><br><span class="line">        au_flags +&#x3D; [&#39;-e&#39;]</span><br><span class="line"></span><br><span class="line">        self.fm.copy_buffer.clear()</span><br><span class="line">        self.fm.cut_buffer &#x3D; False</span><br><span class="line">        if len(copied_files) &#x3D;&#x3D; 1:</span><br><span class="line">            descr &#x3D; &quot;extracting: &quot; + os.path.basename(one_file.path)</span><br><span class="line">        else:</span><br><span class="line">            descr &#x3D; &quot;extracting files from: &quot; + os.path.basename(</span><br><span class="line">                one_file.dirname)</span><br><span class="line">        obj &#x3D; CommandLoader(args&#x3D;[&#39;aunpack&#39;] + au_flags \</span><br><span class="line">                + [f.path for f in copied_files], descr&#x3D;descr, read&#x3D;True)</span><br><span class="line"></span><br><span class="line">        obj.signal_bind(&#39;after&#39;, refresh)</span><br><span class="line">        self.fm.loader.add(obj)</span><br></pre></td></tr></table></figure>
+<p>同样在<code>rc.conf</code>中配置快捷键：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">map C console compress%space</span><br><span class="line">map X console extracthere%space</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-其他相关功能"><a href="#6-其他相关功能" class="headerlink" title="6.其他相关功能"></a>6.其他相关功能</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">map T console shell touch%space #创建文件</span><br><span class="line">map V console shell nvim%space  #nvim创建并编写文件</span><br><span class="line">map cp shell pandoc %f -o %f.pdf #将md转为pdf</span><br><span class="line">map cw eval fm.execute_console(&quot;bulkrename&quot;) if fm.thisdir.marked_items else fm.open_console(&quot;rename &quot;) #批量重命名</span><br><span class="line"></span><br><span class="line">set draw_borders true #显示边框线</span><br><span class="line">set preview_max_size 2048000 # 只预览2MB以内的文件降低卡住概率</span><br><span class="line">set colorscheme jungle #修改配色风格</span><br><span class="line">set line_numbers relative #显示相对行号</span><br><span class="line">set one_indexed true #行号默认是从0开始的，设置成从1开始</span><br><span class="line">set one_indexed true #没预览时不折叠预览区，更舒服</span><br></pre></td></tr></table></figure>
+
+
+<p>好了，到现在你的ranger已经配置好了，熟能生巧，只有不断的使用，ranger才能提高你的生产效率。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1up4y1b7iJ/?spm_id_from=333.337.search-card.all.click&vd_source=b492d58d3dc66c4244029109dc77c8bf">1.命令行文件管理神器ranger</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1b4411R7ck/?spm_id_from=333.337.search-card.all.click">2.把你的终端变成逆天高效神器：Ranger终极配置方案～</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/115671189">3.终端中的文件管理器ranger(csdn)</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">终端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/23/%E7%BB%88%E7%AB%AF%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7ranger/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数据结构算法刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1182,98 +1418,6 @@
 
 
   
-    <article id="post-服务器终端编程环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">服务器终端编程环境配置 --centOS版</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/08/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-	
-  	<time datetime="2022-08-17T02:43:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-17</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Basic-tool"><a href="#Basic-tool" class="headerlink" title="Basic tool"></a>Basic tool</h2><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><ul>
-<li>Alibaba Cloud Linux release 3 (Soaring Falcon) x86_64 </li>
-<li>aliyun server</li>
-</ul>
-<h3 id="shell-zsh"><a href="#shell-zsh" class="headerlink" title="shell zsh"></a>shell zsh</h3><p><code>yum install zsh</code></p>
-<h3 id="editor-nvim"><a href="#editor-nvim" class="headerlink" title="editor nvim"></a>editor nvim</h3><p><code>yum install neovim</code></p>
-<h3 id="terminal-reuse-tool"><a href="#terminal-reuse-tool" class="headerlink" title="terminal reuse tool"></a>terminal reuse tool</h3><p><code>yum install tmux</code></p>
-<h3 id="file-management"><a href="#file-management" class="headerlink" title="file management"></a>file management</h3><p><code>yum intall ranger</code></p>
-<p>some dependency install<br><code>yum install libcaca highlight atool lynx w3m elinks poppler transmission mediainfo</code></p>
-<h3 id="file-search"><a href="#file-search" class="headerlink" title="file search"></a>file search</h3><p><a target="_blank" rel="noopener" href="https://github.com/junegunn/fzf">fzf</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth 1 https:&#x2F;&#x2F;github.com&#x2F;junegunn&#x2F;fzf.git ~&#x2F;.fzf</span><br><span class="line">~&#x2F;.fzf&#x2F;install</span><br></pre></td></tr></table></figure>
-
-<h3 id="ls-tool"><a href="#ls-tool" class="headerlink" title="ls tool"></a>ls tool</h3><p><a target="_blank" rel="noopener" href="https://github.com/Peltoche/lsd">lsd</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install cargo</span><br><span class="line">cargo install lsd</span><br></pre></td></tr></table></figure>
-<p>or install release see this <a target="_blank" rel="noopener" href="https://blog.51cto.com/lee90/5277375">web</a></p>
-<h2 id="Basic-config"><a href="#Basic-config" class="headerlink" title="Basic config"></a>Basic config</h2><p>you can see my terminal <a target="_blank" rel="noopener" href="https://github.com/command-z-z/EugeneTerminal.git">config</a> </p>
-<h3 id="zsh-config"><a href="#zsh-config" class="headerlink" title="zsh config"></a>zsh config</h3><p><code>./install_zsh.sh</code></p>
-<h3 id="ranger-config"><a href="#ranger-config" class="headerlink" title="ranger config"></a>ranger config</h3><h3 id="nvim-config"><a href="#nvim-config" class="headerlink" title="nvim config"></a>nvim config</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/17/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%88%E7%AB%AF%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1489,6 +1633,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">终端</a>
               </li>
             
             <div class="clearfix"></div>

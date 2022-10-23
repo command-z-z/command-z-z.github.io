@@ -164,6 +164,189 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vim练级手册-一-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/">vim练级手册(一)  ---基本配置</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/" class="archive-article-date">
+	
+  	<time datetime="2022-03-21T07:45:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-21</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本节作为nvim练级的第一篇，主要讲vim的基本配置，按键映射，以及使用插件管理packer。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u</td>
+<td>撤销</td>
+</tr>
+<tr>
+<td>&lt;C-r&gt;</td>
+<td>重做</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>上下分屏</td>
+</tr>
+<tr>
+<td>sv</td>
+<td>左右分屏</td>
+</tr>
+<tr>
+<td>sh</td>
+<td>向左切屏</td>
+</tr>
+<tr>
+<td>sj</td>
+<td>向下切屏</td>
+</tr>
+<tr>
+<td>sk</td>
+<td>向上切屏</td>
+</tr>
+<tr>
+<td>sl</td>
+<td>向右切屏</td>
+</tr>
+<tr>
+<td>option+上下左右</td>
+<td>改变切屏之后的屏幕大小</td>
+</tr>
+<tr>
+<td>&lt;C-h&gt;</td>
+<td>插入模式下左移光标</td>
+</tr>
+<tr>
+<td>&lt;C-j&gt;</td>
+<td>插入模式下下移光标</td>
+</tr>
+<tr>
+<td>&lt;C-k&gt;</td>
+<td>插入模式下上移光标</td>
+</tr>
+<tr>
+<td>&lt;C-l&gt;</td>
+<td>插入模式下左移光标</td>
+</tr>
+<tr>
+<td>jk</td>
+<td><Esc>从插入模式退出到普通模式</td>
+</tr>
+<tr>
+<td>&lt;C-j&gt;</td>
+<td><code>5j</code>向下5行</td>
+</tr>
+<tr>
+<td>&lt;C-k&gt;</td>
+<td><code>5k</code>向上5行</td>
+</tr>
+<tr>
+<td>L</td>
+<td>行尾</td>
+</tr>
+<tr>
+<td>H</td>
+<td>行首</td>
+</tr>
+<tr>
+<td>S</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>&lt;C-a&gt;</td>
+<td>全选</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;文件tree</span><br><span class="line">--.config</span><br><span class="line">----nivm</span><br><span class="line">------init.vim</span><br><span class="line">------vimrc.vim</span><br><span class="line">------maps.vim</span><br><span class="line">------lua</span><br><span class="line">--------plugins.lua</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="1-配置init-vim"><a href="#1-配置init-vim" class="headerlink" title="1.配置init.vim"></a>1.配置init.vim</h2><p>inti.vim文件vim配置文件的一个初始化文件，里面加载了其他配置的文件，便于管理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.config/nvim</span><br><span class="line">nvim ~/.config/nvim/init.vim</span><br></pre></td></tr></table></figure>
+<p>在init.vim中输入以下配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot; 配置文件导入 &quot;&#123;&#123;&#123;</span><br><span class="line">&quot; ---------------------------------------------------------------------</span><br><span class="line">&quot; 基础使用习惯配置</span><br><span class="line">runtime .&#x2F;vimrc.vim</span><br><span class="line">&quot; 插件管理</span><br><span class="line">&quot;.&#x2F;lua&#x2F;plugins.lua</span><br><span class="line">lua require(&#39;plugins&#39;)</span><br><span class="line">&quot; 按键映射</span><br><span class="line">runtime .&#x2F;maps.vim</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-配置vimrc-vim"><a href="#2-配置vimrc-vim" class="headerlink" title="2.配置vimrc.vim"></a>2.配置vimrc.vim</h2><p>这里是一些vim的基础配置，便于更加方便的使用vim</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&quot;----vim 个人使用习惯配置start------</span><br><span class="line">set encoding&#x3D;UTF-8</span><br><span class="line">&quot; leader设置成空格</span><br><span class="line">let mapleader&#x3D;&quot; &quot;</span><br><span class="line">&quot; 使用鼠标</span><br><span class="line">set mouse&#x3D;c</span><br><span class="line">&quot; 显示行号</span><br><span class="line">set nu</span><br><span class="line">&quot; 相对行号</span><br><span class="line">set relativenumber</span><br><span class="line">&quot; tab&#x3D;4个空格</span><br><span class="line">set tabstop&#x3D;4</span><br><span class="line">set shiftwidth&#x3D;4</span><br><span class="line">&quot; 改变 vim中光标的形状</span><br><span class="line">let g:db_ui_use_nerd_fonts&#x3D;1</span><br><span class="line">let &amp;t_SI.&#x3D;&quot;\e[5 q&quot; &quot;SI &#x3D; INSERT mode</span><br><span class="line">let &amp;t_SR.&#x3D;&quot;\e[4 q&quot; &quot;SR &#x3D; REPLACE mode</span><br><span class="line">let &amp;t_EI.&#x3D;&quot;\e[1 q&quot; &quot;EI &#x3D; NORMAL mode (ELSE)</span><br><span class="line">&quot; 高度光标所在行</span><br><span class="line">&quot;set cursorline</span><br><span class="line">&quot; 设置不换行</span><br><span class="line">&quot;set nowrap</span><br><span class="line">set wrap</span><br><span class="line">&quot; 显示按下的按键</span><br><span class="line">set showcmd</span><br><span class="line">&quot; 按tab显示菜单</span><br><span class="line">set wildmenu</span><br><span class="line">&quot; 不需要备份文件</span><br><span class="line">set nobackup</span><br><span class="line">&quot;----vim 个人使用习惯配置end------</span><br><span class="line">&quot;ssh 远程粘贴板</span><br><span class="line">if executable(&#39;clipboard-provider&#39;)</span><br><span class="line">    let g:clipboard &#x3D; &#123;</span><br><span class="line">          \ &#39;name&#39;: &#39;myClipboard&#39;,</span><br><span class="line">          \     &#39;copy&#39;: &#123;</span><br><span class="line">          \         &#39;+&#39;: &#39;clipboard-provider copy&#39;,</span><br><span class="line">          \         &#39;*&#39;: &#39;env COPY_PROVIDERS&#x3D;tmux clipboard-provider copy&#39;,</span><br><span class="line">          \     &#125;,</span><br><span class="line">          \     &#39;paste&#39;: &#123;</span><br><span class="line">          \         &#39;+&#39;: &#39;clipboard-provider paste&#39;,</span><br><span class="line">          \         &#39;*&#39;: &#39;env COPY_PROVIDERS&#x3D;tmux clipboard-provider paste&#39;,</span><br><span class="line">          \     &#125;,</span><br><span class="line">          \ &#125;</span><br><span class="line">endif</span><br><span class="line">&quot;随机选一个颜色风格</span><br><span class="line">function RandomColorScheme()</span><br><span class="line">  let mycolors &#x3D; split(globpath(&amp;rtp,&quot;**&#x2F;colors&#x2F;*.vim&quot;),&quot;\n&quot;) </span><br><span class="line">  exe &#39;so &#39; . mycolors[localtime() % len(mycolors)]</span><br><span class="line">  unlet mycolors</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">&quot;call RandomColorScheme()</span><br><span class="line"></span><br><span class="line">:command NewColor call RandomColorScheme()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 文件类型设置 &quot;&#123;&#123;&#123;</span><br><span class="line">&quot; ---------------------------------------------------------------------</span><br><span class="line">&quot; JSX 语法高亮</span><br><span class="line">&quot; set filetypes as typescriptreact</span><br><span class="line">autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype&#x3D;typescriptreact</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-配置maps-vim"><a href="#3-配置maps-vim" class="headerlink" title="3.配置maps.vim"></a>3.配置maps.vim</h2><p>这里是一些按键的映射，一些快捷键的操作，其余可以自己添加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; window</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Split window</span><br><span class="line">nmap ss :split&lt;Return&gt;&lt;C-w&gt;w</span><br><span class="line">nmap sv :vsplit&lt;Return&gt;&lt;C-w&gt;w</span><br><span class="line">&quot; Move window</span><br><span class="line">&quot;nmap &lt;Space&gt; &lt;C-w&gt;w</span><br><span class="line">&quot;map s&lt;left&gt; &lt;C-w&gt;h</span><br><span class="line">&quot;map s&lt;up&gt; &lt;C-w&gt;k</span><br><span class="line">&quot;map s&lt;down&gt; &lt;C-w&gt;j</span><br><span class="line">&quot;map s&lt;right&gt; &lt;C-w&gt;l</span><br><span class="line">map sh &lt;C-w&gt;h</span><br><span class="line">map sk &lt;C-w&gt;k</span><br><span class="line">map sj &lt;C-w&gt;j</span><br><span class="line">map sl &lt;C-w&gt;l</span><br><span class="line"></span><br><span class="line">&quot; Resize window</span><br><span class="line">&quot; 在mac&#x2F;linux中使用Alt键，在webssh</span><br><span class="line">&quot; 中alt没用，就使用Ctrl,WEBSSH主要的WINDOWS中使用</span><br><span class="line">nmap &lt;M-left&gt; &lt;C-w&gt;&lt;</span><br><span class="line">nmap &lt;C-left&gt; &lt;C-w&gt;&lt;</span><br><span class="line">nmap s&lt;left&gt; &lt;C-w&gt;&lt;</span><br><span class="line"></span><br><span class="line">nmap &lt;M-right&gt; &lt;C-w&gt;&gt;</span><br><span class="line">nmap &lt;C-right&gt; &lt;C-w&gt;&gt;</span><br><span class="line">nmap s&lt;right&gt; &lt;C-w&gt;&gt;</span><br><span class="line"></span><br><span class="line">nmap &lt;M-up&gt; &lt;C-w&gt;+</span><br><span class="line">nmap &lt;C-up&gt; &lt;C-w&gt;+</span><br><span class="line">nmap s&lt;up&gt; &lt;C-w&gt;+</span><br><span class="line"></span><br><span class="line">nmap &lt;M-down&gt; &lt;C-w&gt;-</span><br><span class="line">nmap &lt;C-down&gt; &lt;C-w&gt;-</span><br><span class="line">nmap s&lt;down&gt; &lt;C-w&gt;-</span><br><span class="line"></span><br><span class="line">&quot; 插入模式移动光标</span><br><span class="line">inoremap &lt;C-h&gt; &lt;Left&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-l&gt; &lt;Right&gt;</span><br><span class="line">inoremap &lt;C-d&gt; &lt;Delete&gt;</span><br><span class="line">&quot; hh在我用的单词里出现的频率极低，其实感觉home用的没有end多，统一风格都用大写的吧</span><br><span class="line">&quot;inoremap HH &lt;Home&gt;</span><br><span class="line">&quot; 单词中包含ll的太多了，所以用大写LL</span><br><span class="line">&quot;inoremap LL &lt;End&gt;</span><br><span class="line">&quot; jk &lt;Esc&gt;</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br><span class="line">&quot; 插入模式鼠标滚轮抵消,不然会出现滚动鼠标录入了一堆5j5k</span><br><span class="line">inoremap 5k &lt;Esc&gt;</span><br><span class="line">inoremap 5j &lt;Esc&gt;</span><br><span class="line">inoremap 9&lt;CR&gt; &lt;Esc&gt;a</span><br><span class="line">&quot; 快速跳转行首与行尾  </span><br><span class="line">nnoremap L $</span><br><span class="line">nnoremap H ^</span><br><span class="line">&quot; 向下5行</span><br><span class="line">noremap &lt;C-j&gt; 5j</span><br><span class="line">&quot; 向上5行</span><br><span class="line">noremap &lt;C-k&gt; 5k</span><br><span class="line">&quot; 保 存</span><br><span class="line">noremap &lt;C-s&gt; :w&lt;CR&gt;</span><br><span class="line">noremap s :w&lt;CR&gt;</span><br><span class="line">&quot; Coc智能处理，使用IDEA Alt+Enter 同样按键</span><br><span class="line">&quot;noremap &lt;M-Enter&gt; :CocAction&lt;CR&gt;</span><br><span class="line">inoremap &lt;C-s&gt; &lt;ESC&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; 代码格式化</span><br><span class="line">noremap &lt;leader&gt;f :Format&lt;CR&gt; </span><br><span class="line">noremap &lt;leader&gt;r :luafile ~&#x2F;.wp&#x2F;lua&#x2F;run.lua&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; 强制退出</span><br><span class="line">map Q :q&lt;CR&gt;</span><br><span class="line">&quot;map qq :q&lt;CR&gt;</span><br><span class="line">&quot; 重新加载设置</span><br><span class="line">map R :source $MYVIMRC&lt;CR&gt;</span><br><span class="line">&quot;自动关闭标签</span><br><span class="line">inoremap &lt;buffer&gt; &lt;C-v&gt; &lt;esc&gt;yiwi&lt;lt&gt;&lt;esc&gt;ea&gt;&lt;&#x2F;&gt;&lt;esc&gt;hpF&gt;i</span><br><span class="line">set iskeyword+&#x3D;&lt;,&gt;</span><br><span class="line">iab &lt;h1&gt; &lt;lt&gt;&#x2F;h1&gt; &lt;lt&gt;&#x2F;h1&gt;&lt;esc&gt;5ha</span><br><span class="line"></span><br><span class="line">&quot; 全选</span><br><span class="line">nmap &lt;C-a&gt; gg&lt;S-v&gt;G</span><br><span class="line">&quot; 加&#x2F;减数字1</span><br><span class="line">nnoremap + &lt;C-a&gt;</span><br><span class="line">nnoremap - &lt;C-x&gt;</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Buffers</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Open current directory</span><br><span class="line">&quot; 插入模式移动光标</span><br><span class="line">inoremap &lt;C-h&gt; &lt;Left&gt;</span><br><span class="line">inoremap &lt;C-j&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-k&gt; &lt;Up&gt;</span><br><span class="line">inoremap &lt;C-l&gt; &lt;Right&gt;</span><br><span class="line">inoremap &lt;C-d&gt; &lt;Delete&gt;</span><br><span class="line">&quot; hh在我用的单词里出现的频率极低，其实感觉home用的没有end多，统一风格都用大写的吧</span><br><span class="line">&quot;inoremap HH &lt;Home&gt;</span><br><span class="line">&quot; 单词中包含ll的太多了，所以用大写LL</span><br><span class="line">&quot;inoremap LL &lt;End&gt;</span><br><span class="line">&quot; jk &lt;Esc&gt;</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br><span class="line">&quot; 插入模式鼠标滚轮抵消,不然会出现滚动鼠标录入了一堆5j5k</span><br><span class="line">inoremap 5k &lt;Esc&gt;</span><br><span class="line">inoremap 5j &lt;Esc&gt;</span><br><span class="line">inoremap 9&lt;CR&gt; &lt;Esc&gt;a</span><br><span class="line">&quot; 快速跳转行首与行尾  </span><br><span class="line">nnoremap L $</span><br><span class="line">nnoremap H ^</span><br><span class="line">&quot; 向下5行</span><br><span class="line">noremap &lt;C-j&gt; 5j</span><br><span class="line">&quot; 向上5行</span><br><span class="line">noremap &lt;C-k&gt; 5k</span><br><span class="line">&quot; 保存</span><br><span class="line">noremap &lt;C-s&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; Coc智能处理，使用IDEA Alt+Enter 同样按键</span><br><span class="line">noremap &lt;M-Enter&gt; :CocAction&lt;CR&gt;</span><br><span class="line">inoremap &lt;C-s&gt; &lt;ESC&gt; :w&lt;CR&gt;</span><br><span class="line">&quot; 代码格式化</span><br><span class="line">&quot;noremap &lt;leader&gt;f :Format&lt;CR&gt; </span><br><span class="line"></span><br><span class="line">&quot; 强制退出</span><br><span class="line">map Q :q&lt;CR&gt;</span><br><span class="line">&quot; 重新加载设置</span><br><span class="line">map R :source $MYVIMRC&lt;CR&gt;</span><br><span class="line">&quot;自动关闭标签</span><br><span class="line">inoremap &lt;buffer&gt; &lt;C-v&gt; &lt;esc&gt;yiwi&lt;lt&gt;&lt;esc&gt;ea&gt;&lt;&#x2F;&gt;&lt;esc&gt;hpF&gt;i</span><br><span class="line">set iskeyword+&#x3D;&lt;,&gt;</span><br><span class="line">iab &lt;h1&gt; &lt;lt&gt;h1&gt; &lt;lt&gt;&#x2F;h1&gt;&lt;esc&gt;5ha</span><br><span class="line"></span><br><span class="line">&quot; 全选</span><br><span class="line">nmap &lt;C-a&gt; gg&lt;S-v&gt;G</span><br><span class="line">&quot; 加&#x2F;减数字1</span><br><span class="line">nnoremap + &lt;C-a&gt;</span><br><span class="line">nnoremap - &lt;C-x&gt;</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Buffers</span><br><span class="line">&quot;-------------------------------------------------------------------------------</span><br><span class="line">&quot; Open current directory</span><br><span class="line">&quot;nmap te :tabedit</span><br><span class="line">&quot;nmap &lt;S-Tab&gt; :tabprev&lt;Return&gt;</span><br><span class="line">nmap &lt;S-Tab&gt; :bprev&lt;Return&gt;</span><br><span class="line">&quot;nmap &lt;Tab&gt; :tabnext&lt;Return&gt;</span><br><span class="line">nmap &lt;Tab&gt; :bnext&lt;Return&gt;</span><br><span class="line">&quot; 窗口管理器</span><br><span class="line">&quot; invoke with &#39;-&#39;</span><br><span class="line">nmap  -  &lt;Plug&gt;(choosewin)</span><br><span class="line">&quot;nmap  sw  &lt;Plug&gt;(choosewin)</span><br><span class="line">&quot;nmap  &lt;leader&gt;w  &lt;Plug&gt;(choosewin)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-配置lua-pugins-lua"><a href="#4-配置lua-pugins-lua" class="headerlink" title="4.配置lua/pugins.lua"></a>4.配置lua/pugins.lua</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">---@diagnostic disable: undefined-global</span><br><span class="line">--在没有安装packer的电脑上，自动安装packer插件</span><br><span class="line">local fn &#x3D; vim.fn</span><br><span class="line">local install_path &#x3D; fn.stdpath(&#39;data&#39;)..&#39;&#x2F;site&#x2F;pack&#x2F;packer&#x2F;start&#x2F;packer.nvim&#39;</span><br><span class="line">if fn.empty(fn.glob(install_path)) &gt; 0 then</span><br><span class="line">	 --fn.system(&#123;&#39;git&#39;, &#39;clone&#39;, &#39;--depth&#39;, &#39;1&#39;, &#39;https:&#x2F;&#x2F;github.com&#x2F;wbthomason&#x2F;packer.nvim&#39;, install_path&#125;)	--默认地址</span><br><span class="line">	fn.system(&#123;&#39;git&#39;, &#39;clone&#39;, &#39;--depth&#39;, &#39;1&#39;, &#39;https:&#x2F;&#x2F;codechina.csdn.net&#x2F;mirrors&#x2F;wbthomason&#x2F;packer.nvim.git&#39;, install_path&#125;)	--csdn加速镜像</span><br><span class="line">	vim.cmd &#39;packadd packer.nvim&#39;</span><br><span class="line">end</span><br><span class="line">-- Only required if you have packer configured as &#96;opt&#96;</span><br><span class="line">vim.cmd [[packadd packer.nvim]]</span><br><span class="line">return require(&#39;packer&#39;).startup(&#123;</span><br><span class="line">	function()</span><br><span class="line">		use &#39;wbthomason&#x2F;packer.nvim&#39;-- Packer can manage itself</span><br><span class="line">	end,</span><br><span class="line">	config &#x3D; &#123;</span><br><span class="line">		max_jobs &#x3D; 16,</span><br><span class="line">		git &#x3D; &#123;</span><br><span class="line">			default_url_format &#x3D; &#39;https:&#x2F;&#x2F;github.91chi.fun&#x2F;https:&#x2F;&#x2F;github.com&#x2F;%s&#39;</span><br><span class="line">		&#125;,</span><br><span class="line">		display &#x3D; &#123;</span><br><span class="line">			open_fn &#x3D; function()</span><br><span class="line">				return require(&#39;packer.util&#39;).float(&#123; border &#x3D; &#39;single&#39; &#125;)</span><br><span class="line">			end</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/21/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C-%E4%B8%80-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Yolov1-详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1118,118 +1301,6 @@
 
 
   
-    <article id="post-item2-oh-my-zsh最全配置教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">item2 + oh my zsh最全配置教程</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" class="archive-article-date">
-	
-  	<time datetime="2021-07-16T07:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-16</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作为一名计算机专业的学生，学会使用Terminal是一件必备技能，而一款好看的终端界面，将大大提高生产效率。网上的配置资料零碎，基于自己的配置经验，决定写一份教程，以供参考，因为笔者已经装好环境，为了更好的安装体验，文中一些图片参考网上，将在文末注明出处。由于笔者使用的是Mac，因此介绍的是Mac上的一款终端替代软件<a target="_blank" rel="noopener" href="https://iterm2.com/"><code>item2</code></a>,并将使用<code>oh my zsh</code>对其进行配置，也将会介绍一些插件的使用，话不多说，先看效果图。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMkHyD"><img src="https://z3.ax1x.com/2021/07/16/WMkHyD.md.png" alt="WMkHyD.md.png"></a></p>
-<p>这里放上我的<a target="_blank" rel="noopener" href="https://github.com/command-z-z/oh-my-zsh-item2">GitHub仓库</a>，文件自取，欢迎<code>star🌟</code>。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="1-安装item2"><a href="#1-安装item2" class="headerlink" title="1. 安装item2"></a>1. 安装item2</h3><p>直接进入<a target="_blank" rel="noopener" href="https://iterm2.com/">item2官网</a>,点击download，根据提示一步步下载即可。</p>
-<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><p><a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a>是Mac上的包管理工具，功能强大具体以后专门写篇博客讲解。<br>如果你没有安装Homebrew，可以复制以下代码，在终端中执行安装。<br><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot; </code></p>
-<h3 id="3-git的安装"><a href="#3-git的安装" class="headerlink" title="3.git的安装"></a>3.git的安装</h3><p>我们已经安装了homebrew，因此可以使用brew来快速安装git，复制一下代码:<br><code>brew install git</code></p>
-<h3 id="4-oh-my-zsh安装"><a href="#4-oh-my-zsh安装" class="headerlink" title="4.oh my zsh安装"></a>4.oh my zsh安装</h3><p>由于Mac默认使用的是Bash，相比于默认的Bash，Zsh有更多的自定义选项，并支持扩展。因此 Zsh可以实现更强大的命令补全，命令高亮等一系列酷炫功能,可以使用以下代码进行切换;<br><code>chsh -s /bin/zsh</code><br>如果想要切换回可以使用以下代码:<br><code>chsh -s /bin/bash</code><br>换到<code>zsh</code>之后就可以使用以下代码进行安装:<br><code>sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</code><br>这里放下<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">oh my zsh</a>的github仓库<br>到此zsh的安装基本结束了，效果如下，为了达到更酷炫的效果，我们还需要一些插件进行配置。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMuZb8"><img src="https://z3.ax1x.com/2021/07/16/WMuZb8.md.png" alt="WMuZb8.md.png"></a></p>
-<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><h3 id="5-安装字体"><a href="#5-安装字体" class="headerlink" title="5.安装字体"></a>5.安装字体</h3><ol>
-<li>使用以下代码安装PowerLine<br><code>pip3 install powerline-status --user</code></li>
-<li>安装PowerFonts，将以下代码一条条放入终端，<code>//</code>后为注释不用复制。<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/Desktop/OpenSource  //首先在桌面上创建一个文件夹</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/Desktop/OpenSource  //进入此文件夹</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/powerline/fonts.git --depth=1  //克隆源码</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> fonts  //进入fonts文件夹</span><br><span class="line"></span><br><span class="line">./install.sh //安装</span><br></pre></td></tr></table></figure>
-安装好字体库之后，我们来设置iTerm2的字体，具体的操作是iTerm2 -&gt; Preferences（可以使用快捷键<code>command</code>+<code>,</code>） -&gt; Profiles -&gt; Text，在Font区域选中Change Font，然后找到Meslo LG字体。有L、M、S可选，看个人喜好：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMlSsI"><img src="https://z3.ax1x.com/2021/07/16/WMlSsI.md.png" alt="WMlSsI.md.png"></a><h3 id="6-安装背景配色"><a href="#6-安装背景配色" class="headerlink" title="6.安装背景配色"></a>6.安装背景配色</h3></li>
-<li>安装Solarized，代码如下：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Desktop/OpenSource</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/altercation/solarized</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> solarized/iterm2-colors-solarized/</span><br><span class="line"></span><br><span class="line">open .</span><br></pre></td></tr></table></figure>
-在打开的finder窗口中，双击Solarized Dark.itermcolors和Solarized Light.itermcolors即可安装明暗两种配色：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMlIfg"><img src="https://z3.ax1x.com/2021/07/16/WMlIfg.md.png" alt="WMlIfg.md.png"></a><br>再次进入iTerm2 -&gt; Preferences -&gt; Profiles -&gt; Colors -&gt; Color Presets中根据个人喜好选择这两种配色中的一种即可：<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WM1djs"><img src="https://z3.ax1x.com/2021/07/16/WM1djs.md.png" alt="WM1djs.md.png"></a><h3 id="7-安装主题"><a href="#7-安装主题" class="headerlink" title="7.安装主题"></a>7.安装主题</h3>主题的安装网上有很多教程，也有很多主题选择，可以查看github上的<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">各种主题</a>，如果你和笔者一样不知道选择哪一个主题,可以选择<code>random</code>主题，它会在每次打开<code>item2</code>时切换一个主题，具体操作如下，输入以下代码:<br><code>vi ~/.zshrc</code><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WM4dBj"><img src="https://z3.ax1x.com/2021/07/16/WM4dBj.md.png" alt="WM4dBj.md.png"></a><br>在红线中修改主题为<code>random</code>，vim的使用简要说明，用上下左右键移动光标到要修改处，按键盘<code>a</code>进入insert模式，即可修改，修改完成按<code>esc</code>键退出，然后用键盘输入<code>:wq</code>即保存文件，其他操作可参考<a target="_blank" rel="noopener" href="https://command-z-z.github.io/2020/10/08/Terminal-%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4%E9%9B%86%E5%90%88/">vim资料</a>。</li>
-</ol>
-<p>输入以下代码，让文件生效：<br><code>source ~/.zshrc</code></p>
-<h3 id="8-背景修改"><a href="#8-背景修改" class="headerlink" title="8. 背景修改"></a>8. 背景修改</h3><p>具体操作iTerm2 -&gt; Preferences（可以使用快捷键<code>command</code>+<code>,</code>） -&gt; Profiles -&gt; Window，在红线处点击选择本地的一张图片作为背景。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMThQK"><img src="https://z3.ax1x.com/2021/07/16/WMThQK.md.png" alt="WMThQK.md.png"></a><br>在此页面你也可以修改上图中的Transparency和Blur修改背景的透明度以及模糊度，还可以修改其他参数，定制出属于你的美化终端。</p>
-<h2 id="快捷操作"><a href="#快捷操作" class="headerlink" title="快捷操作"></a>快捷操作</h2><p>为了方便大家提取，我已将我的4个文件背景配置输出为json文件，放在我的<a target="_blank" rel="noopener" href="https://github.com/command-z-z/oh-my-zsh-item2">github仓库</a>中,4张背景图也放置在仓库中有需要自取，具体操作为克隆仓库，然后按下图指示导入json文件即可，记得下载相应背景图。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMHJCn"><img src="https://z3.ax1x.com/2021/07/16/WMHJCn.md.png" alt="WMHJCn.md.png"></a></p>
-<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>zsh中内置了丰富的插件，可在官网上查看<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins">Wiki</a>，选择合适的插件，这里讲解几种我自己常用的插件，有待挖掘：</p>
-<p>首先输入：<code>vi ~/.zshrc</code>，可以查看插件安装，在此输入插件名即可,有些上面已经装了就不再叙述。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/WMOTw8"><img src="https://z3.ax1x.com/2021/07/16/WMOTw8.md.png" alt="WMOTw8.md.png"></a></p>
-<h4 id="1-git（内置）"><a href="#1-git（内置）" class="headerlink" title="1. git（内置）"></a>1. git（内置）</h4><p>作用：可以使用各种<code>git</code>命令缩写。<br>比如:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add --all ===&gt; gaa</span><br><span class="line"></span><br><span class="line">git commit -m ===&gt; gcmsg</span><br></pre></td></tr></table></figure>
-<p>查看所有 git 命令缩写<br><code>cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh</code></p>
-<h4 id="2-z（内置）"><a href="#2-z（内置）" class="headerlink" title="2. z（内置）"></a>2. z（内置）</h4><p>作用：目录间快速跳转,不用再一直<code>cd</code>了<br>输入<code>z</code>查看可以跳转路径。<br><code>z -x 无效路径</code>可以删除路径。</p>
-<h4 id="3-git-open"><a href="#3-git-open" class="headerlink" title="3.git-open"></a>3.git-open</h4><p>作用：在终端里打开当前项目的远程仓库地址</p>
-<p>不要小看这个插件欧，每次改完本地代码，当你想用浏览器访问远程仓库的时候，就知道这个插件多方便了</p>
-<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open</code></p>
-<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 git-open)</code></p>
-<p>使配置生效:<br><code>source ~/.zshrc</code></p>
-<h4 id="4-sudo-内置"><a href="#4-sudo-内置" class="headerlink" title="4. sudo(内置)"></a>4. sudo(内置)</h4><p>作用:当有时输入语句权限不够时，可按两下<code>esc</code>自动补全sudo。</p>
-<h4 id="5-zsh-syntax-highlighting"><a href="#5-zsh-syntax-highlighting" class="headerlink" title="5. zsh-syntax-highlighting"></a>5. zsh-syntax-highlighting</h4><p>作用：平常用的ls、cd 等命令输入正确会绿色高亮显示，输入错误会显示其他的颜色。</p>
-<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</code></p>
-<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-syntax-highlighting)</code></p>
-<p>使配置生效:<br><code>source ~/.zshrc</code></p>
-<h4 id="6-zsh-autosuggestions"><a href="#6-zsh-autosuggestions" class="headerlink" title="6.zsh-autosuggestions"></a>6.zsh-autosuggestions</h4><p>作用：会给出建议的命令（灰色部分）按键盘 → 补全</p>
-<p><strong>安装</strong><br>先进插件目录<br><code>cd ~/.oh-my-zsh/custom/plugins/</code><br>克隆项目<br><code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code></p>
-<p>在 ~/.zshrc 中配置<br><code>plugins=(其他的插件 zsh-autosuggestions)</code></p>
-<p>使配置生效:<br><code>source ~/.zshrc</code></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9c3439cc3bdb">1.iTerm2 + Oh My Zsh 打造舒适终端体验</a><br><a target="_blank" rel="noopener" href="https://hufangyun.com/2017/zsh-plugin/">2.zsh oh-my-zsh 插件推荐</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">环境配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1445,6 +1516,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">终端</a>
               </li>
             
             <div class="clearfix"></div>
