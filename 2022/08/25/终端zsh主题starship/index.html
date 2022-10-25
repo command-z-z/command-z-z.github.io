@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>vim练级手册（四） ---ranger文件管理插件 | 🌟Eugene的个人博客主页</title>
+  <title>终端zsh与主题starship | 🌟Eugene的个人博客主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="快捷键简记表   快捷键 作用    sr 在nvim中打开悬浮ranger    以下为悬浮ranger中的快捷键   Enter 悬浮ranger中打开文件   ctrl-t 将文件以新的Tab页打开   ctrl-x 上下分屏打开   ctrl-v 左右分屏打开   1.先导安装在macOS中使用brew install ranger安装的Ranger默认使用python2运行的，不符合rn">
+  <meta name="description" content="这是我终端配置文件教程的第二章，我将详细的讲解zsh和主题安装，以及我的个人配置,快捷键等信息。 我的个人配置地址,可以去我的仓库抄我的配置,本文配置在zsh文件夹中, welcome to star🌟。 快捷键简记表   快捷键 作用    , 历史记录补全快捷键   &lt;C-h&gt; 相当于left键   &lt;C-j&gt; 相当于down键   &lt;C-k&gt; 相当于up">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim练级手册（四） ---ranger文件管理插件">
-<meta property="og:url" content="http://example.com/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:title" content="终端zsh与主题starship">
+<meta property="og:url" content="http://example.com/2022/08/25/%E7%BB%88%E7%AB%AFzsh%E4%B8%BB%E9%A2%98starship/index.html">
 <meta property="og:site_name" content="🌟Eugene的个人博客主页">
-<meta property="og:description" content="快捷键简记表   快捷键 作用    sr 在nvim中打开悬浮ranger    以下为悬浮ranger中的快捷键   Enter 悬浮ranger中打开文件   ctrl-t 将文件以新的Tab页打开   ctrl-x 上下分屏打开   ctrl-v 左右分屏打开   1.先导安装在macOS中使用brew install ranger安装的Ranger默认使用python2运行的，不符合rn">
+<meta property="og:description" content="这是我终端配置文件教程的第二章，我将详细的讲解zsh和主题安装，以及我的个人配置,快捷键等信息。 我的个人配置地址,可以去我的仓库抄我的配置,本文配置在zsh文件夹中, welcome to star🌟。 快捷键简记表   快捷键 作用    , 历史记录补全快捷键   &lt;C-h&gt; 相当于left键   &lt;C-j&gt; 相当于down键   &lt;C-k&gt; 相当于up">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-04-04T02:57:31.000Z">
-<meta property="article:modified_time" content="2022-04-23T02:09:14.232Z">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/25/xRzubn.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/25/xWSIT1.md.png">
+<meta property="article:published_time" content="2022-08-25T12:55:38.000Z">
+<meta property="article:modified_time" content="2022-10-25T13:50:27.026Z">
 <meta property="article:author" content="command_zz">
-<meta property="article:tag" content="vim">
+<meta property="article:tag" content="终端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/25/xRzubn.md.png">
   
     <link rel="alternative" href="/atom.xml" title="🌟Eugene的个人博客主页" type="application/atom+xml">
   
@@ -167,14 +170,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vim练级手册（四）-ranger文件管理插件" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-终端zsh主题starship" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      vim练级手册（四） ---ranger文件管理插件
+      终端zsh与主题starship
     </h1>
   
 
@@ -185,16 +188,18 @@
 		  <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
 	</span>
 
-<a href="/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/" class="archive-article-date">
+<a href="/2022/08/25/%E7%BB%88%E7%AB%AFzsh%E4%B8%BB%E9%A2%98starship/" class="archive-article-date">
 	
-  	<time datetime="2022-04-04T02:57:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-04</time>
+  	<time datetime="2022-08-25T12:55:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-25</time>
 </a>
         
             </header>      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+        <p>这是我终端配置文件教程的第二章，我将详细的讲解zsh和主题安装，以及我的个人配置,快捷键等信息。</p>
+<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置,本文配置在<code>zsh</code>文件夹中, welcome to star🌟。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
 <thead>
 <tr>
 <th>快捷键</th>
@@ -202,46 +207,57 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>sr</td>
-<td>在nvim中打开悬浮ranger</td>
+<td>,</td>
+<td>历史记录补全快捷键</td>
 </tr>
 <tr>
-<td></td>
-<td>以下为悬浮ranger中的快捷键</td>
+<td>&lt;C-h&gt;</td>
+<td>相当于left键</td>
 </tr>
 <tr>
-<td>Enter</td>
-<td>悬浮ranger中打开文件</td>
+<td>&lt;C-j&gt;</td>
+<td>相当于down键</td>
 </tr>
 <tr>
-<td>ctrl-t</td>
-<td>将文件以新的Tab页打开</td>
+<td>&lt;C-k&gt;</td>
+<td>相当于up键</td>
 </tr>
 <tr>
-<td>ctrl-x</td>
-<td>上下分屏打开</td>
-</tr>
-<tr>
-<td>ctrl-v</td>
-<td>左右分屏打开</td>
+<td>&lt;C-l&gt;</td>
+<td>相当于right键</td>
 </tr>
 </tbody></table>
-<h2 id="1-先导安装"><a href="#1-先导安装" class="headerlink" title="1.先导安装"></a>1.先导安装</h2><p>在macOS中使用<code>brew install ranger</code>安装的<code>Ranger</code>默认使用python2运行的，不符合<code>rnvimr</code>的要求。<br>macOS用户请通过<code>pip3 install Ranger-fm</code>而不是<code>brew install ranger</code>安装<code>Ranger</code>。<br>否则，悬浮的ranger容易卡死</p>
-<h4 id="安装ranger"><a href="#安装ranger" class="headerlink" title="安装ranger"></a>安装ranger</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install Ranger-fm</span><br></pre></td></tr></table></figure>
-<h4 id="安装pynvim"><a href="#安装pynvim" class="headerlink" title="安装pynvim"></a>安装pynvim</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pynvim </span><br></pre></td></tr></table></figure>
+<h1 id="zsh介绍"><a href="#zsh介绍" class="headerlink" title="zsh介绍"></a>zsh介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">zsh官网</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
+<p>zsh是一款shell，由于ohmyzsh项目的流行，zsh越来越成为主流的shell，不仅具有好看的界面，通过插件可以实现补全等炫酷功能，通过配置主题也可以很好的进行信息展示。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xRzubn"><img src="https://s1.ax1x.com/2022/10/25/xRzubn.md.png" alt="xRzubn.md.png"></a></p>
+<h2 id="1-zsh安装"><a href="#1-zsh安装" class="headerlink" title="1.zsh安装"></a>1.zsh安装</h2><p>可以使用命令,查看系统中存在哪些shell：</p>
+<p><code>cat /etc/shells</code></p>
+<p>可以使用命令，切换要使用的shell，切换zsh为例：</p>
+<p><code>chsh -s /bin/zsh</code></p>
+<h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>在最近几个版本的macOS中都已经存在zsh了，直接切换即可。</p>
+<h3 id="在centOS安装"><a href="#在centOS安装" class="headerlink" title="在centOS安装"></a>在centOS安装</h3><p><code>yum install zsh</code></p>
+<h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p><code>sudo apt install zsh</code></p>
+<h2 id="2-ohmyzsh安装"><a href="#2-ohmyzsh安装" class="headerlink" title="2.ohmyzsh安装"></a>2.ohmyzsh安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下载</span><br><span class="line">wget https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;master&#x2F;tools&#x2F;install.sh</span><br><span class="line"></span><br><span class="line"># 安装</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-安装rnvimr插件"><a href="#2-安装rnvimr插件" class="headerlink" title="2.安装rnvimr插件"></a>2.安装rnvimr插件</h2><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--内嵌浮动ranger插件</span><br><span class="line">use &quot;kevinhwang91&#x2F;rnvimr&quot;</span><br></pre></td></tr></table></figure>
-<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
-<h4 id="配置rnvimr插件"><a href="#配置rnvimr插件" class="headerlink" title="配置rnvimr插件"></a>配置rnvimr插件</h4><p>创建以下文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;rnvimr.rc.vim</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
-</blockquote>
-<p>在文件中添加以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot; 让Ranger取代Netrw并成为文件浏览器</span><br><span class="line">let g:rnvimr_enable_ex &#x3D; 1</span><br><span class="line">&quot; 选择文件后隐藏游侠</span><br><span class="line">let g:rnvimr_enable_picker &#x3D; 1</span><br><span class="line">&quot; 使用multipane模式启动(单列)可以按~手动切换</span><br><span class="line">let g:rnvimr_ranger_cmd &#x3D; &#39;ranger --cmd&#x3D;&quot;set viewmode multipane&quot;&#39;</span><br><span class="line">&quot; 设置&lt;F3&gt; 启动文件管理器</span><br><span class="line">nnoremap &lt;F3&gt; :RnvimrToggle&lt;CR&gt;</span><br><span class="line">nnoremap sr :RnvimrToggle&lt;CR&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120618832">04_[nvim0.5+从0单排]_vim文件管理插件—ranger</a></p>
+<h2 id="3-功能配置"><a href="#3-功能配置" class="headerlink" title="3.功能配置"></a>3.功能配置</h2><p>各类插件的配置，我之前也已经写过两篇博客，可以去那里参考。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">1.item2 + oh my zsh最全配置教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">2.oh my zsh配置与插件</a></li>
+</ul>
+<h1 id="starship介绍"><a href="#starship介绍" class="headerlink" title="starship介绍"></a>starship介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/starship/starship">starship官网地址</a>,任何安装配置问题都可在主页查看。</p>
+<p>尽管ohmyzsh中已经内置了很多主题，但是starship是一款由rust编写的命令行提示符工具，性能非常高，功能很强大。</p>
+<h2 id="1-starship安装"><a href="#1-starship安装" class="headerlink" title="1.starship安装"></a>1.starship安装</h2><h3 id="在macOS安装-1"><a href="#在macOS安装-1" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p><code>brew install starship</code></p>
+<p>安装完成后，在你的<code>.zshrc</code>文件末尾添加以下行:</p>
+<p><code>eval &quot;$(starship init zsh)&quot;</code></p>
+<h3 id="在other-Linux安装"><a href="#在other-Linux安装" class="headerlink" title="在other Linux安装"></a>在other Linux安装</h3><p><code>curl -sS https://starship.rs/install.sh | sh</code></p>
+<p>安装完成后，在你的<code>.zshrc</code>文件末尾添加以下行:</p>
+<p><code>eval &quot;$(starship init zsh)&quot;</code></p>
+<h2 id="2-starship配置"><a href="#2-starship配置" class="headerlink" title="2.starship配置"></a>2.starship配置</h2><p>你可以去查看具体以下地址，查看具体的配置方法，或复制预设方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://starship.rs/config/">1.Configuration – learn how to configure Starship to tweak your prompt to your liking</a></li>
+<li><a target="_blank" rel="noopener" href="https://starship.rs/presets/#nerd-font-symbols">2.Presets – get inspired by the pre-built configuration of others</a></li>
+</ul>
+<p>为了方便，你也可以直接复制我的配置文件，在<code>zsh/starship.toml</code>将其复制到<code>~/.config/</code>目录下即可。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xWSIT1"><img src="https://s1.ax1x.com/2022/10/25/xWSIT1.md.png" alt="xWSIT1.md.png"></a></p>
 
       
 
@@ -281,7 +297,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">终端</a>
         		</li>
       		
 		</ul>
@@ -337,7 +353,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/04/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%9B%9B%EF%BC%89-ranger%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/08/25/%E7%BB%88%E7%AB%AFzsh%E4%B8%BB%E9%A2%98starship/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -351,18 +367,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/04/22/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%94%EF%BC%89-defx%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E4%B8%8Evim-choosewin%E7%AA%97%E5%8F%A3%E9%80%89%E6%8B%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/08/26/string%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          vim练级手册（五） ---defx文件管理与vim-choosewin窗口选择
+          string算法刷题
         
       </div>
     </a>
   
   
-    <a href="/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vim练级手册（三） ---界面美化</div>
+    <a href="/2022/08/25/%E6%A0%91%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B8%93%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">树算法笔记专题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -389,7 +405,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%88%E5%AF%BC%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1.先导安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ranger"><span class="toc-number">1.</span> <span class="toc-text">安装ranger</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85pynvim"><span class="toc-number">2.</span> <span class="toc-text">安装pynvim</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85rnvimr%E6%8F%92%E4%BB%B6"><span class="toc-number"></span> <span class="toc-text">2.安装rnvimr插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AErnvimr%E6%8F%92%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">配置rnvimr插件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E8%BD%BD%E6%96%87%E7%AB%A0"><span class="toc-number"></span> <span class="toc-text">转载文章</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zsh%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">zsh介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-zsh%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1.zsh安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8macOS%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在macOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8centOS%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在centOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8ubuntu%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在ubuntu安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ohmyzsh%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">2.ohmyzsh安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">3.功能配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#starship%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">starship介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-starship%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1.starship安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8macOS%E5%AE%89%E8%A3%85-1"><span class="toc-number"></span> <span class="toc-text">在macOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8other-Linux%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在other Linux安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-starship%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">2.starship配置</span></a>
                     </div>
                 </span>
             </div>

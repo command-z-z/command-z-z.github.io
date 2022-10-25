@@ -596,6 +596,142 @@
 
 
   
+    <article id="post-终端zsh主题starship" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/25/%E7%BB%88%E7%AB%AFzsh%E4%B8%BB%E9%A2%98starship/">终端zsh与主题starship</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/25/%E7%BB%88%E7%AB%AFzsh%E4%B8%BB%E9%A2%98starship/" class="archive-article-date">
+	
+  	<time datetime="2022-08-25T12:55:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-25</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我终端配置文件教程的第二章，我将详细的讲解zsh和主题安装，以及我的个人配置,快捷键等信息。</p>
+<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置,本文配置在<code>zsh</code>文件夹中, welcome to star🌟。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>,</td>
+<td>历史记录补全快捷键</td>
+</tr>
+<tr>
+<td>&lt;C-h&gt;</td>
+<td>相当于left键</td>
+</tr>
+<tr>
+<td>&lt;C-j&gt;</td>
+<td>相当于down键</td>
+</tr>
+<tr>
+<td>&lt;C-k&gt;</td>
+<td>相当于up键</td>
+</tr>
+<tr>
+<td>&lt;C-l&gt;</td>
+<td>相当于right键</td>
+</tr>
+</tbody></table>
+<h1 id="zsh介绍"><a href="#zsh介绍" class="headerlink" title="zsh介绍"></a>zsh介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">zsh官网</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
+<p>zsh是一款shell，由于ohmyzsh项目的流行，zsh越来越成为主流的shell，不仅具有好看的界面，通过插件可以实现补全等炫酷功能，通过配置主题也可以很好的进行信息展示。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xRzubn"><img src="https://s1.ax1x.com/2022/10/25/xRzubn.md.png" alt="xRzubn.md.png"></a></p>
+<h2 id="1-zsh安装"><a href="#1-zsh安装" class="headerlink" title="1.zsh安装"></a>1.zsh安装</h2><p>可以使用命令,查看系统中存在哪些shell：</p>
+<p><code>cat /etc/shells</code></p>
+<p>可以使用命令，切换要使用的shell，切换zsh为例：</p>
+<p><code>chsh -s /bin/zsh</code></p>
+<h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>在最近几个版本的macOS中都已经存在zsh了，直接切换即可。</p>
+<h3 id="在centOS安装"><a href="#在centOS安装" class="headerlink" title="在centOS安装"></a>在centOS安装</h3><p><code>yum install zsh</code></p>
+<h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p><code>sudo apt install zsh</code></p>
+<h2 id="2-ohmyzsh安装"><a href="#2-ohmyzsh安装" class="headerlink" title="2.ohmyzsh安装"></a>2.ohmyzsh安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下载</span><br><span class="line">wget https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;master&#x2F;tools&#x2F;install.sh</span><br><span class="line"></span><br><span class="line"># 安装</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-功能配置"><a href="#3-功能配置" class="headerlink" title="3.功能配置"></a>3.功能配置</h2><p>各类插件的配置，我之前也已经写过两篇博客，可以去那里参考。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">1.item2 + oh my zsh最全配置教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">2.oh my zsh配置与插件</a></li>
+</ul>
+<h1 id="starship介绍"><a href="#starship介绍" class="headerlink" title="starship介绍"></a>starship介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/starship/starship">starship官网地址</a>,任何安装配置问题都可在主页查看。</p>
+<p>尽管ohmyzsh中已经内置了很多主题，但是starship是一款由rust编写的命令行提示符工具，性能非常高，功能很强大。</p>
+<h2 id="1-starship安装"><a href="#1-starship安装" class="headerlink" title="1.starship安装"></a>1.starship安装</h2><h3 id="在macOS安装-1"><a href="#在macOS安装-1" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p><code>brew install starship</code></p>
+<p>安装完成后，在你的<code>.zshrc</code>文件末尾添加以下行:</p>
+<p><code>eval &quot;$(starship init zsh)&quot;</code></p>
+<h3 id="在other-Linux安装"><a href="#在other-Linux安装" class="headerlink" title="在other Linux安装"></a>在other Linux安装</h3><p><code>curl -sS https://starship.rs/install.sh | sh</code></p>
+<p>安装完成后，在你的<code>.zshrc</code>文件末尾添加以下行:</p>
+<p><code>eval &quot;$(starship init zsh)&quot;</code></p>
+<h2 id="2-starship配置"><a href="#2-starship配置" class="headerlink" title="2.starship配置"></a>2.starship配置</h2><p>你可以去查看具体以下地址，查看具体的配置方法，或复制预设方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://starship.rs/config/">1.Configuration – learn how to configure Starship to tweak your prompt to your liking</a></li>
+<li><a target="_blank" rel="noopener" href="https://starship.rs/presets/#nerd-font-symbols">2.Presets – get inspired by the pre-built configuration of others</a></li>
+</ul>
+<p>为了方便，你也可以直接复制我的配置文件，在<code>zsh/starship.toml</code>将其复制到<code>~/.config/</code>目录下即可。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xWSIT1"><img src="https://s1.ax1x.com/2022/10/25/xWSIT1.md.png" alt="xWSIT1.md.png"></a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">终端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/25/%E7%BB%88%E7%AB%AFzsh%E4%B8%BB%E9%A2%98starship/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-树算法笔记专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -876,7 +1012,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这是我终端配置文件教程的第一章，我将详细的讲解ranger安装，以及我的个人配置,快捷键等信息。</p>
-<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置, welcome to star🌟。</p>
+<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置,本文配置在<code>ranger</code>文件夹中, welcome to star🌟。</p>
 <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
 <thead>
 <tr>
@@ -985,13 +1121,17 @@
 <td>调用fzf查找文件</td>
 </tr>
 </tbody></table>
-<h2 id="ranger介绍"><a href="#ranger介绍" class="headerlink" title="ranger介绍"></a>ranger介绍</h2><p><a target="_blank" rel="noopener" href="https://github.com/ranger/ranger">ranger官网地址</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
+<h1 id="ranger介绍"><a href="#ranger介绍" class="headerlink" title="ranger介绍"></a>ranger介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/ranger/ranger">ranger官网地址</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
 <p>ranger是一款在终端上的文件管理工具，有着VIM的哲学，可以很方便的用键盘对文件进行操作。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xgzOq1"><img src="https://s1.ax1x.com/2022/10/23/xgzOq1.md.png" alt="xgzOq1.md.png"></a></p>
-<h2 id="ranger安装"><a href="#ranger安装" class="headerlink" title="ranger安装"></a>ranger安装</h2><h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>安装ranger，即可使用基本功能</p>
+<h2 id="1-ranger安装"><a href="#1-ranger安装" class="headerlink" title="1.ranger安装"></a>1.ranger安装</h2><h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>安装ranger，即可使用基本功能</p>
 <p><code>brew install ranger</code></p>
 <p>安装依赖，这样可以使用一些扩展的功能,主要是预览相关的</p>
-<p><code>brew install libcaca highlight atool lynx w3m elinks poppler transmission mediainfo exiftool </code></p>
-<h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><p>输入以下语句生成配置文件，或者直接复制我的ranger文件夹。</p>
+<p><code>brew install libcaca highlight atool lynx w3m elinks poppler transmission mediainfo exiftool</code></p>
+<h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p>安装ranger，即可使用基本功能</p>
+<p><code>sudo apt-get install ranger</code></p>
+<p>安装依赖，这样可以使用一些扩展的功能,主要是预览相关的</p>
+<p><code>sudo apt-get install highlight atool lynx w3m elinks mediainfo</code></p>
+<h2 id="2-功能配置"><a href="#2-功能配置" class="headerlink" title="2.功能配置"></a>2.功能配置</h2><p>输入以下语句生成配置文件，或者直接复制我的ranger文件夹,直接将它复制到<code>~/.config/</code>目录下即可。</p>
 <p><code>ranger --copy-config=all</code></p>
 <p>现在，您可以转到<code>~/.config/ranger</code>生成的文件中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.config&#x2F;ranger</span><br><span class="line">➜  ranger ls -la</span><br><span class="line">总用量 132</span><br><span class="line">drwxr-xr-x 2 itkey users  4096  4月 13 16:25 .</span><br><span class="line">drwxr-xr-x 6 itkey users  4096  4月 13 16:07 ..</span><br><span class="line">-rw-r--r-- 1 itkey users 62106  4月 13 16:25 commands_full.py</span><br><span class="line">-rw-r--r-- 1 itkey users  2763  4月 13 16:25 commands.py</span><br><span class="line">-rw-r--r-- 1 itkey users 24193  4月 13 16:25 rc.conf</span><br><span class="line">-rw-r--r-- 1 itkey users 14071  4月 13 16:25 rifle.conf</span><br><span class="line">-rwxr-xr-x 1 itkey users 13758  4月 13 16:25 scope.sh</span><br></pre></td></tr></table></figure>
@@ -1339,85 +1479,6 @@
 
 
   
-    <article id="post-图算法笔记专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/19/%E5%9B%BE%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B8%93%E9%A2%98/">图算法笔记专题</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/08/19/%E5%9B%BE%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B8%93%E9%A2%98/" class="archive-article-date">
-	
-  	<time datetime="2022-08-19T13:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-19</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void DFS(int u)&#123;</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    for (int v &#x3D; 1; v &lt;&#x3D; n; v++) &#123;</span><br><span class="line">        if (vis[v] &#x3D;&#x3D;false &amp;&amp; G[u][v] !&#x3D; 0) &#123;</span><br><span class="line">            DFS(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void DFSTrave()&#123;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">        if(vis[i] &#x3D;&#x3D; false)&#123;</span><br><span class="line">            DFS(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">int BFS(int u)&#123;</span><br><span class="line">    int numForward &#x3D; 0;</span><br><span class="line">    node root;</span><br><span class="line">    root.v &#x3D; u;</span><br><span class="line">    root.layer &#x3D; 0;</span><br><span class="line">    queue&lt;node&gt; Q;</span><br><span class="line">    Q.push(root);</span><br><span class="line">    vis[u] &#x3D; true;</span><br><span class="line">    while (!Q.empty()) &#123;</span><br><span class="line">        node front &#x3D; Q.front();</span><br><span class="line">        Q.pop();</span><br><span class="line">        int id &#x3D; front.v;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; G[id].size(); i++) &#123;</span><br><span class="line">            node next &#x3D; G[id][i];</span><br><span class="line">            next.layer &#x3D; front.layer + 1;</span><br><span class="line">            if (vis[next.v] &#x3D;&#x3D; false &amp;&amp; next.layer &lt;&#x3D; l) &#123;</span><br><span class="line">                Q.push(next);</span><br><span class="line">                vis[next.v] &#x3D; true;</span><br><span class="line">                numForward++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return numForward;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/19/%E5%9B%BE%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E4%B8%93%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1568,10 +1629,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Paddle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -1592,7 +1649,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计算机视觉论文</a>
+                <a href="javascript:void(0)" class="js-tag color2">Paddle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1601,6 +1658,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计算机视觉论文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1628,15 +1689,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">终端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">终端</a>
               </li>
             
             <div class="clearfix"></div>
