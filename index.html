@@ -215,6 +215,8 @@
 </li>
 <li><p>DNS域名解析</p>
 </li>
+<li><p>ipv4是什么？有了解过ipv6吗？</p>
+</li>
 <li><p>mysql了解的吧，说一下隔离等级？</p>
 </li>
 <li><p>说一下mysql的索引？</p>
@@ -472,6 +474,130 @@
 
 
   
+    <article id="post-终端模糊搜索工具fzf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/27/%E7%BB%88%E7%AB%AF%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7fzf/">终端模糊搜索工具fzf</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/08/27/%E7%BB%88%E7%AB%AF%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7fzf/" class="archive-article-date">
+	
+  	<time datetime="2022-08-27T09:11:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-27</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我终端配置文件教程的第三章，我将详细的讲解fzf安装，以及我的个人配置,快捷键等信息。</p>
+<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置,本文配置<code>zsh</code>文件夹中, welcome to star🌟。</p>
+<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;C-j&gt;</td>
+<td>fzf搜索框中相当于down键</td>
+</tr>
+<tr>
+<td>&lt;C-k&gt;</td>
+<td>fzf搜索框中相当于up键</td>
+</tr>
+<tr>
+<td>&lt;C-c&gt;</td>
+<td>退出fzf搜索框</td>
+</tr>
+<tr>
+<td>&lt;C-t&gt;</td>
+<td>唤出fzf搜索框，搜索文件</td>
+</tr>
+<tr>
+<td>&lt;C-r&gt;</td>
+<td>唤出fzf搜索框，搜索历史命令</td>
+</tr>
+<tr>
+<td>&lt;Alt-c&gt;</td>
+<td>唤出fzf搜索框，搜索目录并进入（类似z命令）</td>
+</tr>
+<tr>
+<td>command + ** + Tab</td>
+<td>唤出fzf搜索框，搜索文件或目录，用相应的命令打开</td>
+</tr>
+</tbody></table>
+<h1 id="fzf介绍"><a href="#fzf介绍" class="headerlink" title="fzf介绍"></a>fzf介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/junegunn/fzf">fzf官网地址</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
+<p>fzf是一款在终端上的模糊查找工具，可以很快速的对文件，目录，历史记录进行查找。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x5dvV0"><img src="https://s1.ax1x.com/2022/10/29/x5dvV0.md.png" alt="x5dvV0.md.png"></a></p>
+<h2 id="1-fzf安装"><a href="#1-fzf安装" class="headerlink" title="1.fzf安装"></a>1.fzf安装</h2><h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>安装fzf，即可使用基本功能</p>
+<p><code>brew install fzf</code></p>
+<h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p>安装ranger，即可使用基本功能</p>
+<p><code>sudo apt install fzf</code></p>
+<h3 id="其他OS安装"><a href="#其他OS安装" class="headerlink" title="其他OS安装"></a>其他OS安装</h3><p>查看项目主页中对应的安装方法。</p>
+<h2 id="2-fzf配置"><a href="#2-fzf配置" class="headerlink" title="2.fzf配置"></a>2.fzf配置</h2><p>当你在终端输入fzf的时候，可能和我显示的搜索框不同，这时你需要修改相应的配置即可。可以将以下命令加入到<code>.zshrc</code>文件末尾即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export FZF_DEFAULT_OPTS&#x3D;&quot; \</span><br><span class="line">--height 80% \</span><br><span class="line">--reverse \</span><br><span class="line">--border \</span><br><span class="line">--color&#x3D;bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \</span><br><span class="line">--color&#x3D;fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \</span><br><span class="line">--color&#x3D;marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796&quot;</span><br></pre></td></tr></table></figure>
+<p>这时<code>reload</code>一下配置文件，即可美化完成。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">终端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/27/%E7%BB%88%E7%AB%AF%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7fzf/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-string算法刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -647,9 +773,34 @@
 <td>&lt;C-l&gt;</td>
 <td>相当于right键</td>
 </tr>
+<tr>
+<td>ls</td>
+<td>相当于lsd,带图标的ls工具</td>
+</tr>
+<tr>
+<td>vim</td>
+<td>相当于nvim</td>
+</tr>
+<tr>
+<td>ra</td>
+<td>相当于ranger键</td>
+</tr>
+<tr>
+<td>raj</td>
+<td>相当于ranger键,退出时自动跳到退出路径</td>
+</tr>
+<tr>
+<td>lt</td>
+<td>相当于ls –tree键</td>
+</tr>
+<tr>
+<td>reload</td>
+<td>相当于重新加载我的zshrc文件</td>
+</tr>
 </tbody></table>
 <h1 id="zsh介绍"><a href="#zsh介绍" class="headerlink" title="zsh介绍"></a>zsh介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">zsh官网</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
-<p>zsh是一款shell，由于ohmyzsh项目的流行，zsh越来越成为主流的shell，不仅具有好看的界面，通过插件可以实现补全等炫酷功能，通过配置主题也可以很好的进行信息展示。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xRzubn"><img src="https://s1.ax1x.com/2022/10/25/xRzubn.md.png" alt="xRzubn.md.png"></a></p>
+<p>zsh是一款shell，由于ohmyzsh项目的流行，zsh越来越成为主流的shell，不仅具有好看的界面，通过插件可以实现补全等炫酷功能，通过配置主题也可以很好的进行信息展示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xRzubn"><img src="https://s1.ax1x.com/2022/10/25/xRzubn.md.png" alt="xRzubn.md.png"></a></p>
 <h2 id="1-zsh安装"><a href="#1-zsh安装" class="headerlink" title="1.zsh安装"></a>1.zsh安装</h2><p>可以使用命令,查看系统中存在哪些shell：</p>
 <p><code>cat /etc/shells</code></p>
 <p>可以使用命令，切换要使用的shell，切换zsh为例：</p>
@@ -657,9 +808,10 @@
 <h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>在最近几个版本的macOS中都已经存在zsh了，直接切换即可。</p>
 <h3 id="在centOS安装"><a href="#在centOS安装" class="headerlink" title="在centOS安装"></a>在centOS安装</h3><p><code>yum install zsh</code></p>
 <h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p><code>sudo apt install zsh</code></p>
+<h3 id="其他OS安装"><a href="#其他OS安装" class="headerlink" title="其他OS安装"></a>其他OS安装</h3><p>查看项目主页中对应的安装方法。</p>
 <h2 id="2-ohmyzsh安装"><a href="#2-ohmyzsh安装" class="headerlink" title="2.ohmyzsh安装"></a>2.ohmyzsh安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下载</span><br><span class="line">wget https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;master&#x2F;tools&#x2F;install.sh</span><br><span class="line"></span><br><span class="line"># 安装</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-功能配置"><a href="#3-功能配置" class="headerlink" title="3.功能配置"></a>3.功能配置</h2><p>各类插件的配置，我之前也已经写过两篇博客，可以去那里参考。</p>
+<h2 id="3-功能配置"><a href="#3-功能配置" class="headerlink" title="3.功能配置"></a>3.功能配置</h2><p>各类插件的配置，我之前也已经写过两篇博客，可以去那里参考，也可以把我的<code>.zshrc</code>文件直接复制到你的<code>~</code>目录下，将我的<code>plugins</code>文件直接替换到<code>~/.oh-my-zsh/custom/plugins</code>,即可使用我的配置。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">1.item2 + oh my zsh最全配置教程</a></li>
 <li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">2.oh my zsh配置与插件</a></li>
@@ -1131,6 +1283,7 @@
 <p><code>sudo apt-get install ranger</code></p>
 <p>安装依赖，这样可以使用一些扩展的功能,主要是预览相关的</p>
 <p><code>sudo apt-get install highlight atool lynx w3m elinks mediainfo</code></p>
+<h3 id="其他OS安装"><a href="#其他OS安装" class="headerlink" title="其他OS安装"></a>其他OS安装</h3><p>查看项目主页中对应的安装方法。</p>
 <h2 id="2-功能配置"><a href="#2-功能配置" class="headerlink" title="2.功能配置"></a>2.功能配置</h2><p>输入以下语句生成配置文件，或者直接复制我的ranger文件夹,直接将它复制到<code>~/.config/</code>目录下即可。</p>
 <p><code>ranger --copy-config=all</code></p>
 <p>现在，您可以转到<code>~/.config/ranger</code>生成的文件中：</p>
@@ -1229,67 +1382,40 @@
 
 
   
-    <article id="post-数据结构算法刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-终端ls美化工具lsd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/">数据结构算法刷题</a>
+      <a class="article-title" href="/2022/08/23/%E7%BB%88%E7%AB%AFls%E7%BE%8E%E5%8C%96%E5%B7%A5%E5%85%B7lsd/">终端ls美化工具lsd与字体安装</a>
     </h1>
   
 
         
         
-<a href="/2022/08/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="archive-article-date">
+<a href="/2022/08/23/%E7%BB%88%E7%AB%AFls%E7%BE%8E%E5%8C%96%E5%B7%A5%E5%85%B7lsd/" class="archive-article-date">
 	
-  	<time datetime="2022-08-22T12:15:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-22</time>
+  	<time datetime="2022-08-23T09:12:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
 </a>
         
             </header>      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>一些小技巧</li>
-</ul>
-<ol>
-<li>vector当数组用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; v(n + 1);</span><br><span class="line">scanf(&quot;%d&quot;, &amp;v[j]);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="1051-Pop-Sequence"><a href="#1051-Pop-Sequence" class="headerlink" title="1051 Pop Sequence"></a>1051 Pop Sequence</h3><blockquote>
-<p>思路：重新模拟题目</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1010;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int n, m, k;</span><br><span class="line">    vector&lt;int&gt; v(n + 1);</span><br><span class="line">    &#x2F;&#x2F; int arr[N];</span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k);</span><br><span class="line">    int value;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">        stack&lt;int&gt; st;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; m; j++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;v[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        int Index &#x3D; 0;</span><br><span class="line">        bool flag &#x3D; true;</span><br><span class="line">        for (int j &#x3D; 1; j &lt;&#x3D; m; j++) &#123;</span><br><span class="line">            st.push(j);</span><br><span class="line">            if (st.size() &gt; n) &#123;</span><br><span class="line">                flag &#x3D; false;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            while (!st.empty() &amp;&amp; st.top() &#x3D;&#x3D; v[Index]) &#123;</span><br><span class="line">                Index++;</span><br><span class="line">                st.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag &amp;&amp; Index &#x3D;&#x3D; m) &#123;</span><br><span class="line">            printf(&quot;YES\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            printf(&quot;NO\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意stack要在每次循环内重新初始化，不然栈中会存在之前的数据，vector也要重新初始化，每次push_back不会使数组保存在1-m。</p>
-</blockquote>
-<h3 id="1074-Reversing-Link-list"><a href="#1074-Reversing-Link-list" class="headerlink" title="1074 Reversing Link list"></a>1074 Reversing Link list</h3><blockquote>
-<p>思路:将地址加入一个vector中，使用reverse函数将地址进行翻转即可。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e5 + 10;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int data;</span><br><span class="line">    int next;</span><br><span class="line">&#125;Node[N];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int start, n, k;</span><br><span class="line">    scanf(&quot;%d %d %d&quot;, &amp;start, &amp;n, &amp;k);</span><br><span class="line">    int add, data, next;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;, &amp;add, &amp;data, &amp;next);</span><br><span class="line">        Node[add].data &#x3D; data;</span><br><span class="line">        Node[add].next &#x3D; next;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; v;</span><br><span class="line">    int x &#x3D; start;</span><br><span class="line">    int num &#x3D; 0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        if (x &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        v.push_back(x);</span><br><span class="line">        x &#x3D; Node[x].next;</span><br><span class="line">        num++;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; num &#x2F; k; i++) &#123;</span><br><span class="line">        reverse(v.begin() + i * k, v.begin() + i * k + k);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; num - 1; i++) &#123;</span><br><span class="line">        printf(&quot;%05d %d %05d\n&quot;, v[i], Node[v[i]].data, v[i+1]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%05d %d -1\n&quot;, v[num - 1], Node[v[num - 1]].data);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="1032-Sharing"><a href="#1032-Sharing" class="headerlink" title="1032 Sharing"></a>1032 Sharing</h3><blockquote>
-<p>思路：开始的时候是判断字符相不相同，发现字符可能重复，因此只要判断地址有没有相同就可以解决问题了，为避免双重循环，用一个isAppear数组记录地址有无出现。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e5 + 10;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    char a;</span><br><span class="line">    int next;</span><br><span class="line">&#125;Node[N];</span><br><span class="line"></span><br><span class="line">bool isAppear[N];</span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    fill(isAppear, isAppear + N, false);</span><br><span class="line">    int query1, query2, n;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;query1, &amp;query2, &amp;n);</span><br><span class="line">    int add, ne;</span><br><span class="line">    char c;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %c %d&quot;, &amp;add, &amp;c, &amp;ne);</span><br><span class="line">        Node[add].a &#x3D; c;</span><br><span class="line">        Node[add].next &#x3D; ne;</span><br><span class="line">    &#125;</span><br><span class="line">    while (query1 !&#x3D; -1) &#123;</span><br><span class="line">        isAppear[query1] &#x3D; true;</span><br><span class="line">        query1 &#x3D; Node[query1].next;</span><br><span class="line">    &#125;</span><br><span class="line">    while (query2 !&#x3D; -1) &#123;</span><br><span class="line">        if (isAppear[query2]) &#123;</span><br><span class="line">            printf(&quot;%05d\n&quot;, query2);</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        query2 &#x3D; Node[query2].next;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;-1\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：地址5位补全。</p>
-</blockquote>
-<h3 id="1052-Linked-list-sort"><a href="#1052-Linked-list-sort" class="headerlink" title="1052 Linked list sort"></a>1052 Linked list sort</h3><p>思路：从起始路径出发将所有节点加入vector中，最后用一个sort排序，从小到大输出。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e5 + 10;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int add;</span><br><span class="line">    int key;</span><br><span class="line">    int next;</span><br><span class="line">&#125;Node[N];</span><br><span class="line"></span><br><span class="line">bool cmp(node a, node b)&#123;</span><br><span class="line">    return a.key &lt; b.key;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;node&gt; v;</span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int n, st;</span><br><span class="line">    scanf(&quot;%d %d&quot;, &amp;n, &amp;st);</span><br><span class="line">    int cur, key, next;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;, &amp;cur, &amp;key, &amp;next);</span><br><span class="line">        Node[cur].add &#x3D; cur;</span><br><span class="line">        Node[cur].key &#x3D; key;</span><br><span class="line">        Node[cur].next &#x3D; next;</span><br><span class="line">    &#125;</span><br><span class="line">    int temp &#x3D; st;</span><br><span class="line">    while (temp !&#x3D; -1) &#123;</span><br><span class="line">        v.push_back(Node[temp]);</span><br><span class="line">        temp &#x3D; Node[temp].next;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.begin(), v.end(), cmp);</span><br><span class="line">    if (v.size() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        printf(&quot;0 -1\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        printf(&quot;%lu %05d\n&quot;, v.size(), v[0].add);</span><br><span class="line">        for (int i &#x3D; 0; i &lt; v.size() - 1; i++) &#123;</span><br><span class="line">            printf(&quot;%05d %d %05d\n&quot;, v[i].add, v[i].key, v[i+1].add);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%05d %d -1\n&quot;, v[v.size()-1].add, v[v.size()-1].key);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：并不是所有节点都有用到，以及考虑所有都是脏数据的情况，起始地址为-1。</p>
-</blockquote>
-<h3 id="Deduplication-on-a-Linked-List"><a href="#Deduplication-on-a-Linked-List" class="headerlink" title="Deduplication on a Linked List"></a>Deduplication on a Linked List</h3><p>思路：开两个数组即可，用一个flag来判断是否重复了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e5 + 10;</span><br><span class="line">const int K &#x3D; 1e4 + 10;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int add;</span><br><span class="line">    int key;</span><br><span class="line">    int next;</span><br><span class="line">&#125;Node[N];</span><br><span class="line"></span><br><span class="line">bool flag[N];</span><br><span class="line">vector&lt;int&gt; v;</span><br><span class="line">vector&lt;int&gt; re;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    fill(flag, flag + K, false);</span><br><span class="line">    int n;</span><br><span class="line">    int start;</span><br><span class="line">    scanf(&quot;%d %d&quot;, &amp;start, &amp;n);</span><br><span class="line">    int now, key, next;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d %d %d&quot;, &amp;now, &amp;key, &amp;next);</span><br><span class="line">        Node[now].add &#x3D; now;</span><br><span class="line">        Node[now].key &#x3D; key;</span><br><span class="line">        Node[now].next &#x3D; next;</span><br><span class="line">    &#125;</span><br><span class="line">    int temp &#x3D; start;</span><br><span class="line">    while (temp !&#x3D; -1) &#123;</span><br><span class="line">        if (flag[abs(Node[temp].key)] &#x3D;&#x3D; true) &#123;</span><br><span class="line">            re.push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            v.push_back(temp);</span><br><span class="line">            flag[abs(Node[temp].key)] &#x3D; true;</span><br><span class="line">        &#125;</span><br><span class="line">        temp &#x3D; Node[temp].next;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; v.size() - 1; i++) &#123;</span><br><span class="line">        printf(&quot;%05d %d %05d\n&quot;, Node[v[i]].add, Node[v[i]].key, Node[v[i+1]].add);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%05d %d -1\n&quot;, Node[v[v.size()-1]].add, Node[v[v.size()-1]].key);</span><br><span class="line">    if (re.size() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; re.size() - 1; i++) &#123;</span><br><span class="line">        printf(&quot;%05d %d %05d\n&quot;, Node[re[i]].add, Node[re[i]].key, Node[re[i+1]].add);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%05d %d -1\n&quot;, Node[re[re.size()-1]].add, Node[re[re.size()-1]].key);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：re数组里可能没有值，要判断size大小。</p>
-</blockquote>
-
+        <p>这是我终端配置文件教程的第四章，我将详细的讲解lsd工具和系统字体安装，以及我的个人字体信息。</p>
+<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置,本文所讲的字体在<code>font</code>文件夹中, welcome to star🌟。</p>
+<h1 id="lsd介绍"><a href="#lsd介绍" class="headerlink" title="lsd介绍"></a>lsd介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/Peltoche/lsd">lsd官网</a>,任何问题都可以github项目主页查看，README中都有解决措施。</p>
+<p>lsd是一代ls，在ls的基础上加了icon,color,tree-viewer等特性，作为最经常使用的终端命令之一，美化ls是一次不错的尝试。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x54PzR"><img src="https://s1.ax1x.com/2022/10/29/x54PzR.md.png" alt="x54PzR.md.png"></a></p>
+<h2 id="1-lsd安装"><a href="#1-lsd安装" class="headerlink" title="1.lsd安装"></a>1.lsd安装</h2><h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>安装lsd，即可使用基本功能</p>
+<p><code>brew install lsd</code></p>
+<h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p>安装lsd，即可使用基本功能</p>
+<p>去<a target="_blank" rel="noopener" href="https://github.com/Peltoche/lsd/releases">realses</a>处，下载对应ubuntu的<code>lsd_x.xx.x_amd64.deb</code>文件，使用命令<code>sudo dpkg -i lsd_x.xx.x_amd64.deb</code>即可安装。 </p>
+<h3 id="其他OS安装"><a href="#其他OS安装" class="headerlink" title="其他OS安装"></a>其他OS安装</h3><p>查看项目主页中对应的安装方法。</p>
+<h2 id="2-lsd配置"><a href="#2-lsd配置" class="headerlink" title="2.lsd配置"></a>2.lsd配置</h2><p>lsd的配置文件被放在<code>~/.config/lsd/config.yaml</code>中，图标文件被放在<code>~/.config/lsd/icon.yaml</code>中，由于默认配置已基本满足要求，笔者未做相应的配置，开箱即用。</p>
+<h1 id="Nerd-font"><a href="#Nerd-font" class="headerlink" title="Nerd font"></a>Nerd font</h1>
       
 
       
@@ -1302,7 +1428,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">终端</a>
         		</li>
       		
 		</ul>
@@ -1312,144 +1438,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-STL算法刷题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/21/STL%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/">STL算法刷题</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/08/21/STL%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="archive-article-date">
-	
-  	<time datetime="2022-08-21T08:10:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-21</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>刷题遇到的一些小技巧</li>
-</ul>
-<ol>
-<li><p>将输入大写转小写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string sentenct;</span><br><span class="line">getline(cin, sentenct);</span><br><span class="line">&#x2F;&#x2F; up -&gt; low</span><br><span class="line">transform(sentenct.begin(),sentenct.end(),sentenct.begin(),::tolower);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>string按空格分离字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">getline(cin, str);</span><br><span class="line">istringstream in(str);</span><br><span class="line">while (in &gt;&gt; str) &#123;</span><br><span class="line">    keywordsToId[str].insert(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>vector二维向量初始化<br>下面定义的是行为r，列为c的二维数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt;&gt; ans(r, vector&lt;int&gt;(c));</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="A1047-Student-List-for-Course"><a href="#A1047-Student-List-for-Course" class="headerlink" title="A1047 Student List for Course"></a>A1047 Student List for Course</h3><blockquote>
-<p>思路：用vector<string> 直接存储数据</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 400010;</span><br><span class="line">const int K &#x3D; 2510;</span><br><span class="line"></span><br><span class="line">int n, k;</span><br><span class="line">vector&lt;string&gt; Class[N];</span><br><span class="line"></span><br><span class="line">bool cmp(string a, string b)&#123;</span><br><span class="line">    return a &lt; b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d %d&quot;, &amp;n, &amp;k);</span><br><span class="line">    string name;</span><br><span class="line">    int c, cla;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; name &gt;&gt; c;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; c; j++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;cla);</span><br><span class="line">            Class[cla].push_back(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; k; i++) &#123;</span><br><span class="line">        printf(&quot;%d %lu\n&quot;, i, Class[i].size());</span><br><span class="line">        sort(Class[i].begin(), Class[i].end(), cmp);</span><br><span class="line">        for (int j &#x3D; 0; j &lt; Class[i].size(); j++) &#123;</span><br><span class="line">            &#x2F;&#x2F; cout &lt;&lt; Class[i][j] &lt;&lt; endl;</span><br><span class="line">            printf(&quot;%s\n&quot;, Class[i][j].c_str());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：要用printf作为输出，不然会超时。</p>
-</blockquote>
-<h3 id="A1063-Set-Similarity"><a href="#A1063-Set-Similarity" class="headerlink" title="A1063 Set Similarity"></a>A1063 Set Similarity</h3><blockquote>
-<p>思路：set存储不重复值，交集并集运算。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 60;</span><br><span class="line"></span><br><span class="line">set&lt;int&gt; sim[N];</span><br><span class="line">double similaruty(int a, int b)&#123;</span><br><span class="line">    set&lt;int&gt; add;</span><br><span class="line">    add &#x3D; sim[a];</span><br><span class="line">    for (set&lt;int&gt;::iterator it &#x3D; sim[b].begin(); it !&#x3D; sim[b].end(); it++) &#123;</span><br><span class="line">        add.insert(*it);</span><br><span class="line">    &#125;</span><br><span class="line">    int all &#x3D; sim[a].size() + sim[b].size();</span><br><span class="line">    int Union &#x3D; add.size();</span><br><span class="line">    int intersection &#x3D; all - Union;</span><br><span class="line">    double ans &#x3D; 1.0 * intersection &#x2F; Union;</span><br><span class="line">    return ans * 100;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int n, m;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;m);</span><br><span class="line">        int value;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; m; j++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;value);</span><br><span class="line">            sim[i].insert(value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int k;</span><br><span class="line">    int query1, query2;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;k);</span><br><span class="line">    for (int i &#x3D; 0; i &lt; k; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;query1, &amp;query2);</span><br><span class="line">        double ans &#x3D; similaruty(query1, query2);</span><br><span class="line">        printf(&quot;%.1f%%\n&quot;, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>一次过</p>
-</blockquote>
-<h3 id="1060-Are-They-Equal"><a href="#1060-Are-They-Equal" class="headerlink" title="1060 Are They Equal"></a>1060 Are They Equal</h3><blockquote>
-<p>思路：太难了，细节直接拉满，典型的string题，没什么套路</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;iterator&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 110;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">&#x2F;&#x2F; true 是小数 </span><br><span class="line">bool cutZero(string&amp; str)&#123;</span><br><span class="line">    int len &#x3D; str.size();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">        if (str[0] &#x3D;&#x3D; &#39;0&#39;) &#123;</span><br><span class="line">            str.erase(str.begin());</span><br><span class="line">        &#125;</span><br><span class="line">        else if(str[0] &#x3D;&#x3D; &#39;.&#39;)&#123;</span><br><span class="line">            str.erase(str.begin());</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;0000.00</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void getString(string&amp; str, int&amp; e)&#123;</span><br><span class="line">    if (cutZero(str)) &#123;</span><br><span class="line">        int len &#x3D; str.size();</span><br><span class="line">        for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">            if (str[0] &#x3D;&#x3D; &#39;0&#39;) &#123;</span><br><span class="line">                e--;</span><br><span class="line">                str.erase(str.begin());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 0000.00</span><br><span class="line">        if (str.size() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            str &#x3D; &quot;0&quot;;</span><br><span class="line">            e &#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line">        while (str.size() &lt;&#x3D; n) &#123;</span><br><span class="line">            str +&#x3D; &#39;0&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        str &#x3D; str.substr(0, n);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        int len &#x3D; str.size();</span><br><span class="line">        for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">            if (str[i] !&#x3D; &#39;.&#39;) &#123;</span><br><span class="line">                e++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (str[i] &#x3D;&#x3D; &#39;.&#39;) &#123;</span><br><span class="line">                str.erase(i, 1);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (str.size() &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            str &#x3D; &quot;0&quot;;</span><br><span class="line">            e &#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;补齐位数</span><br><span class="line">        while (str.size() &lt;&#x3D; n) &#123;</span><br><span class="line">            str +&#x3D; &#39;0&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        str &#x3D; str.substr(0, n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    string str1, str2;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; str1 &gt;&gt; str2;</span><br><span class="line">    int e1 &#x3D; 0, e2 &#x3D; 0;</span><br><span class="line">    getString(str1, e1);</span><br><span class="line">    getString(str2, e2);</span><br><span class="line">    if (str1 &#x3D;&#x3D; str2 &amp;&amp; e1 &#x3D;&#x3D; e2) &#123;</span><br><span class="line">        cout &lt;&lt; &quot;YES 0.&quot; &lt;&lt; str1 &lt;&lt; &quot;*10^&quot; &lt;&lt; e1 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;NO 0.&quot; &lt;&lt; str1 &lt;&lt; &quot;*10^&quot; &lt;&lt; e1;</span><br><span class="line">        cout &lt;&lt; &quot; 0.&quot; &lt;&lt; str2 &lt;&lt; &quot;*10^&quot; &lt;&lt; e2;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里犯了一个极大的错误，str.size() , 但我的str是引用，导致我的每次earse都会减小size，循环会提前退出。以及全是0的判断，位数补齐要补零，不然也会出错。</p>
-</blockquote>
-<h3 id="1100-Mars-Numbers"><a href="#1100-Mars-Numbers" class="headerlink" title="1100 Mars Numbers"></a>1100 Mars Numbers</h3><blockquote>
-<p>思路：直接打表，string和int的对应关系。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 170;</span><br><span class="line"></span><br><span class="line">string tenDigit[13] &#x3D; &#123;&quot;tret&quot;,&quot;tam&quot;, &quot;hel&quot;, &quot;maa&quot;, &quot;huh&quot;, &quot;tou&quot;, &quot;kes&quot;, &quot;hei&quot;, &quot;elo&quot;, &quot;syy&quot;, &quot;lok&quot;, &quot;mer&quot;, &quot;jou&quot;&#125;;</span><br><span class="line">string unitDigit[13] &#x3D; &#123;&quot;tret&quot;, &quot;jan&quot;, &quot;feb&quot;, &quot;mar&quot;, &quot;apr&quot;, &quot;may&quot;, &quot;jun&quot;, &quot;jly&quot;, &quot;aug&quot;, &quot;sep&quot;, &quot;oct&quot;, &quot;nov&quot;, &quot;dec&quot;&#125;;</span><br><span class="line">&#x2F;&#x2F;打表</span><br><span class="line"></span><br><span class="line">map&lt;string, int&gt; stringToInt;</span><br><span class="line">map&lt;int, string&gt; intToString;</span><br><span class="line">void init()&#123;</span><br><span class="line">    string ans;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 13; i++) &#123;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; 13; j++) &#123;</span><br><span class="line">            if (i &#x3D;&#x3D; 0 &amp;&amp; j &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                ans &#x3D; &quot;tret&quot;;</span><br><span class="line">                stringToInt[ans] &#x3D; 13 * i + j;</span><br><span class="line">                intToString[13*i+j] &#x3D; ans;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (i &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                ans &#x3D; unitDigit[j];</span><br><span class="line">                stringToInt[ans] &#x3D; 13 * i + j;</span><br><span class="line">                intToString[13*i+j] &#x3D; ans;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (j &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                ans &#x3D; tenDigit[i];</span><br><span class="line">                stringToInt[ans] &#x3D; 13 * i + j;</span><br><span class="line">                intToString[13*i+j] &#x3D; ans;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                ans &#x3D; tenDigit[i] + &quot; &quot; + unitDigit[j];</span><br><span class="line">                stringToInt[ans] &#x3D; 13 * i + j;</span><br><span class="line">                intToString[13*i+j] &#x3D; ans;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    getchar();</span><br><span class="line">    string str;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        int num &#x3D; 0;</span><br><span class="line">        getline(cin, str);</span><br><span class="line">        if (str[0] &gt;&#x3D; &#39;0&#39; &amp;&amp; str[0] &lt;&#x3D; &#39;9&#39;) &#123;</span><br><span class="line">            for (int i &#x3D; 0; i &lt; str.length(); i++) &#123;</span><br><span class="line">                num &#x3D; num * 10 + str[i] - &#39;0&#39;; </span><br><span class="line">            &#125;</span><br><span class="line">            cout &lt;&lt; intToString[num] &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            cout &lt;&lt; stringToInt[str] &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意，13 26 这样的数只会出现高位，低位的零会舍弃。</p>
-</blockquote>
-<h3 id="A1054-The-Dominant-Color"><a href="#A1054-The-Dominant-Color" class="headerlink" title="A1054 The Dominant Color"></a>A1054 The Dominant Color</h3><blockquote>
-<p>思路：map&lt;int, int&gt; 映射像素和数量的关系，当超过半数，则输出。```</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int m, n;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;m, &amp;n);</span><br><span class="line">    int half &#x3D; n * m &#x2F; 2;</span><br><span class="line">    int value;</span><br><span class="line">    map&lt;int, int&gt; ans;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; m; j++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;value);</span><br><span class="line">            ans[value]++;</span><br><span class="line">            if (ans[value] &gt; half) &#123;</span><br><span class="line">                printf(&quot;%d\n&quot;, value);</span><br><span class="line">                return 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>思路好难想到。</p>
-</blockquote>
-<h3 id="A1071-Speech-Patterns"><a href="#A1071-Speech-Patterns" class="headerlink" title="A1071 Speech Patterns"></a>A1071 Speech Patterns</h3><blockquote>
-<p>思路：判断有效单词，并截取，map进行统计。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    string sentenct;</span><br><span class="line">    getline(cin, sentenct);</span><br><span class="line">    &#x2F;&#x2F; up -&gt; low</span><br><span class="line">    transform(sentenct.begin(),sentenct.end(),sentenct.begin(),::tolower);</span><br><span class="line">    &#x2F;&#x2F; sentenct +&#x3D; &quot;  &quot;;</span><br><span class="line">    int start &#x3D; 0, len &#x3D; 0;</span><br><span class="line">    map&lt;string, int&gt; ans;</span><br><span class="line">    string str;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; sentenct.size(); i++) &#123;</span><br><span class="line">        if ((sentenct[i] &gt;&#x3D; &#39;0&#39; &amp;&amp; sentenct[i] &lt;&#x3D; &#39;9&#39;) || (sentenct[i] &gt;&#x3D; &#39;a&#39; &amp;&amp; sentenct[i] &lt;&#x3D; &#39;z&#39;)) &#123;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; method2 up -&gt; low</span><br><span class="line">        &#x2F;* else if (sentenct[i] &gt;&#x3D; &#39;A&#39; &amp;&amp; sentenct[i] &lt;&#x3D; &#39;Z&#39;) &#123;</span><br><span class="line">            sentenct[i] &#x3D; tolower(sentenct[i]);</span><br><span class="line">            len++;</span><br><span class="line">        &#125; *&#x2F;</span><br><span class="line">        else &#123;</span><br><span class="line">            if (len !&#x3D; 0) &#123;</span><br><span class="line">                str &#x3D; sentenct.substr(start, len);</span><br><span class="line">                if (ans.find(str) !&#x3D; ans.end()) &#123;</span><br><span class="line">                    ans[str]++;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    ans[str] &#x3D; 1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start &#x3D; i + 1;</span><br><span class="line">            len &#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int max &#x3D; 0;</span><br><span class="line">    string res;</span><br><span class="line">    map&lt;string, int&gt;::iterator it;</span><br><span class="line">    for (it &#x3D; ans.begin(); it !&#x3D; ans.end(); it++) &#123;</span><br><span class="line">        if (it-&gt;second &gt; max) &#123;</span><br><span class="line">            max &#x3D; it-&gt;second;</span><br><span class="line">            res &#x3D; it-&gt;first;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; &quot; &quot; &lt;&lt; max &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：开始时加了sentence += “”是为了处理下面for循环的边界问题，不然测试点4过不了。</p>
-</blockquote>
-<h3 id="A1022-Digital-Library"><a href="#A1022-Digital-Library" class="headerlink" title="A1022 Digital Library"></a>A1022 Digital Library</h3><p>思路:建立map映射，查询就变成了o(1).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;sstream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 1e4 + 10;</span><br><span class="line"></span><br><span class="line">map&lt;string, set&lt;int&gt; &gt; titleToId;</span><br><span class="line">map&lt;string, set&lt;int&gt; &gt; authorToId;</span><br><span class="line">map&lt;string, set&lt;int&gt; &gt; keywordsToId;</span><br><span class="line">map&lt;string, set&lt;int&gt; &gt; publisherToId;</span><br><span class="line">map&lt;string, set&lt;int&gt; &gt; yearToId;</span><br><span class="line"></span><br><span class="line">int main (int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    int id;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d\n&quot;, &amp;id);</span><br><span class="line">        string str;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; 5; j++) &#123;</span><br><span class="line">            getline(cin, str);</span><br><span class="line">            if (j &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                titleToId[str].insert(id);</span><br><span class="line">            &#125;</span><br><span class="line">            else if (j &#x3D;&#x3D; 1) &#123;</span><br><span class="line">                authorToId[str].insert(id);</span><br><span class="line">            &#125;</span><br><span class="line">            else if (j &#x3D;&#x3D; 2) &#123;</span><br><span class="line">                istringstream in(str);</span><br><span class="line">                while (in &gt;&gt; str) &#123;</span><br><span class="line">                    keywordsToId[str].insert(id);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (j &#x3D;&#x3D; 3) &#123;</span><br><span class="line">                publisherToId[str].insert(id);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                yearToId[str].insert(id);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int m;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;m);</span><br><span class="line">    int indexQuery &#x3D; 0;</span><br><span class="line">    string contentQuery;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d: &quot;, &amp;indexQuery);</span><br><span class="line">        getline(cin, contentQuery);</span><br><span class="line">        cout &lt;&lt; indexQuery &lt;&lt; &quot;: &quot; &lt;&lt; contentQuery &lt;&lt; endl;</span><br><span class="line">        if (indexQuery &#x3D;&#x3D;  1) &#123;</span><br><span class="line">            if (titleToId.find(contentQuery) &#x3D;&#x3D; titleToId.end()) &#123;</span><br><span class="line">                printf(&quot;Not Found\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                for (set&lt;int&gt;::iterator it &#x3D; titleToId[contentQuery].begin(); it !&#x3D; titleToId[contentQuery].end(); it++) &#123;</span><br><span class="line">                    printf(&quot;%07d\n&quot;, *it);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (indexQuery &#x3D;&#x3D;  2) &#123;</span><br><span class="line">            if (authorToId.find(contentQuery) &#x3D;&#x3D; authorToId.end()) &#123;</span><br><span class="line">                printf(&quot;Not Found\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                for (set&lt;int&gt;::iterator it &#x3D; authorToId[contentQuery].begin(); it !&#x3D; authorToId[contentQuery].end(); it++) &#123;</span><br><span class="line">                    printf(&quot;%07d\n&quot;, *it);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (indexQuery &#x3D;&#x3D;  3) &#123;</span><br><span class="line">            if (keywordsToId.find(contentQuery) &#x3D;&#x3D; keywordsToId.end()) &#123;</span><br><span class="line">                printf(&quot;Not Found\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                for (set&lt;int&gt;::iterator it &#x3D; keywordsToId[contentQuery].begin(); it !&#x3D; keywordsToId[contentQuery].end(); it++) &#123;</span><br><span class="line">                    printf(&quot;%07d\n&quot;, *it);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (indexQuery &#x3D;&#x3D;  4) &#123;</span><br><span class="line">            if (publisherToId.find(contentQuery) &#x3D;&#x3D; publisherToId.end()) &#123;</span><br><span class="line">                printf(&quot;Not Found\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                for (set&lt;int&gt;::iterator it &#x3D; publisherToId[contentQuery].begin(); it !&#x3D; publisherToId[contentQuery].end(); it++) &#123;</span><br><span class="line">                    printf(&quot;%07d\n&quot;, *it);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            if (yearToId.find(contentQuery) &#x3D;&#x3D; yearToId.end()) &#123;</span><br><span class="line">                printf(&quot;Not Found\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                for (set&lt;int&gt;::iterator it &#x3D; yearToId[contentQuery].begin(); it !&#x3D; yearToId[contentQuery].end(); it++) &#123;</span><br><span class="line">                    printf(&quot;%07d\n&quot;, *it);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意，用set可以直接得到排序的结果，用vector还要用sort。用int接受id的话，输出要前面补零，否则测试点3 4过不了。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/21/STL%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/08/23/%E7%BB%88%E7%AB%AFls%E7%BE%8E%E5%8C%96%E5%B7%A5%E5%85%B7lsd/">展开全文 >></a>
         </p>
       
 
@@ -1481,7 +1470,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

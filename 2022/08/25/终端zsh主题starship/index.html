@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/10/25/xRzubn.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/10/25/xWSIT1.md.png">
 <meta property="article:published_time" content="2022-08-25T12:55:38.000Z">
-<meta property="article:modified_time" content="2022-10-25T13:50:27.026Z">
+<meta property="article:modified_time" content="2022-10-29T13:17:23.691Z">
 <meta property="article:author" content="command_zz">
 <meta property="article:tag" content="终端">
 <meta name="twitter:card" content="summary">
@@ -226,9 +226,34 @@
 <td>&lt;C-l&gt;</td>
 <td>相当于right键</td>
 </tr>
+<tr>
+<td>ls</td>
+<td>相当于lsd,带图标的ls工具</td>
+</tr>
+<tr>
+<td>vim</td>
+<td>相当于nvim</td>
+</tr>
+<tr>
+<td>ra</td>
+<td>相当于ranger键</td>
+</tr>
+<tr>
+<td>raj</td>
+<td>相当于ranger键,退出时自动跳到退出路径</td>
+</tr>
+<tr>
+<td>lt</td>
+<td>相当于ls –tree键</td>
+</tr>
+<tr>
+<td>reload</td>
+<td>相当于重新加载我的zshrc文件</td>
+</tr>
 </tbody></table>
 <h1 id="zsh介绍"><a href="#zsh介绍" class="headerlink" title="zsh介绍"></a>zsh介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">zsh官网</a>,任何问题都可以github项目主页查看，wiki中都有解决措施。</p>
-<p>zsh是一款shell，由于ohmyzsh项目的流行，zsh越来越成为主流的shell，不仅具有好看的界面，通过插件可以实现补全等炫酷功能，通过配置主题也可以很好的进行信息展示。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xRzubn"><img src="https://s1.ax1x.com/2022/10/25/xRzubn.md.png" alt="xRzubn.md.png"></a></p>
+<p>zsh是一款shell，由于ohmyzsh项目的流行，zsh越来越成为主流的shell，不仅具有好看的界面，通过插件可以实现补全等炫酷功能，通过配置主题也可以很好的进行信息展示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xRzubn"><img src="https://s1.ax1x.com/2022/10/25/xRzubn.md.png" alt="xRzubn.md.png"></a></p>
 <h2 id="1-zsh安装"><a href="#1-zsh安装" class="headerlink" title="1.zsh安装"></a>1.zsh安装</h2><p>可以使用命令,查看系统中存在哪些shell：</p>
 <p><code>cat /etc/shells</code></p>
 <p>可以使用命令，切换要使用的shell，切换zsh为例：</p>
@@ -236,9 +261,10 @@
 <h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>在最近几个版本的macOS中都已经存在zsh了，直接切换即可。</p>
 <h3 id="在centOS安装"><a href="#在centOS安装" class="headerlink" title="在centOS安装"></a>在centOS安装</h3><p><code>yum install zsh</code></p>
 <h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p><code>sudo apt install zsh</code></p>
+<h3 id="其他OS安装"><a href="#其他OS安装" class="headerlink" title="其他OS安装"></a>其他OS安装</h3><p>查看项目主页中对应的安装方法。</p>
 <h2 id="2-ohmyzsh安装"><a href="#2-ohmyzsh安装" class="headerlink" title="2.ohmyzsh安装"></a>2.ohmyzsh安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下载</span><br><span class="line">wget https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ohmyzsh&#x2F;ohmyzsh&#x2F;master&#x2F;tools&#x2F;install.sh</span><br><span class="line"></span><br><span class="line"># 安装</span><br><span class="line">sh install.sh</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-功能配置"><a href="#3-功能配置" class="headerlink" title="3.功能配置"></a>3.功能配置</h2><p>各类插件的配置，我之前也已经写过两篇博客，可以去那里参考。</p>
+<h2 id="3-功能配置"><a href="#3-功能配置" class="headerlink" title="3.功能配置"></a>3.功能配置</h2><p>各类插件的配置，我之前也已经写过两篇博客，可以去那里参考，也可以把我的<code>.zshrc</code>文件直接复制到你的<code>~</code>目录下，将我的<code>plugins</code>文件直接替换到<code>~/.oh-my-zsh/custom/plugins</code>,即可使用我的配置。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2021/07/16/item2-oh-my-zsh%E6%9C%80%E5%85%A8%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">1.item2 + oh my zsh最全配置教程</a></li>
 <li><a target="_blank" rel="noopener" href="https://command-z-z.github.io/2022/06/17/my-zsh%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8F%92%E4%BB%B6/">2.oh my zsh配置与插件</a></li>
@@ -405,7 +431,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zsh%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">zsh介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-zsh%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1.zsh安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8macOS%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在macOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8centOS%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在centOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8ubuntu%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在ubuntu安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ohmyzsh%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">2.ohmyzsh安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">3.功能配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#starship%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">starship介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-starship%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1.starship安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8macOS%E5%AE%89%E8%A3%85-1"><span class="toc-number"></span> <span class="toc-text">在macOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8other-Linux%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在other Linux安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-starship%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">2.starship配置</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AE%80%E8%AE%B0%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">快捷键简记表</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zsh%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">zsh介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-zsh%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1.zsh安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8macOS%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在macOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8centOS%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在centOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8ubuntu%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在ubuntu安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96OS%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">其他OS安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ohmyzsh%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">2.ohmyzsh安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">3.功能配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#starship%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">starship介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-starship%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">1.starship安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8macOS%E5%AE%89%E8%A3%85-1"><span class="toc-number"></span> <span class="toc-text">在macOS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8other-Linux%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">在other Linux安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-starship%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">2.starship配置</span></a>
                     </div>
                 </span>
             </div>

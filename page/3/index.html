@@ -164,6 +164,428 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-PaddleClas图像分类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/01/PaddleClas%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">PaddleClas图像分类</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/07/01/PaddleClas%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="archive-article-date">
+	
+  	<time datetime="2022-07-01T13:01:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-01</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文将讲解利用PaddleCals实现对图像进行分类的任务，利用AI Studio平台训练，并通过猫十二分类例子讲解如何进行训练与预测。</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><ul>
+<li>PaddlePaddle 2.1.2</li>
+<li>PaddleClas 2.3</li>
+</ul>
+<h2 id="下载PaddleClas"><a href="#下载PaddleClas" class="headerlink" title="下载PaddleClas"></a>下载PaddleClas</h2><p>此时可以将PaddleClas下载到项目中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!git clone https:&#x2F;&#x2F;gitee.com&#x2F;paddlepaddle&#x2F;PaddleClas&#x2F; --depth&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><h4 id="1-解压数据集"><a href="#1-解压数据集" class="headerlink" title="1.解压数据集"></a>1.解压数据集</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 解压缩数据集</span><br><span class="line">!unzip -qoa data&#x2F;data8136&#x2F;cat_data_sets_models.zip -d data&#x2F;</span><br></pre></td></tr></table></figure>
+<h4 id="2-划分数据集"><a href="#2-划分数据集" class="headerlink" title="2.划分数据集"></a>2.划分数据集</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">def break_data(target, rate&#x3D;0.2):</span><br><span class="line">    origin_dataset &#x3D; pd.read_csv(&quot;&#x2F;home&#x2F;aistudio&#x2F;data&#x2F;data_sets&#x2F;cat_12&#x2F;train_list.txt&quot;, delimiter&#x3D;&quot;\t&quot;, header&#x3D;None)  # 加入参数</span><br><span class="line">    # train_data, test_data &#x3D; train_test_split(origin_dataset, test_size&#x3D;rate)</span><br><span class="line">    train_data,eval_data&#x3D;train_test_split(origin_dataset, test_size&#x3D;rate)</span><br><span class="line">    train_filename &#x3D; os.path.join(target, &#39;train.txt&#39;)</span><br><span class="line">    # test_filename &#x3D; os.path.join(target, &#39;test.txt&#39;)</span><br><span class="line">    eval_filename &#x3D; os.path.join(target, &#39;eval.txt&#39;)</span><br><span class="line"></span><br><span class="line">    train_data.to_csv(train_filename, index&#x3D;False, sep&#x3D;&quot;\t&quot;, header&#x3D;None)</span><br><span class="line">    # test_data.to_csv(test_filename, index&#x3D;False, sep&#x3D;&quot;\t&quot;, header&#x3D;None)</span><br><span class="line">    eval_data.to_csv(eval_filename, index&#x3D;False, sep&#x3D;&quot;\t&quot;, header&#x3D;None)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    break_data(target&#x3D;&#39;data&#39;, rate&#x3D;0.2)</span><br></pre></td></tr></table></figure>
+<h4 id="3-通道转化"><a href="#3-通道转化" class="headerlink" title="3.通道转化"></a>3.通道转化</h4><p>由于图片中存在一些非RGB格式的图片，会影响训练，因此进行处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#导入需要的包</span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import json</span><br><span class="line">import cv2</span><br><span class="line">import numpy as np</span><br><span class="line">from PIL import Image</span><br><span class="line">import paddle</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">## 转换4通道为3通道</span><br><span class="line">def proc_img(src):</span><br><span class="line">    for root, dirs, files in os.walk(src):</span><br><span class="line">        if &#39;__MACOSX&#39; in root:continue</span><br><span class="line">        for file in files:            </span><br><span class="line">            src&#x3D;os.path.join(root,file)</span><br><span class="line">            img&#x3D;Image.open(src)</span><br><span class="line">            ## 转换4通道为3通道</span><br><span class="line">            if img.mode !&#x3D; &#39;RGB&#39;: </span><br><span class="line">                    img &#x3D; img.convert(&#39;RGB&#39;) </span><br><span class="line">                    img.save(src)    </span><br><span class="line">                    print(src)        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__&#x3D;&#x3D;&#39;__main__&#39;:</span><br><span class="line">    proc_img(&quot;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_train&quot;)</span><br><span class="line">    proc_img(&quot;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_test&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><h4 id="1-修改bug"><a href="#1-修改bug" class="headerlink" title="1.修改bug"></a>1.修改bug</h4><p>由于PaddleClas2.3版本读数据存在bug，因此修改如下文件<br>目录：\ppcls\data\dataloader\imagenet_dataset.py<br>注释:</p>
+<ul>
+<li><code>assert os.path.exists(self._cls_path)</code></li>
+<li><code>assert os.path.exists(self._img_path)</code><br>添加：</li>
+<li><code>self._cls_path=os.path.join(self._img_root,self._cls_path)</code><br>同时修改with open（）as fd:中的内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class ImageNetDataset(CommonDataset):</span><br><span class="line">    def _load_anno(self, seed&#x3D;None):</span><br><span class="line">        # 会对目录进行检测，如果cls_path使用相对目录，就会报错，在此注释掉，并修改为self._cls_path&#x3D;os.path.join(self._img_root,self._cls_path)</span><br><span class="line"></span><br><span class="line">        self.images &#x3D; []</span><br><span class="line">        self.labels &#x3D; []</span><br><span class="line"></span><br><span class="line">        with open(self._cls_path) as fd:</span><br><span class="line">            lines &#x3D; fd.readlines()</span><br><span class="line">            if seed is not None:</span><br><span class="line">                np.random.RandomState(seed).shuffle(lines)</span><br><span class="line">            for l in lines:</span><br><span class="line">            	  # tab分割</span><br><span class="line">                # l &#x3D; l.strip().split(&quot; &quot;)</span><br><span class="line">                l &#x3D; l.strip().split(&quot;\t&quot;)</span><br><span class="line">                self.images.append(os.path.join(self._img_root, l[0]))</span><br><span class="line">                self.labels.append(int(l[1]))</span><br><span class="line">                # 不需要判断这个</span><br><span class="line">                # assert os.path.exists(self.images[-1])</span><br></pre></td></tr></table></figure>
+<h4 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2.修改配置文件"></a>2.修改配置文件</h4>选择PaddleClas/ppcls/configs/ImageNet/ 中的模型，这里以ResNet为例，选择其中的<code>ResNet50_vd.yaml</code>配置文件，主要修改参数如下：</li>
+<li>class_num: 12<br>Train和Eval下均需修改</li>
+<li>image_root: /home/aistudio/data/data_sets/cat_12/</li>
+<li>cls_label_path: /home/aistudio/data/eval.txt</li>
+</ul>
+<h4 id="3-配置说明"><a href="#3-配置说明" class="headerlink" title="3.配置说明"></a>3.配置说明</h4><h6 id="3-1-全局配置-Global"><a href="#3-1-全局配置-Global" class="headerlink" title="3.1 全局配置(Global)"></a>3.1 全局配置(Global)</h6><table>
+<thead>
+<tr>
+<th align="center">参数名字</th>
+<th align="center">具体含义</th>
+<th align="center">默认值</th>
+<th align="center">可选值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">checkpoints</td>
+<td align="center">断点模型路径，用于恢复训练</td>
+<td align="center">null</td>
+<td align="center">str</td>
+</tr>
+<tr>
+<td align="center">pretrained_model</td>
+<td align="center">预训练模型路径</td>
+<td align="center">null</td>
+<td align="center">str</td>
+</tr>
+<tr>
+<td align="center">output_dir</td>
+<td align="center">保存模型路径</td>
+<td align="center">“./output/“</td>
+<td align="center">str</td>
+</tr>
+<tr>
+<td align="center">save_interval</td>
+<td align="center">每隔多少个epoch保存模型</td>
+<td align="center">1</td>
+<td align="center">int</td>
+</tr>
+<tr>
+<td align="center">eval_during_train</td>
+<td align="center">是否在训练时进行评估</td>
+<td align="center">True</td>
+<td align="center">bool</td>
+</tr>
+<tr>
+<td align="center">eval_interval</td>
+<td align="center">每隔多少个epoch进行模型评估</td>
+<td align="center">1</td>
+<td align="center">int</td>
+</tr>
+<tr>
+<td align="center">epochs</td>
+<td align="center">训练总epoch数</td>
+<td align="center"></td>
+<td align="center">int</td>
+</tr>
+<tr>
+<td align="center">print_batch_step</td>
+<td align="center">每隔多少个mini-batch打印输出</td>
+<td align="center">10</td>
+<td align="center">int</td>
+</tr>
+<tr>
+<td align="center">use_visualdl</td>
+<td align="center">是否是用visualdl可视化训练过程</td>
+<td align="center">False</td>
+<td align="center">bool</td>
+</tr>
+<tr>
+<td align="center">image_shape</td>
+<td align="center">图片大小</td>
+<td align="center">[3，224，224]</td>
+<td align="center">list, shape: (3,)</td>
+</tr>
+<tr>
+<td align="center">save_inference_dir</td>
+<td align="center">inference模型的保存路径</td>
+<td align="center">“./inference”</td>
+<td align="center">str</td>
+</tr>
+<tr>
+<td align="center">eval_mode</td>
+<td align="center">eval的模式</td>
+<td align="center">“classification”</td>
+<td align="center">“retrieval”</td>
+</tr>
+</tbody></table>
+<h6 id="3-2-结构-Arch"><a href="#3-2-结构-Arch" class="headerlink" title="3.2 结构(Arch)"></a>3.2 结构(Arch)</h6><table>
+<thead>
+<tr>
+<th align="center">参数名字</th>
+<th align="center">具体含义</th>
+<th align="center">默认值</th>
+<th align="center">可选值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">name</td>
+<td align="center">模型结构名字</td>
+<td align="center">ResNet50</td>
+<td align="center">PaddleClas提供的模型结构</td>
+</tr>
+<tr>
+<td align="center">class_num</td>
+<td align="center">分类数</td>
+<td align="center">1000</td>
+<td align="center">int</td>
+</tr>
+<tr>
+<td align="center">pretrained</td>
+<td align="center">预训练模型</td>
+<td align="center">False</td>
+<td align="center">bool， str</td>
+</tr>
+</tbody></table>
+<h6 id="3-3-损失函数（Loss）"><a href="#3-3-损失函数（Loss）" class="headerlink" title="3.3 损失函数（Loss）"></a>3.3 损失函数（Loss）</h6><table>
+<thead>
+<tr>
+<th align="center">参数名字</th>
+<th align="center">具体含义</th>
+<th align="center">默认值</th>
+<th align="center">可选值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">CELoss</td>
+<td align="center">交叉熵损失函数</td>
+<td align="center">——</td>
+<td align="center">——</td>
+</tr>
+<tr>
+<td align="center">CELoss.weight</td>
+<td align="center">CELoss的在整个Loss中的权重</td>
+<td align="center">1.0</td>
+<td align="center">float</td>
+</tr>
+<tr>
+<td align="center">CELoss.epsilon</td>
+<td align="center">CELoss中label_smooth的epsilon值</td>
+<td align="center">0.1</td>
+<td align="center">float，0-1之间</td>
+</tr>
+</tbody></table>
+<h6 id="3-4-优化器-Optimizer"><a href="#3-4-优化器-Optimizer" class="headerlink" title="3.4 优化器(Optimizer)"></a>3.4 优化器(Optimizer)</h6><table>
+<thead>
+<tr>
+<th align="center">参数名字</th>
+<th align="center">具体含义</th>
+<th align="center">默认值</th>
+<th align="center">可选值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">name</td>
+<td align="center">优化器方法名</td>
+<td align="center">“Momentum”</td>
+<td align="center">“RmsProp”等其他优化器</td>
+</tr>
+<tr>
+<td align="center">momentum</td>
+<td align="center">momentum值</td>
+<td align="center">0.9</td>
+<td align="center">float</td>
+</tr>
+<tr>
+<td align="center">lr.name</td>
+<td align="center">学习率下降方式</td>
+<td align="center">“Cosine”</td>
+<td align="center">“Linear”、”Piecewise”等其他下降方式</td>
+</tr>
+<tr>
+<td align="center">lr.learning_rate</td>
+<td align="center">学习率初始值</td>
+<td align="center">0.1</td>
+<td align="center">float</td>
+</tr>
+<tr>
+<td align="center">lr.warmup_epoch</td>
+<td align="center">warmup轮数</td>
+<td align="center">0</td>
+<td align="center">int，如5</td>
+</tr>
+<tr>
+<td align="center">regularizer.name</td>
+<td align="center">正则化方法名</td>
+<td align="center">“L2”</td>
+<td align="center">[“L1”, “L2”]</td>
+</tr>
+<tr>
+<td align="center">regularizer.coeff</td>
+<td align="center">正则化系数</td>
+<td align="center">0.00007</td>
+<td align="center">float</td>
+</tr>
+</tbody></table>
+<h4 id="4-开始训练"><a href="#4-开始训练" class="headerlink" title="4.开始训练"></a>4.开始训练</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用以下命令进入项目目录</span><br><span class="line">%cd PaddleClas&#x2F;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># GPU设置</span><br><span class="line">!export CUDA_VISIBLE_DEVICES&#x3D;0</span><br><span class="line"></span><br><span class="line"># -o Arch.pretrained&#x3D;True 使用预训练模型，当选择为True时，预训练权重会自动下载到本地</span><br><span class="line">!python tools&#x2F;train.py -c &#x2F;home&#x2F;aistudio&#x2F;PaddleClas&#x2F;ppcls&#x2F;configs&#x2F;ImageNet&#x2F;ResNet&#x2F;ResNet50_vd.yaml -o Arch.pretrained&#x3D;True</span><br></pre></td></tr></table></figure>
+
+<p>使用多卡训练</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">!export CUDA_VISIBLE_DEVICES&#x3D;0,1,2,3</span><br><span class="line">!python3 -m paddle.distributed.launch \</span><br><span class="line">    --gpus&#x3D;&quot;0,1,2,3&quot; \</span><br><span class="line">    tools&#x2F;train.py \</span><br><span class="line">        -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Arch.pretrained&#x3D;True</span><br></pre></td></tr></table></figure>
+
+<h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><p>输入以下命令进行单张图片预测：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 预测</span><br><span class="line">!python3 tools&#x2F;infer.py -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Infer.infer_imgs&#x3D;&#x2F;home&#x2F;aistudio&#x2F;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_test&#x2F;ou9Ik17GtHSThRCDLZm3f6vB8ybQ4xsl.jpg  -o Global.pretrained_model&#x3D;output&#x2F;ResNet50_vd&#x2F;best_model</span><br></pre></td></tr></table></figure>
+<p>输入以下命令进行批量图片预测，并重定向到output.txt文件中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 预测</span><br><span class="line">!python3 tools&#x2F;infer.py -c &#x2F;home&#x2F;aistudio&#x2F;ResNet50_vd.yaml -o Infer.infer_imgs&#x3D;&#x2F;home&#x2F;aistudio&#x2F;data&#x2F;data_sets&#x2F;cat_12&#x2F;cat_12_test&#x2F;  -o Global.pretrained_model&#x3D;output&#x2F;ResNet50_vd&#x2F;best_model &gt; output.txt</span><br></pre></td></tr></table></figure>
+<p>输入以下命令生成提交的csv文件格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import ast</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">with open(&quot;output.txt&quot;) as f:</span><br><span class="line">    ftxt &#x3D; f.read()</span><br><span class="line">    </span><br><span class="line">pattern &#x3D; r&quot;&#123;&#39;class_ids&#39;:.*?&#125;&quot;</span><br><span class="line">pre_results &#x3D; re.findall(pattern, ftxt)</span><br><span class="line">print(len(pre_results))</span><br><span class="line"></span><br><span class="line">pre_data &#x3D; []</span><br><span class="line">for pre_result in pre_results:</span><br><span class="line">    pre_dict &#x3D; ast.literal_eval(pre_result)  # [&quot;class_ids&quot;, &quot;scores&quot;, &quot;file_name&quot;, &quot;label_names&quot;]</span><br><span class="line">    pre_data.append([pre_dict[&quot;file_name&quot;].split(&quot;&#x2F;&quot;)[-1],\</span><br><span class="line">                            pre_dict[&quot;class_ids&quot;][0], pre_dict[&quot;scores&quot;][0]])</span><br><span class="line"></span><br><span class="line">columns &#x3D; [&quot;img_path&quot;, &quot;label&quot;, &quot;scores&quot;]</span><br><span class="line">pre_df &#x3D; pd.DataFrame(data&#x3D;pre_data,</span><br><span class="line">                       index&#x3D;range(len(pre_data)), </span><br><span class="line">                       columns&#x3D;columns)</span><br><span class="line"></span><br><span class="line">pre_df.drop(columns&#x3D;[&#39;scores&#39;],inplace&#x3D;True)  # 删除 scores 列</span><br><span class="line">pre_df.sort_values([&quot;img_path&quot;], inplace&#x3D;True)  # 排序</span><br><span class="line">pre_df.to_csv(&#39;submission.csv&#39;,index&#x3D;None,header&#x3D;None)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Paddle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/01/PaddleClas%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vim练级手册（八）-symbols-outline大纲视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/">vim练级手册（八） ---symbols_outline大纲视图</a>
+    </h1>
+  
+
+        
+        
+<a href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/" class="archive-article-date">
+	
+  	<time datetime="2022-06-20T14:46:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-20</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;leader&gt; o</td>
+<td>打开大纲视图</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>o</td>
+<td>定位symbol对应的位置</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>跳到symbol对应的位置</td>
+</tr>
+<tr>
+<td>K</td>
+<td>悬浮看symbol内容</td>
+</tr>
+<tr>
+<td>a</td>
+<td>重新命名symbol</td>
+</tr>
+</tbody></table>
+<h2 id="1-symbols-outline-安装"><a href="#1-symbols-outline-安装" class="headerlink" title="1.symbols_outline 安装"></a>1.symbols_outline 安装</h2><h4 id="安装symbols-outline"><a href="#安装symbols-outline" class="headerlink" title="安装symbols-outline"></a>安装symbols-outline</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 文件大纲	</span><br><span class="line">use	&#39;simrat39&#x2F;symbols-outline.nvim&#39;</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
+<h4 id="配置symbols-outline插件"><a href="#配置symbols-outline插件" class="headerlink" title="配置symbols_outline插件"></a>配置symbols_outline插件</h4><p>创建以下文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;symbols_outline.lua</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
+</blockquote>
+<p>在文件中添加以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">-- init.lua</span><br><span class="line">vim.g.symbols_outline &#x3D; &#123;</span><br><span class="line">    highlight_hovered_item &#x3D; true,</span><br><span class="line">    show_guides &#x3D; true,</span><br><span class="line">    auto_preview &#x3D; true,</span><br><span class="line">    position &#x3D; &#39;right&#39;,</span><br><span class="line">    relative_width &#x3D; true,</span><br><span class="line">    width &#x3D; 25,</span><br><span class="line">    auto_close &#x3D; false,</span><br><span class="line">    show_numbers &#x3D; false,</span><br><span class="line">    show_relative_numbers &#x3D; false,</span><br><span class="line">    show_symbol_details &#x3D; true,</span><br><span class="line">    preview_bg_highlight &#x3D; &#39;Pmenu&#39;,</span><br><span class="line">    keymaps &#x3D; &#123; -- These keymaps can be a string or a table for multiple keys</span><br><span class="line">        close &#x3D; &#123;&quot;&lt;Esc&gt;&quot;, &quot;q&quot;&#125;,</span><br><span class="line">        goto_location &#x3D; &quot;&lt;Cr&gt;&quot;,</span><br><span class="line">        focus_location &#x3D; &quot;o&quot;,</span><br><span class="line">        hover_symbol &#x3D; &quot;&lt;C-space&gt;&quot;,</span><br><span class="line">        toggle_preview &#x3D; &quot;K&quot;,</span><br><span class="line">        rename_symbol &#x3D; &quot;r&quot;,</span><br><span class="line">        code_actions &#x3D; &quot;a&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    lsp_blacklist &#x3D; &#123;&#125;,</span><br><span class="line">    symbol_blacklist &#x3D; &#123;&#125;,</span><br><span class="line">    symbols &#x3D; &#123;</span><br><span class="line">        File &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSURI&quot;&#125;,</span><br><span class="line">        Module &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Namespace &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Package &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSNamespace&quot;&#125;,</span><br><span class="line">        Class &#x3D; &#123;icon &#x3D; &quot;𝓒&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Method &#x3D; &#123;icon &#x3D; &quot;ƒ&quot;, hl &#x3D; &quot;TSMethod&quot;&#125;,</span><br><span class="line">        Property &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSMethod&quot;&#125;,</span><br><span class="line">        Field &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSField&quot;&#125;,</span><br><span class="line">        Constructor &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstructor&quot;&#125;,</span><br><span class="line">        Enum &#x3D; &#123;icon &#x3D; &quot;ℰ&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Interface &#x3D; &#123;icon &#x3D; &quot;ﰮ&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Function &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSFunction&quot;&#125;,</span><br><span class="line">        Variable &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        Constant &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        String &#x3D; &#123;icon &#x3D; &quot;𝓐&quot;, hl &#x3D; &quot;TSString&quot;&#125;,</span><br><span class="line">        Number &#x3D; &#123;icon &#x3D; &quot;#&quot;, hl &#x3D; &quot;TSNumber&quot;&#125;,</span><br><span class="line">        Boolean &#x3D; &#123;icon &#x3D; &quot;⊨&quot;, hl &#x3D; &quot;TSBoolean&quot;&#125;,</span><br><span class="line">        Array &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSConstant&quot;&#125;,</span><br><span class="line">        Object &#x3D; &#123;icon &#x3D; &quot;⦿&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Key &#x3D; &#123;icon &#x3D; &quot;🔐&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Null &#x3D; &#123;icon &#x3D; &quot;NULL&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        EnumMember &#x3D; &#123;icon &#x3D; &quot;&quot;, hl &#x3D; &quot;TSField&quot;&#125;,</span><br><span class="line">        Struct &#x3D; &#123;icon &#x3D; &quot;𝓢&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Event &#x3D; &#123;icon &#x3D; &quot;🗲&quot;, hl &#x3D; &quot;TSType&quot;&#125;,</span><br><span class="line">        Operator &#x3D; &#123;icon &#x3D; &quot;+&quot;, hl &#x3D; &quot;TSOperator&quot;&#125;,</span><br><span class="line">        TypeParameter &#x3D; &#123;icon &#x3D; &quot;𝙏&quot;, hl &#x3D; &quot;TSParameter&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/20/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E5%85%AB%EF%BC%89-symbols-outline%E5%A4%A7%E7%BA%B2%E8%A7%86%E5%9B%BE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-my-zsh配置与插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1102,302 +1524,9 @@
 
 
   
-    <article id="post-vim练级手册（三）-界面美化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">vim练级手册（三） ---界面美化</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/" class="archive-article-date">
-	
-  	<time datetime="2022-03-25T01:25:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-25</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&lt;leader&gt;+数字</td>
-<td>切换buffer(不同文件)</td>
-</tr>
-</tbody></table>
-<h2 id="1-vim-airline"><a href="#1-vim-airline" class="headerlink" title="1.vim-airline"></a>1.vim-airline</h2><p><code>vim-airline</code>是一款导航栏插件，可以看到文件信息等情况，可以更方便切换文件。</p>
-<h4 id="安装vim-airline"><a href="#安装vim-airline" class="headerlink" title="安装vim-airline"></a>安装vim-airline</h4><p>首先使用packer包进行插件安装：<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim&#39;</code>增加如下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use &#123;</span><br><span class="line">        &quot;vim-airline&#x2F;vim-airline&quot;,</span><br><span class="line">        requires &#x3D; &#123;</span><br><span class="line">          &quot;vim-airline&#x2F;vim-airline-themes&quot;,</span><br><span class="line">          --综合图标支持such vim-airline lightline, vim-startify</span><br><span class="line">          &quot;ryanoasis&#x2F;vim-devicons&quot;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code>安装成功后，重启nvim界面已经发生变化。</p>
-<h4 id="配置vim-airline"><a href="#配置vim-airline" class="headerlink" title="配置vim-airline"></a>配置vim-airline</h4><p>创建以下文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;airline.rc.vim</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>把各个插件的配置放到<code>~/.config/nvim/after/plugin/</code>目录中</p>
-</blockquote>
-<p>在文件中添加以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot; vim-airline</span><br><span class="line">let g:airline#extensions#tabline#enabled &#x3D; 1</span><br><span class="line">&quot; 使用字体</span><br><span class="line">let g:airline_powerline_fonts &#x3D; 1</span><br><span class="line">let g:airline#extensions#tabline#buffer_idx_mode &#x3D; 1</span><br><span class="line">nmap &lt;leader&gt;1 &lt;Plug&gt;AirlineSelectTab1</span><br><span class="line">nmap &lt;leader&gt;2 &lt;Plug&gt;AirlineSelectTab2</span><br><span class="line">nmap &lt;leader&gt;3 &lt;Plug&gt;AirlineSelectTab3</span><br><span class="line">nmap &lt;leader&gt;4 &lt;Plug&gt;AirlineSelectTab4</span><br><span class="line">nmap &lt;leader&gt;5 &lt;Plug&gt;AirlineSelectTab5</span><br><span class="line">nmap &lt;leader&gt;6 &lt;Plug&gt;AirlineSelectTab6</span><br><span class="line">nmap &lt;leader&gt;7 &lt;Plug&gt;AirlineSelectTab7</span><br><span class="line">nmap &lt;leader&gt;8 &lt;Plug&gt;AirlineSelectTab8</span><br><span class="line">nmap &lt;leader&gt;9 &lt;Plug&gt;AirlineSelectTab9</span><br></pre></td></tr></table></figure>
-
-<p>虽然<code>~/.config/nvim/after/plugin/</code>目录的配置文件会自动加载，但是airline的配置需要更高的加载优先级。所以要在init.vim中手动引用一下。<br>编辑<code>~/.config/nvim/init.vim</code>并增加下面一行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.config&#x2F;nvim&#x2F;after&#x2F;plugin&#x2F;airline.rc.vim</span><br></pre></td></tr></table></figure>
-
-<p>配置完成后就可以看到下方会出现一条bar，可以看到文件、模式等信息，同时上方出现buffer栏为当前打开的文件。</p>
-<h2 id="2-gruvbox-material"><a href="#2-gruvbox-material" class="headerlink" title="2.gruvbox-material"></a>2.gruvbox-material</h2><h4 id="安装gruvbox-material"><a href="#安装gruvbox-material" class="headerlink" title="安装gruvbox-material"></a>安装gruvbox-material</h4><p>使用packer包进行插件安装:<br>修改<code>~/.config/nvim/lua/plugins.lua</code>文件，并在<code>use &#39;wbthomason/packer.nvim</code>增加如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use &quot;sainnhe&#x2F;gruvbox_material&quot;</span><br></pre></td></tr></table></figure>
-<p><code>:wq</code>退出重新打开nvim后，执行<code>:PackerInstall</code></p>
-<h4 id="配置gruvbox-material"><a href="#配置gruvbox-material" class="headerlink" title="配置gruvbox-material"></a>配置gruvbox-material</h4><blockquote>
-<p>把主题相关的内容放到<code>~/.config/nvim/colors/</code>目录管理。</p>
-</blockquote>
-<p>创建<code>~/.config/nvim/colors/gruvbox_material.rc.vim</code>,内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot; Important!!</span><br><span class="line">if has(&#39;termguicolors&#39;)</span><br><span class="line">	set termguicolors</span><br><span class="line">endif</span><br><span class="line">&quot; For dark version.</span><br><span class="line">set background&#x3D;dark</span><br><span class="line">&quot; For light version.</span><br><span class="line">&quot;set background&#x3D;light</span><br><span class="line">&quot; Set contrast.</span><br><span class="line">&quot; This configuration option should be placed before &#96;colorscheme gruvbox-material&#96;.</span><br><span class="line">&quot; Available values: &#39;hard&#39;, &#39;medium&#39;(default), &#39;soft&#39;</span><br><span class="line">let g:gruvbox_material_background &#x3D; &#39;hard&#39;</span><br><span class="line">&quot; 使用try，如果配色方案不存在，也不会报错</span><br><span class="line">try</span><br><span class="line">	colorscheme gruvbox-material</span><br><span class="line">catch &#x2F;^Vim\%((\a\+)\)\&#x3D;:E185&#x2F;</span><br><span class="line">    &quot; deal with it</span><br><span class="line">endtry</span><br></pre></td></tr></table></figure>
-
-<p>编辑<code>~/.config/nvim/init.vim</code>并增加下面一行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.config&#x2F;nvim&#x2F;colors&#x2F;gruvbox_material.rc.vim</span><br></pre></td></tr></table></figure>
-<p>做完这些配置，重启就可以看到效果了。</p>
-<h2 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lxyoucan/article/details/120544801">03_[nvim0.5+从0单排]_界面美化与主题</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/25/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%B8%89%EF%BC%89-%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vim练级手册（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/24/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%8C%EF%BC%89/">vim练级手册（二）---模式讲解</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/03/24/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-	
-  	<time datetime="2022-03-24T15:14:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-24</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习vim最重要的是了解其常用的模式，vim中常用的模式有:<code>normal</code>,<code>insert</code>,<code>visual</code>,<code>command</code>,<code>replece</code></p>
-<h4 id="快捷键简记表"><a href="#快捷键简记表" class="headerlink" title="快捷键简记表"></a>快捷键简记表</h4><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>insert模式</td>
-<td></td>
-</tr>
-<tr>
-<td>i</td>
-<td>在光标前进入 insert 模式</td>
-</tr>
-<tr>
-<td>I</td>
-<td>在当前行左边第一个非空字符前进入 insert 模式，类似其他编辑器的&lt;c-a&gt; 快捷键</td>
-</tr>
-<tr>
-<td>a</td>
-<td>在光标后进入 insert 模式</td>
-</tr>
-<tr>
-<td>A</td>
-<td>在当前行右边第一个非空字符前进入 insert 模式，类似其他编辑器的 &lt;c-e&gt; 快捷键</td>
-</tr>
-<tr>
-<td>o</td>
-<td>在光标的下一行插入</td>
-</tr>
-<tr>
-<td>O</td>
-<td>在光标的上一行插入</td>
-</tr>
-<tr>
-<td>s</td>
-<td>删除当前字符，并进入 insert 模式</td>
-</tr>
-<tr>
-<td>S</td>
-<td>删除当前行，并进入插入模式</td>
-</tr>
-<tr>
-<td>cc</td>
-<td>删除当前行，并进入插入模式</td>
-</tr>
-<tr>
-<td>visual模式</td>
-<td></td>
-</tr>
-<tr>
-<td>v</td>
-<td>选中当前字符，并进入 visual 模式，随着光标的游走来选中字符</td>
-</tr>
-<tr>
-<td>V</td>
-<td>选中当前行，并进入 visual 模式，随着光标的上下移动整行选中字符</td>
-</tr>
-<tr>
-<td>&lt;c-v&gt;</td>
-<td>选中当前字符，并进去 visual 模式，随着光标的移动以长方形的模式选中字符</td>
-</tr>
-<tr>
-<td>replace模式</td>
-<td></td>
-</tr>
-<tr>
-<td>r</td>
-<td>替换单个字符，自动返回 normal 模式</td>
-</tr>
-<tr>
-<td>R</td>
-<td>连续替换多个字符，手动 &lt;esc&gt; 返回 normal 模式</td>
-</tr>
-</tbody></table>
-<h2 id="1-normal模式"><a href="#1-normal模式" class="headerlink" title="1.normal模式"></a>1.normal模式</h2><p>当我们使用<code>vim</code>进入 Vim 编辑器时，默认就是 <code>normal</code> 模式。</p>
-<p>我们大部分时间都呆在该模式下，该模式下，我们几乎可以做除了插入数据以外的任何操作，其中一部分就是上一章我们讲到的那些。</p>
-<p>一般情况下，我们都是从 <code>normal</code> 模式去到其他的模式进行操作，如果想回来，那就按<code>&lt;esc&gt;</code>键，有时候你可能会搞不清楚现在在哪个模式下，多按几下<code> &lt;esc&gt;</code> 返回 <code>normal</code> 模式总是没有错的。因为接下讲到的其他模式都是从 <code>normal</code> 模式进入的。</p>
-<h2 id="2-insert模式"><a href="#2-insert模式" class="headerlink" title="2.insert模式"></a>2.insert模式</h2><p>跟 <code>normal</code> 交互最频繁的就是 <code>insert </code>模式，不管我们的光标移动多灵活，最终目的就是去往该去的地方，然后插入数据。</p>
-<p>在该模式下，我们可以像其他 IDE 一样，输入所有我们需要输入的信息。</p>
-<p>在该模式下，光标移动不会很方便，默认情况下只能通过键盘方向键和鼠标来移动。所以才需要返回 <code>normal</code> 模式移动光标，再进入 <code>insert</code> 模式，如此往复，开始你会觉得很别扭，经常按错键，但是练熟以后你会爱上它的，因为 <code>normal</code> 模式下操作真的很方便。不过在 <code>insert</code> 模式中也想手不离开键盘中心区，就进行短距离的移动也不是不可以，不过需要配置一下我们的 Vim 编辑器，当然，这是后话，以后我再介绍。</p>
-<p>进入 <code>insert</code> 模式有很多种方式，除了最常用的 <code>i</code>还有如下方式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i   &quot; 在光标前进入 insert 模式</span><br><span class="line">I   &quot; 在当前行左边第一个非空字符前进入 insert 模式，类似其他编辑器的 &lt;c-a&gt; 快捷键</span><br><span class="line">a   &quot; 在光标后进入 insert 模式</span><br><span class="line">A   &quot; 在当前行右边第一个非空字符前进入 insert 模式，类似其他编辑器的 &lt;c-e&gt; 快捷键</span><br><span class="line">o   &quot; 在光标的下一行插入</span><br><span class="line">O   &quot; 在光标的上一行插入</span><br><span class="line">s   &quot; 删除当前字符，并进入 insert 模式&quot;</span><br><span class="line">S   &quot; 删除当前行，并进入插入模式</span><br><span class="line">cc  &quot; 删除当前行，并进入插入模式</span><br></pre></td></tr></table></figure>
-<p>这就已经很多了，对吧。但是除了这些“循规蹈矩”的操作外，还有很多更方便，更有趣的键位，比如<code> c</code> 键，就可以引申出许多高效的插入方式，但是不要贪多，我们慢慢学。</p>
-<p>现在你应该立马练习起来，把每个键位先尝试一下，然后忘掉几个，只先频繁使用几个你最常用的方式，我建议先从 <code>i</code>, <code>a</code>, <code>o</code>, <code>cc </code>开始，你觉得？</p>
-<h2 id="3-visual模式"><a href="#3-visual模式" class="headerlink" title="3.visual模式"></a>3.visual模式</h2><p><code>visual</code> 模式简单来说，是选中一些字符，是指进入一个“块”中，我们可以对这个块进行删除、复制等简单或复杂的操作</p>
-<p>进入<code> visual</code> 模式后，我们可以使用上一章讲到的所有移动光标的操作来扩大“块”的范围，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">v       &quot; 选中当前字符，并进入 visual 模式，随着光标的游走来选中字符</span><br><span class="line">V       &quot; 选中当前行，并进入 visual 模式，随着光标的上下移动整行选中字符</span><br><span class="line">&lt;c-v&gt;   &quot; 选中当前字符，并进去 visual 模式，随着光标的移动以长方形的模式选中字符</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-command模式"><a href="#4-command模式" class="headerlink" title="4. command模式"></a>4. command模式</h2><p><code>command</code> 模式顾名思义就是命令行模式，该模式下可以执行保存推出、分割窗口、插件管理等命令。</p>
-<p>按下 : 进入<code> command</code> 模式，输入命令后回车 <code>&lt;cr&gt;</code> 生效。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:e hello.py</span><br></pre></td></tr></table></figure>
-<p>上面的例子将打开同一文件夹下的hellp.py文件。</p>
-<h2 id="5-replece模式"><a href="#5-replece模式" class="headerlink" title="5.replece模式"></a>5.replece模式</h2><p><code>replace</code> 模式的使用频率相对较少，主要在替换单个或连续多个字符时使用。</p>
-<p>将光标移动到想要替换的字符上，按下<code>r</code>进入 <code>replace</code> 模式，然后按下按下任意字符，此时你会看到字符已经替换成功，并且自动返回<code> normal</code> 模式。</p>
-<p>如果你想要连续替换多个字符，需要使用 <code>R</code>，比如有一个单词 <code>code</code>，我们将光标移动到 <code>c </code>上，然后按下 R，随后键入 <code>name</code>，你会发现整个单词被替换过来，并且现在仍然停留在 <code>replace</code> 模式下，需要按下<code> &lt;esc&gt;</code> 才会返回 <code>normal</code> 模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r   &quot; 替换单个字符，自动返回 normal 模式</span><br><span class="line">R   &quot; 连续替换多个字符，手动 &lt;esc&gt; 返回 normal 模式</span><br></pre></td></tr></table></figure>
-<p>该模式在使用得当的情况下，会让开发非常有效率，同样的，我们需要多加练习才行。</p>
-<p>现在我们讲的这么多模式，并不是让你全到牢记，你难免会迷糊，没有关系，现在你只需要大概了解有这么个东西，后面我们会经常用到这些名词，看得多了也就熟了。</p>
-<h3 id="转载文章"><a href="#转载文章" class="headerlink" title="转载文章"></a>转载文章</h3><p><a target="_blank" rel="noopener" href="https://vim.wxnacy.com/#docs/mode">Vim 练级手册</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/24/vim%E7%BB%83%E7%BA%A7%E6%89%8B%E5%86%8C%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
