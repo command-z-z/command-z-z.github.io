@@ -164,6 +164,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-智臾实习总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/12/%E6%99%BA%E8%87%BE%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/">智臾实习总结</a>
+    </h1>
+  
+
+        
+        
+<a href="/2023/04/12/%E6%99%BA%E8%87%BE%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" class="archive-article-date">
+	
+  	<time datetime="2023-04-12T01:45:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-12</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近忙完了手头的工作,有时间来复盘一下在智臾工作的这几个月,并对实习进行一个回顾和总结。</p>
+<p>背景：本人浙江双非本，专业计科，无工作经历，保研至浙大，趁着保研后的空闲时光出来找实习，四处碰壁，感谢🙏智臾给个实习机会。不得不说 DolphinDB 的招聘效率是真的高，记得是周一上午投递简历，下午就收到HR回复，给了笔试题目。周四下午安排了一面，一面是后来的导师嘉珩（感觉自己面试发挥的不太行，竟然给过了🐶），一面结束后直接二面（也是部门的小伙伴），二面过了就直接发offer，下周一直接上班。后续在 DolphinDB 研发部的API部门担任Python开发一职，实习时间2022.10.24～2023.3.17。</p>
+<p>日常体验：公司实行导师制，每位新入职的小伙伴配备一位导师，这对于我这样的职场新手(社恐)来说，帮助我更快的适应公司。有问题也可以直接找导师帮助，问题解决起来十分高效。公司实行扁平化管理，没有级别制度，各个小伙伴都是亲切的昵称，跨越年龄和职称，交流起来都很亲切。而且公司同龄人很多（发现导师和我竟然同年），交流起来也很方便，公司保持30名左右实习生，所以来DolphinDB实习不要感到有压力。公司虽然有时候很忙，但是我从来没有加过班，CEO也提倡WLB，在公司做好任务，到点下班就行。记得年前的最后一天，CEO在群里直接说大家下午三点就可以下班了，愉快回去过春节。</p>
+<p>工作：我们部门主要的职责是做 DolphinDB 数据库周边生态的开发和插件开发，不同语言都有相应的API支持。而我所对应的Python语言也有相应的API支持，不过实习期间API都由导师一个人维护，我更多的是做了些提升效率的工具和插件开发。</p>
+<ul>
+<li><p>刚开始接手的任务是涛平哥所提出的一个idea，公司的知识信息很多，但是散落在不同的网站（搜索及其低效），想做一个一站式的知识库搜索引擎，帮助公司内部或者外部用户更加高效的信息搜索。这个项目是由我一个人负责的，并进行全栈开发，对我来说也是极具挑战性的。所需的技术栈之前我并没有接触过，都是边做边学，整个项目用Python进行串联。也是花了进一个月时间完成，从数据爬取并导入es数据库，到es数据索引建立并进行数据搜索，到最后的后端（Flask）的搭建，前端叫后续叫前端部门的小伙伴帮忙美化了。虽然过程很艰难，但是当项目上线在内部使用时的好评，让我成就感满满。</p>
+</li>
+<li><p>第二个主要任务是开发了airflow的DolphinDB插件，airflow是一款任务调度工具，可以自动化的对构建的任务进行处理。DolphinDB插件可以让airflow更加方便的来调度DolphinDB的任务，通过调用一个DolphinDBOperator来构建一个任务，并设置任务间的依赖关系，快速的构建一整套自动化流程，具体案例可以参看<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/619893184">DolphinDB +Python Airflow 高效实现数据清洗</a>。airflow连接数据库的方式是依赖于<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0249/">PEP249协议</a>,为此也在原Python API dolphindb的基础上，进行封装开发了pydolphindb包。在这个包的基础上，也可以更方便的开发其他Apache应用插件，丰富DolphinDB生态。</p>
+</li>
+<li><p>其余的就用Python写了一些小工具，跨部门协作等。此外还输出一篇文档<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/597092158">从 Redshift 迁移数据到 DolphinDB</a>，利用DolphinDB的ODBC插件将Redshift数据导入到DolphinDB，公司对输出文章还有奖励哦！</p>
+</li>
+</ul>
+<p>活动：公司不仅关注业务层面的工作，业余活动也相当丰富</p>
+<ul>
+<li><p>入职第一天就遇到了1024程序员节，有超级马里奥、拳皇等游戏，赢了还有丰富奖金，下午茶还有KFC、麦当当，初时印象分就拉满。年会也有一个下午的冰壶团队赛，考验团队的默契，也很有意思。</p>
+</li>
+<li><p>公司每周三都有租羽毛球、篮球场地，每周三下班都会和小伙伴去运动下，工作与生活平衡。</p>
+</li>
+<li><p>每天都有下午茶时间，水果和零食无限续。部门会有不定期的团建，研发部基本就是去吃顿海底捞，实习期间白嫖过两顿，很满足。</p>
+</li>
+</ul>
+<p>总结：在智臾的这5个月里，自己的code能力不断提高，收获颇多。同时公司大佬也有很多，导师的能力(peer pressure)也让我感到自己是多么菜，看到研发总监的故事也有激励着我。公司对于实习生也有着激励计划-星臾计划，凭借着实习期间的工作也很荣幸获得优秀实习生荣誉<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/e5pe_LNwgzv-eVu8gVEMGg">Keep Walking, Keep Thinking</a>。后续由于毕设原因不得不离职了，来DolphinDB实习是大学期间一段美好且有意义的经历，也祝愿DolphinDB越来越好。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/12/%E6%99%BA%E8%87%BE%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-字节日常实习-后端一面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1382,92 +1479,6 @@
 
 
   
-    <article id="post-终端ls美化工具lsd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/23/%E7%BB%88%E7%AB%AFls%E7%BE%8E%E5%8C%96%E5%B7%A5%E5%85%B7lsd/">终端ls美化工具lsd与字体安装</a>
-    </h1>
-  
-
-        
-        
-<a href="/2022/08/23/%E7%BB%88%E7%AB%AFls%E7%BE%8E%E5%8C%96%E5%B7%A5%E5%85%B7lsd/" class="archive-article-date">
-	
-  	<time datetime="2022-08-23T09:12:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-23</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是我终端配置文件教程的第四章，我将详细的讲解lsd工具和系统字体安装，以及我的个人字体信息。</p>
-<p>我的个人<a target="_blank" rel="noopener" href="https://github.com/command-z-z/dotfiles">配置地址</a>,可以去我的仓库抄我的配置,本文所讲的字体在<code>font</code>文件夹中, welcome to star🌟。</p>
-<h1 id="lsd介绍"><a href="#lsd介绍" class="headerlink" title="lsd介绍"></a>lsd介绍</h1><p><a target="_blank" rel="noopener" href="https://github.com/Peltoche/lsd">lsd官网</a>,任何问题都可以github项目主页查看，README中都有解决措施。</p>
-<p>lsd是一代ls，在ls的基础上加了icon,color,tree-viewer等特性，作为最经常使用的终端命令之一，美化ls是一次不错的尝试。</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/x54PzR"><img src="https://s1.ax1x.com/2022/10/29/x54PzR.md.png" alt="x54PzR.md.png"></a></p>
-<h2 id="1-lsd安装"><a href="#1-lsd安装" class="headerlink" title="1.lsd安装"></a>1.lsd安装</h2><h3 id="在macOS安装"><a href="#在macOS安装" class="headerlink" title="在macOS安装"></a>在macOS安装</h3><p>安装lsd，即可使用基本功能</p>
-<p><code>brew install lsd</code></p>
-<h3 id="在ubuntu安装"><a href="#在ubuntu安装" class="headerlink" title="在ubuntu安装"></a>在ubuntu安装</h3><p>安装lsd，即可使用基本功能</p>
-<p>去<a target="_blank" rel="noopener" href="https://github.com/Peltoche/lsd/releases">realses</a>处，下载对应ubuntu的<code>lsd_x.xx.x_amd64.deb</code>文件，使用命令<code>sudo dpkg -i lsd_x.xx.x_amd64.deb</code>即可安装。 </p>
-<h3 id="其他OS安装"><a href="#其他OS安装" class="headerlink" title="其他OS安装"></a>其他OS安装</h3><p>查看项目主页中对应的安装方法。</p>
-<h2 id="2-lsd配置"><a href="#2-lsd配置" class="headerlink" title="2.lsd配置"></a>2.lsd配置</h2><p>lsd的配置文件被放在<code>~/.config/lsd/config.yaml</code>中，图标文件被放在<code>~/.config/lsd/icon.yaml</code>中，由于默认配置已基本满足要求，笔者未做相应的配置，开箱即用。</p>
-<h1 id="Nerd-font"><a href="#Nerd-font" class="headerlink" title="Nerd font"></a>Nerd font</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">终端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/23/%E7%BB%88%E7%AB%AFls%E7%BE%8E%E5%8C%96%E5%B7%A5%E5%85%B7lsd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1482,7 +1493,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 command_zz
+    		&copy; 2023 command_zz
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

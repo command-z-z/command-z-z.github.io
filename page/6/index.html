@@ -164,6 +164,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数字图像处理-学习笔记（5）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/">数字图像处理-学习笔记（5）</a>
+    </h1>
+  
+
+        
+        
+<a href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/" class="archive-article-date">
+	
+  	<time datetime="2021-04-28T15:36:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-28</time>
+</a>
+        
+            </header>      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="频率域图像增强"><a href="#频率域图像增强" class="headerlink" title="频率域图像增强"></a>频率域图像增强</h2><p><strong>为什么要在频率域研究图像增强？</strong></p>
+<ul>
+<li>可以利用频率成分和图像外表之间的对应关系。一些在空间域表述困难的增强任务，在频率域中变得非常普通。</li>
+<li>滤波在频率域更为直观，它可以解释空间域滤波的某些性质</li>
+<li>可以在频率域指定滤波器，做逆变换，然后在空间域使用结果滤波器作为空间域滤波器的指导，一旦通过频率试验选择了空间滤波，通常实施都在空间域进行。</li>
+</ul>
+<h3 id="傅立叶变换"><a href="#傅立叶变换" class="headerlink" title="傅立叶变换"></a>傅立叶变换</h3><p>性质：</p>
+<ul>
+<li>平移性质</li>
+<li>分配律</li>
+<li>尺度变换</li>
+<li>旋转性</li>
+<li>周期性和共轭对称性</li>
+<li>平均值</li>
+<li>可分性</li>
+<li>卷积</li>
+</ul>
+<h3 id="频率域图像增强-1"><a href="#频率域图像增强-1" class="headerlink" title="频率域图像增强"></a>频率域图像增强</h3><ul>
+<li>低通滤波器</li>
+<li>高通滤波器</li>
+</ul>
+<p><strong>傅立叶变换的频率分量和图像空间特征之间的联系</strong></p>
+<ul>
+<li>变化最慢的频率成分（u=v=0）对应一幅图像的平均灰度级<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/gEarjI"><img src="https://z3.ax1x.com/2021/04/30/gEarjI.md.png" alt="gEarjI.md.png"></a></li>
+<li>当从变换的原点移开时，低频对应着图像的慢变化分量，如图像的平滑部分。</li>
+<li>进一步离开原点时，较高的频率对应图像中变化越来越快的灰度级，如边缘或噪声等尖锐部分。</li>
+</ul>
+<p><strong>频率域的滤波步骤</strong></p>
+<ol>
+<li>用$(-1)^{x+y}乘以输入图像进行中心变换f(x,y)(-1)^{x+y} \leftrightarrow F(u-M/2,v-N/2)$</li>
+<li>计算1中的DFT$ F(u,v)$</li>
+<li>用滤波器函数$H(u,v)$乘以$F(u,v)$</li>
+<li>计算3中结果的IDFT</li>
+<li>得到4中结果的实部</li>
+<li>用$(-1)^{x+y}乘以5中的结果$</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/28/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数字图像处理-学习笔记（4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1168,104 +1279,6 @@
 
 
   
-    <article id="post-GMT地形图绘制-学习笔记（2）-绘制海岸线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">GMT地形图绘制 学习笔记（2） -绘制海岸线</a>
-    </h1>
-  
-
-        
-        
-<a href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/" class="archive-article-date">
-	
-  	<time datetime="2021-01-28T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-28</time>
-</a>
-        
-            </header>      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h4 id="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"><a href="#本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。" class="headerlink" title="本笔记借鉴知乎网友的笔记，只供自己参考学习，无任何商用。"></a>本笔记借鉴<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/sangchengfang/posts">知乎网友</a>的笔记，只供自己参考学习，无任何商用。</h4></blockquote>
-<h3 id="绘制海岸线"><a href="#绘制海岸线" class="headerlink" title="绘制海岸线"></a>绘制海岸线</h3><p>GMT 中使用coast模块绘制海岸线、湖岸线等。该模块不仅可以绘制这些岸线，还可以绘制比例尺和行政边界等。</p>
-<h4 id="绘制海岸线、湖岸线-W"><a href="#绘制海岸线、湖岸线-W" class="headerlink" title="绘制海岸线、湖岸线(-W)"></a>绘制海岸线、湖岸线(-W)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline png,pdf &#x2F;&#x2F;同时生成两个后缀文件</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/yCS8tU"><img src="https://z3.ax1x.com/2021/01/28/yCS8tU.md.png" alt="yCS8tU.md.png"></a></p>
-<p>默认情况下-W选项会绘制所有水体与陆地的界限，包括海岸线、湖岸线、湖中岛的边界等。根据水体或陆地的不同，coast模块将岸线分为从1到4的四个级别，依次指海岸线、湖岸线、湖中岛，以及湖中岛内的湖边界，因而，可以在使用-W选项时指定要绘制哪一个等级的岸线。如下面的代码,-W1/0.5p,black表示用0.5p宽的黑色线条绘制1级海岸线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline2 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCpW24"><img src="https://z3.ax1x.com/2021/01/28/yCpW24.md.png" alt="yCpW24.md.png"></a><br>也可以在一个命令中多次使用-W选项，分别用不同的线条绘制不同等级的岸线。如，绘制0.5p黑色的海岸线后，同时使用-W2/1p,lightred绘制1p宽的浅红色湖岸线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline3 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred   &#x2F;&#x2F;0.5p 1p 区别是线的粗细</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9VMj"><img src="https://z3.ax1x.com/2021/01/28/yC9VMj.md.png" alt="yC9VMj.md.png"></a></p>
-<h4 id="设置绘制对象的最小面积-A"><a href="#设置绘制对象的最小面积-A" class="headerlink" title="设置绘制对象的最小面积(-A)"></a>设置绘制对象的最小面积(-A)</h4><p>因为美国的岛屿和湖泊很多，上图看上去依然很乱。我们可以通过-A选项设置要绘制的对象的最小面积（单位为平方千米）。-A5000表示只绘制面积大于5000平方千米的湖泊或岛屿</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline4 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -W1&#x2F;0.5p,black -W2&#x2F;1p,lightred -A5000</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9wFK"><img src="https://z3.ax1x.com/2021/01/28/yC9wFK.md.png" alt="yC9wFK.md.png"></a></p>
-<h4 id="填充陆地与水体"><a href="#填充陆地与水体" class="headerlink" title="填充陆地与水体"></a>填充陆地与水体</h4><p>在绘制时，还可以为陆地和水体设置不同的填充色。使用-G选项设置陆地区域的填充色，-S设置水体的颜色，-C则设置湖泊的颜色（若不指定-C，则湖泊颜色由-S控制）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline5 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yC9geI"><img src="https://z3.ax1x.com/2021/01/28/yC9geI.md.png" alt="yC9geI.md.png"></a><br>也可以同时使用-W 选项和-G 选项，即绘制岸线并填充颜色。</p>
-<h4 id="绘制国界-州界"><a href="#绘制国界-州界" class="headerlink" title="绘制国界/州界"></a>绘制国界/州界</h4><p>使用-N选项可以绘制国界/州界等行政边界。-N1表示绘制国界线，-N2表示绘制州界/省界线（目前只有美洲各国以及澳大利亚的洲界的数据）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline6 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -N1&#x2F;1p -N2&#x2F;0.25p</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCdns"><img src="https://z3.ax1x.com/2021/01/28/yCCdns.md.png" alt="yCCdns.md.png"></a><br>除了-N选项之外，-E选项也可以用于绘制州界、国界和省界。</p>
-<h4 id="添加比例尺"><a href="#添加比例尺" class="headerlink" title="添加比例尺"></a>添加比例尺</h4><p>绘制比例尺需要如下参数：要绘制哪个纬度的比例尺、比例尺在图中的位置、比例尺的长度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmt begin coastline7 png</span><br><span class="line">    gmt coast -R-130&#x2F;-50&#x2F;20&#x2F;60 -JM15c -Baf -A5000 -Gred -Slightblue -Clightred -Lg-60&#x2F;25+c25+w1000k+f+u</span><br><span class="line">gmt end show</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yCCH3D"><img src="https://z3.ax1x.com/2021/01/28/yCCH3D.md.png" alt="yCCH3D.md.png"></a></p>
-<p>以上代码使用了-Lg-60/25+c25+w1000k+f+u增加比例尺，其中+w1000k表示比例尺长度为1000千米，+c25表示绘制纬度为北纬25°处的比例尺，g-60/25则表示将比例尺画在北纬25°西经60° 处，+f表示比例尺的风格为图中所示黑白相间的铁轨形式，+u表示显示比例尺对应的单位。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/28/GMT%E5%9C%B0%E5%BD%A2%E5%9B%BE%E7%BB%98%E5%88%B6-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-%E7%BB%98%E5%88%B6%E6%B5%B7%E5%B2%B8%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1280,7 +1293,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 command_zz
+    		&copy; 2023 command_zz
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
